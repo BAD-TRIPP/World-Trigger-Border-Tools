@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>BRDR Construction Calculator</title>
+  <title>BRDR Simple Construction Buff Calculator</title>
   <style>
     body {
       background-color: #111;
       color: #f0f0f0;
       font-family: Arial, sans-serif;
-      max-width: 700px;
+      max-width: 600px;
       margin: auto;
       padding: 20px;
     }
@@ -42,6 +42,7 @@
     .time-group {
       display: flex;
       gap: 5px;
+      margin-top: 5px;
     }
     .time-group input {
       flex: 1;
@@ -59,114 +60,60 @@
     .result {
       margin-top: 20px;
       background: #222;
-      padding: 15px;
+      padding: 20px;
       border-radius: 5px;
+      font-size: 1.4em;
+      font-weight: bold;
+      color: gold;
+      text-align: center;
     }
   </style>
 </head>
 <body>
-  <h1>BRDR Construction Calculator</h1>
+  <h1>BRDR Simple Buff Calculator</h1>
   <a href="index.html" class="back-button">← Back to Main Menu</a>
 
-  <div><strong>Instructions:</strong> Enter time using Days, Hours, Minutes, and Seconds fields. Buffs are entered as percentages. If you provide both original and buffed times, the buff % will be ignored.</div>
-
-  <label>Original Upgrade Time:</label>
+  <label>Base Time:</label>
   <div class="time-group">
-    <input type="number" id="origDays" placeholder="Days">
-    <input type="number" id="origHours" placeholder="Hours">
-    <input type="number" id="origMinutes" placeholder="Minutes">
-    <input type="number" id="origSeconds" placeholder="Seconds">
-  </div>
-
-  <label>Buffed Upgrade Time (Optional):</label>
-  <div class="time-group">
-    <input type="number" id="buffDays" placeholder="Days">
-    <input type="number" id="buffHours" placeholder="Hours">
-    <input type="number" id="buffMinutes" placeholder="Minutes">
-    <input type="number" id="buffSeconds" placeholder="Seconds">
+    <input type="number" id="baseDays" placeholder="Days">
+    <input type="number" id="baseHours" placeholder="Hours">
+    <input type="number" id="baseMinutes" placeholder="Minutes">
+    <input type="number" id="baseSeconds" placeholder="Seconds">
   </div>
 
   <label>Total Construction Buff (%):</label>
   <input type="number" id="buffPercent" placeholder="Enter total buff %">
 
-  <label>Daily Free Speed-Up Time:</label>
-  <div class="time-group">
-    <input type="number" id="speedDays" placeholder="Days">
-    <input type="number" id="speedHours" placeholder="Hours">
-    <input type="number" id="speedMinutes" placeholder="Minutes">
-    <input type="number" id="speedSeconds" placeholder="Seconds">
-  </div>
-
-  <label>Number of Days You Want to Calculate:</label>
-  <input type="number" id="calcDays" placeholder="How many days to calculate">
-
-  <label>Number of Helps Received:</label>
-  <input type="number" id="helps" placeholder="How many helps">
-
-  <label>Help Time per Help (Minutes):</label>
-  <input type="number" id="helpTime" placeholder="Help time per help (default 7.5)">
-
-  <button onclick="calculate()">Calculate Final Time</button>
+  <button onclick="calculate()">Calculate Buffed Time</button>
 
   <div class="result" id="resultBox"></div>
 
   <script>
-    function timeToDays(d, h, m, s) {
-      return (parseFloat(d) || 0) + (parseFloat(h) || 0) / 24 + (parseFloat(m) || 0) / 1440 + (parseFloat(s) || 0) / 86400;
-    }
-
-    function timeToHours(d, h, m, s) {
-      return ((parseFloat(d) || 0) * 24) + (parseFloat(h) || 0) + (parseFloat(m) || 0) / 60 + (parseFloat(s) || 0) / 3600;
-    }
-
     function calculate() {
-      const origTime = timeToDays(
-        document.getElementById('origDays').value,
-        document.getElementById('origHours').value,
-        document.getElementById('origMinutes').value,
-        document.getElementById('origSeconds').value
-      );
-
-      const buffTimeInput = timeToDays(
-        document.getElementById('buffDays').value,
-        document.getElementById('buffHours').value,
-        document.getElementById('buffMinutes').value,
-        document.getElementById('buffSeconds').value
-      );
-
+      const days = parseFloat(document.getElementById('baseDays').value) || 0;
+      const hours = parseFloat(document.getElementById('baseHours').value) || 0;
+      const minutes = parseFloat(document.getElementById('baseMinutes').value) || 0;
+      const seconds = parseFloat(document.getElementById('baseSeconds').value) || 0;
       const buffPercent = parseFloat(document.getElementById('buffPercent').value) || 0;
+
       const totalBuffDecimal = buffPercent / 100;
 
-      let buffedTime = buffTimeInput;
-      if (!buffedTime && origTime && buffPercent) {
-        buffedTime = origTime / (1 + totalBuffDecimal);
-      }
+      // Convert everything to total seconds
+      let baseTimeInSeconds = (days * 86400) + (hours * 3600) + (minutes * 60) + seconds;
 
-      const speedUpHoursPerDay = timeToHours(
-        document.getElementById('speedDays').value,
-        document.getElementById('speedHours').value,
-        document.getElementById('speedMinutes').value,
-        document.getElementById('speedSeconds').value
-      );
+      // Apply buff
+      let buffedTimeInSeconds = baseTimeInSeconds / (1 + totalBuffDecimal);
 
-      const calcDays = parseFloat(document.getElementById('calcDays').value) || buffedTime || 0;
-      const helps = parseFloat(document.getElementById('helps').value) || 0;
-      const helpTime = parseFloat(document.getElementById('helpTime').value) || 0;
+      // Convert back to days, hours, minutes, seconds
+      const buffDays = Math.floor(buffedTimeInSeconds / 86400);
+      buffedTimeInSeconds %= 86400;
+      const buffHours = Math.floor(buffedTimeInSeconds / 3600);
+      buffedTimeInSeconds %= 3600;
+      const buffMinutes = Math.floor(buffedTimeInSeconds / 60);
+      const buffSeconds = Math.floor(buffedTimeInSeconds % 60);
 
-      const freeSpeedUpHours = speedUpHoursPerDay * calcDays;
-      const totalHelpHours = (helps * helpTime) / 60;
-      const totalManualReductionDays = (freeSpeedUpHours + totalHelpHours) / 24;
-
-      const finalTime = (buffedTime || 0) - totalManualReductionDays;
-
-      const display = `
-        <strong>Original Time:</strong> ${origTime.toFixed(2)} days<br>
-        <strong>Buffed Time:</strong> ${(buffedTime || 0).toFixed(2)} days<br>
-        <strong>Manual Reduction:</strong> ${totalManualReductionDays.toFixed(2)} days<br>
-        <strong>Final Upgrade Time:</strong> ${finalTime.toFixed(2)} days
-      `;
-
-      document.getElementById('resultBox').innerHTML = display;
+      const resultText = `Buffed Time: ${buffDays}d ${buffHours}h ${buffMinutes}m ${buffSeconds}s`;
+      document.getElementById('resultBox').innerHTML = resultText;
     }
   </script>
 </body>
