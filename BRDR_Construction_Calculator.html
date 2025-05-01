@@ -1,0 +1,97 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>BRDR Construction Time Calculator</title>
+  <style>
+    body {
+      background-color: #111;
+      color: #f0f0f0;
+      font-family: Arial, sans-serif;
+      max-width: 600px;
+      margin: auto;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      color: gold;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      background: #1a1a1a;
+      color: white;
+      border: 1px solid #444;
+    }
+    button {
+      margin-top: 15px;
+      padding: 10px;
+      background-color: gold;
+      color: black;
+      border: none;
+      width: 100%;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .result {
+      margin-top: 20px;
+      background: #222;
+      padding: 15px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>BRDR Construction Calculator</h1>
+
+  <label>Upgrade Time (Days):</label>
+  <input type="number" id="upgradeDays" value="53.9">
+
+  <label>Total Construction Buff (%):</label>
+  <input type="number" id="buffPercent" value="138.5">
+
+  <label>Daily Free Speed-Up Time (Hours):</label>
+  <input type="number" id="dailySpeedUp" value="6.33">
+
+  <label>Alliance Helps (total help time in hours):</label>
+  <input type="number" id="helpHours" value="3.4">
+
+  <button onclick="calculate()">Calculate Final Time</button>
+
+  <div class="result" id="resultBox"></div>
+
+  <script>
+    function calculate() {
+      const upgradeDays = parseFloat(document.getElementById('upgradeDays').value) || 0;
+      const buffPercent = parseFloat(document.getElementById('buffPercent').value) || 0;
+      const dailySpeedUp = parseFloat(document.getElementById('dailySpeedUp').value) || 0;
+      const helpHours = parseFloat(document.getElementById('helpHours').value) || 0;
+
+      const totalBuffDecimal = buffPercent / 100;
+
+      const baseTimeDays = upgradeDays * (1 + totalBuffDecimal);
+      const actualTimeDays = baseTimeDays / (1 + totalBuffDecimal);
+
+      const freeSpeedUpHours = dailySpeedUp * actualTimeDays;
+      const totalManualReductionDays = (freeSpeedUpHours + helpHours) / 24;
+
+      const finalTime = actualTimeDays - totalManualReductionDays;
+
+      const display = `
+        <strong>Base Time:</strong> ${baseTimeDays.toFixed(2)} days<br>
+        <strong>Actual Time After Buffs:</strong> ${actualTimeDays.toFixed(2)} days<br>
+        <strong>Manual Reduction (Free Speed-Up + Helps):</strong> ${totalManualReductionDays.toFixed(2)} days<br>
+        <strong>Final Upgrade Time:</strong> ${finalTime.toFixed(2)} days
+      `;
+
+      document.getElementById('resultBox').innerHTML = display;
+    }
+  </script>
+</body>
+</html>
