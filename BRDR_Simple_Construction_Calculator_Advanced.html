@@ -1,0 +1,183 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>BRDR Simple Construction Buff Calculator</title>
+  <style>
+    body {
+      background-color: #111;
+      color: #f0f0f0;
+      font-family: Arial, sans-serif;
+      max-width: 600px;
+      margin: auto;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      color: gold;
+    }
+    a.back-button {
+      display: inline-block;
+      margin-bottom: 20px;
+      padding: 10px 20px;
+      background-color: gold;
+      color: black;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 5px;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      background: #1a1a1a;
+      color: white;
+      border: 1px solid #444;
+    }
+    .time-group {
+      display: flex;
+      gap: 5px;
+      margin-top: 5px;
+    }
+    .time-group input {
+      flex: 1;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px;
+      background-color: gold;
+      color: black;
+      border: none;
+      width: 100%;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .result {
+      margin-top: 20px;
+      background: #222;
+      padding: 20px;
+      border-radius: 5px;
+      font-size: 1.4em;
+      font-weight: bold;
+      color: gold;
+      text-align: center;
+    }
+    #manualSection {
+      display: none;
+      margin-top: 20px;
+      padding-top: 10px;
+      border-top: 1px solid #444;
+    }
+  </style>
+</head>
+<body>
+  <h1>BRDR Simple Buff Calculator</h1>
+  <a href="index.html" class="back-button">← Back to Main Menu</a>
+
+  <label>Base Time:</label>
+  <div class="time-group">
+    <input type="number" id="baseDays" placeholder="Days">
+    <input type="number" id="baseHours" placeholder="Hours">
+    <input type="number" id="baseMinutes" placeholder="Minutes">
+    <input type="number" id="baseSeconds" placeholder="Seconds">
+  </div>
+
+  <label>Total Construction Buff (%):</label>
+  <input type="number" id="buffPercent" placeholder="Enter total buff %">
+
+  <button onclick="calculate()">Calculate Buffed Time</button>
+
+  <div class="result" id="resultBox"></div>
+
+  <button id="showManualBtn" style="display:none;" onclick="showManual()">Apply Manual Speed-Ups & Help Reductions</button>
+
+  <div id="manualSection">
+    <label>Daily Free Speed-Up Time:</label>
+    <div class="time-group">
+      <input type="number" id="speedHours" placeholder="Hours">
+      <input type="number" id="speedMinutes" placeholder="Minutes">
+      <input type="number" id="speedSeconds" placeholder="Seconds">
+    </div>
+
+    <label>Days to Calculate:</label>
+    <input type="number" id="calcDays" placeholder="How many days to calculate">
+
+    <label>Number of Helps Received:</label>
+    <input type="number" id="helps" placeholder="How many helps">
+
+    <label>Help Time per Help (Minutes):</label>
+    <input type="number" id="helpTime" placeholder="Help time per help (default 7.5)">
+
+    <button onclick="calculateFinal()">Calculate Final Time</button>
+
+    <div class="result" id="finalResultBox"></div>
+  </div>
+
+  <script>
+    let buffedTimeInSeconds = 0;
+
+    function calculate() {
+      const days = parseFloat(document.getElementById('baseDays').value) || 0;
+      const hours = parseFloat(document.getElementById('baseHours').value) || 0;
+      const minutes = parseFloat(document.getElementById('baseMinutes').value) || 0;
+      const seconds = parseFloat(document.getElementById('baseSeconds').value) || 0;
+      const buffPercent = parseFloat(document.getElementById('buffPercent').value) || 0;
+
+      const totalBuffDecimal = buffPercent / 100;
+      let baseTimeInSeconds = (days * 86400) + (hours * 3600) + (minutes * 60) + seconds;
+
+      buffedTimeInSeconds = baseTimeInSeconds / (1 + totalBuffDecimal);
+
+      const buffDays = Math.floor(buffedTimeInSeconds / 86400);
+      buffedTimeInSeconds %= 86400;
+      const buffHours = Math.floor(buffedTimeInSeconds / 3600);
+      buffedTimeInSeconds %= 3600;
+      const buffMinutes = Math.floor(buffedTimeInSeconds / 60);
+      const buffSeconds = Math.floor(buffedTimeInSeconds % 60);
+
+      buffedTimeInSeconds = (buffDays * 86400) + (buffHours * 3600) + (buffMinutes * 60) + buffSeconds;
+
+      const resultText = `Buffed Time: ${buffDays}d ${buffHours}h ${buffMinutes}m ${buffSeconds}s`;
+      document.getElementById('resultBox').innerHTML = resultText;
+
+      document.getElementById('showManualBtn').style.display = 'inline-block';
+    }
+
+    function showManual() {
+      document.getElementById('manualSection').style.display = 'block';
+    }
+
+    function calculateFinal() {
+      const speedHours = parseFloat(document.getElementById('speedHours').value) || 0;
+      const speedMinutes = parseFloat(document.getElementById('speedMinutes').value) || 0;
+      const speedSeconds = parseFloat(document.getElementById('speedSeconds').value) || 0;
+      const calcDays = parseFloat(document.getElementById('calcDays').value) || 0;
+      const helps = parseFloat(document.getElementById('helps').value) || 0;
+      const helpTime = parseFloat(document.getElementById('helpTime').value) || 0;
+
+      const dailySpeedUpSeconds = (speedHours * 3600) + (speedMinutes * 60) + speedSeconds;
+      const totalSpeedUpSeconds = dailySpeedUpSeconds * calcDays;
+      const totalHelpSeconds = (helps * helpTime * 60);
+
+      let finalTimeInSeconds = buffedTimeInSeconds - totalSpeedUpSeconds - totalHelpSeconds;
+      if (finalTimeInSeconds < 0) finalTimeInSeconds = 0;
+
+      const finalDays = Math.floor(finalTimeInSeconds / 86400);
+      finalTimeInSeconds %= 86400;
+      const finalHours = Math.floor(finalTimeInSeconds / 3600);
+      finalTimeInSeconds %= 3600;
+      const finalMinutes = Math.floor(finalTimeInSeconds / 60);
+      const finalSeconds = Math.floor(finalTimeInSeconds % 60);
+
+      const finalText = `Final Time: ${finalDays}d ${finalHours}h ${finalMinutes}m ${finalSeconds}s`;
+      document.getElementById('finalResultBox').innerHTML = finalText;
+    }
+  </script>
+</body>
+</html>
