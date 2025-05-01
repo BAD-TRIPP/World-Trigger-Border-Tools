@@ -20,10 +20,14 @@
       display: block;
       margin-top: 10px;
     }
-    input {
+    .input-group {
+      display: flex;
+      gap: 5px;
+      margin-bottom: 5px;
+    }
+    .input-group input {
       width: 100%;
       padding: 8px;
-      margin-top: 5px;
       background: #1a1a1a;
       color: white;
       border: 1px solid #444;
@@ -51,13 +55,6 @@
       border-radius: 5px;
       color: #ccc;
     }
-    .input-group {
-      display: flex;
-      gap: 5px;
-    }
-    .input-group input {
-      width: 100%;
-    }
   </style>
 </head>
 <body>
@@ -65,7 +62,7 @@
 
   <div class="instructions">
     <strong>Instructions:</strong><br>
-    Fill in the fields below. Enter time in days/hours/minutes/seconds where requested. Buffs should be entered as percentages.
+    Enter time using Days, Hours, Minutes, and Seconds fields. Buffs are entered as percentages.
   </div>
 
   <label>Upgrade Time:</label>
@@ -81,6 +78,7 @@
 
   <label>Daily Free Speed-Up Time:</label>
   <div class="input-group">
+    <input type="number" id="speedUpDays" placeholder="Days">
     <input type="number" id="speedUpHours" placeholder="Hours">
     <input type="number" id="speedUpMinutes" placeholder="Minutes">
     <input type="number" id="speedUpSeconds" placeholder="Seconds">
@@ -101,27 +99,27 @@
 
   <script>
     function calculate() {
+      // Upgrade Time inputs
       const d = parseFloat(document.getElementById('upgradeDays').value) || 0;
       const h = parseFloat(document.getElementById('upgradeHours').value) || 0;
       const m = parseFloat(document.getElementById('upgradeMinutes').value) || 0;
       const s = parseFloat(document.getElementById('upgradeSeconds').value) || 0;
+
+      // Daily Speed-Up Time inputs
+      const sd = parseFloat(document.getElementById('speedUpDays').value) || 0;
+      const sh = parseFloat(document.getElementById('speedUpHours').value) || 0;
+      const sm = parseFloat(document.getElementById('speedUpMinutes').value) || 0;
+      const ss = parseFloat(document.getElementById('speedUpSeconds').value) || 0;
+
       const buffPercent = parseFloat(document.getElementById('buffPercent').value) || 0;
-
-      const speedH = parseFloat(document.getElementById('speedUpHours').value) || 0;
-      const speedM = parseFloat(document.getElementById('speedUpMinutes').value) || 0;
-      const speedS = parseFloat(document.getElementById('speedUpSeconds').value) || 0;
-
       const numDays = parseFloat(document.getElementById('numDays').value) || 0;
       const numHelps = parseFloat(document.getElementById('numHelps').value) || 0;
       const helpMinutesPerHelp = parseFloat(document.getElementById('helpMinutesPerHelp').value) || 0;
 
-      // Convert input time to total days
+      // Convert input times to total days or hours
       const upgradeTimeDays = d + (h / 24) + (m / 1440) + (s / 86400);
+      const speedUpTimeHours = (sd * 24) + sh + (sm / 60) + (ss / 3600);
 
-      // Convert speed-up time to total hours
-      const speedUpTotalHours = speedH + (speedM / 60) + (speedS / 3600);
-
-      // Buff conversion
       const buffDecimal = buffPercent / 100;
 
       // Base time and actual time
@@ -129,7 +127,7 @@
       const actualTimeDays = baseTimeDays / (1 + buffDecimal);
 
       // Manual reductions
-      const freeSpeedUpHours = speedUpTotalHours * numDays;
+      const freeSpeedUpHours = speedUpTimeHours * numDays;
       const helpHours = (numHelps * helpMinutesPerHelp) / 60;
       const totalManualReductionDays = (freeSpeedUpHours + helpHours) / 24;
 
