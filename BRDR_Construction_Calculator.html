@@ -8,7 +8,7 @@
       background-color: #111;
       color: #f0f0f0;
       font-family: Arial, sans-serif;
-      max-width: 600px;
+      max-width: 700px;
       margin: auto;
       padding: 20px;
     }
@@ -51,6 +51,13 @@
       border-radius: 5px;
       color: #ccc;
     }
+    .input-group {
+      display: flex;
+      gap: 5px;
+    }
+    .input-group input {
+      width: 100%;
+    }
   </style>
 </head>
 <body>
@@ -58,31 +65,35 @@
 
   <div class="instructions">
     <strong>Instructions:</strong><br>
-    • Upgrade Time (Days): Enter the upgrade time shown in-game before buffs.<br>
-    • Total Construction Buff (%): Add up all your construction buffs including Secretary of Development if active.<br>
-    • Daily Free Speed-Up Time (Hours per Day): Enter how many free speed-up hours you earn daily from buffs.<br>
-    • Number of Days You Want to Calculate: Usually the actual upgrade time after buffs (or how long you plan to run the upgrade).<br>
-    • Number of Helps Received: Enter how many times you expect to receive help from alliance members.<br>
-    • Help Time per Help (Minutes): Enter the help duration per help. If you don’t know, 7.5 minutes is a common default.<br>
+    Fill in the fields below. Enter time in days/hours/minutes/seconds where requested. Buffs should be entered as percentages.
   </div>
 
-  <label>Upgrade Time (Days):</label>
-  <input type="number" id="upgradeDays" value="53.9">
+  <label>Upgrade Time:</label>
+  <div class="input-group">
+    <input type="number" id="upgradeDays" placeholder="Days">
+    <input type="number" id="upgradeHours" placeholder="Hours">
+    <input type="number" id="upgradeMinutes" placeholder="Minutes">
+    <input type="number" id="upgradeSeconds" placeholder="Seconds">
+  </div>
 
   <label>Total Construction Buff (%):</label>
-  <input type="number" id="buffPercent" value="138.5">
+  <input type="number" id="buffPercent" placeholder="Enter total buff %">
 
-  <label>Daily Free Speed-Up Time (Hours per Day):</label>
-  <input type="number" id="dailySpeedUp" value="6.33">
+  <label>Daily Free Speed-Up Time:</label>
+  <div class="input-group">
+    <input type="number" id="speedUpHours" placeholder="Hours">
+    <input type="number" id="speedUpMinutes" placeholder="Minutes">
+    <input type="number" id="speedUpSeconds" placeholder="Seconds">
+  </div>
 
   <label>Number of Days You Want to Calculate:</label>
-  <input type="number" id="numDays" value="42">
+  <input type="number" id="numDays" placeholder="How many days to calculate">
 
   <label>Number of Helps Received:</label>
-  <input type="number" id="numHelps" value="27">
+  <input type="number" id="numHelps" placeholder="How many helps you expect">
 
   <label>Help Time per Help (Minutes):</label>
-  <input type="number" id="helpMinutesPerHelp" value="7.5">
+  <input type="number" id="helpMinutesPerHelp" placeholder="Help time per help (default 7.5 min)">
 
   <button onclick="calculate()">Calculate Final Time</button>
 
@@ -90,24 +101,36 @@
 
   <script>
     function calculate() {
-      const upgradeDays = parseFloat(document.getElementById('upgradeDays').value) || 0;
+      const d = parseFloat(document.getElementById('upgradeDays').value) || 0;
+      const h = parseFloat(document.getElementById('upgradeHours').value) || 0;
+      const m = parseFloat(document.getElementById('upgradeMinutes').value) || 0;
+      const s = parseFloat(document.getElementById('upgradeSeconds').value) || 0;
       const buffPercent = parseFloat(document.getElementById('buffPercent').value) || 0;
-      const dailySpeedUp = parseFloat(document.getElementById('dailySpeedUp').value) || 0;
+
+      const speedH = parseFloat(document.getElementById('speedUpHours').value) || 0;
+      const speedM = parseFloat(document.getElementById('speedUpMinutes').value) || 0;
+      const speedS = parseFloat(document.getElementById('speedUpSeconds').value) || 0;
+
       const numDays = parseFloat(document.getElementById('numDays').value) || 0;
       const numHelps = parseFloat(document.getElementById('numHelps').value) || 0;
       const helpMinutesPerHelp = parseFloat(document.getElementById('helpMinutesPerHelp').value) || 0;
 
-      // Convert % to decimal automatically
-      const totalBuffDecimal = buffPercent / 100;
+      // Convert input time to total days
+      const upgradeTimeDays = d + (h / 24) + (m / 1440) + (s / 86400);
+
+      // Convert speed-up time to total hours
+      const speedUpTotalHours = speedH + (speedM / 60) + (speedS / 3600);
+
+      // Buff conversion
+      const buffDecimal = buffPercent / 100;
 
       // Base time and actual time
-      const baseTimeDays = upgradeDays * (1 + totalBuffDecimal);
-      const actualTimeDays = baseTimeDays / (1 + totalBuffDecimal);
+      const baseTimeDays = upgradeTimeDays * (1 + buffDecimal);
+      const actualTimeDays = baseTimeDays / (1 + buffDecimal);
 
       // Manual reductions
-      const freeSpeedUpHours = dailySpeedUp * numDays;
+      const freeSpeedUpHours = speedUpTotalHours * numDays;
       const helpHours = (numHelps * helpMinutesPerHelp) / 60;
-
       const totalManualReductionDays = (freeSpeedUpHours + helpHours) / 24;
 
       const finalTime = actualTimeDays - totalManualReductionDays;
