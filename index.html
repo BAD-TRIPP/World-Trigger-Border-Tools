@@ -7,10 +7,10 @@
 
   <!-- Password protection -->
   <script>
-    if (!sessionStorage.getItem("brdr_access_granted")) {
+    if (!localStorage.getItem("brdr_access_granted")) {
       var password = prompt("Enter password to access BRDR Tools:");
       if (password === "1009") {
-        sessionStorage.setItem("brdr_access_granted", "true");
+        localStorage.setItem("brdr_access_granted", "true"); 
       } else {
         alert("Access denied.");
         window.location.href = "https://www.lastwartutorial.com/";
