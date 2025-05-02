@@ -2,100 +2,99 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <!-- PWA tags -->
-<link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#FFD700">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="BRDR Tools">
-<link rel="apple-touch-icon" href="brdr_logo.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>World Trigger Border Tools</title>
-  
-    <!-- Password protection/ User Session -->
+
+  <!-- Password protection -->
   <script>
-  // Check if password already entered for this session
-  if (!sessionStorage.getItem("brdr_access_granted")) {
-    var password = prompt("Enter password to access BRDR Tools:");
-    if (password === "1009") {
-      // Save access granted for this session
-      sessionStorage.setItem("brdr_access_granted", "true");
-    } else {
-      alert("Access denied.");
-      window.location.href = "https://google.com"; // Or any other page
+    if (!sessionStorage.getItem("brdr_access_granted")) {
+      var password = prompt("Enter password to access BRDR Tools:");
+      if (password === "YourPasswordHere") {
+        sessionStorage.setItem("brdr_access_granted", "true");
+      } else {
+        alert("Access denied.");
+        window.location.href = "https://google.com";
+      }
     }
-  }
-</script>
-  
+  </script>
+
+  <!-- PWA tags -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#FFD700">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="BRDR Tools">
+  <link rel="apple-touch-icon" href="brdr_logo.png">
+
   <style>
-  body {
-    background-color: #000;
-    background-image: linear-gradient(180deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 60%);
-    color: #f0f0f0;
-    font-family: Arial, sans-serif;
-    text-align: center;
-    padding: 20px;
-  }
-  h1 {
-    color: gold;
-    font-size: 1.6em;
-    display: block;
-    width: 100%;
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  h2 {
-    color: gold;
-    margin-top: 20px;
-    display: block;
-    width: 100%;
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  ul { list-style-type: none; padding: 0; }
-  li { margin: 15px 10px; }
-  a.button {
-    color: gold;
-    text-decoration: none;
-    font-size: 1.2em;
-    border: 2px solid gold;
-    padding: 10px 15px;
-    border-radius: 5px;
-    display: inline-block;
-    width: 80%;
-    margin-bottom: 10px;
-  }
-  a.button:hover {
-    background-color: gold;
-    color: black;
-  }
-  img.logo {
-    display: block;
-    margin: 0 auto 25px auto;
-    max-width: 250px;
-  }
-  footer {
-    margin-top: 25px;
-    color: #888;
-    font-size: 0.9em;
-  }
-  /* 🔥 FIX: Force buttons & paragraph text to center */
-  a.button, p {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-  }
-</style>
+    body {
+      background-color: #000;
+      background-image: linear-gradient(180deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 60%);
+      color: #f0f0f0;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 20px;
+    }
+    h1 {
+      color: gold;
+      font-size: 1.6em;
+      display: block;
+      width: 100%;
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    h2 {
+      color: gold;
+      margin-top: 20px;
+      display: block;
+      width: 100%;
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    ul { list-style-type: none; padding: 0; }
+    li { margin: 15px 10px; }
+    a.button {
+      color: gold;
+      text-decoration: none;
+      font-size: 1.2em;
+      border: 2px solid gold;
+      padding: 10px 15px;
+      border-radius: 5px;
+      display: inline-block;
+      width: 80%;
+      margin-bottom: 10px;
+    }
+    a.button:hover {
+      background-color: gold;
+      color: black;
+    }
+    img.logo {
+      display: block;
+      margin: 0 auto 15px auto;
+      max-width: 150px;
+    }
+    footer {
+      margin-top: 25px;
+      color: #888;
+      font-size: 0.9em;
+    }
+    /* Ensure buttons & paragraph text center properly */
+    a.button, p {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+    }
+  </style>
 </head>
 <body>
 
   <img src="brdr_logo.png" alt="BRDR Logo" class="logo">
   <h1>Alliance Tools</h1>
 
-  <a href="construction-buff-calculator-mobile.html" class="button">🏗 Construction Time Calculator</a><br>
-  <a href="research-buff-calculator-mobile.html" class="button">🔬 Research Time Calculator</a><br>
+  <a href="BRDR_Construction_Calculator_Mobile.html" class="button">🏗 Construction Time Calculator</a><br>
+  <a href="BRDR_Research_Calculator_Mobile.html" class="button">🔬 Research Time Calculator</a><br>
 
   <p>
     Follow these steps when using the calculator:
