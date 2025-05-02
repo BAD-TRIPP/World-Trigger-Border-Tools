@@ -15,48 +15,97 @@ body {
   background-image: linear-gradient(180deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 60%);
   color: #f0f0f0;
   font-family: Arial, sans-serif;
-  margin: auto;
-  padding: 10px;
+  text-align: center;
+  padding: 20px;
 }
-    h1 { color: gold; font-size: 1.6em; }
-    h2 { color: gold; margin-top: 20px; }
-    .step {text-align: center; width: 100%; margin: auto; margin-bottom: 10px;}
-    a.back-button, p {display: block; margin-left: auto; margin-right: auto; text-align: center;}
 
-    .image-row {
-      display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-top: 20px;
-    }
-    .image-row img {
-      width: 30%;
-      max-width: 240px;
-      height: auto;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-    .image-row img:hover {
-      opacity: 0.8;
-    }
-    footer { margin-top: 25px; color: #888; font-size: 0.9em; }
-    img.logo { display:block; margin: 0 auto 25px auto; max-width: 250px; }
+h1 {
+  color: gold;
+  font-size: 1.6em;
+  display: block;
+  width: 100%;
+  text-align: center;
+}
 
-    /* Lightbox styles */
-    .lightbox {
-      display: none;
-      position: fixed;
-      z-index: 10;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0,0,0,0.8);
-      justify-content: center;
-      align-items: center;
-    }
-    .lightbox img {
-      max-width: 90%;
-      max-height: 90%;
-      border-radius: 10px;
-    }
+h2 {
+  color: gold;
+  margin-top: 20px;
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
+.step {
+  text-align: left; /* 🔥 Left-aligned steps */
+  max-width: 600px;
+  margin: auto;
+  margin-bottom: 10px;
+}
+
+a.back-button {
+  display: inline-block;
+  margin-bottom: 15px;
+  padding: 10px 15px;
+  background-color: gold;
+  color: black;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 5px;
+  text-align: left; /* 🔥 Left align the button text */
+}
+
+.image-row {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.image-row img {
+  width: 30%;
+  max-width: 240px;
+  height: auto;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.image-row img:hover {
+  opacity: 0.8;
+}
+
+footer {
+  margin-top: 25px;
+  color: #888;
+  font-size: 0.9em;
+}
+
+img.logo {
+  display: block;
+  margin: 0 auto 25px auto;
+  max-width: 250px;
+}
+
+/* Lightbox styles */
+.lightbox {
+  display: none;
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  justify-content: center;
+  align-items: center;
+}
+
+.lightbox img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 10px;
+}
   </style>
 </head>
 <body>
