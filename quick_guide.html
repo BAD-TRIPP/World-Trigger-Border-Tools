@@ -173,6 +173,39 @@ img.logo {
       document.getElementById('lightbox').style.display = 'none';
     }
   </script>
+<h2>BRDR Buff & Final Time Formulas</h2>
+
+<table style="width: 100%; border-collapse: collapse; color: #f0f0f0; margin-top: 20px;">
+  <tr style="background-color: gold; color: black;">
+    <th style="padding: 10px; border: 1px solid #444;">Step</th>
+    <th style="padding: 10px; border: 1px solid #444;">Formula</th>
+    <th style="padding: 10px; border: 1px solid #444;">Description</th>
+  </tr>
+  <tr>
+    <td style="padding: 10px; border: 1px solid #444;">1. Buffed Time</td>
+    <td style="padding: 10px; border: 1px solid #444;">Buffed Time = Original Time ÷ (1 + Buff % as decimal)</td>
+    <td style="padding: 10px; border: 1px solid #444;">Calculates reduced time after applying total buff %.</td>
+  </tr>
+  <tr>
+    <td style="padding: 10px; border: 1px solid #444;">2. Total Daily Speed-Up</td>
+    <td style="padding: 10px; border: 1px solid #444;">Total Daily Speed-Up = Daily Speed-Up (seconds) × Days</td>
+    <td style="padding: 10px; border: 1px solid #444;">Time reduced by daily speed-ups over days.</td>
+  </tr>
+  <tr>
+    <td style="padding: 10px; border: 1px solid #444;">3. Total Help Reduction</td>
+    <td style="padding: 10px; border: 1px solid #444;">Total Help Reduction = Helps × Help Time per Help (seconds)</td>
+    <td style="padding: 10px; border: 1px solid #444;">Time saved from alliance helps.</td>
+  </tr>
+  <tr>
+    <td style="padding: 10px; border: 1px solid #444;">4. Final Time</td>
+    <td style="padding: 10px; border: 1px solid #444;">Final Time = Buffed Time - (Total Speed-Ups + Total Help Reduction)</td>
+    <td style="padding: 10px; border: 1px solid #444;">Actual time remaining after all reductions.</td>
+  </tr>
+</table>
+
+<p style="margin-top: 10px; font-size: 0.9em; color: #ccc;">
+  *Tip: Convert hours, minutes, and seconds into total seconds before calculating.*
+</p>
 
 </body>
 </html>
