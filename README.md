@@ -6,7 +6,7 @@ This repository contains mobile-friendly calculators and guides created for the 
 
 ### 🛠 Available Tools:
 
-- 🏗 **Construction Time Calculator**  
+- 🏗 **Development Time Calculator**  
   `BRDR_Construction_Calculator_Mobile.html`  
   ➔ Calculate final construction times based on your buffs and speed-ups.
 
@@ -22,8 +22,11 @@ This repository contains mobile-friendly calculators and guides created for the 
 
 ### 🖼 Example Images Included:
 - `no-sec-dev-buff.jpeg`
+- `buffs-no-sec-dev.jpeg`
 - `sec-dev-buff.jpeg`
-- `buffs.jpg`
+- `buffs-sec-dev.jpeg`
+- `development-buffs.jpeg`
+- `research-buffs.jpeg`
 
 ### Branding:
 - BRDR Alliance logo: `brdr_logo.png`
