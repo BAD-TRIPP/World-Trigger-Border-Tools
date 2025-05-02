@@ -1,0 +1,20 @@
+{
+  "name": "BRDR Tools",
+  "short_name": "BRDR Tools",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#111111",
+  "theme_color": "#FFD700",
+  "icons": [
+    {
+      "src": "brdr_logo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "brdr_logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
