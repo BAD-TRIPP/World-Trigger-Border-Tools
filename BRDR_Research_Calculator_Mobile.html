@@ -18,8 +18,8 @@
   </style>
 </head>
 <body>
-  <img src="brdr_logo.png" alt="BRDR Logo" style="display:block; margin: 0 auto 25px auto; max-width: 250px;">
-  <h1>BRDR Research Calculator</h1><br>
+
+  <h1>BRDR Research Calculator</h1>
   <a href="index.html" class="back-button">← Back to Main Menu</a>
 
   <label>Base Time:</label>
@@ -34,6 +34,7 @@
   <input type="number" id="buffPercent" placeholder="Enter total buff %">
 
   <button onclick="calculate()">Calculate Buffed Time</button>
+  <button onclick="resetForm()">Reset</button>
 
   <div class="result" id="resultBox"></div>
 
@@ -63,6 +64,7 @@
 
 <script>
     let buffedTimeInSeconds = 0;
+
     function calculate() {
       const d = parseFloat(document.getElementById('baseDays').value) || 0;
       const h = parseFloat(document.getElementById('baseHours').value) || 0;
@@ -82,7 +84,11 @@
       document.getElementById('resultBox').innerHTML = `Buffed Time: ${bd}d ${bh}h ${bm}m ${bs}s`;
       document.getElementById('showManualBtn').style.display = 'inline-block';
     }
-    function showManual() { document.getElementById('manualSection').style.display = 'block'; }
+
+    function showManual() { 
+      document.getElementById('manualSection').style.display = 'block'; 
+    }
+
     function calculateFinal() {
       const sh = parseFloat(document.getElementById('speedHours').value) || 0;
       const sm = parseFloat(document.getElementById('speedMinutes').value) || 0;
@@ -101,6 +107,15 @@
       const fm = Math.floor(finalSecs / 60);
       const fs = Math.floor(finalSecs % 60);
       document.getElementById('finalResultBox').innerHTML = `Final Time: ${fd}d ${fh}h ${fm}m ${fs}s`;
+    }
+
+    function resetForm() {
+      document.querySelectorAll('input').forEach(input => input.value = '');
+      document.getElementById('resultBox').innerHTML = '';
+      document.getElementById('finalResultBox').innerHTML = '';
+      document.getElementById('manualSection').style.display = 'none';
+      document.getElementById('showManualBtn').style.display = 'none';
+      buffedTimeInSeconds = 0;
     }
 </script>
 
