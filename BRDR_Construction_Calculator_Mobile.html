@@ -34,7 +34,6 @@
   <input type="number" id="buffPercent" placeholder="Enter total buff %">
 
   <button onclick="calculate()">Calculate Buffed Time</button>
-  <button onclick="resetForm()">Reset</button>
 
   <div class="result" id="resultBox"></div>
 
@@ -62,61 +61,63 @@
     <div class="result" id="finalResultBox"></div>
   </div>
 
+  <button onclick="resetForm()" style="margin-top: 20px;">Reset</button>
+
 <script>
-    let buffedTimeInSeconds = 0;
+  let buffedTimeInSeconds = 0;
 
-    function calculate() {
-      const d = parseFloat(document.getElementById('baseDays').value) || 0;
-      const h = parseFloat(document.getElementById('baseHours').value) || 0;
-      const m = parseFloat(document.getElementById('baseMinutes').value) || 0;
-      const s = parseFloat(document.getElementById('baseSeconds').value) || 0;
-      const buffPercent = parseFloat(document.getElementById('buffPercent').value) || 0;
-      const totalBuffDecimal = buffPercent / 100;
-      let baseSecs = (d * 86400) + (h * 3600) + (m * 60) + s;
-      buffedTimeInSeconds = baseSecs / (1 + totalBuffDecimal);
-      const bd = Math.floor(buffedTimeInSeconds / 86400);
-      buffedTimeInSeconds %= 86400;
-      const bh = Math.floor(buffedTimeInSeconds / 3600);
-      buffedTimeInSeconds %= 3600;
-      const bm = Math.floor(buffedTimeInSeconds / 60);
-      const bs = Math.floor(buffedTimeInSeconds % 60);
-      buffedTimeInSeconds = (bd * 86400) + (bh * 3600) + (bm * 60) + bs;
-      document.getElementById('resultBox').innerHTML = `Buffed Time: ${bd}d ${bh}h ${bm}m ${bs}s`;
-      document.getElementById('showManualBtn').style.display = 'inline-block';
-    }
+  function calculate() {
+    const d = parseFloat(document.getElementById('baseDays').value) || 0;
+    const h = parseFloat(document.getElementById('baseHours').value) || 0;
+    const m = parseFloat(document.getElementById('baseMinutes').value) || 0;
+    const s = parseFloat(document.getElementById('baseSeconds').value) || 0;
+    const buffPercent = parseFloat(document.getElementById('buffPercent').value) || 0;
+    const totalBuffDecimal = buffPercent / 100;
+    let baseSecs = (d * 86400) + (h * 3600) + (m * 60) + s;
+    buffedTimeInSeconds = baseSecs / (1 + totalBuffDecimal);
+    const bd = Math.floor(buffedTimeInSeconds / 86400);
+    buffedTimeInSeconds %= 86400;
+    const bh = Math.floor(buffedTimeInSeconds / 3600);
+    buffedTimeInSeconds %= 3600;
+    const bm = Math.floor(buffedTimeInSeconds / 60);
+    const bs = Math.floor(buffedTimeInSeconds % 60);
+    buffedTimeInSeconds = (bd * 86400) + (bh * 3600) + (bm * 60) + bs;
+    document.getElementById('resultBox').innerHTML = `Buffed Time: ${bd}d ${bh}h ${bm}m ${bs}s`;
+    document.getElementById('showManualBtn').style.display = 'inline-block';
+  }
 
-    function showManual() { 
-      document.getElementById('manualSection').style.display = 'block'; 
-    }
+  function showManual() { 
+    document.getElementById('manualSection').style.display = 'block'; 
+  }
 
-    function calculateFinal() {
-      const sh = parseFloat(document.getElementById('speedHours').value) || 0;
-      const sm = parseFloat(document.getElementById('speedMinutes').value) || 0;
-      const ss = parseFloat(document.getElementById('speedSeconds').value) || 0;
-      const days = parseFloat(document.getElementById('calcDays').value) || 0;
-      const helps = parseFloat(document.getElementById('helps').value) || 0;
-      const helpTime = parseFloat(document.getElementById('helpTime').value) || 0;
-      const speedUpSecs = (sh * 3600 + sm * 60 + ss) * days;
-      const helpSecs = helps * helpTime * 60;
-      let finalSecs = buffedTimeInSeconds - speedUpSecs - helpSecs;
-      if (finalSecs < 0) finalSecs = 0;
-      const fd = Math.floor(finalSecs / 86400);
-      finalSecs %= 86400;
-      const fh = Math.floor(finalSecs / 3600);
-      finalSecs %= 3600;
-      const fm = Math.floor(finalSecs / 60);
-      const fs = Math.floor(finalSecs % 60);
-      document.getElementById('finalResultBox').innerHTML = `Final Time: ${fd}d ${fh}h ${fm}m ${fs}s`;
-    }
+  function calculateFinal() {
+    const sh = parseFloat(document.getElementById('speedHours').value) || 0;
+    const sm = parseFloat(document.getElementById('speedMinutes').value) || 0;
+    const ss = parseFloat(document.getElementById('speedSeconds').value) || 0;
+    const days = parseFloat(document.getElementById('calcDays').value) || 0;
+    const helps = parseFloat(document.getElementById('helps').value) || 0;
+    const helpTime = parseFloat(document.getElementById('helpTime').value) || 0;
+    const speedUpSecs = (sh * 3600 + sm * 60 + ss) * days;
+    const helpSecs = helps * helpTime * 60;
+    let finalSecs = buffedTimeInSeconds - speedUpSecs - helpSecs;
+    if (finalSecs < 0) finalSecs = 0;
+    const fd = Math.floor(finalSecs / 86400);
+    finalSecs %= 86400;
+    const fh = Math.floor(finalSecs / 3600);
+    finalSecs %= 3600;
+    const fm = Math.floor(finalSecs / 60);
+    const fs = Math.floor(finalSecs % 60);
+    document.getElementById('finalResultBox').innerHTML = `Final Time: ${fd}d ${fh}h ${fm}m ${fs}s`;
+  }
 
-    function resetForm() {
-      document.querySelectorAll('input').forEach(input => input.value = '');
-      document.getElementById('resultBox').innerHTML = '';
-      document.getElementById('finalResultBox').innerHTML = '';
-      document.getElementById('manualSection').style.display = 'none';
-      document.getElementById('showManualBtn').style.display = 'none';
-      buffedTimeInSeconds = 0;
-    }
+  function resetForm() {
+    document.querySelectorAll('input').forEach(input => input.value = '');
+    document.getElementById('resultBox').innerHTML = '';
+    document.getElementById('finalResultBox').innerHTML = '';
+    document.getElementById('manualSection').style.display = 'none';
+    document.getElementById('showManualBtn').style.display = 'none';
+    buffedTimeInSeconds = 0;
+  }
 </script>
 
 </body>
