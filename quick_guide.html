@@ -9,6 +9,18 @@
 <link rel="apple-touch-icon" href="brdr_logo.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Buff Calculator Quick Guide</title>
+    <!-- Password protection -->
+  <script>
+    if (!localStorage.getItem("brdr_access_granted")) {
+      var password = prompt("Enter password to access BRDR Tools:");
+      if (password === "1009") {
+        localStorage.setItem("brdr_access_granted", "true"); 
+      } else {
+        alert("Access denied.");
+        window.location.href = "https://www.lastwartutorial.com/";
+      }
+    }
+  </script>
   <style>
 body {
   background-color: #000;
