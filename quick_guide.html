@@ -2,41 +2,101 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#FFD700">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="BRDR Tools">
+<link rel="apple-touch-icon" href="brdr_logo.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>World Trigger Border Tools</title>
+  <title>Buff Calculator Quick Guide</title>
   <style>
     body { background-color: #111; color: #f0f0f0; font-family: Arial, sans-serif; text-align: center; padding: 20px; }
-    h1 { color: gold; font-size: 1.6em; margin-bottom: 10px; }
+    h1 { color: gold; font-size: 1.6em; }
     h2 { color: gold; margin-top: 20px; }
-    ul { list-style-type: none; padding: 0; }
-    li { margin: 15px 10px; }
-    a.button {
-      color: gold; text-decoration: none; font-size: 1.2em; border: 2px solid gold;
-      padding: 10px 15px; border-radius: 5px; display: inline-block; width: 80%;
-      margin-bottom: 10px;
+    .step { text-align: left; max-width: 600px; margin: auto; margin-bottom: 10px; }
+    a.back-button {
+      display: inline-block; margin-bottom: 15px; padding: 10px 15px;
+      background-color: gold; color: black; text-decoration: none;
+      font-weight: bold; border-radius: 5px;
     }
-    a.button:hover { background-color: gold; color: black; }
-    img.logo { display:block; margin: 0 auto 15px auto; max-width: 150px; }
+    .image-row {
+      display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-top: 20px;
+    }
+    .image-row img {
+      width: 30%;
+      max-width: 240px;
+      height: auto;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .image-row img:hover {
+      opacity: 0.8;
+    }
     footer { margin-top: 25px; color: #888; font-size: 0.9em; }
+    img.logo { display:block; margin: 0 auto 25px auto; max-width: 250px; }
+
+    /* Lightbox styles */
+    .lightbox {
+      display: none;
+      position: fixed;
+      z-index: 10;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.8);
+      justify-content: center;
+      align-items: center;
+    }
+    .lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 10px;
+    }
   </style>
 </head>
 <body>
 
   <img src="brdr_logo.png" alt="BRDR Logo" class="logo">
-  <h1>Alliance Tools</h1>
 
-  <a href="BRDR_Construction_Calculator_Mobile.html" class="button">🏗 Construction Time Calculator</a><br>
-  <a href="BRDR_Research_Calculator_Mobile.html" class="button">🔬 Research Time Calculator</a><br>
+  <a href="index.html" class="back-button">← Back to Main Menu</a>
+  <h1>Buff Calculator – Quick Guide</h1>
+  <h2>Step-by-Step</h2>
 
-  <p>
-    Follow these steps when using the calculator:
-    <a href="quick_guide.html" style="color: gold; text-decoration: underline;">Quick Guide</a>
-  </p>
+  <div class="step"><strong>Step 1:</strong> Enter your Original Upgrade Time (Days, Hours, Minutes, Seconds).</div><br>
+  <div class="step"><strong>Step 2:</strong> Enter your total Construction Buff % (including all bonuses and Secretary of Development %).</div><br>
+  <div class="step"><strong>Step 3:</strong> Click "Calculate Buffed Time".</div><br>
+  <div class="step"><strong>Step 4:</strong> Click "Apply Manual Speed-Ups & Help Reductions" (Optional).</div><br>
+  <div class="step"><strong>Step 5:</strong> Enter your daily speed-up time, how many days to calculate, number of helps, and help-time per help.</div><br>
+  <div class="step"><strong>Step 6:</strong> Click "Calculate Final Time" to see your real build time.</div><br>
+
+  <h2>Example Images</h2>
+
+  <div class="image-row">
+    <img src="no-sec-dev-buff.jpeg" alt="No Secretary Buff" onclick="showLightbox('no-sec-dev-buff.jpeg')">
+    <img src="sec-dev-buff.jpeg" alt="With Secretary Buff" onclick="showLightbox('sec-dev-buff.jpeg')">
+    <img src="buffs.jpg" alt="Buffs Chart" onclick="showLightbox('buffs.jpg')">
+  </div>
+
+  <!-- Lightbox -->
+  <div id="lightbox" class="lightbox" onclick="hideLightbox()">
+    <img id="lightbox-img" src="">
+  </div>
 
   <footer>
     Created for World Trigger Border Alliance Members and Server #1009 ONLY!<br>
     Courtesy of BAD TRIPP
   </footer>
+
+  <script>
+    function showLightbox(imgSrc) {
+      document.getElementById('lightbox-img').src = imgSrc;
+      document.getElementById('lightbox').style.display = 'flex';
+    }
+    function hideLightbox() {
+      document.getElementById('lightbox').style.display = 'none';
+    }
+  </script>
 
 </body>
 </html>
