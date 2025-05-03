@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <title>Resource Production Calculator</title>
+
   <!-- PWA tags -->
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#FFD700">
@@ -11,14 +13,12 @@
   <meta name="apple-mobile-web-app-title" content="BRDR Tools">
   <link rel="apple-touch-icon" href="brdr_logo.png">
 
-  <title>BRDR Resource Production Calculator</title>
-
   <!-- Password protection -->
   <script>
     if (!localStorage.getItem("brdr_access_granted")) {
       var password = prompt("Enter password to access BRDR Tools:");
       if (password === "1009") {
-        localStorage.setItem("brdr_access_granted", "true"); 
+        localStorage.setItem("brdr_access_granted", "true");
       } else {
         alert("Access denied.");
         window.location.href = "https://www.lastwartutorial.com/";
@@ -31,88 +31,124 @@
       background-color: #000000;
       color: #f0f0f0;
       font-family: Arial, sans-serif;
-      margin: auto;
-      padding: 10px;
       text-align: center;
+      padding: 10px;
     }
-    h1 { text-align: center; color: gold; font-size: 1.5em; }
-    a.back-button { display: inline-block; margin-bottom: 15px; padding: 10px 15px; background-color: gold; color: black; text-decoration: none; font-weight: bold; border-radius: 5px; }
-    label { display: block; margin-top: 10px; font-weight: bold; font-size: 1em; }
-    input, button { width: 100%; padding: 10px; margin-top: 5px; font-size: 1em; background: #1a1a1a; color: white; border: 1px solid #444; border-radius: 4px; box-sizing: border-box; }
-    button { background-color: gold; color: black; font-weight: bold; cursor: pointer; border: none; margin-top: 10px; }
-    .result { margin-top: 20px; background: #222; padding: 15px; border-radius: 5px; font-size: 1.2em; font-weight: bold; color: gold; text-align: center; word-wrap: break-word; }
+    h1 { color: gold; font-size: 1.5em; }
+    label { font-weight: bold; }
+    input { width: 80%; padding: 10px; margin: 5px 0; background: #1a1a1a; color: white; border: 1px solid #444; border-radius: 4px; }
+    button { background-color: gold; color: black; font-weight: bold; padding: 10px; margin: 5px; border: none; border-radius: 5px; cursor: pointer; }
+    .result { margin-top: 15px; padding: 10px; background: #222; color: gold; border-radius: 5px; font-weight: bold; }
+    .back-button { background-color: gold; color: black; text-decoration: none; padding: 10px 15px; border-radius: 5px; display: inline-block; margin: 10px 0; }
+    .section { border: 1px solid #444; padding: 10px; border-radius: 5px; margin: 10px 0; }
+    table { width: 100%; }
+    th, td { padding: 5px; }
+    .remove-btn { background-color: #333; color: red; border: 1px solid red; font-size: 0.9em; padding: 5px; }
   </style>
 </head>
 <body>
 
-  <img src="brdr_logo.png" alt="BRDR Logo" style="display:block; margin: 0 auto 25px auto; max-width: 250px;">
+<img src="brdr_logo.png" alt="BRDR Logo" style="display:block; margin:0 auto 20px auto; max-width: 200px;">
+<h1>Resource Production Calculator</h1>
+<a href="index.html" class="back-button">← Back to Main Menu</a>
 
-  <h1>BRDR Resource Production Calculator</h1>
-  <a href="index.html" class="back-button">← Back to Main Menu</a>
+<!-- FOOD SECTION -->
+<div class="section">
+  <h3>🍞 Food Farms</h3>
+  <div id="foodRows"></div>
+  <button onclick="addRow('foodRows')">+ Add Farm</button><br>
+  <label>Food Buff (%)</label><br>
+  <input type="number" id="foodBuff" placeholder="Food Buff %">
+</div>
 
-  <label>Base Food Production (per hour):</label>
-  <input type="number" id="baseFood" placeholder="Enter total base food production">
+<!-- IRON SECTION -->
+<div class="section">
+  <h3>🪓 Iron Mines</h3>
+  <div id="ironRows"></div>
+  <button onclick="addRow('ironRows')">+ Add Mine</button><br>
+  <label>Iron Buff (%)</label><br>
+  <input type="number" id="ironBuff" placeholder="Iron Buff %">
+</div>
 
-  <label>Food Production Buff (%):</label>
-  <input type="number" id="foodBuff" placeholder="Enter food buff %">
+<!-- COIN SECTION -->
+<div class="section">
+  <h3>💰 Gold Mines</h3>
+  <div id="coinRows"></div>
+  <button onclick="addRow('coinRows')">+ Add Mine</button><br>
+  <label>Coin Buff (%)</label><br>
+  <input type="number" id="coinBuff" placeholder="Coin Buff %">
+</div>
 
-  <label>Base Iron Production (per hour):</label>
-  <input type="number" id="baseIron" placeholder="Enter total base iron production">
+<label>Hours to Calculate:</label><br>
+<input type="number" id="calcHours" placeholder="Number of Hours"><br>
 
-  <label>Iron Production Buff (%):</label>
-  <input type="number" id="ironBuff" placeholder="Enter iron buff %">
+<button onclick="calculateProduction()">Calculate Production</button>
 
-  <label>Base Coin Production (per hour):</label>
-  <input type="number" id="baseCoin" placeholder="Enter total base coin production">
+<div id="resultBox" class="result"></div>
 
-  <label>Coin Production Buff (%):</label>
-  <input type="number" id="coinBuff" placeholder="Enter coin buff %">
+<button onclick="resetForm()">Reset</button>
 
-  <label>Hours to Calculate:</label>
-  <input type="number" id="calcHours" placeholder="Enter number of hours to calculate">
+<p>Follow these steps when using the calculator:<br>
+<a href="quick_guide.html" style="color: gold;">Quick Guide</a></p>
 
-  <button onclick="calculateProduction()">Calculate Production</button>
-
-  <div class="result" id="resultBox"></div>
-
-  <button onclick="resetForm()" style="margin-top: 20px;">Reset</button>
+<footer>
+  Created for World Trigger Border Alliance Members and Server #1009 ONLY!<br>
+  Courtesy of BAD TRIPP
+</footer>
 
 <script>
+  // Add dynamic rows
+  function addRow(sectionId) {
+    const container = document.getElementById(sectionId);
+    const row = document.createElement('div');
+    row.innerHTML = `
+      <input type="number" placeholder="# of Buildings" style="width:30%;" class="qty">
+      <input type="number" placeholder="Level (optional)" style="width:30%;">
+      <input type="number" placeholder="Production/hr each" style="width:30%;" class="prod">
+      <button class="remove-btn" onclick="this.parentNode.remove()">Remove</button>
+    `;
+    container.appendChild(row);
+  }
+
   function calculateProduction() {
-    const baseFood = parseFloat(document.getElementById('baseFood').value) || 0;
-    const foodBuff = parseFloat(document.getElementById('foodBuff').value) || 0;
-    const baseIron = parseFloat(document.getElementById('baseIron').value) || 0;
-    const ironBuff = parseFloat(document.getElementById('ironBuff').value) || 0;
-    const baseCoin = parseFloat(document.getElementById('baseCoin').value) || 0;
-    const coinBuff = parseFloat(document.getElementById('coinBuff').value) || 0;
     const hours = parseFloat(document.getElementById('calcHours').value) || 0;
 
-    const totalFood = baseFood * (1 + foodBuff / 100) * hours;
-    const totalIron = baseIron * (1 + ironBuff / 100) * hours;
-    const totalCoin = baseCoin * (1 + coinBuff / 100) * hours;
+    // Food
+    const foodBuff = parseFloat(document.getElementById('foodBuff').value) || 0;
+    let foodTotal = calculateResource('foodRows') * (1 + foodBuff / 100) * hours;
+
+    // Iron
+    const ironBuff = parseFloat(document.getElementById('ironBuff').value) || 0;
+    let ironTotal = calculateResource('ironRows') * (1 + ironBuff / 100) * hours;
+
+    // Coin
+    const coinBuff = parseFloat(document.getElementById('coinBuff').value) || 0;
+    let coinTotal = calculateResource('coinRows') * (1 + coinBuff / 100) * hours;
 
     document.getElementById('resultBox').innerHTML = `
-      Food Produced: ${totalFood.toLocaleString()}<br>
-      Iron Produced: ${totalIron.toLocaleString()}<br>
-      Coin Produced: ${totalCoin.toLocaleString()}
+      🍞 Food Produced: ${Math.round(foodTotal).toLocaleString()}<br>
+      🪓 Iron Produced: ${Math.round(ironTotal).toLocaleString()}<br>
+      💰 Coin Produced: ${Math.round(coinTotal).toLocaleString()}
     `;
   }
 
+  function calculateResource(sectionId) {
+    let total = 0;
+    const rows = document.getElementById(sectionId).querySelectorAll('div');
+    rows.forEach(row => {
+      const qty = parseFloat(row.querySelector('.qty')?.value) || 0;
+      const prod = parseFloat(row.querySelector('.prod')?.value) || 0;
+      total += qty * prod;
+    });
+    return total;
+  }
+
   function resetForm() {
-    document.querySelectorAll('input').forEach(input => input.value = '');
+    ['foodRows', 'ironRows', 'coinRows'].forEach(id => document.getElementById(id).innerHTML = '');
+    ['foodBuff', 'ironBuff', 'coinBuff', 'calcHours'].forEach(id => document.getElementById(id).value = '');
     document.getElementById('resultBox').innerHTML = '';
   }
 </script>
-
-  <p>
-    Follow these steps when using the calculator:<br>
-    <a href="quick_guide.html" style="color: gold; text-decoration: underline;">Quick Guide</a>
-  </p>
-
-  <footer>
-    Created for World Trigger Border Alliance Members and Server #1009 ONLY!<br>
-    Courtesy of BAD TRIPP
-  </footer>
 
 </body>
 </html>
