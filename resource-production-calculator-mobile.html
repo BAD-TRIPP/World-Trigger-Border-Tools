@@ -4,95 +4,159 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>RSS Production Calculator</title>
+
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#FFD700">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-title" content="BRDR Tools">
   <link rel="apple-touch-icon" href="brdr_logo.png">
+
   <script>
     if (!localStorage.getItem("brdr_access_granted")) {
       var password = prompt("Enter password to access BRDR Tools:");
       if (password === "1009") {
-        localStorage.setItem("brdr_access_granted", "true");
+        localStorage.setItem("brdr_access_granted", "true"); 
       } else {
         alert("Access denied.");
         window.location.href = "https://www.lastwartutorial.com/";
       }
     }
   </script>
+
   <style>
-    body { background-color: #000; color: #f0f0f0; font-family: Arial, sans-serif; text-align: center; padding: 10px; }
-    h1 { color: gold; }
-    h3 { color: gold; }
-    label { font-weight: bold; }
-    input { width: 90%; padding: 8px; margin: 4px 0; border-radius: 4px; border: 1px solid #444; background-color: #1a1a1a; color: white; }
+    body {
+      background-color: #000;
+      color: #f0f0f0;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 10px;
+    }
+    .container {
+      max-width: 600px;
+      margin: auto;
+    }
+    h1, h3 {
+      color: gold;
+    }
+    label {
+      font-weight: bold;
+    }
+    input {
+      width: 90%;
+      padding: 8px;
+      margin: 4px 0;
+      border-radius: 4px;
+      border: 1px solid #444;
+      background-color: #1a1a1a;
+      color: white;
+    }
     button {
-      padding: 10px 15px; margin-top: 10px;
-      background-color: gold; color: black; font-weight: bold;
-      border: none; border-radius: 5px;
+      padding: 10px 15px;
+      margin-top: 10px;
+      background-color: transparent;
+      color: gold;
+      font-weight: bold;
+      border: 2px solid gold;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+    }
+    button:hover {
+      background-color: gold;
+      color: black;
     }
     .back-button {
-      background-color: gold; color: black;
-      text-decoration: none; padding: 10px 15px;
-      border-radius: 5px; display: inline-block; margin-bottom: 10px;
+      display: inline-block;
+      margin-bottom: 10px;
+      padding: 10px 15px;
+      background-color: transparent;
+      color: gold;
+      font-weight: bold;
+      text-decoration: none;
+      border: 2px solid gold;
+      border-radius: 5px;
+    }
+    .back-button:hover {
+      background-color: gold;
+      color: black;
     }
     .resource-section {
-      border: 1px solid #444; border-radius: 5px;
-      padding: 10px; margin-bottom: 15px;
+      border: 1px solid #444;
+      border-radius: 5px;
+      padding: 10px;
+      margin-bottom: 15px;
     }
     .remove-btn {
-      background-color: #333; color: red; border: 1px solid red;
-      font-size: 0.9em; padding: 5px;
+      background-color: #333;
+      color: red;
+      border: 1px solid red;
+      font-size: 0.9em;
+      padding: 5px;
+      border-radius: 3px;
     }
     .result-box {
-      background-color: #222; border-radius: 5px;
-      padding: 10px; margin-top: 10px; color: gold;
+      background-color: #222;
+      border-radius: 5px;
+      padding: 10px;
+      margin-top: 10px;
+      color: gold;
       font-weight: bold;
     }
   </style>
 </head>
 <body>
+  <div class="container">
 
-<img src="brdr_logo.png" alt="BRDR Logo" style="max-width: 200px;">
-<h1>RSS Production Calculator</h1>
-<a href="index.html" class="back-button">← Back to Main Menu</a>
-<br></br><br></br>
-<!-- Secretary field -->
-<label>Secretary of Interior Sessions per Day:</label><br>
-<input type="number" id="secretaryUses" placeholder="Example: 5"><br><br>
+    <img src="brdr_logo.png" alt="BRDR Logo" style="max-width: 200px;">
+    <h1>RSS Production Calculator</h1>
 
-<!-- FOOD SECTION -->
-<div class="resource-section" id="foodSection">
-  <h3>🍞 Food Farms</h3>
-  <div id="foodInputs"></div>
-  <button type="button" onclick="addResourceInput('food')">+ Add Farm</button><br><br>
-  <label>Food Output Buff (%)</label><br>
-  <input type="number" id="foodBuff" placeholder="Example: 83.5"><br>
-  <div class="result-box" id="foodResult"></div>
-</div>
+    <a href="index.html" class="back-button">← Back to Main Menu</a>
 
-<!-- IRON SECTION -->
-<div class="resource-section" id="ironSection">
-  <h3>🪓 Iron Mines</h3>
-  <div id="ironInputs"></div>
-  <button type="button" onclick="addResourceInput('iron')">+ Add Iron Mine</button><br><br>
-  <label>Iron Output Buff (%)</label><br>
-  <input type="number" id="ironBuff" placeholder="Example: 85.5"><br>
-  <div class="result-box" id="ironResult"></div>
-</div>
+    <label>Secretary of Interior Sessions per Day:</label><br>
+    <input type="number" id="secretaryUses" placeholder="Example: 5"><br><br>
 
-<!-- COIN SECTION -->
-<div class="resource-section" id="coinSection">
-  <h3>💰 Gold Mints</h3>
-  <div id="coinInputs"></div>
-  <button type="button" onclick="addResourceInput('coin')">+ Add Gold Mint</button><br><br>
-  <label>Coin Output Buff (%)</label><br>
-  <input type="number" id="coinBuff" placeholder="Example: 106.0"><br>
-  <div class="result-box" id="coinResult"></div>
-</div>
+    <!-- FOOD -->
+    <div class="resource-section" id="foodSection">
+      <h3>🍞 Food Farms</h3>
+      <div id="foodInputs"></div>
+      <button type="button" onclick="addResourceInput('food')">+ Add Farm</button><br>
+      <label>Food Output Buff (%)</label><br>
+      <input type="number" id="foodBuff" placeholder="Example: 83.5"><br>
+      <div class="result-box" id="foodResult"></div>
+    </div>
 
-<button onclick="calculateProduction()">Calculate All</button>
-<button onclick="resetForm()">Reset</button>
+    <!-- IRON -->
+    <div class="resource-section" id="ironSection">
+      <h3>🪓 Iron Mines</h3>
+      <div id="ironInputs"></div>
+      <button type="button" onclick="addResourceInput('iron')">+ Add Iron Mine</button><br>
+      <label>Iron Output Buff (%)</label><br>
+      <input type="number" id="ironBuff" placeholder="Example: 85.5"><br>
+      <div class="result-box" id="ironResult"></div>
+    </div>
+
+    <!-- GOLD -->
+    <div class="resource-section" id="coinSection">
+      <h3>💰 Gold Mints</h3>
+      <div id="coinInputs"></div>
+      <button type="button" onclick="addResourceInput('coin')">+ Add Mint</button><br>
+      <label>Gold Output Buff (%)</label><br>
+      <input type="number" id="coinBuff" placeholder="Example: 106"><br>
+      <div class="result-box" id="coinResult"></div>
+    </div>
+
+    <button onclick="calculateProduction()">Calculate All</button>
+    <button onclick="resetForm()">Reset</button>
+
+    <p style="margin-top: 15px;">
+      Need help? <a href="quick_guide.html" style="color: gold;">Quick Guide</a>
+    </p>
+
+    <footer>
+      Created for World Trigger Border Alliance Members and Server #1009 ONLY!<br>
+      Courtesy of BAD TRIPP
+    </footer>
+
+  </div>
 
 <script>
   function addResourceInput(type) {
@@ -128,7 +192,6 @@
     const weekly = daily * 7;
     const monthly = daily * 30;
 
-    // Secretary Bonus
     const secretaryBonusPerUse = hourly * 1.0 * (5 / 60); // 100% bonus for 5 minutes converted to hours
     const totalSecretaryBonusDaily = secretaryBonusPerUse * secretaryUses;
     const totalSecretaryBonusWeekly = totalSecretaryBonusDaily * 7;
@@ -152,16 +215,6 @@
     ["foodResult", "ironResult", "coinResult"].forEach(id => document.getElementById(id).innerHTML = "");
   }
 </script>
-
-<p style="margin-top: 15px;">
-  Follow these steps when using the calculator:<br>
-  <a href="quick_guide.html" style="color: gold;">Quick Guide</a>
-</p>
-
-<footer style="margin-top: 10px; font-size: 0.9em; color: #888;">
-  Created for World Trigger Border Alliance Members and Server #1009 ONLY!<br>
-  Courtesy of BAD TRIPP
-</footer>
 
 </body>
 </html>
