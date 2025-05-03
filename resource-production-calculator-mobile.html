@@ -4,16 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Resource Production Calculator</title>
-
-  <!-- PWA tags -->
+  <!-- PWA + BRDR styles -->
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#FFD700">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-title" content="BRDR Tools">
   <link rel="apple-touch-icon" href="brdr_logo.png">
 
-  <!-- Password protection -->
+  <title>RSS Production Calculator</title>
   <script>
     if (!localStorage.getItem("brdr_access_granted")) {
       var password = prompt("Enter password to access BRDR Tools:");
@@ -25,140 +23,120 @@
       }
     }
   </script>
-
   <style>
     body {
-      background-color: #000000;
+      background-color: #000;
       color: #f0f0f0;
       font-family: Arial, sans-serif;
       text-align: center;
       padding: 10px;
     }
     h1 { color: gold; font-size: 1.5em; }
-    label { font-weight: bold; }
-    input { width: 80%; padding: 10px; margin: 5px 0; background: #1a1a1a; color: white; border: 1px solid #444; border-radius: 4px; }
-    button { background-color: gold; color: black; font-weight: bold; padding: 10px; margin: 5px; border: none; border-radius: 5px; cursor: pointer; }
-    .result { margin-top: 15px; padding: 10px; background: #222; color: gold; border-radius: 5px; font-weight: bold; }
-    .back-button { background-color: gold; color: black; text-decoration: none; padding: 10px 15px; border-radius: 5px; display: inline-block; margin: 10px 0; }
-    .section { border: 1px solid #444; padding: 10px; border-radius: 5px; margin: 10px 0; }
-    .remove-btn { background-color: #333; color: red; border: 1px solid red; font-size: 0.9em; padding: 5px; }
-    .resource-row { margin: 5px 0; }
+    a.back-button {
+      display: inline-block; margin-bottom: 10px;
+      padding: 10px 15px; background-color: gold; color: black;
+      text-decoration: none; font-weight: bold; border-radius: 5px;
+    }
+    .resource-section { border: 1px solid #444; border-radius: 5px; padding: 10px; margin-bottom: 15px; }
+    label { display: block; margin-top: 8px; font-weight: bold; }
+    input { width: 90%; padding: 8px; margin-top: 4px; border-radius: 4px; border: 1px solid #444; background-color: #1a1a1a; color: white; }
+    button { padding: 10px 15px; margin-top: 10px; background-color: gold; color: black; font-weight: bold; border: none; border-radius: 5px; }
+    .result { margin-top: 15px; font-size: 1.1em; font-weight: bold; color: gold; }
   </style>
 </head>
 <body>
 
-<img src="brdr_logo.png" alt="BRDR Logo" style="display:block; margin:0 auto 20px auto; max-width: 200px;">
-<h1>BRDR Resource Production Calculator</h1>
+<img src="brdr_logo.png" alt="BRDR Logo" style="max-width: 200px; margin-bottom: 15px;">
+<h1>RSS Production Calculator</h1>
 <a href="index.html" class="back-button">← Back to Main Menu</a>
 
-<!-- FOOD SECTION -->
-<div class="section">
-  <h3>🍞 Food Farms</h3>
-  <div id="foodRows"></div>
-  <button onclick="addRow('foodRows')">+ Add Farm</button><br>
-  <label>Food Buff (%)</label><br>
-  <input type="number" id="foodBuff" placeholder="Food Buff %">
+<!-- Buff inputs -->
+<label>Food Output Buff (%)</label>
+<input type="number" id="foodBuff" placeholder="Example: 83.5">
+
+<label>Iron Output Buff (%)</label>
+<input type="number" id="ironBuff" placeholder="Example: 85.5">
+
+<label>Coin Output Buff (%)</label>
+<input type="number" id="coinBuff" placeholder="Example: 106">
+
+<!-- Food Farms Section -->
+<div class="resource-section" id="foodSection">
+  <h3>Farms</h3>
+  <div id="foodInputs"></div>
+  <button type="button" onclick="addResourceInput('food')">+ Add Farm</button>
 </div>
 
-<!-- IRON SECTION -->
-<div class="section">
-  <h3>🪓 Iron Mines</h3>
-  <div id="ironRows"></div>
-  <button onclick="addRow('ironRows')">+ Add Mine</button><br>
-  <label>Iron Buff (%)</label><br>
-  <input type="number" id="ironBuff" placeholder="Iron Buff %">
+<!-- Iron Mines Section -->
+<div class="resource-section" id="ironSection">
+  <h3>Iron Mines</h3>
+  <div id="ironInputs"></div>
+  <button type="button" onclick="addResourceInput('iron')">+ Add Iron Mine</button>
 </div>
 
-<!-- COIN SECTION -->
-<div class="section">
-  <h3>💰 Gold Mines</h3>
-  <div id="coinRows"></div>
-  <button onclick="addRow('coinRows')">+ Add Mine</button><br>
-  <label>Coin Buff (%)</label><br>
-  <input type="number" id="coinBuff" placeholder="Coin Buff %">
+<!-- Gold Mints Section -->
+<div class="resource-section" id="coinSection">
+  <h3>Gold Mints</h3>
+  <div id="coinInputs"></div>
+  <button type="button" onclick="addResourceInput('coin')">+ Add Mint</button>
 </div>
 
-<button onclick="calculateProduction()">Calculate Production</button>
+<button onclick="calculateProduction()">Calculate Total Production</button>
 
-<div id="resultBox" class="result"></div>
+<div class="result" id="resultBox"></div>
 
-<button onclick="resetForm()">Reset</button>
+<script>
+  function addResourceInput(type) {
+    const container = document.getElementById(type + "Inputs");
+    const div = document.createElement("div");
+    div.innerHTML = `
+      <input type="number" placeholder="Building Output/hr">
+      <input type="number" placeholder="Quantity">
+    `;
+    container.appendChild(div);
+  }
 
-<p>
+  function calculateProduction() {
+    let foodTotal = calculateResource("food", parseFloat(document.getElementById("foodBuff").value) || 0);
+    let ironTotal = calculateResource("iron", parseFloat(document.getElementById("ironBuff").value) || 0);
+    let coinTotal = calculateResource("coin", parseFloat(document.getElementById("coinBuff").value) || 0);
+
+    document.getElementById("resultBox").innerHTML = `
+      🍞 <strong>Food</strong><br>
+      Hourly: ${format(foodTotal)} | Daily: ${format(foodTotal * 24)} | Weekly: ${format(foodTotal * 24 * 7)}<br><br>
+      🪨 <strong>Iron</strong><br>
+      Hourly: ${format(ironTotal)} | Daily: ${format(ironTotal * 24)} | Weekly: ${format(ironTotal * 24 * 7)}<br><br>
+      💰 <strong>Gold</strong><br>
+      Hourly: ${format(coinTotal)} | Daily: ${format(coinTotal * 24)} | Weekly: ${format(coinTotal * 24 * 7)}
+    `;
+  }
+
+  function calculateResource(type, buff) {
+    let total = 0;
+    const container = document.getElementById(type + "Inputs").querySelectorAll("div");
+    container.forEach(div => {
+      const inputs = div.querySelectorAll("input");
+      const output = parseFloat(inputs[0].value) || 0;
+      const qty = parseFloat(inputs[1].value) || 0;
+      total += output * qty;
+    });
+    return total * (1 + buff / 100);
+  }
+
+  function format(num) {
+    return num.toLocaleString(undefined, { maximumFractionDigits: 0 });
+  }
+</script>
+
+<p style="margin-top: 15px;">
   Follow these steps when using the calculator:<br>
   <a href="quick_guide.html" style="color: gold;">Quick Guide</a>
 </p>
 
-<footer>
+<footer style="margin-top: 10px; font-size: 0.9em; color: #888;">
   Created for World Trigger Border Alliance Members and Server #1009 ONLY!<br>
   Courtesy of BAD TRIPP
 </footer>
-
-<script>
-function addRow(sectionId) {
-  const container = document.getElementById(sectionId);
-  const row = document.createElement('div');
-  row.className = "resource-row";
-  row.innerHTML = `
-    <input type="number" placeholder="Quantity" style="width:30%;" class="qty">
-    <input type="number" placeholder="Output/hr each" style="width:50%;" class="prod">
-    <button class="remove-btn" onclick="this.parentNode.remove()">Remove</button>
-  `;
-  container.appendChild(row);
-}
-
-function calculateProduction() {
-  const foodBuff = parseFloat(document.getElementById('foodBuff').value) || 0;
-  const ironBuff = parseFloat(document.getElementById('ironBuff').value) || 0;
-  const coinBuff = parseFloat(document.getElementById('coinBuff').value) || 0;
-
-  const foodHourly = calculateResource('foodRows') * (1 + foodBuff / 100);
-  const ironHourly = calculateResource('ironRows') * (1 + ironBuff / 100);
-  const coinHourly = calculateResource('coinRows') * (1 + coinBuff / 100);
-
-  const foodDaily = foodHourly * 24;
-  const ironDaily = ironHourly * 24;
-  const coinDaily = coinHourly * 24;
-
-  const foodWeekly = foodHourly * 168;
-  const ironWeekly = ironHourly * 168;
-  const coinWeekly = coinHourly * 168;
-
-  document.getElementById('resultBox').innerHTML = `
-    🍞 <b>Food Production:</b><br>
-    Hourly: ${Math.round(foodHourly).toLocaleString()}<br>
-    Daily: ${Math.round(foodDaily).toLocaleString()}<br>
-    Weekly: ${Math.round(foodWeekly).toLocaleString()}<br><br>
-
-    🪓 <b>Iron Production:</b><br>
-    Hourly: ${Math.round(ironHourly).toLocaleString()}<br>
-    Daily: ${Math.round(ironDaily).toLocaleString()}<br>
-    Weekly: ${Math.round(ironWeekly).toLocaleString()}<br><br>
-
-    💰 <b>Coin Production:</b><br>
-    Hourly: ${Math.round(coinHourly).toLocaleString()}<br>
-    Daily: ${Math.round(coinDaily).toLocaleString()}<br>
-    Weekly: ${Math.round(coinWeekly).toLocaleString()}
-  `;
-}
-
-function calculateResource(sectionId) {
-  let total = 0;
-  const rows = document.getElementById(sectionId).querySelectorAll('.resource-row');
-  rows.forEach(row => {
-    const qty = parseFloat(row.querySelector('.qty')?.value) || 0;
-    const prod = parseFloat(row.querySelector('.prod')?.value) || 0;
-    total += qty * prod;
-  });
-  return total;
-}
-
-function resetForm() {
-  ['foodRows', 'ironRows', 'coinRows'].forEach(id => document.getElementById(id).innerHTML = '');
-  ['foodBuff', 'ironBuff', 'coinBuff'].forEach(id => document.getElementById(id).value = '');
-  document.getElementById('resultBox').innerHTML = '';
-}
-</script>
 
 </body>
 </html>
