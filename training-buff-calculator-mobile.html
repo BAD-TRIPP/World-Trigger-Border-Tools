@@ -1,128 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Training Buff Calculator</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Training Buff Calculator</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#FFD700">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="BRDR Tools">
+<link rel="apple-touch-icon" href="brdr_logo.png">
 
-  <link rel="manifest" href="manifest.json">
-  <meta name="theme-color" content="#FFD700">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-title" content="BRDR Tools">
-  <link rel="apple-touch-icon" href="brdr_logo.png">
+<style>
+body { background-color: #111; color: #f0f0f0; font-family: Arial, sans-serif; text-align: center; margin: 0; padding: 20px; }
+h1 { color: gold; }
+input { margin: 5px; padding: 10px; border-radius: 5px; border: none; width: 80%; max-width: 250px; }
+button { background-color: gold; color: black; padding: 10px 20px; margin: 10px; border: none; border-radius: 5px; font-size: 1em; cursor: pointer; }
+button:hover { background-color: #e6c200; }
+.result { font-size: 1.2em; font-weight: bold; margin-top: 15px; }
+.back-button { background-color: gold; color: black; display: inline-block; margin: 10px auto; padding: 10px 20px; border-radius: 5px; text-decoration: none; }
+footer { margin-top: 20px; font-size: 0.9em; color: #ccc; }
+</style>
 
-  <script>
-    if (!localStorage.getItem("brdr_access_granted")) {
-      var password = prompt("Enter password to access BRDR Tools:");
-      if (password === "1009") {
-        localStorage.setItem("brdr_access_granted", "true");
-      } else {
-        alert("Access denied.");
+<script>
+// PASSWORD PROTECTION
+if (!sessionStorage.getItem("brdr_access")) {
+    const pass = prompt("Enter password:");
+    if (pass !== "1009") {
+        alert("Incorrect password.");
         window.location.href = "https://google.com";
-      }
+    } else {
+        sessionStorage.setItem("brdr_access", "true");
     }
-  </script>
-
-  <style>
-    body {
-      background-color: #000;
-      color: #f0f0f0;
-      font-family: Arial, sans-serif;
-      text-align: center;
-      padding: 20px;
-    }
-    h1 {
-      color: gold;
-    }
-    input {
-      width: 90%;
-      max-width: 300px;
-      padding: 10px;
-      margin-top: 5px;
-      background: #1a1a1a;
-      color: white;
-      border: 1px solid #444;
-      border-radius: 4px;
-    }
-    button {
-      background-color: gold;
-      color: black;
-      padding: 10px 20px;
-      margin-top: 10px;
-      border: none;
-      border-radius: 5px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-    .result {
-      margin-top: 20px;
-      font-size: 1.2em;
-      font-weight: bold;
-      color: gold;
-    }
-    .back-button {
-      display: inline-block;
-      margin-bottom: 15px;
-      padding: 10px 15px;
-      background-color: gold;
-      color: black;
-      text-decoration: none;
-      font-weight: bold;
-      border-radius: 5px;
-    }
-  </style>
+}
+</script>
 </head>
+
 <body>
-
 <a href="index.html" class="back-button">← Back to Main Menu</a>
-<img src="brdr_logo.png" alt="BRDR Logo" style="display:block; margin: 0 auto 15px auto; max-width: 150px;">
-<h1>BRDR Troop Training Time Calculator</h1>
+<img src="brdr_logo.png" alt="BRDR Logo" style="max-width: 220px; margin-top: 10px;">
+<h1>Training Buff Calculator</h1>
 
-<label>Original Training Time:</label><br>
+<h3>Original Training Time:</h3>
 <input type="number" id="days" placeholder="Days">
 <input type="number" id="hours" placeholder="Hours">
 <input type="number" id="minutes" placeholder="Minutes">
 <input type="number" id="seconds" placeholder="Seconds"><br>
 
-<label>Training Speed Buff (%)</label><br>
+<h3>Training Speed Buff (%):</h3>
 <input type="number" id="buff" placeholder="Example: 150"><br>
 
 <button onclick="calculate()">Calculate Buffed Time</button>
+<button onclick="resetForm()">Reset</button>
 
-<div class="result" id="result"></div>
+<div id="result" class="result"></div>
 
-<p>
-  Need help? 
-  <a href="quick_guide.html" style="color: gold; text-decoration: underline;">Quick Guide</a>
-</p>
+<p style="margin-top: 10px;">Follow these steps when using the calculator:<br>
+<a href="quick_guide.html" style="color: gold;">Quick Guide</a></p>
 
-<footer>
-  Created for World Trigger Border Alliance Members and Server #1009 ONLY!<br>
-  Courtesy of BAD TRIPP
-</footer>
+<footer>Created for World Trigger Border Alliance Members and Server #1009 ONLY!<br>Courtesy of BAD TRIPP</footer>
 
 <script>
-  function calculate() {
-    let d = parseFloat(document.getElementById('days').value) || 0;
-    let h = parseFloat(document.getElementById('hours').value) || 0;
-    let m = parseFloat(document.getElementById('minutes').value) || 0;
-    let s = parseFloat(document.getElementById('seconds').value) || 0;
+function calculate() {
+    const d = parseInt(document.getElementById('days').value) || 0;
+    const h = parseInt(document.getElementById('hours').value) || 0;
+    const m = parseInt(document.getElementById('minutes').value) || 0;
+    const s = parseInt(document.getElementById('seconds').value) || 0;
+    const buff = parseFloat(document.getElementById('buff').value) || 0;
 
-    let originalSeconds = (d * 86400) + (h * 3600) + (m * 60) + s;
+    const totalSeconds = d * 86400 + h * 3600 + m * 60 + s;
+    const reducedSeconds = totalSeconds / (1 + buff / 100);
 
-    let buffPercent = parseFloat(document.getElementById('buff').value) || 0;
-    let buffDecimal = buffPercent / 100;
+    const rd = Math.floor(reducedSeconds / 86400);
+    const rh = Math.floor((reducedSeconds % 86400) / 3600);
+    const rm = Math.floor((reducedSeconds % 3600) / 60);
+    const rs = Math.floor(reducedSeconds % 60);
 
-    let buffedSeconds = originalSeconds / (1 + buffDecimal);
+    document.getElementById('result').innerText = `Buffed Time: ${rd}d ${rh}h ${rm}m ${rs}s`;
+}
 
-    let bd = Math.floor(buffedSeconds / 86400);
-    let bh = Math.floor((buffedSeconds % 86400) / 3600);
-    let bm = Math.floor((buffedSeconds % 3600) / 60);
-    let bs = Math.floor(buffedSeconds % 60);
-
-    document.getElementById('result').innerHTML =
-      `Buffed Training Time: ${bd}d ${bh}h ${bm}m ${bs}s`;
-  }
+function resetForm() {
+    document.getElementById('days').value = '';
+    document.getElementById('hours').value = '';
+    document.getElementById('minutes').value = '';
+    document.getElementById('seconds').value = '';
+    document.getElementById('buff').value = '';
+    document.getElementById('result').innerText = '';
+}
 </script>
 
 </body>
