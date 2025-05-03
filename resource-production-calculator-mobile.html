@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resource Calculator</title>
+
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#FFD700">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="BRDR Tools">
+  <link rel="apple-touch-icon" href="brdr_logo.png">
+
+  <script>
+    if (!localStorage.getItem("brdr_access_granted")) {
+      var password = prompt("Enter password to access BRDR Tools:");
+      if (password === "1009") {
+        localStorage.setItem("brdr_access_granted", "true");
+      } else {
+        alert("Access denied.");
+        window.location.href = "https://google.com";
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #000;
+      color: #f0f0f0;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 20px;
+    }
+    h1 {
+      color: gold;
+    }
+    input {
+      width: 90%;
+      max-width: 300px;
+      padding: 10px;
+      margin-top: 5px;
+      background: #1a1a1a;
+      color: white;
+      border: 1px solid #444;
+      border-radius: 4px;
+    }
+    button {
+      background-color: gold;
+      color: black;
+      padding: 10px 20px;
+      margin-top: 10px;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .result {
+      margin-top: 20px;
+      font-size: 1.2em;
+      font-weight: bold;
+      color: gold;
+    }
+    .back-button {
+      display: inline-block;
+      margin-bottom: 15px;
+      padding: 10px 15px;
+      background-color: gold;
+      color: black;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+
+<a href="index.html" class="back-button">← Back to Main Menu</a>
+<img src="brdr_logo.png" alt="BRDR Logo" style="display:block; margin: 0 auto 15px auto; max-width: 150px;">
+<h1>BRDR Resource Production Calculator</h1>
+
+<label>Number of Farms</label><br>
+<input type="number" id="numFarms" placeholder="e.g., 4"><br>
+
+<label>Farm Level (Production per hour)</label><br>
+<input type="number" id="farmProduction" placeholder="e.g., 12000"><br>
+
+<label>Production Buff (%)</label><br>
+<input type="number" id="buff" placeholder="e.g., 100"><br>
+
+<label>Hours Active per Day (default 24)</label><br>
+<input type="number" id="hoursActive" placeholder="e.g., 24"><br>
+
+<button onclick="calculateProduction()">Calculate Production</button>
+
+<div class="result" id="result"></div>
+
+<p>
+  Need help? 
+  <a href="quick_guide.html" style="color: gold; text-decoration: underline;">Quick Guide</a>
+</p>
+
+<footer>
+  Created for World Trigger Border Alliance Members and Server #1009 ONLY!<br>
+  Courtesy of BAD TRIPP
+</footer>
+
+<script>
+  function calculateProduction() {
+    let numFarms = parseFloat(document.getElementById('numFarms').value) || 0;
+    let farmProduction = parseFloat(document.getElementById('farmProduction').value) || 0;
+    let buffPercent = parseFloat(document.getElementById('buff').value) || 0;
+    let hoursActive = parseFloat(document.getElementById('hoursActive').value) || 24;
+
+    let totalPerHour = numFarms * farmProduction * (1 + (buffPercent / 100));
+    let totalPerDay = totalPerHour * hoursActive;
+    let totalPerWeek = totalPerDay * 7;
+
+    document.getElementById('result').innerHTML =
+      `Hourly Production: ${Math.round(totalPerHour).toLocaleString()}<br>
+       Daily Production: ${Math.round(totalPerDay).toLocaleString()}<br>
+       Weekly Production: ${Math.round(totalPerWeek).toLocaleString()}`;
+  }
+</script>
+
+</body>
+</html>
