@@ -107,8 +107,8 @@
     const container = document.getElementById(type + "Inputs");
     const div = document.createElement("div");
     div.innerHTML = `
-      <input type="number" placeholder="Building Output/hr" style="width: 40%;"> 
       <input type="number" placeholder="Quantity" style="width: 40%;"> 
+      <input type="number" placeholder="Building Output/hr" style="width: 40%;"> 
       <button class="remove-btn" onclick="this.parentNode.remove()">Remove</button>
     `;
     container.appendChild(div);
