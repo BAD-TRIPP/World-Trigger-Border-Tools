@@ -81,7 +81,7 @@
       background: #222;
       padding: 15px;
       border-radius: 5px;
-      font-size: 1.2em;
+      font-size: 1.1em;
       font-weight: bold;
       color: gold;
     }
@@ -95,18 +95,41 @@
 
     <a href="index.html" class="back-button">← Back to Main Menu</a>
 
-    <label>Original Time (Days, Hours, Minutes, Seconds)</label><br>
-    <input type="number" id="days" placeholder="Days">
-    <input type="number" id="hours" placeholder="Hours">
-    <input type="number" id="minutes" placeholder="Minutes">
+    <h3>Step 1: Original Time</h3>
+    <label>Days</label><br>
+    <input type="number" id="days" placeholder="Days"><br>
+    <label>Hours</label><br>
+    <input type="number" id="hours" placeholder="Hours"><br>
+    <label>Minutes</label><br>
+    <input type="number" id="minutes" placeholder="Minutes"><br>
+    <label>Seconds</label><br>
     <input type="number" id="seconds" placeholder="Seconds"><br>
 
-    <label>Total Buff % (including all bonuses)</label><br>
+    <h3>Step 2: Buff %</h3>
     <input type="number" id="buffPercent" placeholder="Total Buff %"><br>
 
     <button onclick="calculate()">Calculate Buffed Time</button>
 
     <div class="result" id="resultBox"></div>
+
+    <h3>Step 3: Manual Reductions (Optional)</h3>
+    <label>Daily Speed-Up Time (Hours, Minutes, Seconds)</label><br>
+    <input type="number" id="speedHours" placeholder="Hours"><br>
+    <input type="number" id="speedMinutes" placeholder="Minutes"><br>
+    <input type="number" id="speedSeconds" placeholder="Seconds"><br>
+
+    <label>Days to Calculate</label><br>
+    <input type="number" id="calcDays" placeholder="How many days to calculate"><br>
+
+    <label>Number of Helps Received</label><br>
+    <input type="number" id="helps" placeholder="Helps"><br>
+
+    <label>Help Time per Help (Minutes)</label><br>
+    <input type="number" id="helpTime" placeholder="Default 7.5"><br>
+
+    <button onclick="calculateFinal()">Calculate Final Time</button>
+
+    <div class="result" id="finalResultBox"></div>
 
     <button onclick="resetForm()">Reset</button>
 
@@ -122,33 +145,61 @@
   </div>
 
 <script>
+let buffedTimeInSeconds = 0;
+
 function calculate() {
   const d = parseFloat(document.getElementById('days').value) || 0;
   const h = parseFloat(document.getElementById('hours').value) || 0;
   const m = parseFloat(document.getElementById('minutes').value) || 0;
   const s = parseFloat(document.getElementById('seconds').value) || 0;
   const buffPercent = parseFloat(document.getElementById('buffPercent').value) || 0;
+
   const totalBuffDecimal = buffPercent / 100;
+  const baseSecs = (d * 86400) + (h * 3600) + (m * 60) + s;
+  buffedTimeInSeconds = baseSecs / (1 + totalBuffDecimal);
 
-  let baseSecs = (d * 86400) + (h * 3600) + (m * 60) + s;
-  let buffedSecs = baseSecs / (1 + totalBuffDecimal);
-
-  const bd = Math.floor(buffedSecs / 86400);
-  buffedSecs %= 86400;
-  const bh = Math.floor(buffedSecs / 3600);
-  buffedSecs %= 3600;
-  const bm = Math.floor(buffedSecs / 60);
-  const bs = Math.floor(buffedSecs % 60);
+  const bd = Math.floor(buffedTimeInSeconds / 86400);
+  let rem = buffedTimeInSeconds % 86400;
+  const bh = Math.floor(rem / 3600);
+  rem %= 3600;
+  const bm = Math.floor(rem / 60);
+  const bs = Math.floor(rem % 60);
 
   document.getElementById('resultBox').innerHTML = 
     `Buffed Time: ${bd}d ${bh}h ${bm}m ${bs}s`;
 }
 
+function calculateFinal() {
+  const sh = parseFloat(document.getElementById('speedHours').value) || 0;
+  const sm = parseFloat(document.getElementById('speedMinutes').value) || 0;
+  const ss = parseFloat(document.getElementById('speedSeconds').value) || 0;
+  const days = parseFloat(document.getElementById('calcDays').value) || 0;
+  const helps = parseFloat(document.getElementById('helps').value) || 0;
+  const helpTime = parseFloat(document.getElementById('helpTime').value) || 7.5;
+
+  const speedUpSecs = (sh * 3600 + sm * 60 + ss) * days;
+  const helpSecs = helps * helpTime * 60;
+  let finalSecs = buffedTimeInSeconds - speedUpSecs - helpSecs;
+
+  if (finalSecs < 0) finalSecs = 0;
+
+  const fd = Math.floor(finalSecs / 86400);
+  let rem = finalSecs % 86400;
+  const fh = Math.floor(rem / 3600);
+  rem %= 3600;
+  const fm = Math.floor(rem / 60);
+  const fs = Math.floor(rem % 60);
+
+  document.getElementById('finalResultBox').innerHTML = 
+    `Final Time: ${fd}d ${fh}h ${fm}m ${fs}s`;
+}
+
 function resetForm() {
-  ['days','hours','minutes','seconds','buffPercent'].forEach(id => {
+  ['days','hours','minutes','seconds','buffPercent','speedHours','speedMinutes','speedSeconds','calcDays','helps','helpTime'].forEach(id => {
     document.getElementById(id).value = "";
   });
   document.getElementById('resultBox').innerHTML = "";
+  document.getElementById('finalResultBox').innerHTML = "";
 }
 </script>
 
