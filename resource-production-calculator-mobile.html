@@ -125,8 +125,8 @@
     const rows = document.getElementById(type + "Inputs").querySelectorAll("div");
     rows.forEach(row => {
       const inputs = row.querySelectorAll("input");
-      const output = parseFloat(inputs[0].value) || 0;
       const qty = parseFloat(inputs[1].value) || 0;
+      const output = parseFloat(inputs[0].value) || 0;
       total += output * qty;
     });
     const buffedHourly = total * (1 + buff / 100);
