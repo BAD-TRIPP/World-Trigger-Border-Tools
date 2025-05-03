@@ -3,32 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+  <title>World Trigger Border Tools</title>
+
   <!-- PWA tags -->
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#FFD700">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-title" content="BRDR Tools">
   <link rel="apple-touch-icon" href="brdr_logo.png">
-  
-  <title>World Trigger Border Tools</title>
 
   <!-- Password protection -->
   <script>
     if (!localStorage.getItem("brdr_access_granted")) {
       var password = prompt("Enter password to access BRDR Tools:");
       if (password === "1009") {
-        localStorage.setItem("brdr_access_granted", "true"); 
+        localStorage.setItem("brdr_access_granted", "true");
       } else {
         alert("Access denied.");
-        window.location.href = "https://www.lastwartutorial.com/";
+        window.location.href = "https://google.com";
       }
     }
   </script>
-  
+
   <style>
     body {
-      background-color: #000000;
+      background-color: #000;
+      background-image: linear-gradient(180deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 60%);
       color: #f0f0f0;
       font-family: Arial, sans-serif;
       text-align: center;
@@ -37,15 +37,6 @@
     h1 {
       color: gold;
       font-size: 1.6em;
-      display: block;
-      width: 100%;
-      text-align: center;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    h2 {
-      color: gold;
-      margin-top: 20px;
       display: block;
       width: 100%;
       text-align: center;
@@ -62,7 +53,7 @@
       padding: 10px 15px;
       border-radius: 5px;
       display: inline-block;
-      width: 90%;
+      width: 80%;
       margin-bottom: 10px;
     }
     a.button:hover {
@@ -71,19 +62,15 @@
     }
     img.logo {
       display: block;
-      margin: 0 auto 25px auto;
-      max-width: 250px;
+      margin: 0 auto 15px auto;
+      max-width: 150px;
     }
     footer {
       margin-top: 25px;
       color: #888;
       font-size: 0.9em;
     }
-    /* Ensure buttons & paragraph text center properly */
-    a.button, p {
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
+    p {
       text-align: center;
     }
   </style>
@@ -95,9 +82,11 @@
 
   <a href="development-buff-calculator-mobile.html" class="button">🏗 Development Buff Calculator</a><br>
   <a href="research-buff-calculator-mobile.html" class="button">🔬 Research Buff Calculator</a><br>
+  <a href="training-buff-calculator-mobile.html" class="button">🎯 Troop Training Time Calculator</a><br>
+  <a href="resource-production-calculator-mobile.html" class="button">🌾 Resource Production Calculator</a><br>
 
   <p>
-    Follow these steps when using the calculator:<br>
+    Follow these steps when using the calculator:
     <a href="quick_guide.html" style="color: gold; text-decoration: underline;">Quick Guide</a>
   </p>
 
