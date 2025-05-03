@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <title>RSS Production Calculator</title>
+
   <!-- PWA + BRDR styles -->
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#FFD700">
@@ -11,7 +13,7 @@
   <meta name="apple-mobile-web-app-title" content="BRDR Tools">
   <link rel="apple-touch-icon" href="brdr_logo.png">
 
-  <title>RSS Production Calculator</title>
+  <!-- Password protection -->
   <script>
     if (!localStorage.getItem("brdr_access_granted")) {
       var password = prompt("Enter password to access BRDR Tools:");
@@ -23,6 +25,7 @@
       }
     }
   </script>
+
   <style>
     body {
       background-color: #000;
@@ -32,16 +35,32 @@
       padding: 10px;
     }
     h1 { color: gold; font-size: 1.5em; }
-    a.back-button {
-      display: inline-block; margin-bottom: 10px;
-      padding: 10px 15px; background-color: gold; color: black;
-      text-decoration: none; font-weight: bold; border-radius: 5px;
+    h3 { color: gold; }
+    label { font-weight: bold; }
+    input { width: 90%; padding: 8px; margin: 4px 0; border-radius: 4px; border: 1px solid #444; background-color: #1a1a1a; color: white; }
+    button {
+      padding: 10px 15px; margin-top: 10px;
+      background-color: gold; color: black; font-weight: bold;
+      border: none; border-radius: 5px;
     }
-    .resource-section { border: 1px solid #444; border-radius: 5px; padding: 10px; margin-bottom: 15px; }
-    label { display: block; margin-top: 8px; font-weight: bold; }
-    input { width: 90%; padding: 8px; margin-top: 4px; border-radius: 4px; border: 1px solid #444; background-color: #1a1a1a; color: white; }
-    button { padding: 10px 15px; margin-top: 10px; background-color: gold; color: black; font-weight: bold; border: none; border-radius: 5px; }
-    .result { margin-top: 15px; font-size: 1.1em; font-weight: bold; color: gold; }
+    .back-button {
+      background-color: gold; color: black;
+      text-decoration: none; padding: 10px 15px;
+      border-radius: 5px; display: inline-block; margin-bottom: 10px;
+    }
+    .resource-section {
+      border: 1px solid #444; border-radius: 5px;
+      padding: 10px; margin-bottom: 15px;
+    }
+    .remove-btn {
+      background-color: #333; color: red; border: 1px solid red;
+      font-size: 0.9em; padding: 5px;
+    }
+    .result-box {
+      background-color: #222; border-radius: 5px;
+      padding: 10px; margin-top: 10px; color: gold;
+      font-weight: bold;
+    }
   </style>
 </head>
 <body>
@@ -50,77 +69,83 @@
 <h1>RSS Production Calculator</h1>
 <a href="index.html" class="back-button">← Back to Main Menu</a>
 
-<!-- Buff inputs -->
-<label>Food Output Buff (%)</label>
-<input type="number" id="foodBuff" placeholder="Example: 83.5">
-
-<label>Iron Output Buff (%)</label>
-<input type="number" id="ironBuff" placeholder="Example: 85.5">
-
-<label>Coin Output Buff (%)</label>
-<input type="number" id="coinBuff" placeholder="Example: 106">
-
-<!-- Food Farms Section -->
+<!-- FOOD SECTION -->
 <div class="resource-section" id="foodSection">
-  <h3>Farms</h3>
+  <h3>🍞 Food Farms</h3>
   <div id="foodInputs"></div>
-  <button type="button" onclick="addResourceInput('food')">+ Add Farm</button>
+  <button type="button" onclick="addResourceInput('food')">+ Add Farm</button><br>
+  <label>Food Output Buff (%)</label><br>
+  <input type="number" id="foodBuff" placeholder="Example: 83.5"><br>
+  <div class="result-box" id="foodResult"></div>
 </div>
 
-<!-- Iron Mines Section -->
+<!-- IRON SECTION -->
 <div class="resource-section" id="ironSection">
-  <h3>Iron Mines</h3>
+  <h3>🪓 Iron Mines</h3>
   <div id="ironInputs"></div>
-  <button type="button" onclick="addResourceInput('iron')">+ Add Iron Mine</button>
+  <button type="button" onclick="addResourceInput('iron')">+ Add Iron Mine</button><br>
+  <label>Iron Output Buff (%)</label><br>
+  <input type="number" id="ironBuff" placeholder="Example: 85.5"><br>
+  <div class="result-box" id="ironResult"></div>
 </div>
 
-<!-- Gold Mints Section -->
+<!-- COIN SECTION -->
 <div class="resource-section" id="coinSection">
-  <h3>Gold Mints</h3>
+  <h3>💰 Gold Mints</h3>
   <div id="coinInputs"></div>
-  <button type="button" onclick="addResourceInput('coin')">+ Add Mint</button>
+  <button type="button" onclick="addResourceInput('coin')">+ Add Mint</button><br>
+  <label>Coin Output Buff (%)</label><br>
+  <input type="number" id="coinBuff" placeholder="Example: 106"><br>
+  <div class="result-box" id="coinResult"></div>
 </div>
 
-<button onclick="calculateProduction()">Calculate Total Production</button>
-
-<div class="result" id="resultBox"></div>
+<button onclick="calculateProduction()">Calculate All</button>
+<button onclick="resetForm()">Reset</button>
 
 <script>
   function addResourceInput(type) {
     const container = document.getElementById(type + "Inputs");
     const div = document.createElement("div");
     div.innerHTML = `
-      <input type="number" placeholder="Building Output/hr">
-      <input type="number" placeholder="Quantity">
+      <input type="number" placeholder="Building Output/hr" style="width: 40%;"> 
+      <input type="number" placeholder="Quantity" style="width: 40%;"> 
+      <button class="remove-btn" onclick="this.parentNode.remove()">Remove</button>
     `;
     container.appendChild(div);
   }
 
   function calculateProduction() {
-    let foodTotal = calculateResource("food", parseFloat(document.getElementById("foodBuff").value) || 0);
-    let ironTotal = calculateResource("iron", parseFloat(document.getElementById("ironBuff").value) || 0);
-    let coinTotal = calculateResource("coin", parseFloat(document.getElementById("coinBuff").value) || 0);
-
-    document.getElementById("resultBox").innerHTML = `
-      🍞 <strong>Food</strong><br>
-      Hourly: ${format(foodTotal)} | Daily: ${format(foodTotal * 24)} | Weekly: ${format(foodTotal * 24 * 7)}<br><br>
-      🪨 <strong>Iron</strong><br>
-      Hourly: ${format(ironTotal)} | Daily: ${format(ironTotal * 24)} | Weekly: ${format(ironTotal * 24 * 7)}<br><br>
-      💰 <strong>Gold</strong><br>
-      Hourly: ${format(coinTotal)} | Daily: ${format(coinTotal * 24)} | Weekly: ${format(coinTotal * 24 * 7)}
-    `;
+    calculateResource("food", parseFloat(document.getElementById("foodBuff").value) || 0, "foodResult");
+    calculateResource("iron", parseFloat(document.getElementById("ironBuff").value) || 0, "ironResult");
+    calculateResource("coin", parseFloat(document.getElementById("coinBuff").value) || 0, "coinResult");
   }
 
-  function calculateResource(type, buff) {
+  function calculateResource(type, buff, resultId) {
     let total = 0;
-    const container = document.getElementById(type + "Inputs").querySelectorAll("div");
-    container.forEach(div => {
-      const inputs = div.querySelectorAll("input");
+    const rows = document.getElementById(type + "Inputs").querySelectorAll("div");
+    rows.forEach(row => {
+      const inputs = row.querySelectorAll("input");
       const output = parseFloat(inputs[0].value) || 0;
       const qty = parseFloat(inputs[1].value) || 0;
       total += output * qty;
     });
-    return total * (1 + buff / 100);
+    const buffedHourly = total * (1 + buff / 100);
+    const daily = buffedHourly * 24;
+    const weekly = daily * 7;
+    const monthly = daily * 30;
+
+    document.getElementById(resultId).innerHTML = `
+      Hourly: ${format(buffedHourly)}<br>
+      Daily: ${format(daily)}<br>
+      Weekly: ${format(weekly)}<br>
+      Monthly: ${format(monthly)}
+    `;
+  }
+
+  function resetForm() {
+    ["foodInputs", "ironInputs", "coinInputs"].forEach(id => document.getElementById(id).innerHTML = "");
+    ["foodBuff", "ironBuff", "coinBuff"].forEach(id => document.getElementById(id).value = "");
+    ["foodResult", "ironResult", "coinResult"].forEach(id => document.getElementById(id).innerHTML = "");
   }
 
   function format(num) {
