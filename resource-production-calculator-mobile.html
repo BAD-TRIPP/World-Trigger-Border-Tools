@@ -1,76 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Resource Production Calculator</title>
-<link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#FFD700">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="BRDR Tools">
-<link rel="apple-touch-icon" href="brdr_logo.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<style>
-body { background-color: #111; color: #f0f0f0; font-family: Arial, sans-serif; text-align: center; margin: 0; padding: 20px; }
-h1 { color: gold; }
-input { margin: 5px; padding: 10px; border-radius: 5px; border: none; width: 80%; max-width: 250px; }
-button { background-color: gold; color: black; padding: 10px 20px; margin: 10px; border: none; border-radius: 5px; font-size: 1em; cursor: pointer; }
-button:hover { background-color: #e6c200; }
-.result { font-size: 1.2em; font-weight: bold; margin-top: 15px; }
-.back-button { background-color: gold; color: black; display: inline-block; margin: 10px auto; padding: 10px 20px; border-radius: 5px; text-decoration: none; }
-footer { margin-top: 20px; font-size: 0.9em; color: #ccc; }
-</style>
+  <!-- PWA tags -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#FFD700">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="BRDR Tools">
+  <link rel="apple-touch-icon" href="brdr_logo.png">
 
-<script>
-// PASSWORD PROTECTION
-if (!sessionStorage.getItem("brdr_access")) {
-    const pass = prompt("Enter password:");
-    if (pass !== "1009") {
-        alert("Incorrect password.");
-        window.location.href = "https://google.com";
-    } else {
-        sessionStorage.setItem("brdr_access", "true");
+  <title>BRDR Resource Production Calculator</title>
+
+  <!-- Password protection -->
+  <script>
+    if (!localStorage.getItem("brdr_access_granted")) {
+      var password = prompt("Enter password to access BRDR Tools:");
+      if (password === "1009") {
+        localStorage.setItem("brdr_access_granted", "true"); 
+      } else {
+        alert("Access denied.");
+        window.location.href = "https://www.lastwartutorial.com/";
+      }
     }
-}
-</script>
+  </script>
+
+  <style>
+    body {
+      background-color: #000000;
+      color: #f0f0f0;
+      font-family: Arial, sans-serif;
+      margin: auto;
+      padding: 10px;
+      text-align: center;
+    }
+    h1 { text-align: center; color: gold; font-size: 1.5em; }
+    a.back-button { display: inline-block; margin-bottom: 15px; padding: 10px 15px; background-color: gold; color: black; text-decoration: none; font-weight: bold; border-radius: 5px; }
+    label { display: block; margin-top: 10px; font-weight: bold; font-size: 1em; }
+    input, button { width: 100%; padding: 10px; margin-top: 5px; font-size: 1em; background: #1a1a1a; color: white; border: 1px solid #444; border-radius: 4px; box-sizing: border-box; }
+    button { background-color: gold; color: black; font-weight: bold; cursor: pointer; border: none; margin-top: 10px; }
+    .result { margin-top: 20px; background: #222; padding: 15px; border-radius: 5px; font-size: 1.2em; font-weight: bold; color: gold; text-align: center; word-wrap: break-word; }
+  </style>
 </head>
-
 <body>
-<a href="index.html" class="back-button">← Back to Main Menu</a>
-<img src="brdr_logo.png" alt="BRDR Logo" style="max-width: 220px; margin-top: 10px;">
-<h1>Resource Production Calculator</h1>
 
-<h3>Base Production Per Hour:</h3>
-<input type="number" id="base" placeholder="e.g., 10000"><br>
+  <img src="brdr_logo.png" alt="BRDR Logo" style="display:block; margin: 0 auto 25px auto; max-width: 250px;">
 
-<h3>Total Resource Buff (%):</h3>
-<input type="number" id="buff" placeholder="e.g., 150"><br>
+  <h1>BRDR Resource Production Calculator</h1>
+  <a href="index.html" class="back-button">← Back to Main Menu</a>
 
-<button onclick="calculate()">Calculate Buffed Production</button>
-<button onclick="resetForm()">Reset</button>
+  <label>Base Food Production (per hour):</label>
+  <input type="number" id="baseFood" placeholder="Enter total base food production">
 
-<div id="result" class="result"></div>
+  <label>Food Production Buff (%):</label>
+  <input type="number" id="foodBuff" placeholder="Enter food buff %">
 
-<p style="margin-top: 10px;">Follow these steps when using the calculator:<br>
-<a href="quick_guide.html" style="color: gold;">Quick Guide</a></p>
+  <label>Base Iron Production (per hour):</label>
+  <input type="number" id="baseIron" placeholder="Enter total base iron production">
 
-<footer>Created for World Trigger Border Alliance Members and Server #1009 ONLY!<br>Courtesy of BAD TRIPP</footer>
+  <label>Iron Production Buff (%):</label>
+  <input type="number" id="ironBuff" placeholder="Enter iron buff %">
+
+  <label>Base Coin Production (per hour):</label>
+  <input type="number" id="baseCoin" placeholder="Enter total base coin production">
+
+  <label>Coin Production Buff (%):</label>
+  <input type="number" id="coinBuff" placeholder="Enter coin buff %">
+
+  <label>Hours to Calculate:</label>
+  <input type="number" id="calcHours" placeholder="Enter number of hours to calculate">
+
+  <button onclick="calculateProduction()">Calculate Production</button>
+
+  <div class="result" id="resultBox"></div>
+
+  <button onclick="resetForm()" style="margin-top: 20px;">Reset</button>
 
 <script>
-function calculate() {
-    const base = parseFloat(document.getElementById('base').value) || 0;
-    const buff = parseFloat(document.getElementById('buff').value) || 0;
+  function calculateProduction() {
+    const baseFood = parseFloat(document.getElementById('baseFood').value) || 0;
+    const foodBuff = parseFloat(document.getElementById('foodBuff').value) || 0;
+    const baseIron = parseFloat(document.getElementById('baseIron').value) || 0;
+    const ironBuff = parseFloat(document.getElementById('ironBuff').value) || 0;
+    const baseCoin = parseFloat(document.getElementById('baseCoin').value) || 0;
+    const coinBuff = parseFloat(document.getElementById('coinBuff').value) || 0;
+    const hours = parseFloat(document.getElementById('calcHours').value) || 0;
 
-    const production = base * (1 + buff / 100);
-    document.getElementById('result').innerText = `Buffed Production per Hour: ${production.toLocaleString()}`;
-}
+    const totalFood = baseFood * (1 + foodBuff / 100) * hours;
+    const totalIron = baseIron * (1 + ironBuff / 100) * hours;
+    const totalCoin = baseCoin * (1 + coinBuff / 100) * hours;
 
-function resetForm() {
-    document.getElementById('base').value = '';
-    document.getElementById('buff').value = '';
-    document.getElementById('result').innerText = '';
-}
+    document.getElementById('resultBox').innerHTML = `
+      Food Produced: ${totalFood.toLocaleString()}<br>
+      Iron Produced: ${totalIron.toLocaleString()}<br>
+      Coin Produced: ${totalCoin.toLocaleString()}
+    `;
+  }
+
+  function resetForm() {
+    document.querySelectorAll('input').forEach(input => input.value = '');
+    document.getElementById('resultBox').innerHTML = '';
+  }
 </script>
+
+  <p>
+    Follow these steps when using the calculator:<br>
+    <a href="quick_guide.html" style="color: gold; text-decoration: underline;">Quick Guide</a>
+  </p>
+
+  <footer>
+    Created for World Trigger Border Alliance Members and Server #1009 ONLY!<br>
+    Courtesy of BAD TRIPP
+  </footer>
 
 </body>
 </html>
