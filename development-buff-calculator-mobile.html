@@ -1,223 +1,156 @@
 <!DOCTYPE html>
- <html lang="en">
- <head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>World Trigger BRDR Tools</title>
- 
-   <!-- PWA tags -->
-   <link rel="manifest" href="manifest.json">
-   <meta name="theme-color" content="#FFD700">
-   <meta name="apple-mobile-web-app-capable" content="yes">
-   <meta name="apple-mobile-web-app-title" content="BRDR Tools">
-   <link rel="apple-touch-icon" href="brdr_logo.png">
-   
-   <title>Development Buff Calculator</title>
-     <!-- Password protection -->
- 
-   <!-- Password protection -->
-   <script>
-     if (!localStorage.getItem("brdr_access_granted")) {
-       var password = prompt("Enter password to access BRDR Tools:");
- @@ -24,137 +24,83 @@
-       }
-     }
-   </script>
- 
-   <style>
- body {
-   background-color: #000000;
-   color: #f0f0f0;
-   font-family: Arial, sans-serif;
-   margin: auto;
-   padding: 10px;
-   text-align: center;
- }
-     h1 { text-align: center; color: gold; font-size: 1.5em; }
-     a.back-button { display: inline-block; margin-bottom: 15px; padding: 10px 15px; background-color: gold; color: black; text-decoration: none; font-weight: bold; border-radius: 5px; }
-     label { display: block; margin-top: 10px; font-weight: bold; font-size: 1em; }
-     input, button { width: 100%; padding: 10px; margin-top: 5px; font-size: 1em; background: #1a1a1a; color: white; border: 1px solid #444; border-radius: 4px; box-sizing: border-box; }
-     .time-group { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 5px; }
-     .time-group input { flex: 1 1 45%; }
-     button { background-color: gold; color: black; font-weight: bold; cursor: pointer; border: none; margin-top: 10px; }
-     .result { margin-top: 20px; background: #222; padding: 15px; border-radius: 5px; font-size: 1.2em; font-weight: bold; color: gold; text-align: center; word-wrap: break-word; }
-     #manualSection { display: none; margin-top: 15px; padding-top: 10px; border-top: 1px solid #444; }
-   </style>
- </head>
-      <img src="brdr_logo.png" alt="BRDR Logo" style="display:block; margin: 0 auto 25px auto; max-width: 250px;">
- <body>
-     body {
-       background-color: #000;
-       color: #f0f0f0;
-       font-family: Arial, sans-serif;
-       text-align: center;
-       padding: 10px;
-     }
- 
-   <h1>Development Buff Calculator</h1>
-   <a href="index.html" class="back-button">← Back to Main Menu</a>
-     .container {
-       max-width: 600px;
-       margin: auto;
-       padding: 10px;
-     }
- 
-   <label>Original Time:</label>
-   <div class="time-group">
-     <input type="number" id="baseDays" placeholder="Days">
-     <input type="number" id="baseHours" placeholder="Hours">
-     <input type="number" id="baseMinutes" placeholder="Minutes">
-     <input type="number" id="baseSeconds" placeholder="Seconds">
-   </div>
-     h1 {
-       color: gold;
-     }
- 
-   <label>Total Development Buff (%):</label>
-   <input type="number" id="buffPercent" placeholder="Enter total buff %">
-     .button {
-       display: inline-block;
-       margin: 10px 0;
-       padding: 12px 20px;
-       font-size: 1.1em;
-       background-color: transparent;
-       color: gold;
-       font-weight: bold;
-       text-decoration: none;
-       border-radius: 5px;
-       border: 2px solid gold;
-       width: 90%;
-       transition: all 0.3s ease;
-     }
- 
-   <button onclick="calculate()">Calculate Buffed Time</button>
-     .button:hover {
-       background-color: gold;
-       color: black;
-     }
- 
-   <div class="result" id="resultBox"></div>
-     .button span.icon {
-       font-size: 1.4em;
-       vertical-align: middle;
-       margin-right: 5px;
-     }
- 
-   <button id="showManualBtn" style="display:none;" onclick="showManual()">Apply Manual Speed-Ups & Help Reductions</button>
-     footer {
-       margin-top: 20px;
-       color: #888;
-       font-size: 0.9em;
-     }
-   </style>
- </head>
- 
- <body>
-   <div class="container">
- 
-   <div id="manualSection">
-     <label>Daily Free Speed-Up Time:</label>
-     <div class="time-group">
-       <input type="number" id="speedHours" placeholder="Hours">
-       <input type="number" id="speedMinutes" placeholder="Minutes">
-       <input type="number" id="speedSeconds" placeholder="Seconds">
-     </div>
-     <img src="brdr_logo.png" alt="BRDR Logo" style="max-width: 200px; margin-bottom: 15px;">
-     <h1>BRDR Alliance Tools</h1>
- 
-     <label>Days to Calculate:</label>
-     <input type="number" id="calcDays" placeholder="How many days to calculate">
-     <a href="development-buff-calculator-mobile.html" class="button">
-       <span class="icon">🏗 🔬 🎯</span> Development Buff Calculator
-     </a><br>
- 
-     <label>Number of Helps Received:</label>
-     <input type="number" id="helps" placeholder="How many helps">
-     <a href="resource-production-calculator-mobile.html" class="button">
-       <span class="icon">🍞 🪓 💰</span> RSS Production Calculator
-     </a><br>
- 
-     <label>Help Time per Help (Minutes):</label>
-     <input type="number" id="helpTime" placeholder="Help time per help (default 7.5)">
-     <p style="margin-top: 15px;">
-       Need help? <a href="quick_guide.html" style="color: gold;">Quick Guide</a>
-     </p>
- 
-     <button onclick="calculateFinal()">Calculate Final Time</button>
-     <footer>
-       Created for World Trigger Border Alliance Members and Server #1009 ONLY!<br>
-       Courtesy of BAD TRIPP
-     </footer>
- 
-     <div class="result" id="finalResultBox"></div>
-   </div>
- 
-   <button onclick="resetForm()" style="margin-top: 20px;">Reset</button>
- 
- <script>
-   let buffedTimeInSeconds = 0;
- 
-   function calculate() {
-     const d = parseFloat(document.getElementById('baseDays').value) || 0;
-     const h = parseFloat(document.getElementById('baseHours').value) || 0;
-     const m = parseFloat(document.getElementById('baseMinutes').value) || 0;
-     const s = parseFloat(document.getElementById('baseSeconds').value) || 0;
-     const buffPercent = parseFloat(document.getElementById('buffPercent').value) || 0;
-     const totalBuffDecimal = buffPercent / 100;
-     let baseSecs = (d * 86400) + (h * 3600) + (m * 60) + s;
-     buffedTimeInSeconds = baseSecs / (1 + totalBuffDecimal);
-     const bd = Math.floor(buffedTimeInSeconds / 86400);
-     buffedTimeInSeconds %= 86400;
-     const bh = Math.floor(buffedTimeInSeconds / 3600);
-     buffedTimeInSeconds %= 3600;
-     const bm = Math.floor(buffedTimeInSeconds / 60);
-     const bs = Math.floor(buffedTimeInSeconds % 60);
-     buffedTimeInSeconds = (bd * 86400) + (bh * 3600) + (bm * 60) + bs;
-     document.getElementById('resultBox').innerHTML = `Buffed Time: ${bd}d ${bh}h ${bm}m ${bs}s`;
-     document.getElementById('showManualBtn').style.display = 'inline-block';
-   }
- 
-   function showManual() { 
-     document.getElementById('manualSection').style.display = 'block'; 
-   }
- 
-   function calculateFinal() {
-     const sh = parseFloat(document.getElementById('speedHours').value) || 0;
-     const sm = parseFloat(document.getElementById('speedMinutes').value) || 0;
-     const ss = parseFloat(document.getElementById('speedSeconds').value) || 0;
-     const days = parseFloat(document.getElementById('calcDays').value) || 0;
-     const helps = parseFloat(document.getElementById('helps').value) || 0;
-     const helpTime = parseFloat(document.getElementById('helpTime').value) || 0;
-     const speedUpSecs = (sh * 3600 + sm * 60 + ss) * days;
-     const helpSecs = helps * helpTime * 60;
-     let finalSecs = buffedTimeInSeconds - speedUpSecs - helpSecs;
-     if (finalSecs < 0) finalSecs = 0;
-     const fd = Math.floor(finalSecs / 86400);
-     finalSecs %= 86400;
-     const fh = Math.floor(finalSecs / 3600);
-     finalSecs %= 3600;
-     const fm = Math.floor(finalSecs / 60);
-     const fs = Math.floor(finalSecs % 60);
-     document.getElementById('finalResultBox').innerHTML = `Final Time: ${fd}d ${fh}h ${fm}m ${fs}s`;
-   }
- 
-   function resetForm() {
-     document.querySelectorAll('input').forEach(input => input.value = '');
-     document.getElementById('resultBox').innerHTML = '';
-     document.getElementById('finalResultBox').innerHTML = '';
-     document.getElementById('manualSection').style.display = 'none';
-     document.getElementById('showManualBtn').style.display = 'none';
-     buffedTimeInSeconds = 0;
-   }
- </script>
-   <p>
-     Follow these steps when using the calculator:<br>
-     <a href="quick_guide.html" style="color: gold; text-decoration: underline;">Quick Guide</a>
-   </p>
- 
-   <footer>
-     Created for World Trigger Border Alliance Members and Server #1009 ONLY!<br>
-     Courtesy of BAD TRIPP
-   </footer>
- </body>
- </html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buff Calculator</title>
+
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#FFD700">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="BRDR Tools">
+  <link rel="apple-touch-icon" href="brdr_logo.png">
+
+  <script>
+    if (!localStorage.getItem("brdr_access_granted")) {
+      var password = prompt("Enter password to access BRDR Tools:");
+      if (password === "1009") {
+        localStorage.setItem("brdr_access_granted", "true"); 
+      } else {
+        alert("Access denied.");
+        window.location.href = "https://www.lastwartutorial.com/";
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #000;
+      color: #f0f0f0;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 10px;
+    }
+    .container {
+      max-width: 600px;
+      margin: auto;
+    }
+    h1 {
+      color: gold;
+    }
+    input {
+      width: 90%;
+      padding: 8px;
+      margin: 4px 0;
+      border-radius: 4px;
+      border: 1px solid #444;
+      background-color: #1a1a1a;
+      color: white;
+    }
+    button {
+      padding: 10px 15px;
+      margin-top: 10px;
+      background-color: transparent;
+      color: gold;
+      font-weight: bold;
+      border: 2px solid gold;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+    }
+    button:hover {
+      background-color: gold;
+      color: black;
+    }
+    .back-button {
+      display: inline-block;
+      margin-bottom: 10px;
+      padding: 10px 15px;
+      background-color: transparent;
+      color: gold;
+      font-weight: bold;
+      text-decoration: none;
+      border: 2px solid gold;
+      border-radius: 5px;
+    }
+    .back-button:hover {
+      background-color: gold;
+      color: black;
+    }
+    .result {
+      margin-top: 10px;
+      background: #222;
+      padding: 15px;
+      border-radius: 5px;
+      font-size: 1.2em;
+      font-weight: bold;
+      color: gold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <img src="brdr_logo.png" alt="BRDR Logo" style="max-width: 200px;">
+    <h1>Buff Calculator</h1>
+
+    <a href="index.html" class="back-button">← Back to Main Menu</a>
+
+    <label>Original Time (Days, Hours, Minutes, Seconds)</label><br>
+    <input type="number" id="days" placeholder="Days">
+    <input type="number" id="hours" placeholder="Hours">
+    <input type="number" id="minutes" placeholder="Minutes">
+    <input type="number" id="seconds" placeholder="Seconds"><br>
+
+    <label>Total Buff % (including all bonuses)</label><br>
+    <input type="number" id="buffPercent" placeholder="Total Buff %"><br>
+
+    <button onclick="calculate()">Calculate Buffed Time</button>
+
+    <div class="result" id="resultBox"></div>
+
+    <button onclick="resetForm()">Reset</button>
+
+    <p style="margin-top: 15px;">
+      Need help? <a href="quick_guide.html" style="color: gold;">Quick Guide</a>
+    </p>
+
+    <footer>
+      Created for World Trigger Border Alliance Members and Server #1009 ONLY!<br>
+      Courtesy of BAD TRIPP
+    </footer>
+
+  </div>
+
+<script>
+function calculate() {
+  const d = parseFloat(document.getElementById('days').value) || 0;
+  const h = parseFloat(document.getElementById('hours').value) || 0;
+  const m = parseFloat(document.getElementById('minutes').value) || 0;
+  const s = parseFloat(document.getElementById('seconds').value) || 0;
+  const buffPercent = parseFloat(document.getElementById('buffPercent').value) || 0;
+  const totalBuffDecimal = buffPercent / 100;
+
+  let baseSecs = (d * 86400) + (h * 3600) + (m * 60) + s;
+  let buffedSecs = baseSecs / (1 + totalBuffDecimal);
+
+  const bd = Math.floor(buffedSecs / 86400);
+  buffedSecs %= 86400;
+  const bh = Math.floor(buffedSecs / 3600);
+  buffedSecs %= 3600;
+  const bm = Math.floor(buffedSecs / 60);
+  const bs = Math.floor(buffedSecs % 60);
+
+  document.getElementById('resultBox').innerHTML = 
+    `Buffed Time: ${bd}d ${bh}h ${bm}m ${bs}s`;
+}
+
+function resetForm() {
+  ['days','hours','minutes','seconds','buffPercent'].forEach(id => {
+    document.getElementById(id).value = "";
+  });
+  document.getElementById('resultBox').innerHTML = "";
+}
+</script>
+
+</body>
+</html>
