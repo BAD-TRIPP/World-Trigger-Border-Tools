@@ -25,74 +25,110 @@
     }
   </script>
 <style>
-  .button {
-    display: inline-block;
-    margin: 10px 0;
-    padding: 12px 20px;
-    font-size: 1.1em;
-    background-color: gold;
-    color: black;
-    font-weight: bold;
-    text-decoration: none;
-    border-radius: 5px;
-    width: 90%;
+  body {
+    background-color: #000;
+    color: #f0f0f0;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 10px;
   }
 
-  /* Make emojis/icons larger inside buttons */
+  .container {
+    max-width: 600px;
+    margin: auto;
+    padding: 10px;
+  }
+
+  h1, h2, h3 {
+    color: gold;
+  }
+
+  label {
+    font-weight: bold;
+  }
+
+  input {
+    width: 90%;
+    padding: 8px;
+    margin: 4px 0;
+    border-radius: 4px;
+    border: 1px solid #444;
+    background-color: #1a1a1a;
+    color: white;
+  }
+
+  button {
+    padding: 10px 15px;
+    margin-top: 10px;
+    background-color: transparent;
+    color: gold;
+    font-weight: bold;
+    border: 2px solid gold;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+  }
+
+  button:hover {
+    background-color: gold;
+    color: black;
+  }
+
+  .back-button {
+    display: inline-block;
+    margin-bottom: 10px;
+    padding: 10px 15px;
+    background-color: transparent;
+    color: gold;
+    font-weight: bold;
+    text-decoration: none;
+    border: 2px solid gold;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+  }
+
+  .back-button:hover {
+    background-color: gold;
+    color: black;
+  }
+
   .button span.icon {
     font-size: 1.4em;
     vertical-align: middle;
     margin-right: 5px;
   }
+
+  .resource-section {
+    border: 1px solid #444;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 15px;
+  }
+
+  .remove-btn {
+    background-color: #333;
+    color: red;
+    border: 1px solid red;
+    font-size: 0.9em;
+    padding: 5px;
+    border-radius: 3px;
+  }
+
+  .result-box {
+    background-color: #222;
+    border-radius: 5px;
+    padding: 10px;
+    margin-top: 10px;
+    color: gold;
+    font-weight: bold;
+  }
+
+  footer {
+    margin-top: 20px;
+    color: #888;
+    font-size: 0.9em;
+  }
 </style>
-  <style>
-    body {
-      background-color: #000;
-      color: #f0f0f0;
-      font-family: Arial, sans-serif;
-      text-align: center;
-      padding: 20px;
-    }
-    h1 {
-      color: gold;
-      font-size: 1.6em;
-      display: block;
-      width: 100%;
-      text-align: center;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    ul { list-style-type: none; padding: 0; }
-    li { margin: 15px 10px; }
-    a.button {
-      color: gold;
-      text-decoration: none;
-      font-size: 1.2em;
-      border: 2px solid gold;
-      padding: 10px 15px;
-      border-radius: 5px;
-      display: inline-block;
-      width: 80%;
-      margin-bottom: 10px;
-    }
-    a.button:hover {
-      background-color: gold;
-      color: black;
-    }
-    img.logo {
-      display: block;
-      margin: 0 auto 25px auto;
-      max-width: 250px;
-    }
-    footer {
-      margin-top: 25px;
-      color: #888;
-      font-size: 0.9em;
-    }
-    p {
-      text-align: center;
-    }
-  </style>
+
 </head>
 <body>
 
