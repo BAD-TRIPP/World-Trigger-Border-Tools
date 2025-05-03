@@ -1,92 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Training Buff Calculator</title>
-<link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#FFD700">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="BRDR Tools">
-<link rel="apple-touch-icon" href="brdr_logo.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<style>
-body { background-color: #111; color: #f0f0f0; font-family: Arial, sans-serif; text-align: center; margin: 0; padding: 20px; }
-h1 { color: gold; }
-input { margin: 5px; padding: 10px; border-radius: 5px; border: none; width: 80%; max-width: 250px; }
-button { background-color: gold; color: black; padding: 10px 20px; margin: 10px; border: none; border-radius: 5px; font-size: 1em; cursor: pointer; }
-button:hover { background-color: #e6c200; }
-.result { font-size: 1.2em; font-weight: bold; margin-top: 15px; }
-.back-button { background-color: gold; color: black; display: inline-block; margin: 10px auto; padding: 10px 20px; border-radius: 5px; text-decoration: none; }
-footer { margin-top: 20px; font-size: 0.9em; color: #ccc; }
-</style>
-
-<script>
-// PASSWORD PROTECTION
-if (!sessionStorage.getItem("brdr_access")) {
-    const pass = prompt("Enter password:");
-    if (pass !== "1009") {
-        alert("Incorrect password.");
-        window.location.href = "https://google.com";
-    } else {
-        sessionStorage.setItem("brdr_access", "true");
+  <!-- PWA tags -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#FFD700">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="BRDR Tools">
+  <link rel="apple-touch-icon" href="brdr_logo.png">
+  
+  <title>Training Buff Calculator</title>
+    <!-- Password protection -->
+  <script>
+    if (!localStorage.getItem("brdr_access_granted")) {
+      var password = prompt("Enter password to access BRDR Tools:");
+      if (password === "1009") {
+        localStorage.setItem("brdr_access_granted", "true"); 
+      } else {
+        alert("Access denied.");
+        window.location.href = "https://www.lastwartutorial.com/";
+      }
     }
+  </script>
+  <style>
+body {
+  background-color: #000000;
+  color: #f0f0f0;
+  font-family: Arial, sans-serif;
+  margin: auto;
+  padding: 10px;
+  text-align: center;
 }
-</script>
+    h1 { text-align: center; color: gold; font-size: 1.5em; }
+    a.back-button { display: inline-block; margin-bottom: 15px; padding: 10px 15px; background-color: gold; color: black; text-decoration: none; font-weight: bold; border-radius: 5px; }
+    label { display: block; margin-top: 10px; font-weight: bold; font-size: 1em; }
+    input, button { width: 100%; padding: 10px; margin-top: 5px; font-size: 1em; background: #1a1a1a; color: white; border: 1px solid #444; border-radius: 4px; box-sizing: border-box; }
+    .time-group { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 5px; }
+    .time-group input { flex: 1 1 45%; }
+    button { background-color: gold; color: black; font-weight: bold; cursor: pointer; border: none; margin-top: 10px; }
+    .result { margin-top: 20px; background: #222; padding: 15px; border-radius: 5px; font-size: 1.2em; font-weight: bold; color: gold; text-align: center; word-wrap: break-word; }
+    #manualSection { display: none; margin-top: 15px; padding-top: 10px; border-top: 1px solid #444; }
+  </style>
 </head>
-
+     <img src="brdr_logo.png" alt="BRDR Logo" style="display:block; margin: 0 auto 25px auto; max-width: 250px;">
 <body>
-<a href="index.html" class="back-button">← Back to Main Menu</a>
-<img src="brdr_logo.png" alt="BRDR Logo" style="max-width: 220px; margin-top: 10px;">
-<h1>Training Buff Calculator</h1>
 
-<h3>Original Training Time:</h3>
-<input type="number" id="days" placeholder="Days">
-<input type="number" id="hours" placeholder="Hours">
-<input type="number" id="minutes" placeholder="Minutes">
-<input type="number" id="seconds" placeholder="Seconds"><br>
+  <h1>Training Buff Calculator</h1>
+  <a href="index.html" class="back-button">← Back to Main Menu</a>
 
-<h3>Training Speed Buff (%):</h3>
-<input type="number" id="buff" placeholder="Example: 150"><br>
+  <label>Original Training Time:</label>
+  <div class="time-group">
+    <input type="number" id="baseDays" placeholder="Days">
+    <input type="number" id="baseHours" placeholder="Hours">
+    <input type="number" id="baseMinutes" placeholder="Minutes">
+    <input type="number" id="baseSeconds" placeholder="Seconds">
+  </div>
 
-<button onclick="calculate()">Calculate Buffed Time</button>
-<button onclick="resetForm()">Reset</button>
+  <label>Training Speed Buff (%):</label>
+  <input type="number" id="buffPercent" placeholder="Enter total buff %">
 
-<div id="result" class="result"></div>
+  <button onclick="calculate()">Calculate Buffed Time</button>
 
-<p style="margin-top: 10px;">Follow these steps when using the calculator:<br>
-<a href="quick_guide.html" style="color: gold;">Quick Guide</a></p>
+  <div class="result" id="resultBox"></div>
 
-<footer>Created for World Trigger Border Alliance Members and Server #1009 ONLY!<br>Courtesy of BAD TRIPP</footer>
+  <button id="showManualBtn" style="display:none;" onclick="showManual()">Apply Manual Speed-Ups & Help Reductions</button>
+
+  <div id="manualSection">
+    <label>Daily Free Speed-Up Time:</label>
+    <div class="time-group">
+      <input type="number" id="speedHours" placeholder="Hours">
+      <input type="number" id="speedMinutes" placeholder="Minutes">
+      <input type="number" id="speedSeconds" placeholder="Seconds">
+    </div>
+
+    <label>Days to Calculate:</label>
+    <input type="number" id="calcDays" placeholder="How many days to calculate">
+
+    <label>Number of Helps Received:</label>
+    <input type="number" id="helps" placeholder="How many helps">
+
+    <label>Help Time per Help (Minutes):</label>
+    <input type="number" id="helpTime" placeholder="Help time per help (default 7.5)">
+
+    <button onclick="calculateFinal()">Calculate Final Time</button>
+
+    <div class="result" id="finalResultBox"></div>
+  </div>
+
+  <button onclick="resetForm()" style="margin-top: 20px;">Reset</button>
 
 <script>
-function calculate() {
-    const d = parseInt(document.getElementById('days').value) || 0;
-    const h = parseInt(document.getElementById('hours').value) || 0;
-    const m = parseInt(document.getElementById('minutes').value) || 0;
-    const s = parseInt(document.getElementById('seconds').value) || 0;
-    const buff = parseFloat(document.getElementById('buff').value) || 0;
+  let buffedTimeInSeconds = 0;
 
-    const totalSeconds = d * 86400 + h * 3600 + m * 60 + s;
-    const reducedSeconds = totalSeconds / (1 + buff / 100);
+  function calculate() {
+    const d = parseFloat(document.getElementById('baseDays').value) || 0;
+    const h = parseFloat(document.getElementById('baseHours').value) || 0;
+    const m = parseFloat(document.getElementById('baseMinutes').value) || 0;
+    const s = parseFloat(document.getElementById('baseSeconds').value) || 0;
+    const buffPercent = parseFloat(document.getElementById('buffPercent').value) || 0;
+    const totalBuffDecimal = buffPercent / 100;
+    let baseSecs = (d * 86400) + (h * 3600) + (m * 60) + s;
+    buffedTimeInSeconds = baseSecs / (1 + totalBuffDecimal);
+    const bd = Math.floor(buffedTimeInSeconds / 86400);
+    buffedTimeInSeconds %= 86400;
+    const bh = Math.floor(buffedTimeInSeconds / 3600);
+    buffedTimeInSeconds %= 3600;
+    const bm = Math.floor(buffedTimeInSeconds / 60);
+    const bs = Math.floor(buffedTimeInSeconds % 60);
+    buffedTimeInSeconds = (bd * 86400) + (bh * 3600) + (bm * 60) + bs;
+    document.getElementById('resultBox').innerHTML = `Buffed Time: ${bd}d ${bh}h ${bm}m ${bs}s`;
+    document.getElementById('showManualBtn').style.display = 'inline-block';
+  }
 
-    const rd = Math.floor(reducedSeconds / 86400);
-    const rh = Math.floor((reducedSeconds % 86400) / 3600);
-    const rm = Math.floor((reducedSeconds % 3600) / 60);
-    const rs = Math.floor(reducedSeconds % 60);
+  function showManual() { 
+    document.getElementById('manualSection').style.display = 'block'; 
+  }
 
-    document.getElementById('result').innerText = `Buffed Time: ${rd}d ${rh}h ${rm}m ${rs}s`;
-}
+  function calculateFinal() {
+    const sh = parseFloat(document.getElementById('speedHours').value) || 0;
+    const sm = parseFloat(document.getElementById('speedMinutes').value) || 0;
+    const ss = parseFloat(document.getElementById('speedSeconds').value) || 0;
+    const days = parseFloat(document.getElementById('calcDays').value) || 0;
+    const helps = parseFloat(document.getElementById('helps').value) || 0;
+    const helpTime = parseFloat(document.getElementById('helpTime').value) || 0;
+    const speedUpSecs = (sh * 3600 + sm * 60 + ss) * days;
+    const helpSecs = helps * helpTime * 60;
+    let finalSecs = buffedTimeInSeconds - speedUpSecs - helpSecs;
+    if (finalSecs < 0) finalSecs = 0;
+    const fd = Math.floor(finalSecs / 86400);
+    finalSecs %= 86400;
+    const fh = Math.floor(finalSecs / 3600);
+    finalSecs %= 3600;
+    const fm = Math.floor(finalSecs / 60);
+    const fs = Math.floor(finalSecs % 60);
+    document.getElementById('finalResultBox').innerHTML = `Final Time: ${fd}d ${fh}h ${fm}m ${fs}s`;
+  }
 
-function resetForm() {
-    document.getElementById('days').value = '';
-    document.getElementById('hours').value = '';
-    document.getElementById('minutes').value = '';
-    document.getElementById('seconds').value = '';
-    document.getElementById('buff').value = '';
-    document.getElementById('result').innerText = '';
-}
+  function resetForm() {
+    document.querySelectorAll('input').forEach(input => input.value = '');
+    document.getElementById('resultBox').innerHTML = '';
+    document.getElementById('finalResultBox').innerHTML = '';
+    document.getElementById('manualSection').style.display = 'none';
+    document.getElementById('showManualBtn').style.display = 'none';
+    buffedTimeInSeconds = 0;
+  }
 </script>
+  <p>
+    Follow these steps when using the calculator:<br>
+    <a href="quick_guide.html" style="color: gold; text-decoration: underline;">Quick Guide</a>
+  </p>
 
+  <footer>
+    Created for World Trigger Border Alliance Members and Server #1009 ONLY!<br>
+    Courtesy of BAD TRIPP
+  </footer>
 </body>
 </html>
