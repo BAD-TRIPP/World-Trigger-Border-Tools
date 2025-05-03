@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>World Trigger Border Tools</title>
+  <title>World Trigger BRDR Tools</title>
 
   <!-- PWA tags -->
   <link rel="manifest" href="manifest.json">
@@ -17,136 +17,91 @@
     if (!localStorage.getItem("brdr_access_granted")) {
       var password = prompt("Enter password to access BRDR Tools:");
       if (password === "1009") {
-        localStorage.setItem("brdr_access_granted", "true");
+        localStorage.setItem("brdr_access_granted", "true"); 
       } else {
         alert("Access denied.");
-        window.location.href = "https://google.com";
+        window.location.href = "https://www.lastwartutorial.com/";
       }
     }
   </script>
-<style>
-  body {
-    background-color: #000;
-    color: #f0f0f0;
-    font-family: Arial, sans-serif;
-    text-align: center;
-    padding: 10px;
-  }
 
-  .container {
-    max-width: 600px;
-    margin: auto;
-    padding: 10px;
-  }
+  <style>
+    body {
+      background-color: #000;
+      color: #f0f0f0;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 10px;
+    }
 
-  h1, h2, h3 {
-    color: gold;
-  }
+    .container {
+      max-width: 600px;
+      margin: auto;
+      padding: 10px;
+    }
 
-  label {
-    font-weight: bold;
-  }
+    h1 {
+      color: gold;
+    }
 
-  input {
-    width: 90%;
-    padding: 8px;
-    margin: 4px 0;
-    border-radius: 4px;
-    border: 1px solid #444;
-    background-color: #1a1a1a;
-    color: white;
-  }
+    .button {
+      display: inline-block;
+      margin: 10px 0;
+      padding: 12px 20px;
+      font-size: 1.1em;
+      background-color: transparent;
+      color: gold;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 5px;
+      border: 2px solid gold;
+      width: 90%;
+      transition: all 0.3s ease;
+    }
 
-  button {
-    padding: 10px 15px;
-    margin-top: 10px;
-    background-color: transparent;
-    color: gold;
-    font-weight: bold;
-    border: 2px solid gold;
-    border-radius: 5px;
-    transition: all 0.3s ease;
-  }
+    .button:hover {
+      background-color: gold;
+      color: black;
+    }
 
-  button:hover {
-    background-color: gold;
-    color: black;
-  }
+    .button span.icon {
+      font-size: 1.4em;
+      vertical-align: middle;
+      margin-right: 5px;
+    }
 
-  .back-button {
-    display: inline-block;
-    margin-bottom: 10px;
-    padding: 10px 15px;
-    background-color: transparent;
-    color: gold;
-    font-weight: bold;
-    text-decoration: none;
-    border: 2px solid gold;
-    border-radius: 5px;
-    transition: all 0.3s ease;
-  }
-
-  .back-button:hover {
-    background-color: gold;
-    color: black;
-  }
-
-  .button span.icon {
-    font-size: 1.4em;
-    vertical-align: middle;
-    margin-right: 5px;
-  }
-
-  .resource-section {
-    border: 1px solid #444;
-    border-radius: 5px;
-    padding: 10px;
-    margin-bottom: 15px;
-  }
-
-  .remove-btn {
-    background-color: #333;
-    color: red;
-    border: 1px solid red;
-    font-size: 0.9em;
-    padding: 5px;
-    border-radius: 3px;
-  }
-
-  .result-box {
-    background-color: #222;
-    border-radius: 5px;
-    padding: 10px;
-    margin-top: 10px;
-    color: gold;
-    font-weight: bold;
-  }
-
-  footer {
-    margin-top: 20px;
-    color: #888;
-    font-size: 0.9em;
-  }
-</style>
-
+    footer {
+      margin-top: 20px;
+      color: #888;
+      font-size: 0.9em;
+    }
+  </style>
 </head>
+
 <body>
+  <div class="container">
 
-  <img src="brdr_logo.png" alt="BRDR Logo" class="logo">
-  <h1>Alliance Tools</h1>
+    <img src="brdr_logo.png" alt="BRDR Logo" style="max-width: 200px; margin-bottom: 15px;">
+    <h1>BRDR Alliance Tools</h1>
 
-<a href="development-buff-calculator-mobile.html" class="button">🏗 🔬 🎯 Development Buff Calculator</a><br>
-<a href="resource-production-calculator-mobile.html" class="button">🍞🪓💰 RSS Production Calculator</a><br>
+    <a href="development-buff-calculator-mobile.html" class="button">
+      <span class="icon">🏗 🔬 🎯</span> Development Buff Calculator
+    </a><br>
 
-  <p>
-    Follow these steps when using the calculator:
-    <a href="quick_guide.html" style="color: gold; text-decoration: underline;">Quick Guide</a>
-  </p>
+    <a href="resource-production-calculator-mobile.html" class="button">
+      <span class="icon">🍞 🪓 💰</span> RSS Production Calculator
+    </a><br>
 
-  <footer>
-    Created for World Trigger Border Alliance Members and Server #1009 ONLY!<br>
-    Courtesy of BAD TRIPP
-  </footer>
+    <p style="margin-top: 15px;">
+      Need help? <a href="quick_guide.html" style="color: gold;">Quick Guide</a>
+    </p>
 
+    <footer>
+      Created for World Trigger Border Alliance Members and Server #1009 ONLY!<br>
+      Courtesy of BAD TRIPP
+    </footer>
+
+  </div>
 </body>
 </html>
+
