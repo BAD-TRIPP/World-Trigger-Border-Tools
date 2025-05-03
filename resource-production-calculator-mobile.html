@@ -4,21 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- PWA & App settings -->
+  <title>Resource Production Calculator</title>
+
+  <!-- PWA tags -->
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#FFD700">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-title" content="BRDR Tools">
   <link rel="apple-touch-icon" href="brdr_logo.png">
 
-  <title>Resource Production Calculator</title>
-
   <!-- Password protection -->
   <script>
     if (!localStorage.getItem("brdr_access_granted")) {
       var password = prompt("Enter password to access BRDR Tools:");
       if (password === "1009") {
-        localStorage.setItem("brdr_access_granted", "true"); 
+        localStorage.setItem("brdr_access_granted", "true");
       } else {
         alert("Access denied.");
         window.location.href = "https://www.lastwartutorial.com/";
@@ -31,82 +31,131 @@
       background-color: #000000;
       color: #f0f0f0;
       font-family: Arial, sans-serif;
-      margin: auto;
-      padding: 10px;
       text-align: center;
+      padding: 10px;
     }
-    h1 { text-align: center; color: gold; font-size: 1.5em; }
-    a.back-button { display: inline-block; margin-bottom: 15px; padding: 10px 15px; background-color: gold; color: black; text-decoration: none; font-weight: bold; border-radius: 5px; }
-    label { display: block; margin-top: 10px; font-weight: bold; font-size: 1em; }
-    input, button { width: 100%; padding: 10px; margin-top: 5px; font-size: 1em; background: #1a1a1a; color: white; border: 1px solid #444; border-radius: 4px; box-sizing: border-box; }
-    button { background-color: gold; color: black; font-weight: bold; cursor: pointer; border: none; margin-top: 10px; }
-    .result { margin-top: 20px; background: #222; padding: 15px; border-radius: 5px; font-size: 1.2em; font-weight: bold; color: gold; text-align: center; word-wrap: break-word; }
+    h1 { color: gold; font-size: 1.5em; }
+    label { font-weight: bold; }
+    input { width: 80%; padding: 10px; margin: 5px 0; background: #1a1a1a; color: white; border: 1px solid #444; border-radius: 4px; }
+    button { background-color: gold; color: black; font-weight: bold; padding: 10px; margin: 5px; border: none; border-radius: 5px; cursor: pointer; }
+    .result { margin-top: 15px; padding: 10px; background: #222; color: gold; border-radius: 5px; font-weight: bold; }
+    .back-button { background-color: gold; color: black; text-decoration: none; padding: 10px 15px; border-radius: 5px; display: inline-block; margin: 10px 0; }
+    .section { border: 1px solid #444; padding: 10px; border-radius: 5px; margin: 10px 0; }
+    .remove-btn { background-color: #333; color: red; border: 1px solid red; font-size: 0.9em; padding: 5px; }
+    .resource-row { margin: 5px 0; }
   </style>
 </head>
-
 <body>
 
-  <img src="brdr_logo.png" alt="BRDR Logo" style="display:block; margin: 0 auto 25px auto; max-width: 250px;">
-  <h1>BRDR Resource Production Calculator</h1>
-  <a href="index.html" class="back-button">← Back to Main Menu</a>
+<img src="brdr_logo.png" alt="BRDR Logo" style="display:block; margin:0 auto 20px auto; max-width: 200px;">
+<h1>BRDR Resource Production Calculator</h1>
+<a href="index.html" class="back-button">← Back to Main Menu</a>
 
-  <!-- Food -->
-  <label>Food:</label>
-  <input type="number" id="foodBuildings" placeholder="Number of Farms">
-  <input type="number" id="foodOutput" placeholder="Food Output per Building (per hour)">
+<!-- FOOD SECTION -->
+<div class="section">
+  <h3>🍞 Food Farms</h3>
+  <div id="foodRows"></div>
+  <button onclick="addRow('foodRows')">+ Add Farm</button><br>
+  <label>Food Buff (%)</label><br>
+  <input type="number" id="foodBuff" placeholder="Food Buff %">
+</div>
 
-  <!-- Iron -->
-  <label>Iron:</label>
-  <input type="number" id="ironBuildings" placeholder="Number of Iron Mines">
-  <input type="number" id="ironOutput" placeholder="Iron Output per Building (per hour)">
+<!-- IRON SECTION -->
+<div class="section">
+  <h3>🪓 Iron Mines</h3>
+  <div id="ironRows"></div>
+  <button onclick="addRow('ironRows')">+ Add Mine</button><br>
+  <label>Iron Buff (%)</label><br>
+  <input type="number" id="ironBuff" placeholder="Iron Buff %">
+</div>
 
-  <!-- Gold -->
-  <label>Gold:</label>
-  <input type="number" id="goldBuildings" placeholder="Number of Gold Mines">
-  <input type="number" id="goldOutput" placeholder="Gold Output per Building (per hour)">
+<!-- COIN SECTION -->
+<div class="section">
+  <h3>💰 Gold Mines</h3>
+  <div id="coinRows"></div>
+  <button onclick="addRow('coinRows')">+ Add Mine</button><br>
+  <label>Coin Buff (%)</label><br>
+  <input type="number" id="coinBuff" placeholder="Coin Buff %">
+</div>
 
-  <!-- Buff -->
-  <label>Total Resource Buff % (same for all):</label>
-  <input type="number" id="buffPercent" placeholder="Example: 83.5">
+<button onclick="calculateProduction()">Calculate Production</button>
 
-  <button onclick="calculate()">Calculate Total Production</button>
+<div id="resultBox" class="result"></div>
 
-  <div class="result" id="resultBox"></div>
+<button onclick="resetForm()">Reset</button>
 
-  <button onclick="resetForm()">Reset</button>
+<p>
+  Follow these steps when using the calculator:<br>
+  <a href="quick_guide.html" style="color: gold;">Quick Guide</a>
+</p>
 
-  <p>
-    Follow these steps when using the calculator:<br>
-    <a href="quick_guide.html" style="color: gold; text-decoration: underline;">Quick Guide</a>
-  </p>
-
-  <footer>
-    Created for World Trigger Border Alliance Members and Server #1009 ONLY!<br>
-    Courtesy of BAD TRIPP
-  </footer>
+<footer>
+  Created for World Trigger Border Alliance Members and Server #1009 ONLY!<br>
+  Courtesy of BAD TRIPP
+</footer>
 
 <script>
-function calculate() {
-  const foodBuildings = parseFloat(document.getElementById('foodBuildings').value) || 0;
-  const foodOutput = parseFloat(document.getElementById('foodOutput').value) || 0;
-  const ironBuildings = parseFloat(document.getElementById('ironBuildings').value) || 0;
-  const ironOutput = parseFloat(document.getElementById('ironOutput').value) || 0;
-  const goldBuildings = parseFloat(document.getElementById('goldBuildings').value) || 0;
-  const goldOutput = parseFloat(document.getElementById('goldOutput').value) || 0;
-  const buffPercent = parseFloat(document.getElementById('buffPercent').value) || 0;
+function addRow(sectionId) {
+  const container = document.getElementById(sectionId);
+  const row = document.createElement('div');
+  row.className = "resource-row";
+  row.innerHTML = `
+    <input type="number" placeholder="Quantity" style="width:30%;" class="qty">
+    <input type="number" placeholder="Output/hr each" style="width:50%;" class="prod">
+    <button class="remove-btn" onclick="this.parentNode.remove()">Remove</button>
+  `;
+  container.appendChild(row);
+}
 
-  const foodTotal = foodBuildings * foodOutput * (1 + buffPercent / 100);
-  const ironTotal = ironBuildings * ironOutput * (1 + buffPercent / 100);
-  const goldTotal = goldBuildings * goldOutput * (1 + buffPercent / 100);
+function calculateProduction() {
+  const foodBuff = parseFloat(document.getElementById('foodBuff').value) || 0;
+  const ironBuff = parseFloat(document.getElementById('ironBuff').value) || 0;
+  const coinBuff = parseFloat(document.getElementById('coinBuff').value) || 0;
 
-  document.getElementById('resultBox').innerHTML = 
-    `Total Food/hr: ${Math.round(foodTotal).toLocaleString()}<br>` +
-    `Total Iron/hr: ${Math.round(ironTotal).toLocaleString()}<br>` +
-    `Total Gold/hr: ${Math.round(goldTotal).toLocaleString()}`;
+  const foodHourly = calculateResource('foodRows') * (1 + foodBuff / 100);
+  const ironHourly = calculateResource('ironRows') * (1 + ironBuff / 100);
+  const coinHourly = calculateResource('coinRows') * (1 + coinBuff / 100);
+
+  const foodDaily = foodHourly * 24;
+  const ironDaily = ironHourly * 24;
+  const coinDaily = coinHourly * 24;
+
+  const foodWeekly = foodHourly * 168;
+  const ironWeekly = ironHourly * 168;
+  const coinWeekly = coinHourly * 168;
+
+  document.getElementById('resultBox').innerHTML = `
+    🍞 <b>Food Production:</b><br>
+    Hourly: ${Math.round(foodHourly).toLocaleString()}<br>
+    Daily: ${Math.round(foodDaily).toLocaleString()}<br>
+    Weekly: ${Math.round(foodWeekly).toLocaleString()}<br><br>
+
+    🪓 <b>Iron Production:</b><br>
+    Hourly: ${Math.round(ironHourly).toLocaleString()}<br>
+    Daily: ${Math.round(ironDaily).toLocaleString()}<br>
+    Weekly: ${Math.round(ironWeekly).toLocaleString()}<br><br>
+
+    💰 <b>Coin Production:</b><br>
+    Hourly: ${Math.round(coinHourly).toLocaleString()}<br>
+    Daily: ${Math.round(coinDaily).toLocaleString()}<br>
+    Weekly: ${Math.round(coinWeekly).toLocaleString()}
+  `;
+}
+
+function calculateResource(sectionId) {
+  let total = 0;
+  const rows = document.getElementById(sectionId).querySelectorAll('.resource-row');
+  rows.forEach(row => {
+    const qty = parseFloat(row.querySelector('.qty')?.value) || 0;
+    const prod = parseFloat(row.querySelector('.prod')?.value) || 0;
+    total += qty * prod;
+  });
+  return total;
 }
 
 function resetForm() {
-  document.querySelectorAll('input').forEach(input => input.value = '');
+  ['foodRows', 'ironRows', 'coinRows'].forEach(id => document.getElementById(id).innerHTML = '');
+  ['foodBuff', 'ironBuff', 'coinBuff'].forEach(id => document.getElementById(id).value = '');
   document.getElementById('resultBox').innerHTML = '';
 }
 </script>
