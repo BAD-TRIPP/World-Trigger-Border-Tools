@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Training Buff Calculator</title>
+
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#FFD700">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="BRDR Tools">
+  <link rel="apple-touch-icon" href="brdr_logo.png">
+
+  <script>
+    if (!localStorage.getItem("brdr_access_granted")) {
+      var password = prompt("Enter password to access BRDR Tools:");
+      if (password === "1009") {
+        localStorage.setItem("brdr_access_granted", "true");
+      } else {
+        alert("Access denied.");
+        window.location.href = "https://google.com";
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #000;
+      color: #f0f0f0;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 20px;
+    }
+    h1 {
+      color: gold;
+    }
+    input {
+      width: 90%;
+      max-width: 300px;
+      padding: 10px;
+      margin-top: 5px;
+      background: #1a1a1a;
+      color: white;
+      border: 1px solid #444;
+      border-radius: 4px;
+    }
+    button {
+      background-color: gold;
+      color: black;
+      padding: 10px 20px;
+      margin-top: 10px;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .result {
+      margin-top: 20px;
+      font-size: 1.2em;
+      font-weight: bold;
+      color: gold;
+    }
+    .back-button {
+      display: inline-block;
+      margin-bottom: 15px;
+      padding: 10px 15px;
+      background-color: gold;
+      color: black;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+
+<a href="index.html" class="back-button">← Back to Main Menu</a>
+<img src="brdr_logo.png" alt="BRDR Logo" style="display:block; margin: 0 auto 15px auto; max-width: 150px;">
+<h1>BRDR Troop Training Time Calculator</h1>
+
+<label>Original Training Time:</label><br>
+<input type="number" id="days" placeholder="Days">
+<input type="number" id="hours" placeholder="Hours">
+<input type="number" id="minutes" placeholder="Minutes">
+<input type="number" id="seconds" placeholder="Seconds"><br>
+
+<label>Training Speed Buff (%)</label><br>
+<input type="number" id="buff" placeholder="Example: 150"><br>
+
+<button onclick="calculate()">Calculate Buffed Time</button>
+
+<div class="result" id="result"></div>
+
+<p>
+  Need help? 
+  <a href="quick_guide.html" style="color: gold; text-decoration: underline;">Quick Guide</a>
+</p>
+
+<footer>
+  Created for World Trigger Border Alliance Members and Server #1009 ONLY!<br>
+  Courtesy of BAD TRIPP
+</footer>
+
+<script>
+  function calculate() {
+    let d = parseFloat(document.getElementById('days').value) || 0;
+    let h = parseFloat(document.getElementById('hours').value) || 0;
+    let m = parseFloat(document.getElementById('minutes').value) || 0;
+    let s = parseFloat(document.getElementById('seconds').value) || 0;
+
+    let originalSeconds = (d * 86400) + (h * 3600) + (m * 60) + s;
+
+    let buffPercent = parseFloat(document.getElementById('buff').value) || 0;
+    let buffDecimal = buffPercent / 100;
+
+    let buffedSeconds = originalSeconds / (1 + buffDecimal);
+
+    let bd = Math.floor(buffedSeconds / 86400);
+    let bh = Math.floor((buffedSeconds % 86400) / 3600);
+    let bm = Math.floor((buffedSeconds % 3600) / 60);
+    let bs = Math.floor(buffedSeconds % 60);
+
+    document.getElementById('result').innerHTML =
+      `Buffed Training Time: ${bd}d ${bh}h ${bm}m ${bs}s`;
+  }
+</script>
+
+</body>
+</html>
