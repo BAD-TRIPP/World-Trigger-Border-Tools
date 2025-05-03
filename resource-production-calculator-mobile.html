@@ -23,88 +23,145 @@
   <style>
     body { background-color: #000; color: #f0f0f0; font-family: Arial, sans-serif; text-align: center; padding: 10px; }
     h1 { color: gold; }
-    .resource-section { border: 2px solid gold; padding: 10px; margin: 10px 0; border-radius: 8px; }
-    .resource-section h2 { color: gold; }
-    label { display: inline-block; width: 45%; text-align: left; margin: 5px 0; }
-    input { width: 45%; padding: 5px; margin: 5px 0; }
-    button { padding: 10px 20px; background-color: gold; color: black; border: none; border-radius: 5px; font-weight: bold; cursor: pointer; }
-    .result { margin-top: 10px; font-weight: bold; }
+    h3 { color: gold; }
+    label { font-weight: bold; }
+    input { width: 90%; padding: 8px; margin: 4px 0; border-radius: 4px; border: 1px solid #444; background-color: #1a1a1a; color: white; }
+    button {
+      padding: 10px 15px; margin-top: 10px;
+      background-color: gold; color: black; font-weight: bold;
+      border: none; border-radius: 5px;
+    }
+    .back-button {
+      background-color: gold; color: black;
+      text-decoration: none; padding: 10px 15px;
+      border-radius: 5px; display: inline-block; margin-bottom: 10px;
+    }
+    .resource-section {
+      border: 1px solid #444; border-radius: 5px;
+      padding: 10px; margin-bottom: 15px;
+    }
+    .remove-btn {
+      background-color: #333; color: red; border: 1px solid red;
+      font-size: 0.9em; padding: 5px;
+    }
+    .result-box {
+      background-color: #222; border-radius: 5px;
+      padding: 10px; margin-top: 10px; color: gold;
+      font-weight: bold;
+    }
   </style>
 </head>
 <body>
+
 <img src="brdr_logo.png" alt="BRDR Logo" style="max-width: 200px;">
 <h1>RSS Production Calculator</h1>
-<a href="index.html" style="color: gold; text-decoration: none;">← Back to Main Menu</a>
+<a href="index.html" class="back-button">← Back to Main Menu</a>
 
-<form id="rssForm">
-  <div class="resource-section">
-    <h2>Food</h2>
-    <label>Number of Farms:</label><input type="number" id="foodQuantity"><br>
-    <label>Hourly Output per Farm:</label><input type="number" id="foodOutput"><br>
-    <label>Food Buff %:</label><input type="number" id="foodBuff"><br>
-    <label>Secretary Uses per Day:</label><input type="number" id="foodSecretary"><br>
-    <div class="result" id="foodResult"></div>
-  </div>
+<!-- Secretary field -->
+<label>Secretary of Interior Sessions per Day:</label><br>
+<input type="number" id="secretaryUses" placeholder="Example: 5"><br><br>
 
-  <div class="resource-section">
-    <h2>Iron</h2>
-    <label>Number of Mines:</label><input type="number" id="ironQuantity"><br>
-    <label>Hourly Output per Mine:</label><input type="number" id="ironOutput"><br>
-    <label>Iron Buff %:</label><input type="number" id="ironBuff"><br>
-    <label>Secretary Uses per Day:</label><input type="number" id="ironSecretary"><br>
-    <div class="result" id="ironResult"></div>
-  </div>
+<!-- FOOD SECTION -->
+<div class="resource-section" id="foodSection">
+  <h3>🍞 Food Farms</h3>
+  <div id="foodInputs"></div>
+  <button type="button" onclick="addResourceInput('food')">+ Add Farm</button><br>
+  <label>Food Output Buff (%)</label><br>
+  <input type="number" id="foodBuff" placeholder="Example: 83.5"><br>
+  <div class="result-box" id="foodResult"></div>
+</div>
 
-  <div class="resource-section">
-    <h2>Gold</h2>
-    <label>Number of Mints:</label><input type="number" id="goldQuantity"><br>
-    <label>Hourly Output per Mint:</label><input type="number" id="goldOutput"><br>
-    <label>Gold Buff %:</label><input type="number" id="goldBuff"><br>
-    <label>Secretary Uses per Day:</label><input type="number" id="goldSecretary"><br>
-    <div class="result" id="goldResult"></div>
-  </div>
+<!-- IRON SECTION -->
+<div class="resource-section" id="ironSection">
+  <h3>🪓 Iron Mines</h3>
+  <div id="ironInputs"></div>
+  <button type="button" onclick="addResourceInput('iron')">+ Add Iron Mine</button><br>
+  <label>Iron Output Buff (%)</label><br>
+  <input type="number" id="ironBuff" placeholder="Example: 85.5"><br>
+  <div class="result-box" id="ironResult"></div>
+</div>
 
-  <button type="button" onclick="calculate()">Calculate Production</button>
-</form>
+<!-- COIN SECTION -->
+<div class="resource-section" id="coinSection">
+  <h3>💰 Gold Mints</h3>
+  <div id="coinInputs"></div>
+  <button type="button" onclick="addResourceInput('coin')">+ Add Mint</button><br>
+  <label>Coin Output Buff (%)</label><br>
+  <input type="number" id="coinBuff" placeholder="Example: 106"><br>
+  <div class="result-box" id="coinResult"></div>
+</div>
+
+<button onclick="calculateProduction()">Calculate All</button>
+<button onclick="resetForm()">Reset</button>
 
 <script>
-function calculate() {
-  calculateResource("food", 100);
-  calculateResource("iron", 100);
-  calculateResource("gold", 100);
-}
+  function addResourceInput(type) {
+    const container = document.getElementById(type + "Inputs");
+    const div = document.createElement("div");
+    div.innerHTML = `
+      <input type="number" placeholder="Quantity" style="width: 40%;"> 
+      <input type="number" placeholder="Output/hr" style="width: 40%;"> 
+      <button class="remove-btn" onclick="this.parentNode.remove()">Remove</button>
+    `;
+    container.appendChild(div);
+  }
 
-function calculateResource(type, secretaryBoost) {
-  const output = parseFloat(document.getElementById(type + "Output").value) || 0;
-  const quantity = parseFloat(document.getElementById(type + "Quantity").value) || 0;
-  const buff = parseFloat(document.getElementById(type + "Buff").value) || 0;
-  const secretaryUses = parseFloat(document.getElementById(type + "Secretary").value) || 0;
+  function calculateProduction() {
+    const secretaryUses = parseFloat(document.getElementById("secretaryUses").value) || 0;
+    calculateResource("food", parseFloat(document.getElementById("foodBuff").value) || 0, secretaryUses, "foodResult");
+    calculateResource("iron", parseFloat(document.getElementById("ironBuff").value) || 0, secretaryUses, "ironResult");
+    calculateResource("coin", parseFloat(document.getElementById("coinBuff").value) || 0, secretaryUses, "coinResult");
+  }
 
-  const hourlyBase = output * quantity;
-  const hourlyWithBuff = hourlyBase * (1 + buff / 100);
-  const daily = hourlyWithBuff * 24;
-  const weekly = daily * 7;
-  const monthly = daily * 30;
+  function calculateResource(type, buff, secretaryUses, resultId) {
+    let total = 0;
+    const rows = document.getElementById(type + "Inputs").querySelectorAll("div");
+    rows.forEach(row => {
+      const inputs = row.querySelectorAll("input");
+      const qty = parseFloat(inputs[0].value) || 0;
+      const output = parseFloat(inputs[1].value) || 0;
+      total += qty * output;
+    });
 
-  const secretaryBonusPerUse = hourlyWithBuff * (secretaryBoost / 100) * (5 / 60); // 5 minutes
-  const totalSecretaryBonusDaily = secretaryBonusPerUse * secretaryUses;
-  const totalSecretaryBonusWeekly = totalSecretaryBonusDaily * 7;
-  const totalSecretaryBonusMonthly = totalSecretaryBonusDaily * 30;
+    const hourly = total * (1 + buff / 100);
+    const daily = hourly * 24;
+    const weekly = daily * 7;
+    const monthly = daily * 30;
 
-  const dailyTotal = daily + totalSecretaryBonusDaily;
-  const weeklyTotal = weekly + totalSecretaryBonusWeekly;
-  const monthlyTotal = monthly + totalSecretaryBonusMonthly;
+    // Secretary Bonus
+    const secretaryBonusPerUse = hourly * 1.0 * (5 / 60); // 100% bonus for 5 minutes converted to hours
+    const totalSecretaryBonusDaily = secretaryBonusPerUse * secretaryUses;
+    const totalSecretaryBonusWeekly = totalSecretaryBonusDaily * 7;
+    const totalSecretaryBonusMonthly = totalSecretaryBonusDaily * 30;
 
-  document.getElementById(type + "Result").innerHTML =
-    `Hourly: ${hourlyWithBuff.toFixed(2)} | Daily: ${dailyTotal.toFixed(2)}<br>
-     Weekly: ${weeklyTotal.toFixed(2)} | Monthly: ${monthlyTotal.toFixed(2)}<br>
-     Secretary Bonus Daily: +${totalSecretaryBonusDaily.toFixed(2)}`;
-}
+    const dailyTotal = daily + totalSecretaryBonusDaily;
+    const weeklyTotal = weekly + totalSecretaryBonusWeekly;
+    const monthlyTotal = monthly + totalSecretaryBonusMonthly;
+
+    document.getElementById(resultId).innerHTML =
+      `Hourly: ${hourly.toLocaleString(undefined, { maximumFractionDigits: 0 })}<br>
+       Daily: ${dailyTotal.toLocaleString(undefined, { maximumFractionDigits: 0 })}<br>
+       Weekly: ${weeklyTotal.toLocaleString(undefined, { maximumFractionDigits: 0 })}<br>
+       Monthly: ${monthlyTotal.toLocaleString(undefined, { maximumFractionDigits: 0 })}<br>
+       Secretary Bonus Daily: +${totalSecretaryBonusDaily.toLocaleString(undefined, { maximumFractionDigits: 0 })}`;
+  }
+
+  function resetForm() {
+    ["foodInputs", "ironInputs", "coinInputs"].forEach(id => document.getElementById(id).innerHTML = "");
+    ["foodBuff", "ironBuff", "coinBuff", "secretaryUses"].forEach(id => document.getElementById(id).value = "");
+    ["foodResult", "ironResult", "coinResult"].forEach(id => document.getElementById(id).innerHTML = "");
+  }
 </script>
 
-<footer style="margin-top: 20px; font-size: 0.9em; color: #888;">
-Created for World Trigger Border Alliance Members and Server #1009 ONLY!<br>
-Courtesy of BAD TRIPP
+<p style="margin-top: 15px;">
+  Follow these steps when using the calculator:<br>
+  <a href="quick_guide.html" style="color: gold;">Quick Guide</a>
+</p>
+
+<footer style="margin-top: 10px; font-size: 0.9em; color: #888;">
+  Created for World Trigger Border Alliance Members and Server #1009 ONLY!<br>
+  Courtesy of BAD TRIPP
 </footer>
+
 </body>
 </html>
