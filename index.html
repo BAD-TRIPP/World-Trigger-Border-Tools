@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>World Trigger BRDR Tools</title>
+  <title>Quick Guide</title>
 
   <!-- PWA tags -->
   <link rel="manifest" href="manifest.json">
@@ -17,10 +17,10 @@
     if (!localStorage.getItem("brdr_access_granted")) {
       var password = prompt("Enter password to access BRDR Tools:");
       if (password === "1009") {
-        localStorage.setItem("brdr_access_granted", "true"); 
+        localStorage.setItem("brdr_access_granted", "true");
       } else {
         alert("Access denied.");
-        window.location.href = "https://www.lastwartutorial.com/";
+        window.location.href = "https://google.com";
       }
     }
   </script>
@@ -28,73 +28,224 @@
   <style>
     body {
       background-color: #000;
+      background-image: linear-gradient(180deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 60%);
       color: #f0f0f0;
       font-family: Arial, sans-serif;
-      text-align: center;
-      padding: 10px;
+      padding: 20px;
     }
 
-    .container {
+    .content {
       max-width: 600px;
       margin: auto;
-      padding: 10px;
+      text-align: left;
     }
 
-    h1 {
+    h1, h2 {
       color: gold;
+      text-align: center;
     }
 
-    .button {
-      display: inline-block;
+    ul, ol {
+      padding-left: 20px;
+    }
+
+    li {
       margin: 10px 0;
-      padding: 12px 20px;
-      font-size: 1.1em;
+    }
+
+    a {
+      color: gold;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .back-button {
+      display: inline-block;
+      margin-bottom: 10px;
+      padding: 10px 15px;
       background-color: transparent;
       color: gold;
       font-weight: bold;
       text-decoration: none;
-      border-radius: 5px;
       border: 2px solid gold;
-      width: 90%;
-      transition: all 0.3s ease;
+      border-radius: 5px;
     }
 
-    .button:hover {
+    img.logo {
+      display: block;
+      margin: 0 auto 15px auto;
+      max-width: 200px;
+    }
+
+    button {
+      padding: 10px 15px;
+      margin-top: 10px;
+      background-color: transparent;
+      color: gold;
+      font-weight: bold;
+      border: 2px solid gold;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+      width: 100%;
+    }
+
+    button:hover {
       background-color: gold;
       color: black;
+      border: 2px solid gold;
     }
 
-    .button span.icon {
-      font-size: 1.4em;
-      vertical-align: middle;
-      margin-right: 1px;
+    /* Image styling */
+    .image-row {
+      text-align: center;
+    }
+
+    .image-row img {
+      width: 45%;
+      max-width: 200px;
+      margin: 5px;
+      cursor: pointer;
+      border: 2px solid gold;
+    }
+
+    /* Lightbox styles */
+    #lightbox {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      padding-top: 60px;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.9);
+    }
+
+    #lightbox img {
+      margin: auto;
+      display: block;
+      max-width: 90%;
+      max-height: 80%;
+    }
+
+    #lightbox span {
+      position: absolute;
+      top: 20px;
+      right: 45px;
+      color: #fff;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
     }
 
     footer {
-      margin-top: 20px;
+      margin-top: 25px;
       color: #888;
       font-size: 0.9em;
+      text-align: center;
     }
   </style>
 </head>
-
 <body>
-  <div class="container">
 
-    <img src="brdr_logo.png" alt="BRDR Logo" style="max-width: 200px; margin-bottom: 15px;">
-    <h1>BRDR Alliance Tools</h1>
+  <div class="content">
 
-    <a href="development-buff-calculator-mobile.html" class="button">
-      <span class="icon">🏗 🔬 🎯</span> Buff Calculator
-    </a><br>
+    <img src="brdr_logo.png" alt="BRDR Logo" class="logo">
 
-    <a href="resource-production-calculator-mobile.html" class="button">
-      <span class="icon">🍞 🪓 💰</span> RSS Production Calculator
-    </a><br>
+    <div style="text-align: center;">
+      <a href="index.html" class="back-button">← Back to Main Menu</a>
+    </div>
 
-    <p style="margin-top: 15px;">
-      Need help? <a href="quick_guide.html" style="color: gold;">Quick Guide</a>
-    </p>
+    <br><br><br>
+
+    <h2>Buff Calculator Steps:</h2>
+    <ol>
+      <li>Enter your original time (Days, Hours, Minutes, Seconds).</li>
+      <li>Enter your total Buff % (including secretary buff %).</li>
+      <li>Click "Calculate Buffed Time".</li>
+      <li>Click "Apply Manual Speed-Ups & Help Reductions" (Optional).</li>
+      <li>Enter your daily speed-up time, how many days to calculate, number of helps, and help-time per help.</li>
+      <li>Click "Calculate Final Time" to see your real build time.</li>
+    </ol>
+
+    <br><br>
+
+    <div style="text-align: center;">
+      <h3>Buff Calculator Example Images:</h3>
+    </div>
+
+    <div class="image-row">
+      <img src="buffs-no-sec-dev.jpeg" alt="No Sec Dev Buff" onclick="openLightbox(this.src)">
+      <img src="buffs-sec-dev.jpeg" alt="Sec Dev Buff" onclick="openLightbox(this.src)">
+      <img src="development-buffs.jpeg" alt="Development Buffs" onclick="openLightbox(this.src)">
+      <img src="research-buffs.jpeg" alt="Research Buffs" onclick="openLightbox(this.src)">
+    </div>
+
+    <br><br>
+
+    <h2>Buff Formulas</h2>
+
+    <div style="text-align: left; margin-top: 20px; margin-bottom: 10px; border: 2px solid gold; padding: 10px; border-radius: 5px;">
+      <button onclick="toggleTable()">Show / Hide Formulas</button>
+    </div>
+
+    <div id="formulaTable" style="display: none;">
+      <table style="width: 100%; border-collapse: collapse; color: #f0f0f0; margin-top: 20px;">
+        <tr>
+          <th>Step</th>
+          <th>Formula</th>
+          <th>Description</th>
+        </tr>
+        <tr>
+          <td>1. Buffed Time</td>
+          <td>Buffed Time = Original Time ÷ (1 + Buff % as decimal)</td>
+          <td>Calculates reduced time after applying total buff %.</td>
+        </tr>
+        <tr>
+          <td>2. Total Daily Speed-Up</td>
+          <td>Total Daily Speed-Up = Daily Speed-Up (seconds) × Days</td>
+          <td>Time reduced by daily speed-ups over days.</td>
+        </tr>
+        <tr>
+          <td>3. Total Help Reduction</td>
+          <td>Total Help Reduction = Helps × Help Time per Help (seconds)</td>
+          <td>Time saved from alliance helps.</td>
+        </tr>
+        <tr>
+          <td>4. Final Time</td>
+          <td>Final Time = Buffed Time - (Total Speed-Ups + Total Help Reduction)</td>
+          <td>Actual time remaining after all reductions.</td>
+        </tr>
+      </table>
+      <p style="margin-top: 10px; font-size: 0.9em; color: #ccc;">*Tip: Convert hours, minutes, and seconds into total seconds before calculating.*</p>
+    </div>
+
+    <hr style="border: 1px solid gold; margin: 20px 0;">
+
+    <br><br>
+
+    <h2>RSS Production Calculator Steps:</h2>
+    <ol>
+      <li>For each resource (Food, Iron, Gold), add one or more entries with Quantity and Output/hr.</li>
+      <li>Enter your production Buff % for each resource.</li>
+      <li>Enter how many Secretary of Interior sessions you use daily (optional).</li>
+      <li>Click "Calculate All" to see hourly, daily, weekly, and monthly production.</li>
+    </ol>
+
+    <br><br>
+
+    <div style="text-align: center;">
+      <h3>RSS Calculator Example Images (coming soon):</h3>
+    </div>
+
+    <div class="image-row">
+      <img src="rss-example-1.jpeg" alt="RSS Example 1" onclick="openLightbox(this.src)">
+      <img src="rss-example-2.jpeg" alt="RSS Example 2" onclick="openLightbox(this.src)">
+    </div>
 
     <footer>
       Created for World Trigger Border Alliance Members and Server #1009 ONLY!<br>
@@ -102,5 +253,44 @@
     </footer>
 
   </div>
+
+  <!-- Lightbox Scripts -->
+  <div id="lightbox" onclick="closeLightbox()">
+    <span>&times;</span>
+    <img id="lightbox-img" src="">
+  </div>
+
+  <script>
+    // Formula Table Toggle + Remember State
+    const table = document.getElementById("formulaTable");
+
+    window.onload = () => {
+      const isOpen = localStorage.getItem("brdr_formulas_open");
+      if (isOpen === "true") {
+        table.style.display = "block";
+      }
+    };
+
+    function toggleTable() {
+      if (table.style.display === "none") {
+        table.style.display = "block";
+        localStorage.setItem("brdr_formulas_open", "true");
+      } else {
+        table.style.display = "none";
+        localStorage.setItem("brdr_formulas_open", "false");
+      }
+    }
+
+    // Lightbox
+    function openLightbox(src) {
+      document.getElementById("lightbox-img").src = src;
+      document.getElementById("lightbox").style.display = "block";
+    }
+
+    function closeLightbox() {
+      document.getElementById("lightbox").style.display = "none";
+    }
+  </script>
+
 </body>
 </html>
