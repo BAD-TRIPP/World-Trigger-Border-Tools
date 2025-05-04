@@ -98,24 +98,34 @@
     
     <h1>Buff Calculator</h1>
 
-    <h3>Step 1: Original Time</h3>
+<h3>Enter the Original Time</h3>
+<div style="display: flex; gap: 10px; flex-wrap: wrap;">
+  <div>
     <label>Days</label><br>
-    <input type="number" id="days" placeholder="Days"><br>
+    <input type="number" id="days" placeholder="Days" style="width: 80px;">
+  </div>
+  <div>
     <label>Hours</label><br>
-    <input type="number" id="hours" placeholder="Hours"><br>
+    <input type="number" id="hours" placeholder="Hours" style="width: 80px;">
+  </div>
+  <div>
     <label>Minutes</label><br>
-    <input type="number" id="minutes" placeholder="Minutes"><br>
+    <input type="number" id="minutes" placeholder="Minutes" style="width: 80px;">
+  </div>
+  <div>
     <label>Seconds</label><br>
-    <input type="number" id="seconds" placeholder="Seconds"><br>
+    <input type="number" id="seconds" placeholder="Seconds" style="width: 80px;">
+  </div>
+</div>
 
-    <h3>Step 2: Buff %</h3>
+    <h3>Enter Total Buff %</h3>
     <input type="number" id="buffPercent" placeholder="Total Buff %"><br>
 
     <button onclick="calculate()">Calculate Buffed Time</button>
 
     <div class="result" id="resultBox"></div>
 
-    <h3>Step 3: Manual Reductions (Optional)</h3>
+    <h3>Apply Manual Speed-ups and Help Reductions</h3>
     <label>Daily Speed-Up Time (Hours, Minutes, Seconds)</label><br>
     <input type="number" id="speedHours" placeholder="Hours"><br>
     <input type="number" id="speedMinutes" placeholder="Minutes"><br>
