@@ -258,6 +258,63 @@ th {
       <img src="rss-example-1.jpeg" alt="RSS Example 1" onclick="openLightbox(this.src)">
       <img src="rss-example-2.jpeg" alt="RSS Example 2" onclick="openLightbox(this.src)">
     </div>
+
+<br><br>
+<div style="text-align: center;">
+  <button onclick="toggleExampleTable()" style="background-color: gold; color: black; padding: 10px 15px; border: none; border-radius: 5px; font-weight: bold; cursor: pointer;">
+    Show / Hide Example Table
+  </button>
+</div>
+
+<h2>Food Production Formulas</h2>
+<div style="text-align: center;">
+  <button onclick="toggleRSSFormulas()" style="background-color: gold; color: black; padding: 10px 15px; border: none; border-radius: 5px; font-weight: bold; cursor: pointer;">
+    Show / Hide Formulas
+  </button>
+</div>
+
+<div id="rssFormulaTable" style="display: block;">
+  <table style="width: 100%; border-collapse: collapse; color: #f0f0f0; margin-top: 20px;">
+    <tr>
+      <th>Step</th>
+      <th>Formula</th>
+      <th>Description</th>
+    </tr>
+    <tr>
+      <td>1. Base Production</td>
+      <td>Total Output/hr = Σ (Quantity × Output/hr)</td>
+      <td>Adds up production of all buildings before buffs.</td>
+    </tr>
+    <tr>
+      <td>2. Buffed Production/hr</td>
+      <td>Buffed Output/hr = Base Output/hr × (1 + Buff % as decimal)</td>
+      <td>Applies your total building production buff %.</td>
+    </tr>
+    <tr>
+      <td>3. Secretary of Interior Bonus</td>
+      <td>Boost/hr = Buffed Output/hr × (1 + 100%)</td>
+      <td>Applies 100% boost during Secretary of Interior sessions.</td>
+    </tr>
+    <tr>
+      <td>4. Total Daily Production</td>
+      <td>Daily Output = Buffed Output/hr × 24 + (Boost/hr × Total Secretary Minutes ÷ 60)</td>
+      <td>Combines normal production and Secretary bonus time.</td>
+    </tr>
+    <tr>
+      <td>5. Weekly & Monthly Output</td>
+      <td>Weekly = Daily × 7<br>Monthly = Daily × 30</td>
+      <td>Calculates long-term resource planning.</td>
+    </tr>
+  </table>
+  <p style="margin-top: 10px; font-size: 0.9em; color: #ccc;">*Tip: Buff % must be entered as a decimal for calculations (e.g., 150% → 1.5).*</p>
+</div>
+
+<hr style="border: 1px solid gold; margin: 20px 0;">
+
+
+<hr style="border: 1px solid gold; margin: 20px 0;">
+
+    
     <footer>
       Created for World Trigger Border Alliance Members and Server #1009 ONLY!<br>
       Courtesy of BAD TRIPP
@@ -302,6 +359,12 @@ th {
       document.getElementById("lightbox").style.display = "none";
     }
   </script>
-
+<script>
+  // Example Table Toggle
+  function toggleExampleTable() {
+    const exampleTable = document.getElementById("exampleTable");
+    exampleTable.style.display = (exampleTable.style.display === "none") ? "block" : "none";
+  }
+</script>
 </body>
 </html>
