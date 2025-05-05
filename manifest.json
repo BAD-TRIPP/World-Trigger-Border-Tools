@@ -1,19 +1,19 @@
 {
-  "name": "World Trigger BRDR Tools",
-  "short_name": "BRDR Tools",
+  "name": "BAD TRIPP Tools",
+  "short_name": "BAD TRIPP",
   "start_url": "index.html",
   "display": "standalone",
   "background_color": "#000000",
   "theme_color": "#FFD700",
-  "description": "Buff Calculators and Tools for World Trigger BRDR Alliance",
+  "description": "Buff Calculators and Tools for BAD TRIPP",
   "icons": [
     {
-      "src": "brdr_logo.png",
+      "src": "bad_tripp_logo.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "brdr_logo.png",
+      "src": "bad_tripp_logo.png",
       "sizes": "512x512",
       "type": "image/png"
     }
