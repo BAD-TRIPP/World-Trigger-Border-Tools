@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RSS Production Calculator</title>
+
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#FFD700">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="BAD TRIPP Tools">
+  <link rel="apple-touch-icon" href="bad_tripp_logo.png">
+
+  <script>
+    if (!localStorage.getItem("badtripp_access_granted")) {
+      var password = prompt("Enter password to access BAD TRIPP Tools:");
+      if (password === "1009") {
+        localStorage.setItem("badtripp_access_granted", "true"); 
+      } else {
+        alert("Access denied.");
+        window.location.href = "https://www.lastwartutorial.com/";
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #000;
+      color: #f0f0f0;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 10px;
+    }
+    .container {
+      max-width: 600px;
+      margin: auto;
+    }
+    h1, h3 {
+      color: gold;
+    }
+    label {
+      font-weight: bold;
+    }
+    input {
+      width: 90%;
+      padding: 8px;
+      margin: 4px 0;
+      border-radius: 4px;
+      border: 1px solid #444;
+      background-color: #1a1a1a;
+      color: white;
+    }
+    button {
+      padding: 10px 15px;
+      margin-top: 10px;
+      background-color: gold;
+      color: black;
+      font-size: 1.1em;
+      font-weight: bold;
+      border: 2px solid gold;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+    }
+    button:hover {
+      background-color: transparent;
+      color: gold;
+    }
+    .back-button {
+      display: inline-block;
+      margin-bottom: 10px;
+      padding: 10px 15px;
+      background-color: gold;
+      color: black;
+      font-weight: bold;
+      text-decoration: none;
+      border: 2px solid gold;
+      border-radius: 5px;
+    }
+    .back-button:hover {
+      background-color: transparent;
+      color: gold;
+    }
+    .resource-section {
+      border: 1px solid #444;
+      border-radius: 5px;
+      padding: 10px;
+      margin-bottom: 15px;
+    }
+    .remove-btn {
+      background-color: #333;
+      color: red;
+      border: 1px solid red;
+      font-size: 0.9em;
+      padding: 5px;
+      border-radius: 3px;
+    }
+    .result-box {
+      background-color: #222;
+      border-radius: 5px;
+      padding: 10px;
+      margin-top: 10px;
+      color: gold;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <img src="bad_tripp_logo.png" alt="BAD TRIPP Logo" style="max-width: 200px;"><br>
+    
+    <a href="index.html" class="back-button">← Back to Main Menu</a><br>
+    
+    <h1>RSS Production Calculator</h1>
+
+    <label>Secretary of Interior Sessions per Day:</label><br>
+    <input type="number" id="secretaryUses" placeholder="Example: 5"><br><br>
+
+    <!-- FOOD -->
+    <div class="resource-section" id="foodSection">
+      <h3>🍞 Food Farms</h3>
+      <div id="foodInputs"></div>
+      <button type="button" onclick="addResourceInput('food')">+ Add Farm</button><br><br>
+      <label>Food Output Buff (%)</label><br>
+      <input type="number" id="foodBuff" placeholder="Example: 83.5"><br>
+      <div class="result-box" id="foodResult"></div>
+    </div>
+
+    <!-- IRON -->
+    <div class="resource-section" id="ironSection">
+      <h3>🪓 Iron Mines</h3>
+      <div id="ironInputs"></div>
+      <button type="button" onclick="addResourceInput('iron')">+ Add Iron Mine</button><br><br>
+      <label>Iron Output Buff (%)</label><br>
+      <input type="number" id="ironBuff" placeholder="Example: 85.5"><br>
+      <div class="result-box" id="ironResult"></div>
+    </div>
+
+    <!-- GOLD -->
+    <div class="resource-section" id="coinSection">
+      <h3>💰 Gold Mints</h3>
+      <div id="coinInputs"></div>
+      <button type="button" onclick="addResourceInput('coin')">+ Add Mint</button><br><br>
+      <label>Gold Output Buff (%)</label><br>
+      <input type="number" id="coinBuff" placeholder="Example: 106"><br>
+      <div class="result-box" id="coinResult"></div>
+    </div>
+
+    <button onclick="calculateProduction()">Calculate All</button>
+    <button onclick="resetForm()">Reset</button>
+<br><br>
+    <p style="margin-top: 15px;">
+      Need help? <a href="quick_guide.html" style="color: gold;">Quick Guide</a>
+    </p>
+
+    <footer>
+      Created for BAD TRIPP Members | Server #1009<br>
+      Courtesy of BAD TRIPP
+    </footer>
+
+  </div>
+
+<script>
+  function addResourceInput(type) {
+    const container = document.getElementById(type + "Inputs");
+    const div = document.createElement("div");
+    div.innerHTML = `
+      <input type="number" placeholder="Quantity" style="width: 40%;"> 
+      <input type="number" placeholder="Output/hr" style="width: 40%;"> 
+      <button class="remove-btn" onclick="this.parentNode.remove()">Remove</button>
+    `;
+    container.appendChild(div);
+  }
+
+  function calculateProduction() {
+    const secretaryUses = parseFloat(document.getElementById("secretaryUses").value) || 0;
+    calculateResource("food", parseFloat(document.getElementById("foodBuff").value) || 0, secretaryUses, "foodResult");
+    calculateResource("iron", parseFloat(document.getElementById("ironBuff").value) || 0, secretaryUses, "ironResult");
+    calculateResource("coin", parseFloat(document.getElementById("coinBuff").value) || 0, secretaryUses, "coinResult");
+  }
+
+  function calculateResource(type, buff, secretaryUses, resultId) {
+    let total = 0;
+    const rows = document.getElementById(type + "Inputs").querySelectorAll("div");
+    rows.forEach(row => {
+      const inputs = row.querySelectorAll("input");
+      const qty = parseFloat(inputs[0].value) || 0;
+      const output = parseFloat(inputs[1].value) || 0;
+      total += qty * output;
+    });
+
+    const hourly = total * (1 + buff / 100);
+    const daily = hourly * 24;
+    const weekly = daily * 7;
+    const monthly = daily * 30;
+
+    const secretaryBonusPerUse = hourly * 1.0 * (5 / 60); // 100% bonus for 5 minutes converted to hours
+    const totalSecretaryBonusDaily = secretaryBonusPerUse * secretaryUses;
+    const totalSecretaryBonusWeekly = totalSecretaryBonusDaily * 7;
+    const totalSecretaryBonusMonthly = totalSecretaryBonusDaily * 30;
+
+    const dailyTotal = daily + totalSecretaryBonusDaily;
+    const weeklyTotal = weekly + totalSecretaryBonusWeekly;
+    const monthlyTotal = monthly + totalSecretaryBonusMonthly;
+
+    document.getElementById(resultId).innerHTML =
+      `Hourly: ${hourly.toLocaleString(undefined, { maximumFractionDigits: 0 })}<br>
+       Daily: ${dailyTotal.toLocaleString(undefined, { maximumFractionDigits: 0 })}<br>
+       Weekly: ${weeklyTotal.toLocaleString(undefined, { maximumFractionDigits: 0 })}<br>
+       Monthly: ${monthlyTotal.toLocaleString(undefined, { maximumFractionDigits: 0 })}<br>
+       Secretary Bonus Daily: +${totalSecretaryBonusDaily.toLocaleString(undefined, { maximumFractionDigits: 0 })}`;
+  }
+
+  function resetForm() {
+    ["foodInputs", "ironInputs", "coinInputs"].forEach(id => document.getElementById(id).innerHTML = "");
+    ["foodBuff", "ironBuff", "coinBuff", "secretaryUses"].forEach(id => document.getElementById(id).value = "");
+    ["foodResult", "ironResult", "coinResult"].forEach(id => document.getElementById(id).innerHTML = "");
+  }
+</script>
+
+</body>
+</html>
