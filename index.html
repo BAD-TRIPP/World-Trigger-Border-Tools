@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BAD TRIPP Tools</title>
+
+  <!-- PWA tags -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#FFD700">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="BAD TRIPP Tools">
+  <link rel="apple-touch-icon" href="bad_tripp_logo.png">
+
+  <!-- Password protection -->
+  <script>
+    if (!localStorage.getItem("badtripp_access_granted")) {
+      var password = prompt("Enter password to access BAD TRIPP Tools:");
+      if (password === "1009") {
+        localStorage.setItem("badtripp_access_granted", "true"); 
+      } else {
+        alert("Access denied.");
+        window.location.href = "https://www.lastwartutorial.com/";
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #000;
+      color: #f0f0f0;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 10px;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: auto;
+      padding: 10px;
+    }
+
+    h1 {
+      color: gold;
+    }
+
+    .button {
+      display: inline-block;
+      margin: 10px 0;
+      padding: 12px 20px;
+      font-size: 1.1em;
+      background-color: transparent;
+      color: gold;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 5px;
+      border: 2px solid gold;
+      width: 90%;
+      transition: all 0.3s ease;
+    }
+
+    .button:hover {
+      background-color: gold;
+      color: black;
+    }
+
+    .button span.icon {
+      font-size: 1.4em;
+      vertical-align: middle;
+      margin-right: 1px;
+    }
+
+    footer {
+      margin-top: 20px;
+      color: #888;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+
+    <img src="bad_tripp_logo.png" alt="BAD TRIPP Logo" style="max-width: 200px; margin-bottom: 15px;">
+    <h1>BAD TRIPP Tools</h1>
+
+    <a href="development-buff-calculator-mobile.html" class="button">
+      <span class="icon">🏗 🔬 🎯</span> Buff Calculator
+    </a><br>
+
+    <a href="resource-production-calculator-mobile.html" class="button">
+      <span class="icon">🍞 🪓 💰</span> RSS Production Calculator
+    </a><br>
+
+    <p style="margin-top: 15px;">
+      Need help? <a href="quick_guide.html" style="color: gold;">Quick Guide</a>
+    </p>
+
+    <footer>
+      Created for BAD TRIPP Members | Server #1009<br>
+      Courtesy of BAD TRIPP
+    </footer>
+
+  </div>
+</body>
+</html>
