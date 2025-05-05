@@ -3,19 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>World Trigger BRDR Tools</title>
 
-  <!-- PWA tags -->
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#FFD700">
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-title" content="BRDR Tools">
-  <link rel="apple-touch-icon" href="brdr_logo.png">
+  <meta name="apple-mobile-web-app-title" content="BAD TRIPP Tools">
+  <link rel="apple-touch-icon" href="bad_tripp_logo.png">
 
-  <!-- Password protection -->
+  <title>BAD TRIPP Tools</title>
+
   <script>
     if (!localStorage.getItem("brdr_access_granted")) {
-      var password = prompt("Enter password to access BRDR Tools:");
+      var password = prompt("Enter password to access BAD TRIPP Tools:");
       if (password === "1009") {
         localStorage.setItem("brdr_access_granted", "true"); 
       } else {
@@ -30,77 +29,50 @@
       background-color: #000;
       color: #f0f0f0;
       font-family: Arial, sans-serif;
+      margin: 0 auto;
+      padding: 10px;
       text-align: center;
-      padding: 10px;
     }
-
-    .container {
-      max-width: 600px;
-      margin: auto;
-      padding: 10px;
-    }
-
-    h1 {
-      color: gold;
-    }
-
+    h1 { color: gold; font-size: 1.6em; }
     .button {
       display: inline-block;
-      margin: 10px 0;
-      padding: 12px 20px;
-      font-size: 1.1em;
-      background-color: transparent;
+      margin: 10px;
+      padding: 10px 20px;
       color: gold;
-      font-weight: bold;
+      border: 2px solid gold;
       text-decoration: none;
       border-radius: 5px;
-      border: 2px solid gold;
-      width: 90%;
-      transition: all 0.3s ease;
+      font-size: 1.1em;
     }
-
     .button:hover {
       background-color: gold;
       color: black;
     }
-
-    .button span.icon {
-      font-size: 1.4em;
-      vertical-align: middle;
-      margin-right: 1px;
-    }
-
     footer {
       margin-top: 20px;
       color: #888;
       font-size: 0.9em;
     }
+    img.logo {
+      display: block;
+      margin: 0 auto 20px auto;
+      max-width: 200px;
+    }
   </style>
 </head>
-
 <body>
-  <div class="container">
 
-    <img src="brdr_logo.png" alt="BRDR Logo" style="max-width: 200px; margin-bottom: 15px;">
-    <h1>Alliance Tools</h1>
+  <img src="bad_tripp_logo.png" alt="BAD TRIPP Logo" class="logo">
 
-    <a href="development-buff-calculator-mobile.html" class="button">
-      <span class="icon">🏗 🔬 🎯</span> Buff Calculator
-    </a><br>
+  <h1>BAD TRIPP Tools</h1>
 
-    <a href="resource-production-calculator-mobile.html" class="button">
-      <span class="icon">🍞 🪓 💰</span> RSS Production Calculator
-    </a><br>
+  <a href="development-buff-calculator-mobile.html" class="button">🏗 Buff Calculator</a><br>
+  <a href="resource-production-calculator-mobile.html" class="button">🌾 RSS Production Calculator</a><br>
+  <a href="quick_guide.html" class="button">📖 Quick Guide</a>
 
-    <p style="margin-top: 15px;">
-      Need help? <a href="quick_guide.html" style="color: gold;">Quick Guide</a>
-    </p>
+  <footer>
+    Created by BAD TRIPP | Server #1009
+  </footer>
 
-    <footer>
-      Created for World Trigger Border Alliance Members and Server #1009 ONLY!<br>
-      Courtesy of BAD TRIPP
-    </footer>
-
-  </div>
 </body>
 </html>
