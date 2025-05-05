@@ -8,12 +8,12 @@
   "description": "Buff Calculators and Tools for BAD TRIPP",
   "icons": [
     {
-      "src": "bad_tripp_logo.png",
+      "src": "badtripp-192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "bad_tripp_logo.png",
+      "src": "badtripp-512.png",
       "sizes": "512x512",
       "type": "image/png"
     }
