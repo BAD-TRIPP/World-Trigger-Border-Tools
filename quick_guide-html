@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quick Guide</title>
+
+  <!-- PWA tags -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#FFD700">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="BAD TRIPP Tools">
+  <link rel="apple-touch-icon" href="badtripp_logo.png">
+
+  <!-- Password protection -->
+  <script>
+    if (!localStorage.getItem("badtripp_access_granted")) {
+      var password = prompt("Enter password to access BAD TRIPP Tools:");
+      if (password === "1009") {
+        localStorage.setItem("badtripp_access_granted", "true");
+      } else {
+        alert("Access denied.");
+        window.location.href = "https://google.com";
+      }
+    }
+  </script>
+
+<style>
+  body {
+    background-color: #000;
+    color: #f0f0f0;
+    font-family: Arial, sans-serif;
+    padding: 20px;
+  }
+
+  .content {
+    max-width: 600px;
+    margin: auto;
+    text-align: left;
+  }
+
+  h1, h2 {
+    color: gold;
+    text-align: center;
+  }
+
+  ul, ol {
+    padding-left: 20px;
+  }
+
+  li {
+    margin: 10px 0;
+  }
+
+  a {
+    color: gold;
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+  .back-button {
+    display: inline-block;
+    margin-bottom: 10px;
+    padding: 10px 15px;
+    background-color: gold;
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+    border: 2px solid gold;
+    border-radius: 5px;
+  }
+  .back-button:hover {
+    background-color: transparent;
+    color: gold;
+  }
+  img.logo {
+    display: block;
+    margin: 0 auto 15px auto;
+    max-width: 200px;
+  }
+
+  button {
+    padding: 10px 15px;
+    margin-top: 10px;
+    background-color: gold;
+    color: black;
+    font-weight: bold;
+    border: 2px solid gold;
+    border-radius: 5px;
+    width: 100%;
+  }
+
+  button:hover {
+    background-color: transparent;
+    color: gold;
+  }
+
+  .image-row {
+    text-align: center;
+  }
+
+  .image-row img {
+    width: 45%;
+    max-width: 200px;
+    margin: 5px;
+    border: 2px solid gold;
+    cursor: pointer;
+  }
+
+  #lightbox {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0; top: 0; width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.9);
+  }
+
+  #lightbox img {
+    display: block;
+    margin: auto;
+    max-width: 90%;
+    max-height: 80%;
+  }
+
+  #lightbox span {
+    position: absolute;
+    top: 20px; right: 45px;
+    font-size: 40px;
+    color: white;
+    cursor: pointer;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    color: #f0f0f0;
+    margin-top: 20px;
+    font-size: 0.8em;
+  }
+
+  th, td {
+    padding: 10px;
+    border: 1px solid gold;
+  }
+
+  th {
+    background-color: gold;
+    color: black;
+  }
+
+  footer {
+    margin-top: 25px;
+    font-size: 0.9em;
+    color: #888;
+    text-align: center;
+  }
+</style>
+
+</head>
+<body>
+
+  <div class="content">
+
+    <img src="badtripp_logo.png" alt="BAD TRIPP Tools Logo" class="logo">
+
+    <div style="text-align: center;">
+      <a href="index.html" class="back-button">← Back to Main Menu</a>
+    </div>
+
+    <h2>Buff Calculator Steps:</h2>
+    <ol>
+      <li>Enter your original time (Days, Hours, Minutes, Seconds).</li>
+      <li>Enter your total Buff % (including secretary buff %).</li>
+      <li>Click "Calculate Buffed Time".</li>
+      <li>Click "Apply Manual Speed-Ups & Help Reductions" (Optional).</li>
+      <li>Enter your daily speed-up time, how many days to calculate, number of helps, and help-time per help.</li>
+      <li>Click "Calculate Final Time".</li>
+    </ol>
+
+    <div style="text-align: center;">
+      <h3>Buff Calculator Example Images:</h3>
+    </div>
+    <div class="image-row">
+      <img src="buffs-no-sec-dev.jpeg" alt="No Sec Dev Buff" onclick="openLightbox(this.src)">
+      <img src="buffs-sec-dev.jpeg" alt="Sec Dev Buff" onclick="openLightbox(this.src)">
+      <img src="development-buffs.jpeg" alt="Development Buffs" onclick="openLightbox(this.src)">
+      <img src="research-buffs.jpeg" alt="Research Buffs" onclick="openLightbox(this.src)">
+    </div>
+
+    <h2>Buff Formulas</h2>
+    <button onclick="toggleTable()">Show / Hide Formulas</button>
+    <div id="formulaTable" style="display: block;">
+      <table>
+        <tr><th>Step</th><th>Formula</th><th>Description</th></tr>
+        <tr><td>1. Buffed Time</td><td>Original Time ÷ (1 + Buff %)</td><td>Time after applying total buff %.</td></tr>
+        <tr><td>2. Total Daily Speed-Up</td><td>Daily Speed-Up (sec) × Days</td><td>Speed-up time per day × days.</td></tr>
+        <tr><td>3. Total Help Reduction</td><td>Helps × Help Time (sec)</td><td>Time saved from alliance helps.</td></tr>
+        <tr><td>4. Final Time</td><td>Buffed Time - Reductions</td><td>Final remaining build time.</td></tr>
+      </table>
+    </div>
+
+    <hr style="border: 1px solid gold; margin: 20px 0;">
+
+    <h2>RSS Production Calculator Steps:</h2>
+    <ol>
+      <li>Add entries for each resource (Food, Iron, Gold) with Quantity and Output/hr.</li>
+      <li>Enter Buff % for each resource.</li>
+      <li>Enter Secretary of Interior sessions/day (optional).</li>
+      <li>Click "Calculate All".</li>
+    </ol>
+
+    <div style="text-align: center;">
+      <h3>RSS Calculator Example Images</h3>
+    </div>
+    <div class="image-row">
+      <img src="rss-guide-1.jpeg" alt="RSS Example 1" onclick="openLightbox(this.src)">
+      <img src="rss-guide-2.jpeg" alt="RSS Example 2" onclick="openLightbox(this.src)">
+    </div>
+
+    <h2>Food Production Formulas</h2>
+    <button onclick="toggleRSSFormulas()">Show / Hide Formulas</button>
+    <div id="rssFormulaTable" style="display: block;">
+      <table>
+        <tr><th>Step</th><th>Formula</th><th>Description</th></tr>
+        <tr><td>1. Base Production</td><td>Σ (Quantity × Output/hr)</td><td>Unbuffed hourly production.</td></tr>
+        <tr><td>2. Buffed Production/hr</td><td>Base × (1 + Buff %)</td><td>Buff % applied.</td></tr>
+        <tr><td>3. Secretary Bonus</td><td>Buffed/hr × 100%</td><td>Extra 100% during Secretary sessions.</td></tr>
+        <tr><td>4. Daily Production</td><td>Buffed/hr × 24 + Bonus/hr × Minutes ÷ 60</td><td>Includes Secretary time.</td></tr>
+        <tr><td>5. Weekly & Monthly</td><td>Daily × 7 and Daily × 30</td><td>For long-term planning.</td></tr>
+      </table>
+    </div>
+
+    <hr style="border: 1px solid gold; margin: 20px 0;">
+
+    <footer>
+      Created for Server #1009 | Courtesy of BAD TRIPP
+    </footer>
+
+  </div>
+
+  <!-- Lightbox -->
+  <div id="lightbox" onclick="closeLightbox()">
+    <span>&times;</span>
+    <img id="lightbox-img" src="">
+  </div>
+
+<script>
+  const table = document.getElementById("formulaTable");
+
+  window.onload = () => {
+    const isOpen = localStorage.getItem("badtripp_formulas_open");
+    if (isOpen === "true") {
+      table.style.display = "block";
+    }
+  };
+
+  function toggleTable() {
+    if (table.style.display === "none") {
+      table.style.display = "block";
+      localStorage.setItem("badtripp_formulas_open", "true");
+    } else {
+      table.style.display = "none";
+      localStorage.setItem("badtripp_formulas_open", "false");
+    }
+  }
+
+  function openLightbox(src) {
+    document.getElementById("lightbox-img").src = src;
+    document.getElementById("lightbox").style.display = "block";
+  }
+
+  function closeLightbox() {
+    document.getElementById("lightbox").style.display = "none";
+  }
+
+  function toggleRSSFormulas() {
+    const rssTable = document.getElementById("rssFormulaTable");
+    rssTable.style.display = (rssTable.style.display === "none") ? "block" : "none";
+  }
+</script>
+
+</body>
+</html>
