@@ -202,7 +202,27 @@ th {
       <img src="research-buffs.jpeg" alt="Development Buffs" onclick="openLightbox(this.src)">
     </div>
     <br><br>
-    
+    <hr style="border: 1px solid gold; margin: 20px 0;">
+
+<h2 style="text-align: center;">📘 How the Buff Calculator Works</h2>
+
+<h3>🏗 🔬 🎯 Buff Calculator</h3>
+<p>
+The Buff Calculator helps you plan construction or research times by applying your total buff %, daily free speed-ups, and alliance helps.<br><br>
+<strong>Game Logic:</strong><br>
+Your buffs reduce the total build time multiplicatively. After buffs are applied, daily speed-ups and alliance helps reduce the remaining time.
+</p>
+<p><strong>Formulas Used:</strong></p>
+<ul>
+  <li><strong>Buffed Time</strong> = Original Time ÷ (1 + Total Buff % as decimal)</li>
+  <li><strong>Final Time</strong> = Buffed Time - (Daily Speed-Ups + Help Reduction)</li>
+</ul>
+<p>
+Tip: Secretary of Development adds +50% to your buff % when active. This is automatically included if you add it to your buff total.
+</p>
+
+<hr style="border: 1px solid gold; margin: 20px 0;">
+<br><br>
     <h2>Buff Formulas</h2>
     <div style="text-align: center;">
     <button onclick="toggleTable()" style="background-color: gold; color: black; padding: 10px 15px; border: none; border-radius: 5px; font-weight: bold; cursor: pointer;">
@@ -259,6 +279,27 @@ th {
        <img src="rss-guide-2.jpeg" alt="RSS Production Guide" onclick="openLightbox(this.src)">
 
     </div>
+<br><br>
+<h2 style="text-align: center;">📘 How the RSS Production Calculator Works</h2>
+
+<h3>🌾 🪓 💰 RSS Production Calculator</h3>
+<p>
+The RSS Calculator estimates how much Food, Iron, and Gold you’ll produce hourly, daily, weekly, and monthly with all buffs applied and any Secretary of Interior bonus sessions.
+</p>
+<p><strong>Formulas Used:</strong></p>
+<ul>
+  <li><strong>Base Output/hr</strong> = Σ (Quantity × Output/hr)</li>
+  <li><strong>Buffed Output/hr</strong> = Base Output/hr × (1 + Buff %)</li>
+  <li><strong>Secretary Bonus</strong> = Buffed Output/hr × 100%</li>
+  <li><strong>Daily Production</strong> = (Buffed Output/hr × 24) + (Boost Output/hr × Secretary Minutes ÷ 60)</li>
+  <li><strong>Weekly & Monthly</strong> = Daily × 7 and Daily × 30</li>
+</ul>
+<p>
+Tip: Secretary of Interior bonuses give +100% production for a limited time. Use the calculator to plan how many sessions you need to hit your goals.
+</p>
+
+<hr style="border: 1px solid gold; margin: 20px 0;">
+
 <br><br>
 <h2>Food Production Formulas</h2>
 <div style="text-align: center;">
