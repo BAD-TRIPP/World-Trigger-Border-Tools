@@ -1,6 +1,6 @@
 {
   "name": "BAD TRIPP Tools",
-  "short_name": "BAD TRIPP",
+  "short_name": "Tools",
   "start_url": "index.html",
   "display": "standalone",
   "background_color": "#000000",
