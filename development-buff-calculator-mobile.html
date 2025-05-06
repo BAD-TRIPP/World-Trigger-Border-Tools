@@ -85,7 +85,7 @@
       border-radius: 5px;
       font-size: 1.1em;
       font-weight: bold;
-      color: gold;
+      color: white;
     }
     .time-input-group {
       display: flex;
@@ -248,9 +248,9 @@ function calculateFinal() {
   document.getElementById('finalResultBox').innerHTML =
     `Final Time: ${fd}d ${fh}h ${fm}m ${fs}s<br><br>` +
     `<u>Reduction Breakdown:</u><br>` +
-    `Free Speed-up Buff Saved: ${buffDaysFinal}d ${buffHoursFinal}h ${buffMinutesFinal}m ${buffSecondsFinal}s<br>` +
-    `Manual Speed-ups Used: ${manualDaysFinal}d ${manualHoursFinal}h ${manualMinutesFinal}m<br>` +
-    `Helps Total Reduction: ${Math.floor(totalHelpSecs / 60)} minutes`;
+    `Free Speed-up Buff: ${buffDaysFinal}d ${buffHoursFinal}h ${buffMinutesFinal}m ${buffSecondsFinal}s<br>` +
+    `Instant Speed-ups Used: ${manualDaysFinal}d ${manualHoursFinal}h ${manualMinutesFinal}m<br>` +
+    `Alliance Help Reduction: ${Math.floor(totalHelpSecs / 60)} minutes`;
 }
 
 function resetForm() {
