@@ -145,7 +145,7 @@
 
 <h3>Apply Buffs, Instant Speed-ups, and Help Reductions</h3>
 
-<label>Enter your 'Increase free Speed-up time for Construction' Buff Time</label>
+<label>Enter your one-time 'Increase free Speed-up time for Construction' Buff</label>
 <br>
 <div class="time-input-group">
   <div><label></label><input type="number" id="buffSpeedHours" placeholder="Hours"></div>
@@ -153,22 +153,22 @@
   <div><label></label><input type="number" id="buffSpeedSeconds" placeholder="Seconds"></div>
 </div>
 
-<hr style="border: 2px solid gold; margin: 10px 0px 10px 0px;">
+<hr style="border: 1px solid gold; margin: 25px 0px 25px 0px;">
 
-<label>Enter 'Instant Speed-ups' to reduce total build time</label>
+<label>Enter 'Instant Speed-ups' to reduce total build time (optional)</label><br><br>
 <div class="time-input-group">
   <div><label></label><input type="number" id="manualDays" placeholder="Days"></div>
   <div><label></label><input type="number" id="manualHours" placeholder="Hours"></div>
   <div><label></label><input type="number" id="manualMinutes" placeholder="Minutes"></div>
 </div>
 
-<hr style="border: 2px solid gold; margin: 10px 0px 10px 0px;">
+<hr style="border: 1px solid gold; margin: 25px 0px 25px 0px;">
 
-<label>Number of Alliance Member Helps Received</label><br>
-<input type="number" id="helps" placeholder="Helps"><br>
+<label>Number of Alliance Member Helps Received</label><br><br>
+<input type="number" id="helps" placeholder="Default: 27"><br>
 
-<label>Help Time per Alliance Member Help (Minutes)</label><br>
-<input type="number" id="helpTime" placeholder="Default 7.5"><br>
+<label>Help Time per Alliance Member Help (Minutes)</label><br><br>
+<input type="number" id="helpTime" placeholder="Default: 7.5"><br>
 
 <button onclick="calculateFinal()">Calculate Final Time</button>
 <div class="result" id="finalResultBox"></div>
