@@ -148,10 +148,10 @@
 
 <h3>Enter the Original Time</h3>
 <div class="time-input-group">
-  <div><label>Days</label><input type="number" id="days" placeholder="Days"></div>
-  <div><label>Hours</label><input type="number" id="hours" placeholder="Hours"></div>
-  <div><label>Minutes</label><input type="number" id="minutes" placeholder="Minutes"></div>
-  <div><label>Seconds</label><input type="number" id="seconds" placeholder="Seconds"></div>
+  <div><label></label><input type="number" id="days" placeholder="Days"></div>
+  <div><label></label><input type="number" id="hours" placeholder="Hours"></div>
+  <div><label></label><input type="number" id="minutes" placeholder="Minutes"></div>
+  <div><label></label><input type="number" id="seconds" placeholder="Seconds"></div>
 </div>
 
 <h3>Enter Total Buff %</h3>
@@ -160,30 +160,34 @@
 <button onclick="calculate()">Calculate Buffed Time</button>
 <div class="result" id="resultBox"></div>
 
-<h3>Apply Manual Speed-ups and Help Reductions</h3>
+<h3>Apply Buffs, Instant Speed-ups, and Help Reductions</h3>
 
-<label>Daily Free Speed-up Buff (Hours, Minutes, Seconds)</label>
+<label>Enter 'Increase free Speed-up time for Construction' Buff (Hrs, Min, Sec)</label>
+    <br>
 <div class="time-input-group">
-  <div><label>Hours</label><input type="number" id="buffSpeedHours" placeholder="Hours"></div>
-  <div><label>Minutes</label><input type="number" id="buffSpeedMinutes" placeholder="Minutes"></div>
-  <div><label>Seconds</label><input type="number" id="buffSpeedSeconds" placeholder="Seconds"></div>
+  <div><label></label><input type="number" id="buffSpeedHours" placeholder="Hours"></div>
+  <div><label></label><input type="number" id="buffSpeedMinutes" placeholder="Minutes"></div>
+  <div><label></label><input type="number" id="buffSpeedSeconds" placeholder="Seconds"></div>
 </div>
+<br><br>
+<label>How many Days? 'Increase free Speed-up time for Construction' Buff</label><br>
+<input type="number" id="buffCalcDays" placeholder="Buff Days">
+    
+<hr style="border: 2px solid gold; margin: 10px 0px 10px 0px;">
 
-<label>Days to Calculate Buffs</label><br>
-<input type="number" id="buffCalcDays" placeholder="Buff Days"><br><br>
-
-<label>Manual Speed-ups Used (Days, Hours, Minutes)</label>
+<label>Enter 'Instant Speed-ups' to reduce total build time (Days, Hrs, Min)</label>
 <div class="time-input-group">
-  <div><label>Days</label><input type="number" id="manualDays" placeholder="Days"></div>
-  <div><label>Hours</label><input type="number" id="manualHours" placeholder="Hours"></div>
-  <div><label>Minutes</label><input type="number" id="manualMinutes" placeholder="Minutes"></div>
+  <div><label></label><input type="number" id="manualDays" placeholder="Days"></div>
+  <div><label></label><input type="number" id="manualHours" placeholder="Hours"></div>
+  <div><label></label><input type="number" id="manualMinutes" placeholder="Minutes"></div>
 </div>
-<br>
-
-<label>Number of Helps Received</label><br>
+    
+<hr style="border: 2px solid gold; margin: 10px 0px 10px 0px;">
+    
+<label>Number of Alliance Member Helps Received</label><br>
 <input type="number" id="helps" placeholder="Helps"><br>
 
-<label>Help Time per Help (Minutes)</label><br>
+<label>Help Time per Alliance Member Help (Minutes)</label><br>
 <input type="number" id="helpTime" placeholder="Default 7.5"><br>
 
 <button onclick="calculateFinal()">Calculate Final Time</button>
