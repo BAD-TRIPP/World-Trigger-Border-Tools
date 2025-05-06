@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -121,22 +120,6 @@
         flex-wrap: wrap;
       }
     }
-    .time-input-group div {
-      flex: 1 1 80px;
-    }
-    .time-input-group label {
-      display: block;
-      font-weight: bold;
-      font-size: 0.9em;
-    }
-    .time-input-group input {
-      width: 80px;
-      padding: 5px;
-      border: 1px solid #444;
-      background-color: #111;
-      color: #f0f0f0;
-      border-radius: 4px;
-    }
   </style>
 </head>
 <body>
@@ -162,28 +145,25 @@
 
 <h3>Apply Buffs, Instant Speed-ups, and Help Reductions</h3>
 
-<label>Enter 'Increase free Speed-up time for Construction' Buff (Hrs, Min, Sec)</label>
-    <br>
+<label>Enter your 'Increase free Speed-up time for Construction' Buff Time</label>
+<br>
 <div class="time-input-group">
   <div><label></label><input type="number" id="buffSpeedHours" placeholder="Hours"></div>
   <div><label></label><input type="number" id="buffSpeedMinutes" placeholder="Minutes"></div>
   <div><label></label><input type="number" id="buffSpeedSeconds" placeholder="Seconds"></div>
 </div>
-<br><br>
-<label>How many Days? 'Increase free Speed-up time for Construction' Buff</label><br>
-<input type="number" id="buffCalcDays" placeholder="Buff Days">
-    
+
 <hr style="border: 2px solid gold; margin: 10px 0px 10px 0px;">
 
-<label>Enter 'Instant Speed-ups' to reduce total build time (Days, Hrs, Min)</label>
+<label>Enter 'Instant Speed-ups' to reduce total build time</label>
 <div class="time-input-group">
   <div><label></label><input type="number" id="manualDays" placeholder="Days"></div>
   <div><label></label><input type="number" id="manualHours" placeholder="Hours"></div>
   <div><label></label><input type="number" id="manualMinutes" placeholder="Minutes"></div>
 </div>
-    
+
 <hr style="border: 2px solid gold; margin: 10px 0px 10px 0px;">
-    
+
 <label>Number of Alliance Member Helps Received</label><br>
 <input type="number" id="helps" placeholder="Helps"><br>
 
@@ -229,10 +209,8 @@ function calculateFinal() {
   const buffH = parseFloat(document.getElementById('buffSpeedHours').value) || 0;
   const buffM = parseFloat(document.getElementById('buffSpeedMinutes').value) || 0;
   const buffS = parseFloat(document.getElementById('buffSpeedSeconds').value) || 0;
-  const buffDays = parseFloat(document.getElementById('buffCalcDays').value) || 0;
 
-  const dailyBuffSecs = buffH * 3600 + buffM * 60 + buffS;
-  const totalBuffSecs = dailyBuffSecs * buffDays;
+  const totalBuffSecs = (buffH * 3600) + (buffM * 60) + buffS;
 
   const manualD = parseFloat(document.getElementById('manualDays').value) || 0;
   const manualH = parseFloat(document.getElementById('manualHours').value) || 0;
@@ -278,7 +256,7 @@ function calculateFinal() {
 
 function resetForm() {
   ['days','hours','minutes','seconds','buffPercent',
-   'buffSpeedHours','buffSpeedMinutes','buffSpeedSeconds','buffCalcDays',
+   'buffSpeedHours','buffSpeedMinutes','buffSpeedSeconds',
    'manualDays','manualHours','manualMinutes',
    'helps','helpTime'].forEach(id => {
     document.getElementById(id).value = "";
