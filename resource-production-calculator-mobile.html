@@ -203,6 +203,26 @@
     <button onclick="savePlan()">Save Plan</button>
     <button onclick="loadPlan()">Load Saved Plan</button>
   </div>
+<!-- 🏢 HQ Planner -->
+<div class="resource-section">
+  <h3>🏢 Headquarters Prerequisites Checker</h3>
+
+  <label>Target HQ Level:</label>
+  <input type="number" id="hqTargetLevel" min="2" max="29"><br><br>
+
+  <h4>Enter Your Current Building Levels:</h4>
+  <label>Tech Center:</label><input type="number" id="techCenter" min="1" max="29"><br>
+  <label>Wall:</label><input type="number" id="wall" min="1" max="29"><br>
+  <label>Drill Ground:</label><input type="number" id="drillGround" min="1" max="29"><br>
+  <label>Parking Lots:</label><input type="number" id="parkingLots" min="1" max="29"><br>
+  <label>Barracks:</label><input type="number" id="barracks" min="1" max="29"><br>
+  <label>Tank Center:</label><input type="number" id="tankCenter" min="1" max="29"><br>
+  <label>Alliance Center:</label><input type="number" id="allianceCenter" min="1" max="29"><br>
+  <label>Hospital:</label><input type="number" id="hospital" min="1" max="29"><br><br>
+
+  <button onclick="checkHQRequirements()">Check Requirements</button>
+  <div class="result-box" id="hqResult"></div>
+</div>
 
 </div> <!-- End container -->
 
@@ -384,6 +404,68 @@ function resetForm() {
     ["foodResult", "ironResult", "coinResult"].forEach(id => document.getElementById(id).innerHTML = "");
     document.getElementById("upgradeResult").innerHTML = "";
 }
+  
+// HQ requirements data from the chart you provided
+const hqRequirements = {
+  2: [{b:"drillGround",lvl:1}, {b:"parkingLots",lvl:1}],
+  3: [{b:"wall",lvl:3}],
+  4: [{b:"barracks",lvl:3}, {b:"drillGround",lvl:3}],
+  5: [{b:"wall",lvl:4}, {b:"barracks",lvl:4}],
+  6: [{b:"wall",lvl:5}, {b:"drillGround",lvl:5}],
+  7: [{b:"wall",lvl:6}, {b:"tankCenter",lvl:6}],
+  8: [{b:"techCenter",lvl:7}, {b:"allianceCenter",lvl:7}],
+  9: [{b:"techCenter",lvl:8}, {b:"tankCenter",lvl:8}],
+  10:[{b:"techCenter",lvl:9}, {b:"hospital",lvl:9}],
+  11:[{b:"techCenter",lvl:10}, {b:"wall",lvl:10}],
+  12:[{b:"techCenter",lvl:11}, {b:"barracks",lvl:11}],
+  13:[{b:"techCenter",lvl:12}, {b:"tankCenter",lvl:12}],
+  14:[{b:"techCenter",lvl:13}, {b:"drillGround",lvl:13}],
+  15:[{b:"techCenter",lvl:14}, {b:"wall",lvl:14}],
+  16:[{b:"techCenter",lvl:15}, {b:"allianceCenter",lvl:15}],
+  17:[{b:"techCenter",lvl:16}, {b:"tankCenter",lvl:16}],
+  18:[{b:"techCenter",lvl:17}, {b:"hospital",lvl:17}],
+  19:[{b:"techCenter",lvl:18}, {b:"wall",lvl:18}],
+  20:[{b:"techCenter",lvl:19}, {b:"barracks",lvl:19}],
+  21:[{b:"techCenter",lvl:20}, {b:"tankCenter",lvl:20}],
+  22:[{b:"techCenter",lvl:21}, {b:"drillGround",lvl:21}],
+  23:[{b:"techCenter",lvl:22}, {b:"wall",lvl:22}],
+  24:[{b:"techCenter",lvl:23}, {b:"allianceCenter",lvl:23}],
+  25:[{b:"techCenter",lvl:24}, {b:"tankCenter",lvl:24}],
+  26:[{b:"techCenter",lvl:25}, {b:"hospital",lvl:25}],
+  27:[{b:"techCenter",lvl:26}, {b:"wall",lvl:26}],
+  28:[{b:"techCenter",lvl:27}, {b:"barracks",lvl:27}],
+  29:[{b:"techCenter",lvl:28}, {b:"tankCenter",lvl:28}]
+};
+
+function checkHQRequirements() {
+  const hqLevel = parseInt(document.getElementById("hqTargetLevel").value);
+  if (!hqLevel || hqLevel < 2 || hqLevel > 29) {
+    document.getElementById("hqResult").innerHTML = "Please enter a valid HQ level (2 to 29).";
+    return;
+  }
+
+  const buildings = {
+    techCenter: parseInt(document.getElementById("techCenter").value) || 0,
+    wall: parseInt(document.getElementById("wall").value) || 0,
+    drillGround: parseInt(document.getElementById("drillGround").value) || 0,
+    parkingLots: parseInt(document.getElementById("parkingLots").value) || 0,
+    barracks: parseInt(document.getElementById("barracks").value) || 0,
+    tankCenter: parseInt(document.getElementById("tankCenter").value) || 0,
+    allianceCenter: parseInt(document.getElementById("allianceCenter").value) || 0,
+    hospital: parseInt(document.getElementById("hospital").value) || 0
+  };
+
+  const reqs = hqRequirements[hqLevel];
+  let html = `<b>HQ ${hqLevel} Requirements:</b><br>`;
+  reqs.forEach(r => {
+    const playerLvl = buildings[r.b] || 0;
+    const met = playerLvl >= r.lvl ? "✅" : `<span style="color:red;">❌</span>`;
+    html += `${r.b} required: Level ${r.lvl} | Yours: ${playerLvl} ${met}<br>`;
+  });
+
+  document.getElementById("hqResult").innerHTML = html;
+}
+
 </script>
 </body>
 </html>
