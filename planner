@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BAD TRIPP - Last War Planner</title>
+<style>
+  body { background-color: #000; color: gold; font-family: Arial, sans-serif; text-align: center; padding: 10px; }
+  .container { max-width: 800px; margin: auto; }
+  h1, h3 { color: gold; }
+  input, select { width: 90%; padding: 8px; margin: 4px; background-color: #1a1a1a; color: white; border: 1px solid #444; border-radius: 4px; }
+  button { padding: 10px; background-color: gold; color: black; font-weight: bold; border: 2px solid gold; border-radius: 5px; margin: 5px; }
+  .result-box { background-color: #222; padding: 10px; border-radius: 5px; color: gold; margin-top: 10px; }
+</style>
+</head>
+<body>
+<div class="container">
+  <img src="bad_tripp_logo.png" alt="BAD TRIPP Logo" style="max-width: 200px;"><br>
+  <h1>BAD TRIPP - Last War Planner</h1>
+
+  <!-- HQ Level -->
+  <h3>🏢 HQ Planner</h3>
+  <label>Your HQ Level:</label><br>
+  <input type="number" id="hqLevel" min="1" max="35" onchange="showNextHQReqs()"><br>
+  <div class="result-box" id="hqReqs"></div>
+
+  <!-- Resource Buildings -->
+  <h3>⛏ Resource Buildings</h3>
+  <label>Secretary Sessions per Day:</label>
+  <input type="number" id="secretaryUses" value="0"><br>
+
+  <h4>Farms</h4>
+  <label>Enter number of farms at each level (1-30):</label><br>
+  <input type="text" id="farmLevels" placeholder="e.g., 2x26, 3x28"><br>
+
+  <h4>Iron Mines</h4>
+  <input type="text" id="ironLevels" placeholder="e.g., 1x27, 4x29"><br>
+
+  <h4>Gold Mints</h4>
+  <input type="text" id="coinLevels" placeholder="e.g., 5x25"><br>
+
+  <button onclick="calculateProduction()">Calculate Production</button>
+  <div class="result-box" id="productionResult"></div>
+</div>
+
+<script>
+// Resource production and costs table up to 30 (data from your images)
+const resourceTable = {
+  1:{iron:5,food:15,coin:0,power:600,output:1440},
+  2:{iron:75,food:230,coin:0,power:1200,output:2160},
+  3:{iron:340,food:1000,coin:0,power:1800,output:3600},
+  4:{iron:840,food:2500,coin:0,power:2400,output:4320},
+  5:{iron:1700,food:5100,coin:0,power:3000,output:5760},
+  6:{iron:5100,food:15000,coin:0,power:3600,output:6480},
+  7:{iron:10000,food:30000,coin:0,power:4200,output:7920},
+  8:{iron:16000,food:49000,coin:0,power:4800,output:9360},
+  9:{iron:26000,food:78000,coin:17000,power:5400,output:10080},
+  10:{iron:31000,food:93000,coin:20000,power:6000,output:11520},
+  11:{iron:78000,food:230000,coin:50000,power:6700,output:12240},
+  12:{iron:130000,food:400000,coin:85000,power:7600,output:13680},
+  13:{iron:150000,food:440000,coin:93000,power:8500,output:14400},
+  14:{iron:200000,food:610000,coin:130000,power:9600,output:15840},
+  15:{iron:290000,food:860000,coin:180000,power:10900,output:17280},
+  16:{iron:510000,food:1500000,coin:320000,power:12500,output:18000},
+  17:{iron:660000,food:2000000,coin:420000,power:14400,output:19440},
+  18:{iron:1200000,food:3500000,coin:740000,power:16900,output:20160},
+  19:{iron:1400000,food:4200000,coin:890000,power:19600,output:21600},
+  20:{iron:2500000,food:7500000,coin:1600000,power:23200,output:23040},
+  21:{iron:3500000,food:10000000,coin:2200000,power:27400,output:23760},
+  22:{iron:4500000,food:14000000,coin:2900000,power:32300,output:25200},
+  23:{iron:5700000,food:17000000,coin:3600000,power:37700,output:25920},
+  24:{iron:7100000,food:21000000,coin:4500000,power:43700,output:27360},
+  25:{iron:12000000,food:36000000,coin:7700000,power:51500,output:28080},
+  26:{iron:17000000,food:51000000,coin:11000000,power:60800,output:29520},
+  27:{iron:22000000,food:66000000,coin:14000000,power:71400,output:30960},
+  28:{iron:31000000,food:92000000,coin:20000000,power:84000,output:31680},
+  29:{iron:43000000,food:130000000,coin:28000000,power:98900,output:33120},
+  30:{iron:60000000,food:180000000,coin:39000000,power:116400,output:33840},
+};
+
+// HQ requirements up to 35 (simplified here; will add full set after this)
+const hqReqs = {
+  31: ["Research Center 30","Tank/Air/Missile Center 30","Barracks 30","HQ Expansion 1"],
+  32: ["Research Center 31","Tank/Air/Missile Center 31","Barracks 31","Wall 31"],
+  33: ["Research Center 32","Tank/Air/Missile Center 32","Barracks 32","Hospital 32","Drillground 32"],
+  34: ["Research Center 33","Tank/Air/Missile Center 33","Barracks 33","Wall 33","Alliance Center 33"],
+  35: ["Research Center 34","Tank/Air/Missile Center 34","Barracks 34","Hospital 34","Drillground 34"]
+};
+
+// Show HQ requirements
+function showNextHQReqs(){
+  const level = parseInt(document.getElementById("hqLevel").value);
+  let html = `<b>Requirements for HQ ${level+1}:</b><br>`;
+  if (hqReqs[level+1]){
+    hqReqs[level+1].forEach(r=>{ html+=`- ${r}<br>`; });
+  } else {
+    html += "Max level or data unavailable.";
+  }
+  document.getElementById("hqReqs").innerHTML = html;
+}
+
+// Parse user input like "2x26,3x28"
+function parseLevels(str){
+  const entries = str.split(",").map(s=>s.trim());
+  let total = 0;
+  let output = 0;
+  entries.forEach(entry=>{
+    const match = entry.match(/(\d+)x(\d+)/);
+    if (match){
+      const count = parseInt(match[1]);
+      const lvl = parseInt(match[2]);
+      if (resourceTable[lvl]){
+        total += count;
+        output += count * resourceTable[lvl].output;
+      }
+    }
+  });
+  return {total,output};
+}
+
+function calculateProduction(){
+  const secretary = parseInt(document.getElementById("secretaryUses").value)||0;
+
+  const farm = parseLevels(document.getElementById("farmLevels").value);
+  const iron = parseLevels(document.getElementById("ironLevels").value);
+  const coin = parseLevels(document.getElementById("coinLevels").value);
+
+  const secBonus = 5/60; // 5 minutes per use
+
+  let result = `<b>Production per Hour</b><br>`;
+  result += `Food: ${(farm.output).toLocaleString()}<br>`;
+  result += `Iron: ${(iron.output).toLocaleString()}<br>`;
+  result += `Coin: ${(coin.output).toLocaleString()}<br><br>`;
+
+  result += `<b>Daily Production (with Secretary)</b><br>`;
+  result += `Food: ${((farm.output*24)+(farm.output*secBonus*secretary)).toLocaleString()}<br>`;
+  result += `Iron: ${((iron.output*24)+(iron.output*secBonus*secretary)).toLocaleString()}<br>`;
+  result += `Coin: ${((coin.output*24)+(coin.output*secBonus*secretary)).toLocaleString()}<br>`;
+
+  document.getElementById("productionResult").innerHTML = result;
+}
+</script>
+</body>
+</html>
