@@ -293,13 +293,14 @@ const coinData = {
 
 </script>
 
-
+<script>
 function getOutput(type, level) {
     if (type === "farm" && farmData[level]) return farmData[level].output;
     if (type === "iron" && ironData[level]) return ironData[level].output;
     if (type === "coin" && coinData[level]) return coinData[level].output;
     return 0;
 }
+  </script>
   // ==============================
 // HQ REQUIREMENTS DATA STARTS HERE
 // ==============================
