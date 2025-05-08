@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BAD TRIPP Resource & Upgrade Planner</title>
+
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#FFD700">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="BAD TRIPP Tools">
+  <link rel="apple-touch-icon" href="bad_tripp_logo.png">
+
+  <!-- Intro.js CSS for future guided tours -->
+  <link href="https://cdn.jsdelivr.net/npm/intro.js/minified/introjs.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/intro.js/themes/introjs-dark.min.css" rel="stylesheet">
+
+  <!-- Intro.js Script -->
+  <script src="https://cdn.jsdelivr.net/npm/intro.js/minified/intro.min.js"></script>
+
+  <script>
+// Access protection
+if (!localStorage.getItem("badtripp_access_granted")) {
+  var password = prompt("Enter pass to access BAD TRIPP's Tools:");
+  if (password === "1009") {
+    localStorage.setItem("badtripp_access_granted", "true"); 
+  } else {
+    alert("Access denied.");
+    window.location.href = "https://www.lastwartutorial.com/";
+  }
+}
+</script>
+  
+  <style>
+    body {
+      background-color: #000;
+      color: #f0f0f0;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 10px;
+    }
+    .container {
+      max-width: 700px;
+      margin: auto;
+    }
+    h1, h3 {
+      color: gold;
+    }
+    label {
+      font-weight: bold;
+    }
+    input, select {
+      width: 90%;
+      padding: 8px;
+      margin: 4px 0;
+      border-radius: 4px;
+      border: 1px solid #444;
+      background-color: #1a1a1a;
+      color: white;
+    }
+    button {
+      padding: 10px 15px;
+      margin-top: 10px;
+      background-color: gold;
+      color: black;
+      font-size: 1.1em;
+      font-weight: bold;
+      border: 2px solid gold;
+      border-radius: 5px;
+    }
+    button:hover {
+      background-color: transparent;
+      color: gold;
+    }
+    .resource-section {
+      border: 1px solid #444;
+      border-radius: 5px;
+      padding: 10px;
+      margin-bottom: 15px;
+    }
+    .remove-btn {
+      background-color: #333;
+      color: red;
+      border: 1px solid red;
+      font-size: 0.9em;
+      padding: 5px;
+      border-radius: 3px;
+    }
+    .result-box {
+      background-color: #222;
+      border-radius: 5px;
+      padding: 10px;
+      margin-top: 10px;
+      color: gold;
+      font-weight: bold;
+    }
+    /***** BAD TRIPP Intro.js Theme *****/
+.introjs-tooltip {
+    background-color: #000 !important;
+    color: gold !important;
+    border: 2px solid red !important;
+    border-radius: 10px !important;
+    font-family: Arial, sans-serif;
+}
+
+.introjs-tooltipbuttons button {
+    background-color: gold !important;
+    color: black !important;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+}
+
+.introjs-tooltipbuttons button:hover {
+    background-color: red !important;
+    color: white !important;
+}
+.introjs-bullets li {
+    background-color: gold !important;
+    border: 2px solid red !important;
+}
+
+.introjs-bullets li.active {
+    background-color: red !important;
+}
+/***** BAD TRIPP Badge & Glow *****/
+.introjs-tooltip:before {
+    content: "BAD TRIPP 🔥";
+    display: block;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: red;
+    margin-bottom: 5px;
+}
+
+.introjs-tooltip {
+    box-shadow: 0 0 15px red, 0 0 10px gold;
+    animation: pulseGlow 2s infinite;
+}
+
+@keyframes pulseGlow {
+    0% { box-shadow: 0 0 10px red, 0 0 5px gold; }
+    50% { box-shadow: 0 0 20px red, 0 0 15px gold; }
+    100% { box-shadow: 0 0 10px red, 0 0 5px gold; }
+}
+
+  </style>
+
+</head>
+  
+<body>
+<div class="container">
+
+<img src="bad_tripp_logo.png" alt="BAD TRIPP Logo" style="max-width: 200px;"><br>
+<a href="index.html" class="back-button">← Back to Main Menu</a><br>
+
+<h1>BAD TRIPP Resource & Upgrade Planner</h1>
+  <button onclick="startTour()" style="
+    background-color: gold;
+    color: black;
+    padding: 10px 15px;
+    font-weight: bold;
+    border: 2px solid gold;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-bottom: 20px;">
+    🚀  Start Guided Tour
+</button>
+
+<!-- Step 1: Enter HQ Level -->
+<div class="resource-section">
+  <h3>Step 1️⃣: Your HQ Level</h3>
+  <label>Enter your HQ Level (2-35):</label><br>
+  <input type="number" id="hqLevel" min="2" max="35"><br>
+
+  
+
+</div>
+
+<!-- Step 2: Add Resource Buildings -->
+<div class="resource-section">
+  <h3>Step 2️⃣: Add Your Farms, Iron Mines & Mints</h3>
+  <p>Add each building by quantity and level. We'll auto-fill production output for you!</p>
+
+  <h4>🍞 Food Farms</h4>
+  <div id="farmInputs"></div>
+  <button type="button" onclick="addBuilding('farm')">+ Add Farm</button><br><br>
+
+  <h4>🪓 Iron Mines</h4>
+  <div id="ironInputs"></div>
+  <button type="button" onclick="addBuilding('iron')">+ Add Iron Mine</button><br><br>
+
+  <h4>💰 Gold Mints</h4>
+  <div id="coinInputs"></div>
+  <button type="button" onclick="addBuilding('coin')">+ Add Mint</button><br><br>
+</div>
+<!-- Step 3: Buffs & Bonuses -->
+<div class="resource-section">
+  <h3>Step 3️⃣: Buffs & Secretary Sessions</h3>
+
+  <label>Food Output Buff (%):</label><br>
+  <input type="number" id="farmBuff" placeholder="e.g. 83.5"><br>
+
+  <label>Iron Output Buff (%):</label><br>
+  <input type="number" id="ironBuff" placeholder="e.g. 85.5"><br>
+
+  <label>Gold Output Buff (%):</label><br>
+  <input type="number" id="coinBuff" placeholder="e.g. 106"><br><br>
+
+  <label>Secretary of Interior Sessions per Day:</label><br>
+  <input type="number" id="secretaryUses" placeholder="e.g. 5"><br><br>
+</div>
+<!-- Step 4: Calculate & Results -->
+<div class="resource-section">
+  <h3>Step 4️⃣: Calculate Your Total Production</h3>
+  <button onclick="calculateProduction()">🧮 Calculate Production</button>
+
+  <button onclick="resetForm()">♻️ Reset</button>
+</div>
+  
+<!-- Step 5: HQ Prerequisites Checker -->
+<div class="resource-section">
+  <h3>Step 5️⃣: HQ Prerequisites Checker</h3>
+
+  <label>Your Current Building Levels:</label><br>
+  <input type="number" id="techCenter" placeholder="Tech Center Level"><br>
+  <input type="number" id="wall" placeholder="Wall Level"><br>
+  <input type="number" id="drillGround" placeholder="Drill Ground Level"><br>
+  <input type="number" id="barracks" placeholder="Barracks Level"><br>
+  <input type="number" id="tankCenter" placeholder="Tank Center Level"><br>
+  <input type="number" id="allianceCenter" placeholder="Alliance Center Level"><br>
+  <input type="number" id="hospital" placeholder="Hospital Level"><br><br>
+
+  <label>Target HQ Level (2-35):</label><br>
+  <input type="number" id="hqTargetLevel" min="2" max="35"><br><br>
+
+  <button onclick="checkHQRequirements()">Check HQ Requirements</button>
+
+  <div class="result-box" id="hqResult">HQ Requirements: -</div>
+</div>
+
+<!-- Results Section -->
+<div class="resource-section">
+  <h3>📊 Production Results</h3>
+  <div class="result-box" id="farmResult">🍞 Food Output: -</div>
+  <div class="result-box" id="ironResult">🪓 Iron Output: -</div>
+  <div class="result-box" id="coinResult">💰 Coin Output: -</div>
+</div>
+<script>
+
+// ==============================
+// DATA LOOKUP
+// ==============================
+
+function getOutput(type, level) {
+    if (type === "farm" && farmData[level]) return farmData[level].output;
+    if (type === "iron" && ironData[level]) return ironData[level].output;
+    if (type === "coin" && coinData[level]) return coinData[level].output;
+    return 0;
+}
+  // ==============================
+// HQ REQUIREMENTS DATA STARTS HERE
+// ==============================
+
+const hqRequirements = {
+  2: [{b:"drillGround",lvl:1}],
+  3: [{b:"wall",lvl:3}],
+  4: [{b:"barracks",lvl:3}],
+  5: [{b:"wall",lvl:4}],
+  6: [{b:"drillGround",lvl:5}],
+  7: [{b:"wall",lvl:6}],
+  8: [{b:"techCenter",lvl:7}],
+  9: [{b:"wall",lvl:8}],
+  10: [{b:"techCenter",lvl:9}],
+  11: [{b:"wall",lvl:10}],
+  12: [{b:"barracks",lvl:12}],
+  13: [{b:"drillGround",lvl:13}],
+  14: [{b:"tankCenter",lvl:14}],
+  15: [{b:"allianceCenter",lvl:15}],
+  16: [{b:"hospital",lvl:16}],
+  17: [{b:"techCenter",lvl:17}],
+  18: [{b:"wall",lvl:18}],
+  19: [{b:"barracks",lvl:19}],
+  20: [{b:"drillGround",lvl:20}],
+  21: [{b:"tankCenter",lvl:21}],
+  22: [{b:"allianceCenter",lvl:22}],
+  23: [{b:"hospital",lvl:23}],
+  24: [{b:"techCenter",lvl:24}],
+  25: [{b:"wall",lvl:25}],
+  26: [{b:"barracks",lvl:26}],
+  27: [{b:"drillGround",lvl:27}],
+  28: [{b:"tankCenter",lvl:28}],
+  29: [{b:"allianceCenter",lvl:29}],
+  30: [{b:"hospital",lvl:30}],
+  31: [{b:"techCenter",lvl:31}],
+  32: [{b:"wall",lvl:32}],
+  33: [{b:"barracks",lvl:33}],
+  34: [{b:"drillGround",lvl:34}],
+  35: [{b:"techCenter",lvl:34},{b:"wall",lvl:34}]
+};
+function checkHQRequirements() {
+    const hqLevel = parseInt(document.getElementById("hqTargetLevel").value);
+    if (!hqLevel || hqLevel < 2 || hqLevel > 35) {
+        document.getElementById("hqResult").innerHTML = "Please enter a valid HQ level (2 to 35).";
+        return;
+    }
+
+    const buildings = {
+        techCenter: parseInt(document.getElementById("techCenter")?.value) || 0,
+        wall: parseInt(document.getElementById("wall")?.value) || 0,
+        drillGround: parseInt(document.getElementById("drillGround")?.value) || 0,
+        barracks: parseInt(document.getElementById("barracks")?.value) || 0,
+        tankCenter: parseInt(document.getElementById("tankCenter")?.value) || 0,
+        allianceCenter: parseInt(document.getElementById("allianceCenter")?.value) || 0,
+        hospital: parseInt(document.getElementById("hospital")?.value) || 0
+    };
+
+    const reqs = hqRequirements[hqLevel] || [];
+    let html = `<b>HQ ${hqLevel} Requirements:</b><br>`;
+
+    reqs.forEach(r => {
+        const playerLvl = buildings[r.b] || 0;
+        const met = playerLvl >= r.lvl ? "✅" : `<span style="color:red;">❌</span>`;
+        html += `${r.b} required: Level ${r.lvl} | Yours: ${playerLvl} ${met}<br>`;
+    });
+
+    document.getElementById("hqResult").innerHTML = html;
+}
+
+// ==============================
+// DYNAMIC INPUT ADDING
+// ==============================
+
+function addBuilding(type) {
+    const container = document.getElementById(type + "Inputs");
+    const div = document.createElement("div");
+    div.style.marginBottom = "5px";
+    div.innerHTML = `
+      <input type="number" placeholder="Quantity" style="width:40%;"> 
+      <input type="number" placeholder="Level" style="width:40%;"> 
+      <button class="remove-btn" onclick="this.parentNode.remove()">Remove</button>
+    `;
+    container.appendChild(div);
+}
+
+// ==============================
+// MAIN CALCULATION
+// ==============================
+
+function calculateProduction() {
+    const secretaryUses = parseFloat(document.getElementById("secretaryUses").value) || 0;
+    const farmBuff = parseFloat(document.getElementById("farmBuff").value) || 0;
+    const ironBuff = parseFloat(document.getElementById("ironBuff").value) || 0;
+    const coinBuff = parseFloat(document.getElementById("coinBuff").value) || 0;
+
+    calcResource("farm", farmBuff, secretaryUses, "farmResult");
+    calcResource("iron", ironBuff, secretaryUses, "ironResult");
+    calcResource("coin", coinBuff, secretaryUses, "coinResult");
+}
+
+function calcResource(type, buff, secretaryUses, resultId) {
+    let total = 0;
+    const rows = document.getElementById(type + "Inputs").querySelectorAll("div");
+    rows.forEach(row => {
+        const qty = parseFloat(row.querySelectorAll("input")[0].value) || 0;
+        const lvl = parseInt(row.querySelectorAll("input")[1].value) || 0;
+        const output = getOutput(type, lvl);
+        total += qty * output;
+    });
+
+    const hourly = total * (1 + buff / 100);
+    const daily = hourly * 24;
+    const weekly = daily * 7;
+    const monthly = daily * 30;
+
+    const secretaryBonusPerUse = hourly * (5 / 60); // 5-minute bonus to hourly
+    const bonusDaily = secretaryBonusPerUse * secretaryUses;
+    const dailyTotal = daily + bonusDaily;
+    const weeklyTotal = dailyTotal * 7;
+    const monthlyTotal = dailyTotal * 30;
+
+    document.getElementById(resultId).innerHTML = `
+      Hourly: ${hourly.toLocaleString()}<br>
+      Daily: ${dailyTotal.toLocaleString()}<br>
+      Weekly: ${weeklyTotal.toLocaleString()}<br>
+      Monthly: ${monthlyTotal.toLocaleString()}<br>
+      Secretary Bonus Daily: +${bonusDaily.toLocaleString()}
+    `;
+}
+
+// ==============================
+// RESET FUNCTION
+// ==============================
+
+function resetForm() {
+    ["farmInputs", "ironInputs", "coinInputs"].forEach(id => document.getElementById(id).innerHTML = "");
+    ["farmBuff", "ironBuff", "coinBuff", "secretaryUses"].forEach(id => document.getElementById(id).value = "");
+    ["farmResult", "ironResult", "coinResult"].forEach(id => document.getElementById(id).innerHTML = "-");
+  
+  // HQ reset:
+    document.getElementById("hqResult").innerHTML = "-";
+}
+
+</script>
+<button onclick="toggleTheme()" style="margin-top:20px;">Toggle Dark/Light Theme</button>
+
+<script>
+function toggleTheme() {
+    const current = document.body.getAttribute("data-theme");
+    if (!current || current === "dark") {
+        document.body.setAttribute("data-theme", "light");
+        document.body.style.backgroundColor = "#f0f0f0";
+        document.body.style.color = "#000";
+        document.querySelectorAll("input, select").forEach(el => {
+            el.style.backgroundColor = "#fff";
+            el.style.color = "#000";
+        });
+        document.querySelectorAll(".result-box").forEach(el => el.style.backgroundColor = "#ddd");
+    } else {
+        document.body.setAttribute("data-theme", "dark");
+        document.body.style.backgroundColor = "#000";
+        document.body.style.color = "#f0f0f0";
+        document.querySelectorAll("input, select").forEach(el => {
+            el.style.backgroundColor = "#1a1a1a";
+            el.style.color = "#fff";
+        });
+        document.querySelectorAll(".result-box").forEach(el => el.style.backgroundColor = "#222");
+    }
+}
+  </script>
+<script>
+function startTour() {
+  introJs().setOptions({
+    steps: [
+      {
+        intro: "👋 Welcome to the BAD TRIPP Resource & Upgrade Planner! Let's get you started."
+      },
+      {
+        element: '#hqLevel',
+        intro: 'Step 1️⃣: Enter your current HQ Level here.'
+      },
+      {
+        element: '#farmInputs',
+        intro: 'Step 2️⃣: Add your Food Farms here by quantity and level.'
+      },
+      {
+        element: '#ironInputs',
+        intro: 'Then, add your Iron Mines by quantity and level.'
+      },
+      {
+        element: '#coinInputs',
+        intro: 'And add your Gold Mints here.'
+      },
+      {
+        element: '#farmBuff',
+        intro: 'Step 3️⃣: Enter your Food production buff %.'
+      },
+      {
+        element: '#ironBuff',
+        intro: 'Enter your Iron production buff %.'
+      },
+      {
+        element: '#coinBuff',
+        intro: 'Enter your Gold production buff %.'
+      },
+      {
+        element: '#secretaryUses',
+        intro: 'Enter how many Secretary of Interior sessions you run daily.'
+      },
+      {
+        intro: 'Click the Calculate button to see your total resource production.'
+      },
+      {
+        element: '#hqTargetLevel',
+        intro: 'Step 5️⃣: Enter your Target HQ level here to check requirements.'
+      },
+      {
+        element: '#hqResult',
+        intro: 'This box will show what buildings you need to upgrade for your target HQ level.'
+      },
+      {
+        intro: 'That\'s it! You\'re ready to plan your upgrades and production like a pro 🔥'
+      }
+    ],
+    showProgress: true,
+    showBullets: true,
+    nextLabel: 'Next →',
+    prevLabel: '← Back',
+    skipLabel: 'Skip',
+    doneLabel: 'Finish ✅'
+  }).start();
+}
+</script>
+</body>
+</html>
