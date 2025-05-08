@@ -252,8 +252,7 @@ if (!localStorage.getItem("badtripp_access_granted")) {
 // DATA LOOKUP
 // ==============================
 
-  <script>
-
+ 
 // ==============================
 // REAL PRODUCTION DATA
 // ==============================
@@ -399,6 +398,12 @@ function calculateProduction() {
     calcResource("farm", farmBuff, secretaryUses, "farmResult");
     calcResource("iron", ironBuff, secretaryUses, "ironResult");
     calcResource("coin", coinBuff, secretaryUses, "coinResult");
+       try {
+    // Existing calculation logic
+  } catch (error) {
+    console.error("An error occurred during calculation:", error);
+    alert("An error occurred while calculating production. Please check your inputs and try again.");
+  }
 }
 
 function calcResource(type, buff, secretaryUses, resultId) {
