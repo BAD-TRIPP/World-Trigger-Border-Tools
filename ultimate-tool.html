@@ -251,6 +251,29 @@ if (!localStorage.getItem("badtripp_access_granted")) {
 // ==============================
 // DATA LOOKUP
 // ==============================
+const farmData = {
+  1: {output: 100},
+  2: {output: 200},
+  3: {output: 300},
+  4: {output: 400},
+  5: {output: 500}
+};
+
+const ironData = {
+  1: {output: 120},
+  2: {output: 240},
+  3: {output: 360},
+  4: {output: 480},
+  5: {output: 600}
+};
+
+const coinData = {
+  1: {output: 150},
+  2: {output: 300},
+  3: {output: 450},
+  4: {output: 600},
+  5: {output: 750}
+};
 
 function getOutput(type, level) {
     if (type === "farm" && farmData[level]) return farmData[level].output;
