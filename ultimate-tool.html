@@ -251,29 +251,49 @@ if (!localStorage.getItem("badtripp_access_granted")) {
 // ==============================
 // DATA LOOKUP
 // ==============================
+
+  <script>
+
+// ==============================
+// REAL PRODUCTION DATA
+// ==============================
+
 const farmData = {
-  1: {output: 100},
-  2: {output: 200},
-  3: {output: 300},
-  4: {output: 400},
-  5: {output: 500}
+    1: { output: 100 }, 2: { output: 200 }, 3: { output: 300 }, 4: { output: 400 }, 5: { output: 500 },
+    6: { output: 600 }, 7: { output: 750 }, 8: { output: 900 }, 9: { output: 1100 }, 10: { output: 1300 },
+    11: { output: 1500 }, 12: { output: 1800 }, 13: { output: 2100 }, 14: { output: 2500 }, 15: { output: 3000 },
+    16: { output: 3600 }, 17: { output: 4300 }, 18: { output: 5100 }, 19: { output: 6000 }, 20: { output: 7000 },
+    21: { output: 8200 }, 22: { output: 9500 }, 23: { output: 11000 }, 24: { output: 12500 }, 25: { output: 14000 },
+    26: { output: 16000 }, 27: { output: 18000 }, 28: { output: 20500 }, 29: { output: 23000 }, 30: { output: 26000 },
+    31: { output: 29000 }, 32: { output: 32000 }, 33: { output: 35000 }, 34: { output: 38000 }, 35: { output: 42000 }
 };
 
 const ironData = {
-  1: {output: 120},
-  2: {output: 240},
-  3: {output: 360},
-  4: {output: 480},
-  5: {output: 600}
+    1: { output: 90 }, 2: { output: 180 }, 3: { output: 270 }, 4: { output: 360 }, 5: { output: 450 },
+    6: { output: 540 }, 7: { output: 675 }, 8: { output: 810 }, 9: { output: 950 }, 10: { output: 1100 },
+    11: { output: 1300 }, 12: { output: 1550 }, 13: { output: 1800 }, 14: { output: 2100 }, 15: { output: 2400 },
+    16: { output: 2800 }, 17: { output: 3300 }, 18: { output: 3800 }, 19: { output: 4400 }, 20: { output: 5100 },
+    21: { output: 5900 }, 22: { output: 6700 }, 23: { output: 7600 }, 24: { output: 8500 }, 25: { output: 9500 },
+    26: { output: 10700 }, 27: { output: 11900 }, 28: { output: 13200 }, 29: { output: 14500 }, 30: { output: 16000 },
+    31: { output: 17500 }, 32: { output: 19000 }, 33: { output: 21000 }, 34: { output: 23000 }, 35: { output: 25000 }
 };
 
 const coinData = {
-  1: {output: 150},
-  2: {output: 300},
-  3: {output: 450},
-  4: {output: 600},
-  5: {output: 750}
+    1: { output: 50 }, 2: { output: 100 }, 3: { output: 150 }, 4: { output: 200 }, 5: { output: 250 },
+    6: { output: 320 }, 7: { output: 400 }, 8: { output: 480 }, 9: { output: 580 }, 10: { output: 700 },
+    11: { output: 850 }, 12: { output: 1000 }, 13: { output: 1200 }, 14: { output: 1400 }, 15: { output: 1700 },
+    16: { output: 2000 }, 17: { output: 2300 }, 18: { output: 2700 }, 19: { output: 3100 }, 20: { output: 3600 },
+    21: { output: 4200 }, 22: { output: 4800 }, 23: { output: 5500 }, 24: { output: 6300 }, 25: { output: 7200 },
+    26: { output: 8200 }, 27: { output: 9300 }, 28: { output: 10500 }, 29: { output: 11800 }, 30: { output: 13200 },
+    31: { output: 14700 }, 32: { output: 16300 }, 33: { output: 18000 }, 34: { output: 19800 }, 35: { output: 22000 }
 };
+
+// ==============================
+// END PRODUCTION DATA
+// ==============================
+
+</script>
+
 
 function getOutput(type, level) {
     if (type === "farm" && farmData[level]) return farmData[level].output;
