@@ -6,7 +6,7 @@
   "background_color": "#000000",
   "theme_color": "#FFD700",
   "orientation": "portrait",
-  "description": "BAD TRIPP Tools”,
+  "description": "RSS Calculator Tool for BAD TRIPP”,
   "icons": [
     {
       "src": "bad_tripp_logo.png",
