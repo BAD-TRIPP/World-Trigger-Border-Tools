@@ -28,7 +28,7 @@
     label {
       font-weight: bold;
     }
-    input, select {
+    select, input {
       width: 90%;
       padding: 8px;
       margin: 4px 0;
@@ -79,109 +79,101 @@
 <body>
   <div class="container">
     <img src="bad_tripp_logo.png" alt="BAD TRIPP Logo" style="max-width: 200px;"><br>
-    <h1>RSS Calculator</h1>
+    <h1>Ultimate RSS Calculator</h1>
 
-    <label>Secretary Sessions/Day:</label>
+    <label>Secretary Sessions per Day:</label>
     <input type="number" id="secretaryUses" placeholder="e.g. 5"><br><br>
 
-    <!-- Resource Sections -->
     <div class="resource-section" id="foodSection">
-      <h3>Food Farms</h3>
+      <h3>🍞 Food Farms</h3>
       <div id="foodInputs"></div>
-      <button onclick="addResourceInput('food')">+ Add Farm</button>
-      <input type="number" id="foodBuff" placeholder="Buff %">
+      <button onclick="addBuilding('food')">+ Add Farm</button>
+      <input type="number" id="foodBuff" placeholder="Food Buff %">
       <div class="result-box" id="foodResult"></div>
     </div>
 
     <div class="resource-section" id="ironSection">
-      <h3>Iron Mines</h3>
+      <h3>🪓 Iron Mines</h3>
       <div id="ironInputs"></div>
-      <button onclick="addResourceInput('iron')">+ Add Mine</button>
-      <input type="number" id="ironBuff" placeholder="Buff %">
+      <button onclick="addBuilding('iron')">+ Add Mine</button>
+      <input type="number" id="ironBuff" placeholder="Iron Buff %">
       <div class="result-box" id="ironResult"></div>
     </div>
 
     <div class="resource-section" id="coinSection">
-      <h3>Gold Mints</h3>
+      <h3>💰 Gold Mints</h3>
       <div id="coinInputs"></div>
-      <button onclick="addResourceInput('coin')">+ Add Mint</button>
-      <input type="number" id="coinBuff" placeholder="Buff %">
+      <button onclick="addBuilding('coin')">+ Add Mint</button>
+      <input type="number" id="coinBuff" placeholder="Gold Buff %">
       <div class="result-box" id="coinResult"></div>
     </div>
 
-    <button onclick="calculateProduction()">Calculate</button>
+    <button onclick="calculateAll()">Calculate All</button>
     <button onclick="resetForm()">Reset</button>
-    <button onclick="copyResults()">Copy Results</button>
   </div>
 
 <script>
-const defaultOutputs = { 1: 100, 2: 250, 3: 500, 4: 1000 };
+const outputByLevel = {
+  1: 720, 2: 1440, 3: 2160, 4: 2880, 5: 3600, 6: 4320, 7: 5040, 8: 5760, 9: 6480, 10: 7200,
+  11: 7920, 12: 8640, 13: 9360, 14: 10080, 15: 10800, 16: 11520, 17: 12240, 18: 12960, 19: 13680, 20: 14400,
+  21: 15120, 22: 15840, 23: 16560, 24: 17280, 25: 18000, 26: 18720, 27: 19440, 28: 20160, 29: 20880, 30: 21600,
+  31: 22320, 32: 23040, 33: 23760, 34: 24480, 35: 25200
+};
 
-function addResourceInput(type) {
-  const container = document.getElementById(type + "Inputs");
-  const div = document.createElement("div");
+function addBuilding(type) {
+  const container = document.getElementById(type + 'Inputs');
+  const div = document.createElement('div');
   div.innerHTML = `
-    <select onchange="this.nextElementSibling.value = defaultOutputs[this.value] || ''">
-      <option value="">Level</option>
-      ${Object.keys(defaultOutputs).map(lvl => `<option value="${lvl}">${lvl}</option>`).join("")}
+    <select class="level-select">
+      ${Object.keys(outputByLevel).map(level => `<option value="${level}">Level ${level}</option>`).join('')}
     </select>
-    <input type="number" placeholder="Output/hr" style="width: 30%;">
-    <input type="number" placeholder="Qty" style="width: 20%;">
+    <input type="number" class="qty-input" placeholder="Quantity" style="width: 40%;">
     <button class="remove-btn" onclick="this.parentNode.remove()">Remove</button>
   `;
   container.appendChild(div);
 }
 
-function calculateProduction() {
-  const secretaryUses = parseFloat(document.getElementById("secretaryUses").value) || 0;
-  ["food", "iron", "coin"].forEach(type => {
-    const buff = parseFloat(document.getElementById(type + "Buff").value) || 0;
-    let total = 0;
-    document.getElementById(type + "Inputs").querySelectorAll("div").forEach(row => {
-      const inputs = row.querySelectorAll("input");
-      const output = parseFloat(inputs[0].value) || 0;
-      const qty = parseFloat(inputs[1].value) || 0;
-      total += output * qty;
-    });
+function calculateAll() {
+  calculateResource('food', parseFloat(document.getElementById('foodBuff').value) || 0, 'foodResult');
+  calculateResource('iron', parseFloat(document.getElementById('ironBuff').value) || 0, 'ironResult');
+  calculateResource('coin', parseFloat(document.getElementById('coinBuff').value) || 0, 'coinResult');
+}
 
-    const hourly = total * (1 + buff / 100);
-    const daily = hourly * 24;
-    const secretaryBonusPerUse = hourly * (5 / 60);
-    const totalSecretaryBonusDaily = secretaryBonusPerUse * secretaryUses;
-    const dailyTotal = daily + totalSecretaryBonusDaily;
+function calculateResource(type, buff, resultId) {
+  const container = document.getElementById(type + 'Inputs');
+  let totalHourly = 0;
 
-    document.getElementById(type + "Result").innerHTML =
-      `Hourly: ${hourly.toFixed(0)}<br>
-       Daily: ${dailyTotal.toFixed(0)}<br>
-       Sec. Bonus: +${totalSecretaryBonusDaily.toFixed(0)}`;
+  container.querySelectorAll('div').forEach(row => {
+    const level = parseInt(row.querySelector('.level-select').value);
+    const qty = parseInt(row.querySelector('.qty-input').value) || 0;
+    const baseOutput = outputByLevel[level] || 0;
+    totalHourly += baseOutput * qty;
   });
+
+  const buffedHourly = totalHourly * (1 + buff / 100);
+  const daily = buffedHourly * 24;
+  const weekly = daily * 7;
+  const monthly = daily * 30;
+  const secretaryUses = parseFloat(document.getElementById("secretaryUses").value) || 0;
+  const secBonus = buffedHourly * (5 / 60) * secretaryUses;
+
+  document.getElementById(resultId).innerHTML = `
+    Hourly: ${buffedHourly.toFixed(0)}<br>
+    Daily: ${(daily + secBonus).toFixed(0)}<br>
+    Weekly: ${(weekly + secBonus * 7).toFixed(0)}<br>
+    Monthly: ${(monthly + secBonus * 30).toFixed(0)}<br>
+    Secretary Bonus Daily: +${secBonus.toFixed(0)}
+  `;
 }
 
 function resetForm() {
-  ["foodInputs", "ironInputs", "coinInputs"].forEach(id => document.getElementById(id).innerHTML = "");
-  ["foodBuff", "ironBuff", "coinBuff", "secretaryUses"].forEach(id => document.getElementById(id).value = "");
-  ["foodResult", "ironResult", "coinResult"].forEach(id => document.getElementById(id).innerHTML = "");
-}
-
-function copyResults() {
-  const results = ["foodResult", "ironResult", "coinResult"]
-    .map(id => document.getElementById(id).innerText)
-    .join("\n\n");
-  navigator.clipboard.writeText(results).then(() => alert("Results copied!"));
-}
-
-// Auto-save & reload
-window.addEventListener("beforeunload", () => {
-  document.querySelectorAll("input").forEach((input, i) => {
-    localStorage.setItem(`rss_input_${i}`, input.value);
+  ['food', 'iron', 'coin'].forEach(type => {
+    document.getElementById(type + 'Inputs').innerHTML = '';
+    document.getElementById(type + 'Result').innerHTML = '';
+    document.getElementById(type + 'Buff').value = '';
   });
-});
-
-window.addEventListener("DOMContentLoaded", () => {
-  document.querySelectorAll("input").forEach((input, i) => {
-    input.value = localStorage.getItem(`rss_input_${i}`) || "";
-  });
-});
+  document.getElementById('secretaryUses').value = '';
+}
 </script>
 </body>
 </html>
