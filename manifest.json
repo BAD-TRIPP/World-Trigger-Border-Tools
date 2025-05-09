@@ -1,19 +1,20 @@
 {
   "name": "BAD TRIPP Tools",
-  "short_name": "Tools",
-  "start_url": "index.html",
+  "short_name": “RSS Tool,
+  "start_url": "resource-production-calculator-mobile.html",
   "display": "standalone",
   "background_color": "#000000",
   "theme_color": "#FFD700",
-  "description": "Buff Calculators and Tools for BAD TRIPP",
+  "orientation": "portrait",
+  "description": "BAD TRIPP Tools”,
   "icons": [
     {
-      "src": "badtripp-192.png",
+      "src": "bad_tripp_logo.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "badtripp-512.png",
+      "src": "bad_tripp_logo.png",
       "sizes": "512x512",
       "type": "image/png"
     }
