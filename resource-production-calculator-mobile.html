@@ -4,55 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>RSS Production Calculator</title>
-
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#FFD700">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-title" content="BAD TRIPP Tools">
   <link rel="apple-touch-icon" href="bad_tripp_logo.png">
 
-  <script>
-    if (!localStorage.getItem("badtripp_access_granted")) {
-      var password = prompt("Enter pass to access BAD TRIPP's Tools:");
-      if (password === "1009") {
-        localStorage.setItem("badtripp_access_granted", "true"); 
-      } else {
-        alert("Access denied.");
-        window.location.href = "https://www.lastwartutorial.com/";
-      }
-    }
-
-    // Resource data tables:
-    const farmData = {
-      26:{iron:51000000,food:17000000,coin:11000000,power:60800,output:29520},
-      27:{iron:66000000,food:22000000,coin:14000000,power:71400,output:30960},
-      28:{iron:92000000,food:31000000,coin:20000000,power:84000,output:31680},
-      29:{iron:130000000,food:43000000,coin:28000000,power:98900,output:33120},
-      30:{iron:180000000,food:60000000,coin:39000000,power:116400,output:33840},
-      31:{iron:240000000,food:79000000,coin:51000000,power:136500,output:35280},
-      32:{iron:310000000,food:100000000,coin:65000000,power:159300,output:36000},
-      33:{iron:380000000,food:130000000,coin:82000000,power:184800,output:37440},
-      34:{iron:450000000,food:150000000,coin:97000000,power:212400,output:38880},
-      35:{iron:530000000,food:180000000,coin:110000000,power:242300,output:39600}
-    };
-
-    const ironData = { ...farmData }; // Same as farm
-
-    const coinData = {
-      26:{iron:51000000,food:17000000,coin:11000000,power:60800,output:18720},
-      27:{iron:66000000,food:22000000,coin:14000000,power:71400,output:20160},
-      28:{iron:92000000,food:31000000,coin:20000000,power:84000,output:21600},
-      29:{iron:130000000,food:43000000,coin:28000000,power:98900,output:23040},
-      30:{iron:180000000,food:60000000,coin:39000000,power:116400,output:23760},
-      31:{iron:240000000,food:79000000,coin:51000000,power:136500,output:25200},
-      32:{iron:310000000,food:100000000,coin:65000000,power:159300,output:25920},
-      33:{iron:380000000,food:130000000,coin:82000000,power:184800,output:27360},
-      34:{iron:450000000,food:150000000,coin:97000000,power:212400,output:28080},
-      35:{iron:530000000,food:180000000,coin:110000000,power:242300,output:29520}
-    };
-  </script>
-
-<style>
+  <style>
     body {
       background-color: #000;
       color: #f0f0f0;
@@ -94,21 +52,6 @@
       background-color: transparent;
       color: gold;
     }
-    .back-button {
-      display: inline-block;
-      margin-bottom: 10px;
-      padding: 10px 15px;
-      background-color: gold;
-      color: black;
-      font-weight: bold;
-      text-decoration: none;
-      border: 2px solid gold;
-      border-radius: 5px;
-    }
-    .back-button:hover {
-      background-color: transparent;
-      color: gold;
-    }
     .resource-section {
       border: 1px solid #444;
       border-radius: 5px;
@@ -133,351 +76,112 @@
     }
   </style>
 </head>
-<>
-<div class="container">
+<body>
+  <div class="container">
+    <img src="bad_tripp_logo.png" alt="BAD TRIPP Logo" style="max-width: 200px;"><br>
+    <h1>RSS Calculator</h1>
 
-  <img src="bad_tripp_logo.png" alt="BAD TRIPP Logo" style="max-width: 200px;"><br>
-  
-  <a href="index.html" class="back-button">← Back to Main Menu</a><br>
-  //Step by Step guide//
-  <div class="resource-section" style="background-color:#111;">
-  <h3>📝 How To Use This Calculator</h3>
-  <ol style="text-align:left;">
-    <li>🛠 <b>Step 1:</b> Add all your Farms, Iron Mines, and Mints below. Enter quantity and output/hr.</li>
-    <li>🛡 <b>Step 2:</b> Enter your resource buffs and Secretary Sessions (if any).</li>
-    <li>📊 <b>Step 3:</b> Click <b>"Calculate All"</b> to get your hourly/daily/weekly/monthly production.</li>
-    <li>🏗 <b>Step 4:</b> Use the Upgrade Planner to plan building upgrades based on your production rates.</li>
-    <li>🏢 <b>Step 5:</b> Check HQ upgrade requirements and compare them to your current building levels.</li>
-  </ol>
-</div>
+    <label>Secretary Sessions/Day:</label>
+    <input type="number" id="secretaryUses" placeholder="e.g. 5"><br><br>
 
-  <h1>RSS Calculator</h1>
+    <!-- Resource Sections -->
+    <div class="resource-section" id="foodSection">
+      <h3>Food Farms</h3>
+      <div id="foodInputs"></div>
+      <button onclick="addResourceInput('food')">+ Add Farm</button>
+      <input type="number" id="foodBuff" placeholder="Buff %">
+      <div class="result-box" id="foodResult"></div>
+    </div>
 
-  <label>Secretary of Interior Sessions per Day:</label><br>
-  <input type="number" id="secretaryUses" placeholder="Example: 5"><br><br>
+    <div class="resource-section" id="ironSection">
+      <h3>Iron Mines</h3>
+      <div id="ironInputs"></div>
+      <button onclick="addResourceInput('iron')">+ Add Mine</button>
+      <input type="number" id="ironBuff" placeholder="Buff %">
+      <div class="result-box" id="ironResult"></div>
+    </div>
 
-  <!-- FOOD -->
-  <div class="resource-section" id="foodSection">
-    <h3>🍞 Food Farms</h3>
-    <div id="foodInputs"></div>
-    <button type="button" onclick="addResourceInput('food')">+ Add Farm</button><br><br>
-    <label>Food Output Buff (%)</label><br>
-    <input type="number" id="foodBuff" placeholder="Example: 83.5"><br>
-    <div class="result-box" id="foodResult"></div>
+    <div class="resource-section" id="coinSection">
+      <h3>Gold Mints</h3>
+      <div id="coinInputs"></div>
+      <button onclick="addResourceInput('coin')">+ Add Mint</button>
+      <input type="number" id="coinBuff" placeholder="Buff %">
+      <div class="result-box" id="coinResult"></div>
+    </div>
+
+    <button onclick="calculateProduction()">Calculate</button>
+    <button onclick="resetForm()">Reset</button>
+    <button onclick="copyResults()">Copy Results</button>
   </div>
-
-  <!-- IRON -->
-  <div class="resource-section" id="ironSection">
-    <h3>🪓 Iron Mines</h3>
-    <div id="ironInputs"></div>
-    <button type="button" onclick="addResourceInput('iron')">+ Add Iron Mine</button><br><br>
-    <label>Iron Output Buff (%)</label><br>
-    <input type="number" id="ironBuff" placeholder="Example: 85.5"><br>
-    <div class="result-box" id="ironResult"></div>
-  </div>
-
-  <!-- GOLD -->
-  <div class="resource-section" id="coinSection">
-    <h3>💰 Gold Mints</h3>
-    <div id="coinInputs"></div>
-    <button type="button" onclick="addResourceInput('coin')">+ Add Mint</button><br><br>
-    <label>Gold Output Buff (%)</label><br>
-    <input type="number" id="coinBuff" placeholder="Example: 106"><br>
-    <div class="result-box" id="coinResult"></div>
-  </div>
-
-  <!-- 📊 UPGRADE PLANNER -->
-  <div class="resource-section">
-    <h3>📊 Upgrade Planner</h3>
-    <label>Building Type:</label>
-    <select id="buildingType">
-      <option value="farm">Farm</option>
-      <option value="iron">Iron Mine</option>
-      <option value="coin">Gold Mint</option>
-    </select><br><br>
-
-    <label>Current Level:</label>
-    <input type="number" id="currentLevel" min="1" max="35"><br>
-    <label>Target Level:</label>
-    <input type="number" id="targetLevel" min="1" max="35"><br><br>
-
-    <label>Current Iron Stockpile (M):</label>
-    <input type="number" id="ironStock"><br>
-    <label>Current Food Stockpile (M):</label>
-    <input type="number" id="foodStock"><br>
-    <label>Current Coin Stockpile (M):</label>
-    <input type="number" id="coinStock"><br><br>
-
-    <button onclick="calculateUpgrade()">Calculate Upgrade Plan</button>
-    <div class="result-box" id="upgradeResult"></div>
-    <button onclick="exportCSV()">Export Plan to CSV</button>
-    <button onclick="savePlan()">Save Plan</button>
-    <button onclick="loadPlan()">Load Saved Plan</button>
-  </div>
-<!-- 🏢 HQ Planner -->
-<div class="resource-section">
-  <h3>🏢 Headquarters Prerequisites Checker</h3>
-
-  <label>Target HQ Level:</label>
-  <input type="number" id="hqTargetLevel" min="2" max="29"><br><br>
-
-  <h4>Enter Your Current Building Levels:</h4>
-  <label>Tech Center:</label><input type="number" id="techCenter" min="1" max="29"><br>
-  <label>Wall:</label><br><input type="number" id="wall" min="1" max="29"><br>
-  <label>Drill Ground:</label><input type="number" id="drillGround" min="1" max="29"><br>
-  <label>Parking Lots:</label><input type="number" id="parkingLots" min="1" max="29"><br>
-  <label>Barracks:</label><input type="number" id="barracks" min="1" max="29"><br>
-  <label>Tank Center:</label><input type="number" id="tankCenter" min="1" max="29"><br>
-  <label>Alliance Center:</label><input type="number" id="allianceCenter" min="1" max="29"><br>
-  <label>Hospital:</label><input type="number" id="hospital" min="1" max="29"><br><br>
-
-  <button onclick="checkHQRequirements()">Check Requirements</button>
-  <div class="result-box" id="hqResult"></div>
-</div>
-
-</div> <!-- End container -->
 
 <script>
-function getBuildingData(type) {
-    if (type === "farm") return farmData;
-    if (type === "iron") return ironData;
-    if (type === "coin") return coinData;
-    return {};
-}
-
-function calculateUpgrade() {
-    const type = document.getElementById("buildingType").value;
-    const start = parseInt(document.getElementById("currentLevel").value);
-    const end = parseInt(document.getElementById("targetLevel").value);
-    const ironStock = (parseFloat(document.getElementById("ironStock").value) || 0) * 1_000_000;
-    const foodStock = (parseFloat(document.getElementById("foodStock").value) || 0) * 1_000_000;
-    const coinStock = (parseFloat(document.getElementById("coinStock").value) || 0) * 1_000_000;
-
-    if (!start || !end || start >= end) {
-        document.getElementById("upgradeResult").innerHTML = "Please enter valid levels.";
-        return;
-    }
-
-    const data = getBuildingData(type);
-
-    let ironRequired = 0, foodRequired = 0, coinRequired = 0, powerGain = 0, finalOutput = 0;
-
-    for (let lvl = start + 1; lvl <= end; lvl++) {
-        if (data[lvl]) {
-            ironRequired += data[lvl].iron;
-            foodRequired += data[lvl].food;
-            coinRequired += data[lvl].coin;
-            powerGain += data[lvl].power;
-            finalOutput = data[lvl].output;
-        }
-    }
-
-    const ironNeeded = Math.max(0, ironRequired - ironStock);
-    const foodNeeded = Math.max(0, foodRequired - foodStock);
-    const coinNeeded = Math.max(0, coinRequired - coinStock);
-
-    const ironPerHour = parseNumberFromResult("ironResult");
-    const foodPerHour = parseNumberFromResult("foodResult");
-    const coinPerHour = parseNumberFromResult("coinResult");
-
-    const ironTime = ironPerHour > 0 ? ironNeeded / ironPerHour : 0;
-    const foodTime = foodPerHour > 0 ? foodNeeded / foodPerHour : 0;
-    const coinTime = coinPerHour > 0 ? coinNeeded / coinPerHour : 0;
-
-    const daysIron = (ironTime / 24).toFixed(2);
-    const daysFood = (foodTime / 24).toFixed(2);
-    const daysCoin = (coinTime / 24).toFixed(2);
-
-    const resultText = `
-    <b>Total Upgrade Cost:</b><br>
-    Iron: ${ironRequired.toLocaleString()}<br>
-    Food: ${foodRequired.toLocaleString()}<br>
-    Coin: ${coinRequired.toLocaleString()}<br><br>
-    <b>Additional Needed:</b><br>
-    Iron: ${ironNeeded.toLocaleString()} (${daysIron} days)<br>
-    Food: ${foodNeeded.toLocaleString()} (${daysFood} days)<br>
-    Coin: ${coinNeeded.toLocaleString()} (${daysCoin} days)<br><br>
-    <b>Power Gain:</b> ${powerGain}<br>
-    <b>New Output/hr:</b> ${finalOutput}
-    `;
-
-    document.getElementById("upgradeResult").innerHTML = resultText;
-
-    const plan = {
-        type, start, end,
-        ironRequired, foodRequired, coinRequired,
-        ironNeeded, foodNeeded, coinNeeded,
-        daysIron, daysFood, daysCoin,
-        powerGain, finalOutput
-    };
-    localStorage.setItem("lastUpgradePlan", JSON.stringify(plan));
-}
-
-function parseNumberFromResult(resultId) {
-    const box = document.getElementById(resultId);
-    const match = box.innerText.match(/Hourly: ([\d,]+)/);
-    return match ? parseInt(match[1].replace(/,/g, "")) : 0;
-}
-
-function savePlan() {
-    const plan = localStorage.getItem("lastUpgradePlan");
-    if (plan) {
-        alert("Plan saved successfully!");
-    } else {
-        alert("No plan calculated yet.");
-    }
-}
-
-function loadPlan() {
-    const plan = JSON.parse(localStorage.getItem("lastUpgradePlan"));
-    if (!plan) {
-        alert("No saved plan found.");
-        return;
-    }
-    document.getElementById("buildingType").value = plan.type;
-    document.getElementById("currentLevel").value = plan.start;
-    document.getElementById("targetLevel").value = plan.end;
-    alert("Plan loaded. Click 'Calculate Upgrade Plan' to view.");
-}
-
-function exportCSV() {
-    const plan = JSON.parse(localStorage.getItem("lastUpgradePlan"));
-    if (!plan) {
-        alert("No plan to export.");
-        return;
-    }
-
-    const csv = `Building,From Level,To Level,Total Iron,Total Food,Total Coin,Iron Needed,Food Needed,Coin Needed,Days Iron,Days Food,Days Coin,Power Gain,New Output/hr\n` +
-    `${plan.type},${plan.start},${plan.end},${plan.ironRequired},${plan.foodRequired},${plan.coinRequired},${plan.ironNeeded},${plan.foodNeeded},${plan.coinNeeded},${plan.daysIron},${plan.daysFood},${plan.daysCoin},${plan.powerGain},${plan.finalOutput}`;
-
-    const blob = new Blob([csv], { type: "text/csv" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "Upgrade_Plan.csv";
-    a.click();
-    URL.revokeObjectURL(url);
-}
+const defaultOutputs = { 1: 100, 2: 250, 3: 500, 4: 1000 };
 
 function addResourceInput(type) {
-    const container = document.getElementById(type + "Inputs");
-    const div = document.createElement("div");
-    div.innerHTML = `
-      <input type="number" placeholder="Quantity" style="width: 40%;"> 
-      <input type="number" placeholder="Output/hr" style="width: 40%;"> 
-      <button class="remove-btn" onclick="this.parentNode.remove()">Remove</button>
-    `;
-    container.appendChild(div);
+  const container = document.getElementById(type + "Inputs");
+  const div = document.createElement("div");
+  div.innerHTML = `
+    <select onchange="this.nextElementSibling.value = defaultOutputs[this.value] || ''">
+      <option value="">Level</option>
+      ${Object.keys(defaultOutputs).map(lvl => `<option value="${lvl}">${lvl}</option>`).join("")}
+    </select>
+    <input type="number" placeholder="Output/hr" style="width: 30%;">
+    <input type="number" placeholder="Qty" style="width: 20%;">
+    <button class="remove-btn" onclick="this.parentNode.remove()">Remove</button>
+  `;
+  container.appendChild(div);
 }
 
 function calculateProduction() {
-    const secretaryUses = parseFloat(document.getElementById("secretaryUses").value) || 0;
-    calculateResource("food", parseFloat(document.getElementById("foodBuff").value) || 0, secretaryUses, "foodResult");
-    calculateResource("iron", parseFloat(document.getElementById("ironBuff").value) || 0, secretaryUses, "ironResult");
-    calculateResource("coin", parseFloat(document.getElementById("coinBuff").value) || 0, secretaryUses, "coinResult");
-}
-
-function calculateResource(type, buff, secretaryUses, resultId) {
+  const secretaryUses = parseFloat(document.getElementById("secretaryUses").value) || 0;
+  ["food", "iron", "coin"].forEach(type => {
+    const buff = parseFloat(document.getElementById(type + "Buff").value) || 0;
     let total = 0;
-    const rows = document.getElementById(type + "Inputs").querySelectorAll("div");
-    rows.forEach(row => {
-        const inputs = row.querySelectorAll("input");
-        const qty = parseFloat(inputs[0].value) || 0;
-        const output = parseFloat(inputs[1].value) || 0;
-        total += qty * output;
+    document.getElementById(type + "Inputs").querySelectorAll("div").forEach(row => {
+      const inputs = row.querySelectorAll("input");
+      const output = parseFloat(inputs[0].value) || 0;
+      const qty = parseFloat(inputs[1].value) || 0;
+      total += output * qty;
     });
 
     const hourly = total * (1 + buff / 100);
     const daily = hourly * 24;
-    const weekly = daily * 7;
-    const monthly = daily * 30;
-
-    const secretaryBonusPerUse = hourly * (5 / 60); // 5-minute bonus converted to hours
+    const secretaryBonusPerUse = hourly * (5 / 60);
     const totalSecretaryBonusDaily = secretaryBonusPerUse * secretaryUses;
-    const totalSecretaryBonusWeekly = totalSecretaryBonusDaily * 7;
-    const totalSecretaryBonusMonthly = totalSecretaryBonusDaily * 30;
-
     const dailyTotal = daily + totalSecretaryBonusDaily;
-    const weeklyTotal = weekly + totalSecretaryBonusWeekly;
-    const monthlyTotal = monthly + totalSecretaryBonusMonthly;
 
-    document.getElementById(resultId).innerHTML =
-        `Hourly: ${hourly.toLocaleString(undefined, { maximumFractionDigits: 0 })}<br>
-         Daily: ${dailyTotal.toLocaleString(undefined, { maximumFractionDigits: 0 })}<br>
-         Weekly: ${weeklyTotal.toLocaleString(undefined, { maximumFractionDigits: 0 })}<br>
-         Monthly: ${monthlyTotal.toLocaleString(undefined, { maximumFractionDigits: 0 })}<br>
-         Secretary Bonus Daily: +${totalSecretaryBonusDaily.toLocaleString(undefined, { maximumFractionDigits: 0 })}`;
+    document.getElementById(type + "Result").innerHTML =
+      `Hourly: ${hourly.toFixed(0)}<br>
+       Daily: ${dailyTotal.toFixed(0)}<br>
+       Sec. Bonus: +${totalSecretaryBonusDaily.toFixed(0)}`;
+  });
 }
 
 function resetForm() {
-    ["foodInputs", "ironInputs", "coinInputs"].forEach(id => document.getElementById(id).innerHTML = "");
-    ["foodBuff", "ironBuff", "coinBuff", "secretaryUses"].forEach(id => document.getElementById(id).value = "");
-    ["foodResult", "ironResult", "coinResult"].forEach(id => document.getElementById(id).innerHTML = "");
-    document.getElementById("upgradeResult").innerHTML = "";
+  ["foodInputs", "ironInputs", "coinInputs"].forEach(id => document.getElementById(id).innerHTML = "");
+  ["foodBuff", "ironBuff", "coinBuff", "secretaryUses"].forEach(id => document.getElementById(id).value = "");
+  ["foodResult", "ironResult", "coinResult"].forEach(id => document.getElementById(id).innerHTML = "");
 }
-  
-// HQ requirements data from the chart you provided
-const hqRequirements = {
-  2: [{b:"drillGround",lvl:1}, {b:"parkingLots",lvl:1}],
-  3: [{b:"wall",lvl:3}],
-  4: [{b:"barracks",lvl:3}, {b:"drillGround",lvl:3}],
-  5: [{b:"wall",lvl:4}, {b:"barracks",lvl:4}],
-  6: [{b:"wall",lvl:5}, {b:"drillGround",lvl:5}],
-  7: [{b:"wall",lvl:6}, {b:"tankCenter",lvl:6}],
-  8: [{b:"techCenter",lvl:7}, {b:"allianceCenter",lvl:7}],
-  9: [{b:"techCenter",lvl:8}, {b:"tankCenter",lvl:8}],
-  10:[{b:"techCenter",lvl:9}, {b:"hospital",lvl:9}],
-  11:[{b:"techCenter",lvl:10}, {b:"wall",lvl:10}],
-  12:[{b:"techCenter",lvl:11}, {b:"barracks",lvl:11}],
-  13:[{b:"techCenter",lvl:12}, {b:"tankCenter",lvl:12}],
-  14:[{b:"techCenter",lvl:13}, {b:"drillGround",lvl:13}],
-  15:[{b:"techCenter",lvl:14}, {b:"wall",lvl:14}],
-  16:[{b:"techCenter",lvl:15}, {b:"allianceCenter",lvl:15}],
-  17:[{b:"techCenter",lvl:16}, {b:"tankCenter",lvl:16}],
-  18:[{b:"techCenter",lvl:17}, {b:"hospital",lvl:17}],
-  19:[{b:"techCenter",lvl:18}, {b:"wall",lvl:18}],
-  20:[{b:"techCenter",lvl:19}, {b:"barracks",lvl:19}],
-  21:[{b:"techCenter",lvl:20}, {b:"tankCenter",lvl:20}],
-  22:[{b:"techCenter",lvl:21}, {b:"drillGround",lvl:21}],
-  23:[{b:"techCenter",lvl:22}, {b:"wall",lvl:22}],
-  24:[{b:"techCenter",lvl:23}, {b:"allianceCenter",lvl:23}],
-  25:[{b:"techCenter",lvl:24}, {b:"tankCenter",lvl:24}],
-  26:[{b:"techCenter",lvl:25}, {b:"hospital",lvl:25}],
-  27:[{b:"techCenter",lvl:26}, {b:"wall",lvl:26}],
-  28:[{b:"techCenter",lvl:27}, {b:"barracks",lvl:27}],
-  29:[{b:"techCenter",lvl:28}, {b:"tankCenter",lvl:28}]
-};
 
-function checkHQRequirements() {
-  const hqLevel = parseInt(document.getElementById("hqTargetLevel").value);
-  if (!hqLevel || hqLevel < 2 || hqLevel > 29) {
-    document.getElementById("hqResult").innerHTML = "Please enter a valid HQ level (2 to 29).";
-    return;
-  }
+function copyResults() {
+  const results = ["foodResult", "ironResult", "coinResult"]
+    .map(id => document.getElementById(id).innerText)
+    .join("\n\n");
+  navigator.clipboard.writeText(results).then(() => alert("Results copied!"));
+}
 
-  const buildings = {
-    techCenter: parseInt(document.getElementById("techCenter").value) || 0,
-    wall: parseInt(document.getElementById("wall").value) || 0,
-    drillGround: parseInt(document.getElementById("drillGround").value) || 0,
-    parkingLots: parseInt(document.getElementById("parkingLots").value) || 0,
-    barracks: parseInt(document.getElementById("barracks").value) || 0,
-    tankCenter: parseInt(document.getElementById("tankCenter").value) || 0,
-    allianceCenter: parseInt(document.getElementById("allianceCenter").value) || 0,
-    hospital: parseInt(document.getElementById("hospital").value) || 0
-  };
-
-  const reqs = hqRequirements[hqLevel];
-  let html = `<b>HQ ${hqLevel} Requirements:</b><br>`;
-  reqs.forEach(r => {
-    const playerLvl = buildings[r.b] || 0;
-    const met = playerLvl >= r.lvl ? "✅" : `<span style="color:red;">❌</span>`;
-    html += `${r.b} required: Level ${r.lvl} | Yours: ${playerLvl} ${met}<br>`;
+// Auto-save & reload
+window.addEventListener("beforeunload", () => {
+  document.querySelectorAll("input").forEach((input, i) => {
+    localStorage.setItem(`rss_input_${i}`, input.value);
   });
+});
 
-  document.getElementById("hqResult").innerHTML = html;
-}
-
+window.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll("input").forEach((input, i) => {
+    input.value = localStorage.getItem(`rss_input_${i}`) || "";
+  });
+});
 </script>
 </body>
 </html>
-
