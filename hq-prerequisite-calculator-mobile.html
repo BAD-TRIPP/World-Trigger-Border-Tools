@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>HQ Upgrade Requirement Calculator</title>
   <style>
     body {
@@ -58,75 +58,98 @@
   <button onclick="showRequirements()">Show Requirements</button>
   <div id="requirementsTable"></div>
 
-<script>
-const hqData = [
-  { hq: 2, requirements: [{ building: "Drill Ground", level: 1, iron: "68", food: "68", coin: "-", oil: "-", time: "4s" }] },
-  { hq: 3, requirements: [{ building: "Wall", level: 2, iron: "1,000", food: "1,000", coin: "-", oil: "-", time: "47s" }] },
-  { hq: 4, requirements: [
-    { building: "Barracks", level: 3, iron: "2,500", food: "2,500", coin: "-", oil: "-", time: "1m 57s" },
-    { building: "Drill Ground", level: 3, iron: "-", food: "-", coin: "-", oil: "-", time: "-" }
-  ]},
-  { hq: 5, requirements: [
-    { building: "Barracks", level: 4, iron: "20,000", food: "20,000", coin: "-", oil: "-", time: "11m 42s" },
-    { building: "Wall", level: 4, iron: "-", food: "-", coin: "-", oil: "-", time: "-" }
-  ]},
-  { hq: 6, requirements: [
-    { building: "Wall", level: 5, iron: "91,000", food: "91,000", coin: "-", oil: "-", time: "35m 6s" },
-    { building: "Drill Ground", level: 5, iron: "-", food: "-", coin: "-", oil: "-", time: "-" }
-  ]},
-  { hq: 7, requirements: [
-    { building: "Wall", level: 6, iron: "240,000", food: "240,000", coin: "-", oil: "-", time: "1h 33m 36s" },
-    { building: "Tank Center", level: 6, iron: "-", food: "-", coin: "-", oil: "-", time: "-" }
-  ]},
-  { hq: 8, requirements: [
-    { building: "Tech Center", level: 7, iron: "390,000", food: "390,000", coin: "-", oil: "-", time: "3h 7m 2s" },
-    { building: "Alliance Center", level: 7, iron: "-", food: "-", coin: "-", oil: "-", time: "-" }
-  ]},
-  { hq: 9, requirements: [
-    { building: "Tech Center", level: 8, iron: "620,000", food: "620,000", coin: "200,000", oil: "-", time: "4h 22m 5s" },
-    { building: "Tank Center", level: 8, iron: "-", food: "-", coin: "-", oil: "-", time: "-" }
-  ]},
-  { hq: 10, requirements: [
-    { building: "Tech Center", level: 9, iron: "750,000", food: "750,000", coin: "240,000", oil: "-", time: "5h 40m 43s" },
-    { building: "Hospital", level: 9, iron: "-", food: "-", coin: "-", oil: "-", time: "-" }
-  ]},
-  { hq: 11, requirements: [
-    { building: "Tech Center", level: 10, iron: "1,900,000", food: "1,900,000", coin: "600,000", oil: "-", time: "6h 33m 43s" },
-    { building: "Wall", level: 10, iron: "-", food: "-", coin: "-", oil: "-", time: "-" }
-  ]},
-  { hq: 12, requirements: [
-    { building: "Tech Center", level: 11, iron: "3,200,000", food: "3,200,000", coin: "1,000,000", oil: "-", time: "9h 21m 46s" },
-    { building: "Barracks", level: 11, iron: "-", food: "-", coin: "-", oil: "-", time: "-" }
-  ]},
-  { hq: 13, requirements: [
-    { building: "Tech Center", level: 12, iron: "3,500,000", food: "3,500,000", coin: "1,100,000", oil: "-", time: "11h 52m 54s" },
-    { building: "Tank Center", level: 12, iron: "-", food: "-", coin: "-", oil: "-", time: "-" }
-  ]},
-  { hq: 14, requirements: [
-    { building: "Tech Center", level: 13, iron: "4,900,000", food: "4,900,000", coin: "1,600,000", oil: "-", time: "1d 15h 26m 46s" },
-    { building: "Drill Ground", level: 13, iron: "-", food: "-", coin: "-", oil: "-", time: "-" }
-  ]},
-  { hq: 15, requirements: [
-    { building: "Tech Center", level: 14, iron: "6,800,000", food: "6,800,000", coin: "2,200,000", oil: "-", time: "1d 22h 9m 7s" },
-    { building: "Wall", level: 14, iron: "-", food: "-", coin: "-", oil: "-", time: "-" }
-  ]}
-];
+  <script>
+    const hqData = [
+      { hq: 2, requirements: [{ building: "Drill Ground", level: 1, iron: "68", food: "68", coin: "-", oil: "-", time: "4s" }] },
+      { hq: 3, requirements: [{ building: "Wall", level: 2, iron: "1,000", food: "1,000", coin: "-", oil: "-", time: "47s" }] },
+      { hq: 4, requirements: [
+        { building: "Barracks", level: 3, iron: "2,500", food: "2,500", coin: "-", oil: "-", time: "1m 57s" },
+        { building: "Drill Ground", level: 3, iron: "-", food: "-", coin: "-", oil: "-", time: "-" }
+      ]},
+      { hq: 5, requirements: [
+        { building: "Barracks", level: 4, iron: "20,000", food: "20,000", coin: "-", oil: "-", time: "11m 42s" },
+        { building: "Wall", level: 4, iron: "-", food: "-", coin: "-", oil: "-", time: "-" }
+      ]},
+      { hq: 6, requirements: [
+        { building: "Wall", level: 5, iron: "91,000", food: "91,000", coin: "-", oil: "-", time: "35m 6s" },
+        { building: "Drill Ground", level: 5, iron: "-", food: "-", coin: "-", oil: "-", time: "-" }
+      ]},
+      { hq: 7, requirements: [
+        { building: "Wall", level: 6, iron: "240,000", food: "240,000", coin: "-", oil: "-", time: "1h 33m 36s" },
+        { building: "Tank Center", level: 6, iron: "-", food: "-", coin: "-", oil: "-", time: "-" }
+      ]},
+      { hq: 8, requirements: [
+        { building: "Tech Center", level: 7, iron: "390,000", food: "390,000", coin: "-", oil: "-", time: "3h 7m 2s" },
+        { building: "Alliance Center", level: 7, iron: "-", food: "-", coin: "-", oil: "-", time: "-" }
+      ]},
+      { hq: 9, requirements: [
+        { building: "Tech Center", level: 8, iron: "620,000", food: "620,000", coin: "200,000", oil: "-", time: "4h 22m 5s" },
+        { building: "Tank Center", level: 8, iron: "-", food: "-", coin: "-", oil: "-", time: "-" }
+      ]},
+      { hq: 10, requirements: [
+        { building: "Tech Center", level: 9, iron: "750,000", food: "750,000", coin: "240,000", oil: "-", time: "5h 40m 43s" },
+        { building: "Hospital", level: 9, iron: "-", food: "-", coin: "-", oil: "-", time: "-" }
+      ]},
+      { hq: 11, requirements: [
+        { building: "Tech Center", level: 10, iron: "1,900,000", food: "1,900,000", coin: "600,000", oil: "-", time: "6h 33m 43s" },
+        { building: "Wall", level: 10, iron: "-", food: "-", coin: "-", oil: "-", time: "-" }
+      ]},
+      { hq: 12, requirements: [
+        { building: "Tech Center", level: 11, iron: "3,200,000", food: "3,200,000", coin: "1,000,000", oil: "-", time: "9h 21m 46s" },
+        { building: "Barracks", level: 11, iron: "-", food: "-", coin: "-", oil: "-", time: "-" }
+      ]},
+      { hq: 13, requirements: [
+        { building: "Tech Center", level: 12, iron: "3,500,000", food: "3,500,000", coin: "1,100,000", oil: "-", time: "11h 52m 54s" },
+        { building: "Tank Center", level: 12, iron: "-", food: "-", coin: "-", oil: "-", time: "-" }
+      ]},
+      { hq: 14, requirements: [
+        { building: "Tech Center", level: 13, iron: "4,900,000", food: "4,900,000", coin: "1,600,000", oil: "-", time: "1d 15h 26m 46s" },
+        { building: "Drill Ground", level: 13, iron: "-", food: "-", coin: "-", oil: "-", time: "-" }
+      ]},
+      { hq: 15, requirements: [
+        { building: "Tech Center", level: 14, iron: "6,800,000", food: "6,800,000", coin: "2,200,000", oil: "-", time: "1d 22h 9m 7s" },
+        { building: "Wall", level: 14, iron: "-", food: "-", coin: "-", oil: "-", time: "-" }
+      ]},
+      // ... HQ 16–30 here ...
+      { hq: 31, requirements: [
+        { building: "Tech Center", level: 30, iron: "1.6G", food: "1.6G", coin: "510M", oil: "1.44M", time: "111d 18h" },
+        { building: "Tank Center", level: 30, iron: "-", food: "-", coin: "-", oil: "-", time: "-" },
+        { building: "Barracks", level: 30, iron: "-", food: "-", coin: "-", oil: "-", time: "-" },
+        { building: "HQ Expansion (Tech)", level: 1, iron: "-", food: "-", coin: "-", oil: "-", time: "-" }
+      ]},
+      { hq: 32, requirements: [
+        { building: "Tech Center", level: 31, iron: "1.7G", food: "1.7G", coin: "560M", oil: "2.304M", time: "122d 22h" },
+        { building: "Tank Center", level: 31 }, { building: "Barracks", level: 31 }, { building: "Wall", level: 31 }
+      ]},
+      { hq: 33, requirements: [
+        { building: "Tech Center", level: 32, iron: "1.9G", food: "1.9G", coin: "620M", oil: "3.916M", time: "107d 13h" },
+        { building: "Tank Center", level: 32 }, { building: "Barracks", level: 32 }, { building: "Hospital", level: 32 }, { building: "Drill Ground", level: 32 }
+      ]},
+      { hq: 34, requirements: [
+        { building: "Tech Center", level: 33, iron: "2.0G", food: "2.0G", coin: "650M", oil: "7.05M", time: "124d 5h" },
+        { building: "Tank Center", level: 33 }, { building: "Barracks", level: 33 }, { building: "Wall", level: 33 }, { building: "Alliance Center", level: 33 }
+      ]},
+      { hq: 35, requirements: [
+        { building: "Tech Center", level: 34, iron: "2.1G", food: "2.1G", coin: "680M", oil: "14.1M", time: "149d 2h" },
+        { building: "Tank Center", level: 34 }, { building: "Barracks", level: 34 }, { building: "Hospital", level: 34 }, { building: "Drill Ground", level: 34 }
+      ]}
+    ];
 
-function showRequirements() {
-  const baseLevel = parseInt(document.getElementById("baseLevel").value);
-  let output = "";
-  hqData.forEach(entry => {
-    if (entry.hq > baseLevel) {
-      output += `<h2 style='color:gold;'>HQ ${entry.hq} Requirements</h2>`;
-      output += `<table><tr><th>Building</th><th>Level</th><th><img src='iron_icon.png'> Iron</th><th><img src='food_icon.png'> Food</th><th><img src='coin_icon.png'> Coin</th><th><img src='oil_icon.png'> Oil</th><th>⏱️ Time</th></tr>`;
-      entry.requirements.forEach(req => {
-        output += `<tr><td>${req.building}</td><td>${req.level}</td><td>${req.iron}</td><td>${req.food}</td><td>${req.coin}</td><td>${req.oil}</td><td>${req.time}</td></tr>`;
+    function showRequirements() {
+      const baseLevel = parseInt(document.getElementById("baseLevel").value);
+      let output = "";
+      hqData.forEach(entry => {
+        if (entry.hq > baseLevel) {
+          output += `<h2 style='color:gold;'>HQ ${entry.hq} Requirements</h2>`;
+          output += `<table><tr><th>Building</th><th>Level</th><th><img src='iron_icon.png'> Iron</th><th><img src='food_icon.png'> Food</th><th><img src='coin_icon.png'> Coin</th><th><img src='oil_icon.png'> Oil</th><th>⏱️ Time</th></tr>`;
+          entry.requirements.forEach(req => {
+            output += `<tr><td>${req.building}</td><td>${req.level}</td><td>${req.iron || '-'}</td><td>${req.food || '-'}</td><td>${req.coin || '-'}</td><td>${req.oil || '-'}</td><td>${req.time || '-'}</td></tr>`;
+          });
+          output += `</table>`;
+        }
       });
-      output += `</table>`;
+      document.getElementById("requirementsTable").innerHTML = output || "<p style='color:red;'>No HQ levels above input found.</p>";
     }
-  });
-  document.getElementById("requirementsTable").innerHTML = output;
-}
-</script>
+  </script>
 </body>
 </html>
