@@ -9,7 +9,17 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-title" content="BAD TRIPP Tools">
   <link rel="apple-touch-icon" href="bad_tripp_logo.png">
-
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function () {
+        navigator.serviceWorker.register('/service-worker.js').then(function (registration) {
+          console.log('ServiceWorker registered: ', registration.scope);
+        }, function (err) {
+          console.log('ServiceWorker registration failed: ', err);
+        });
+      });
+    }
+  </script>
   <style>
     body {
       background-color: #000;
@@ -29,28 +39,19 @@
       font-weight: bold;
     }
     input {
-      width: 90%;
       padding: 8px;
-      margin: 4px 0;
+      margin: 4px 4px;
       border-radius: 4px;
       border: 1px solid #444;
       background-color: #1a1a1a;
       color: white;
     }
-    button {
-      padding: 10px 15px;
-      margin-top: 10px;
-      background-color: gold;
-      color: black;
-      font-size: 1.1em;
-      font-weight: bold;
-      border: 2px solid gold;
-      border-radius: 5px;
-      transition: all 0.3s ease;
-    }
-    button:hover {
-      background-color: transparent;
-      color: gold;
+    .input-row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+      margin: 5px 0;
     }
     .resource-section {
       border: 1px solid #444;
@@ -66,19 +67,29 @@
       color: gold;
       font-weight: bold;
     }
-  </style>
-  <link rel="manifest" href="manifest.json">
-  <script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', function () {
-        navigator.serviceWorker.register('/service-worker.js').then(function (registration) {
-          console.log('ServiceWorker registered: ', registration.scope);
-        }, function (err) {
-          console.log('ServiceWorker registration failed: ', err);
-        });
-      });
+    button {
+      padding: 8px 12px;
+      margin-top: 10px;
+      background-color: gold;
+      color: black;
+      font-weight: bold;
+      border: 2px solid gold;
+      border-radius: 5px;
+      transition: 0.3s;
     }
-  </script>
+    button:hover {
+      background-color: transparent;
+      color: gold;
+    }
+    .remove-btn {
+      background-color: #333;
+      color: red;
+      border: 1px solid red;
+      font-size: 0.9em;
+      padding: 5px;
+      border-radius: 3px;
+    }
+  </style>
 </head>
 <body>
   <script>
@@ -99,35 +110,33 @@
     <label>Secretary Sessions per Day:</label>
     <input type="number" id="secretaryUses" placeholder="e.g. 5"><br><br>
 
-    <div class="resource-section">
+    <div class="resource-section" id="foodSection">
       <h3>🍞 Food Farms</h3>
-      <label>Level 1–30 Total Qty:</label>
-      <input type="number" id="foodQty" placeholder="e.g. 12">
-      <input type="number" id="foodLevel" placeholder="Level (1–30)">
-      <input type="number" id="foodBuff" placeholder="Food Buff %">
+      <div id="foodInputs"></div>
+      <button onclick="addResourceRow('food')">+ Add Farm</button>
+      <input type="number" id="foodBuff" placeholder="Total Food Buff %">
       <div class="result-box" id="foodResult"></div>
     </div>
 
-    <div class="resource-section">
+    <div class="resource-section" id="ironSection">
       <h3>🪓 Iron Mines</h3>
-      <label>Level 1–30 Total Qty:</label>
-      <input type="number" id="ironQty" placeholder="e.g. 10">
-      <input type="number" id="ironLevel" placeholder="Level (1–30)">
-      <input type="number" id="ironBuff" placeholder="Iron Buff %">
+      <div id="ironInputs"></div>
+      <button onclick="addResourceRow('iron')">+ Add Iron Mine</button>
+      <input type="number" id="ironBuff" placeholder="Total Iron Buff %">
       <div class="result-box" id="ironResult"></div>
     </div>
 
-    <div class="resource-section">
+    <div class="resource-section" id="coinSection">
       <h3>💰 Gold Mints</h3>
-      <label>Level 1–30 Total Qty:</label>
-      <input type="number" id="coinQty" placeholder="e.g. 8">
-      <input type="number" id="coinLevel" placeholder="Level (1–30)">
-      <input type="number" id="coinBuff" placeholder="Gold Buff %">
+      <div id="coinInputs"></div>
+      <button onclick="addResourceRow('coin')">+ Add Mint</button>
+      <input type="number" id="coinBuff" placeholder="Total Gold Buff %">
       <div class="result-box" id="coinResult"></div>
     </div>
 
     <button onclick="calculateAll()">Calculate All</button>
     <button onclick="resetForm()">Reset</button>
+  </div>
 
 <script>
 const outputByLevel = {
@@ -137,76 +146,61 @@ const outputByLevel = {
 };
 
 function formatNumber(n) {
-  return n.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+  return n.toLocaleString(undefined, { maximumFractionDigits: 0 });
 }
 
-function calculateResource(qty, level, buff, secretaryUses) {
-  const baseOutput = outputByLevel[level] || 0;
-  const hourly = qty * baseOutput * (1 + buff / 100);
-  const secBonus = hourly * (5 / 60) * secretaryUses;
-  const daily = hourly * 24 + secBonus;
-  const weekly = daily * 7;
-  const monthly = daily * 30;
-  return {
-    hourly: formatNumber(hourly),
-    daily: formatNumber(daily),
-    weekly: formatNumber(weekly),
-    monthly: formatNumber(monthly),
-    secBonus: formatNumber(secBonus)
-  };
+function addResourceRow(type) {
+  const container = document.getElementById(type + "Inputs");
+  const div = document.createElement("div");
+  div.className = "input-row";
+  div.innerHTML = `
+    <input type="number" placeholder="Qty" class="qty">
+    <input type="number" placeholder="Level (1–30)" class="level">
+    <button class="remove-btn" onclick="this.parentNode.remove()">Remove</button>
+  `;
+  container.appendChild(div);
 }
 
 function calculateAll() {
-  const secretaryUses = parseFloat(document.getElementById('secretaryUses').value) || 0;
+  calculateResource("food");
+  calculateResource("iron");
+  calculateResource("coin");
+}
 
-  const food = calculateResource(
-    parseFloat(document.getElementById('foodQty').value) || 0,
-    parseInt(document.getElementById('foodLevel').value) || 0,
-    parseFloat(document.getElementById('foodBuff').value) || 0,
-    secretaryUses
-  );
-  document.getElementById('foodResult').innerHTML = `
-    Hourly: ${food.hourly}<br>
-    Daily: ${food.daily}<br>
-    Weekly: ${food.weekly}<br>
-    Monthly: ${food.monthly}<br>
-    Secretary Bonus Daily: +${food.secBonus}`;
+function calculateResource(type) {
+  const container = document.getElementById(type + "Inputs");
+  const buff = parseFloat(document.getElementById(type + "Buff").value) || 0;
+  const secretaryUses = parseFloat(document.getElementById("secretaryUses").value) || 0;
+  let totalHourly = 0;
 
-  const iron = calculateResource(
-    parseFloat(document.getElementById('ironQty').value) || 0,
-    parseInt(document.getElementById('ironLevel').value) || 0,
-    parseFloat(document.getElementById('ironBuff').value) || 0,
-    secretaryUses
-  );
-  document.getElementById('ironResult').innerHTML = `
-    Hourly: ${iron.hourly}<br>
-    Daily: ${iron.daily}<br>
-    Weekly: ${iron.weekly}<br>
-    Monthly: ${iron.monthly}<br>
-    Secretary Bonus Daily: +${iron.secBonus}`;
+  container.querySelectorAll(".input-row").forEach(row => {
+    const qty = parseInt(row.querySelector(".qty").value) || 0;
+    const level = parseInt(row.querySelector(".level").value) || 0;
+    const baseOutput = outputByLevel[level] || 0;
+    totalHourly += qty * baseOutput;
+  });
 
-  const coin = calculateResource(
-    parseFloat(document.getElementById('coinQty').value) || 0,
-    parseInt(document.getElementById('coinLevel').value) || 0,
-    parseFloat(document.getElementById('coinBuff').value) || 0,
-    secretaryUses
-  );
-  document.getElementById('coinResult').innerHTML = `
-    Hourly: ${coin.hourly}<br>
-    Daily: ${coin.daily}<br>
-    Weekly: ${coin.weekly}<br>
-    Monthly: ${coin.monthly}<br>
-    Secretary Bonus Daily: +${coin.secBonus}`;
+  const buffedHourly = totalHourly * (1 + buff / 100);
+  const secBonus = buffedHourly * (5 / 60) * secretaryUses;
+  const daily = buffedHourly * 24 + secBonus;
+  const weekly = daily * 7;
+  const monthly = daily * 30;
+
+  document.getElementById(type + "Result").innerHTML = `
+    Hourly: ${formatNumber(buffedHourly)}<br>
+    Daily: ${formatNumber(daily)}<br>
+    Weekly: ${formatNumber(weekly)}<br>
+    Monthly: ${formatNumber(monthly)}<br>
+    Secretary Bonus Daily: +${formatNumber(secBonus)}`;
 }
 
 function resetForm() {
-  ['food', 'iron', 'coin'].forEach(type => {
-    document.getElementById(type + 'Qty').value = '';
-    document.getElementById(type + 'Level').value = '';
-    document.getElementById(type + 'Buff').value = '';
-    document.getElementById(type + 'Result').innerHTML = '';
+  ["food", "iron", "coin"].forEach(type => {
+    document.getElementById(type + "Inputs").innerHTML = "";
+    document.getElementById(type + "Result").innerHTML = "";
+    document.getElementById(type + "Buff").value = "";
   });
-  document.getElementById('secretaryUses').value = '';
+  document.getElementById("secretaryUses").value = "";
 }
 </script>
 </body>
