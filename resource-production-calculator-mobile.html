@@ -4,25 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Resource Production Calculator</title>
-  
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#FFD700">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-title" content="BAD TRIPP Tools">
   <link rel="apple-touch-icon" href="bad_tripp_logo.png">
-
-  <script>
-    if (!localStorage.getItem("badtripp_access_granted")) {
-      var password = prompt("Enter pass to access BAD TRIPP's Tools:");
-      if (password === "1009") {
-        localStorage.setItem("badtripp_access_granted", "true");
-      } else {
-        alert("Access denied.");
-        window.location.href = "https://www.lastwartutorial.com/";
-      }
-    }
-  </script>
-  
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', function () {
@@ -43,8 +29,10 @@
       padding: 10px;
     }
     .container {
-      max-width: 600px;
+      max-width: 100%;
       margin: auto;
+      padding: 0 10px;
+      box-sizing: border-box;
     }
     h1, h3 {
       color: gold;
@@ -59,12 +47,16 @@
       border: 1px solid #444;
       background-color: #1a1a1a;
       color: white;
+      width: 100%;
+      max-width: 120px;
+      box-sizing: border-box;
     }
     .input-row {
       display: flex;
       justify-content: center;
       align-items: center;
       gap: 5px;
+      flex-wrap: wrap;
       margin: 5px 0;
     }
     .resource-section {
@@ -95,17 +87,6 @@
       background-color: transparent;
       color: gold;
     }
-    .back-button {
-      display: inline-block;
-      margin-bottom: 10px;
-      padding: 10px 15px;
-      background-color: gold;
-      color: black;
-      font-weight: bold;
-      text-decoration: none;
-      border: 2px solid gold;
-      border-radius: 5px;
-    }
     .remove-btn {
       background-color: #333;
       color: red;
@@ -117,10 +98,19 @@
   </style>
 </head>
 <body>
-  
+  <script>
+    if (!localStorage.getItem("badtripp_access_granted")) {
+      var password = prompt("Enter pass to access BAD TRIPP's Tools:");
+      if (password === "1009") {
+        localStorage.setItem("badtripp_access_granted", "true");
+      } else {
+        alert("Access denied.");
+        window.location.href = "https://www.lastwartutorial.com/";
+      }
+    }
+  </script>
   <div class="container">
     <img src="bad_tripp_logo.png" alt="BAD TRIPP Logo" style="max-width: 200px;"><br>
-        <a href="index.html" class="back-button">← Back to Main Menu</a><br>
     <h1>Resource Production Calculator</h1>
 
     <label>Secretary Sessions per Day:</label>
