@@ -3,13 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Resource Production Calculator</title>
+  <title>Buff Calculator</title>
+
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#FFD700">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-title" content="BAD TRIPP Tools">
   <link rel="apple-touch-icon" href="bad_tripp_logo.png">
+
   <script>
+    if (!localStorage.getItem("badtripp_access_granted")) {
+      var password = prompt("Enter pass to access BAD TRIPP's Tools:");
+      if (password === "1009") {
+        localStorage.setItem("badtripp_access_granted", "true"); 
+      } else {
+        alert("Access denied.");
+        window.location.href = "https://www.lastwartutorial.com/";
+      }
+    }
+  </script>
+
+    <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', function () {
         navigator.serviceWorker.register('/service-worker.js').then(function (registration) {
@@ -20,6 +34,7 @@
       });
     }
   </script>
+  
   <style>
     body {
       background-color: #000;
@@ -31,182 +46,234 @@
     .container {
       max-width: 600px;
       margin: auto;
-      padding: 0 10px;
-      box-sizing: border-box;
     }
-    h1, h3 {
+    h1 {
       color: gold;
     }
-    label {
-      font-weight: bold;
-    }
     input {
+      width: 90%;
       padding: 8px;
-      margin: 4px 4px;
+      margin: 4px 0;
       border-radius: 4px;
       border: 1px solid #444;
       background-color: #1a1a1a;
       color: white;
-      width: 100%;
-      max-width: 120px;
-      box-sizing: border-box;
-    }
-    .input-row {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 5px;
-      flex-wrap: wrap;
-      margin: 5px 0;
-    }
-    .resource-section {
-      border: 1px solid #444;
-      border-radius: 5px;
-      padding: 10px;
-      margin-bottom: 15px;
-    }
-    .result-box {
-      background-color: #222;
-      border-radius: 5px;
-      padding: 10px;
-      margin-top: 10px;
-      color: gold;
-      font-weight: bold;
     }
     button {
-      padding: 8px 12px;
+      padding: 10px 15px;
       margin-top: 10px;
       background-color: gold;
       color: black;
       font-weight: bold;
+      font-size: 1.1em;
       border: 2px solid gold;
       border-radius: 5px;
-      transition: 0.3s;
+      transition: all 0.3s ease;
+      width: 100%;
     }
     button:hover {
       background-color: transparent;
       color: gold;
     }
-    .remove-btn {
-      background-color: #333;
-      color: red;
-      border: 1px solid red;
+    .back-button {
+      display: inline-block;
+      margin-bottom: 10px;
+      padding: 10px 15px;
+      background-color: gold;
+      color: black;
+      font-weight: bold;
+      text-decoration: none;
+      border: 2px solid gold;
+      border-radius: 5px;
+    }
+    .back-button:hover {
+      background-color: transparent;
+      color: gold;
+    }
+    .result {
+      margin-top: 10px;
+      background: #222;
+      padding: 15px;
+      border-radius: 5px;
+      font-size: 1.1em;
+      font-weight: bold;
+      color: white;
+    }
+    .time-input-group {
+      display: flex;
+      gap: 10px;
+      flex-wrap: nowrap;
+      justify-content: center;
+    }
+
+    .time-input-group div {
+      flex: 1 1 80px;
+      min-width: 80px;
+    }
+
+    .time-input-group label {
+      display: block;
+      font-weight: bold;
       font-size: 0.9em;
+      text-align: center;
+    }
+
+    .time-input-group input {
+      width: 80px;
       padding: 5px;
-      border-radius: 3px;
+      border: 1px solid #444;
+      background-color: #111;
+      color: #f0f0f0;
+      border-radius: 4px;
+    }
+
+    @media (max-width: 500px) {
+      .time-input-group {
+        flex-wrap: wrap;
+      }
     }
   </style>
 </head>
 <body>
-  <script>
-    if (!localStorage.getItem("badtripp_access_granted")) {
-      var password = prompt("Enter pass to access BAD TRIPP's Tools:");
-      if (password === "1009") {
-        localStorage.setItem("badtripp_access_granted", "true");
-      } else {
-        alert("Access denied.");
-        window.location.href = "https://www.lastwartutorial.com/";
-      }
-    }
-  </script>
   <div class="container">
+
     <img src="bad_tripp_logo.png" alt="BAD TRIPP Logo" style="max-width: 200px;"><br>
-    <h1>Resource Production Calculator</h1>
+    <a href="index.html" class="back-button">← Back to Main Menu</a><br>
+    <h1>Buff Calculator</h1>
 
-    <label>Secretary Sessions per Day:</label>
-    <input type="number" id="secretaryUses" placeholder="e.g. 5"><br><br>
+<h3>Enter the Original Time</h3>
+<div class="time-input-group">
+  <div><label></label><input type="number" id="days" placeholder="Days"></div>
+  <div><label></label><input type="number" id="hours" placeholder="Hours"></div>
+  <div><label></label><input type="number" id="minutes" placeholder="Minutes"></div>
+  <div><label></label><input type="number" id="seconds" placeholder="Seconds"></div>
+</div>
 
-    <div class="resource-section" id="foodSection">
-      <h3>🍞 Food Farms</h3>
-      <div id="foodInputs"></div>
-      <button onclick="addResourceRow('food')">+ Add Farm</button>
-      <input type="number" id="foodBuff" placeholder="Total Food Buff %">
-      <div class="result-box" id="foodResult"></div>
-    </div>
+<h3>Enter Total Buff % (HQ stats/economy)</h3>
+<input type="number" id="buffPercent" placeholder="Total Buff %"><br>
 
-    <div class="resource-section" id="ironSection">
-      <h3>🪓 Iron Mines</h3>
-      <div id="ironInputs"></div>
-      <button onclick="addResourceRow('iron')">+ Add Iron Mine</button>
-      <input type="number" id="ironBuff" placeholder="Total Iron Buff %">
-      <div class="result-box" id="ironResult"></div>
-    </div>
+<button onclick="calculate()">Calculate Buffed Time</button>
+<div class="result" id="resultBox"></div>
 
-    <div class="resource-section" id="coinSection">
-      <h3>💰 Gold Mints</h3>
-      <div id="coinInputs"></div>
-      <button onclick="addResourceRow('coin')">+ Add Mint</button>
-      <input type="number" id="coinBuff" placeholder="Total Gold Buff %">
-      <div class="result-box" id="coinResult"></div>
-    </div>
+<h1>Apply Buffs, Instant Speed-ups, and Help Reductions</h1>
 
-    <button onclick="calculateAll()">Calculate All</button>
-    <button onclick="resetForm()">Reset</button>
+<label>Enter your one-time 'Increase free Speed-up time for Construction' Buff (HQ stats/economy)</label><br><br>
+<div class="time-input-group">
+  <div><label></label><input type="number" id="buffSpeedHours" placeholder="Hours"></div>
+  <div><label></label><input type="number" id="buffSpeedMinutes" placeholder="Minutes"></div>
+  <div><label></label><input type="number" id="buffSpeedSeconds" placeholder="Seconds"></div>
+</div>
+
+<hr style="border: 1px solid gold; margin: 25px 0px 25px 0px;">
+
+<label>Enter 'Instant Speed-ups' in inventory to reduce total build time (optional)</label><br><br>
+<div class="time-input-group">
+  <div><label></label><input type="number" id="manualDays" placeholder="Days"></div>
+  <div><label></label><input type="number" id="manualHours" placeholder="Hours"></div>
+  <div><label></label><input type="number" id="manualMinutes" placeholder="Minutes"></div>
+</div>
+
+<hr style="border: 1px solid gold; margin: 25px 0px 25px 0px;">
+
+<label>Number of Alliance Member Helps Received</label><br><br>
+<input type="number" id="helps" placeholder="Default: 27"><br>
+<br><br>
+<label>Help Time per Alliance Member Help (Minutes)</label><br><br>
+<input type="number" id="helpTime" placeholder="Default: 7.5"><br>
+<br><br>
+<button onclick="calculateFinal()">Calculate Final Time</button>
+<div class="result" id="finalResultBox"></div>
+<button onclick="resetForm()">Reset</button>
+
+<p style="margin-top: 15px;">Need help? <a href="quick_guide.html" style="color: gold;">Quick Guide</a></p>
+
+<footer>🏹 Created for Server #1009 Only!<br>Courtesy of **BAD TRIPP**</footer>
+
   </div>
 
 <script>
-const outputByLevel = {
-  1: 720, 2: 1440, 3: 2160, 4: 2880, 5: 3600, 6: 4320, 7: 5040, 8: 5760, 9: 6480, 10: 7200,
-  11: 7920, 12: 8640, 13: 9360, 14: 10080, 15: 10800, 16: 11520, 17: 12240, 18: 12960, 19: 13680, 20: 14400,
-  21: 15120, 22: 15840, 23: 16560, 24: 17280, 25: 18000, 26: 18720, 27: 19440, 28: 20160, 29: 20880, 30: 21600
-};
+let buffedTimeInSeconds = 0;
 
-function formatNumber(n) {
-  return n.toLocaleString(undefined, { maximumFractionDigits: 0 });
+function calculate() {
+  const d = parseFloat(document.getElementById('days').value) || 0;
+  const h = parseFloat(document.getElementById('hours').value) || 0;
+  const m = parseFloat(document.getElementById('minutes').value) || 0;
+  const s = parseFloat(document.getElementById('seconds').value) || 0;
+  const buffPercent = parseFloat(document.getElementById('buffPercent').value) || 0;
+
+  const totalBuffDecimal = buffPercent / 100;
+  const baseSecs = (d * 86400) + (h * 3600) + (m * 60) + s;
+  buffedTimeInSeconds = baseSecs / (1 + totalBuffDecimal);
+
+  const bd = Math.floor(buffedTimeInSeconds / 86400);
+  let rem = buffedTimeInSeconds % 86400;
+  const bh = Math.floor(rem / 3600);
+  rem %= 3600;
+  const bm = Math.floor(rem / 60);
+  const bs = Math.floor(rem % 60);
+
+  document.getElementById('resultBox').innerHTML = 
+    `Buffed Time: ${bd}d ${bh}h ${bm}m ${bs}s`;
 }
 
-function addResourceRow(type) {
-  const container = document.getElementById(type + "Inputs");
-  const div = document.createElement("div");
-  div.className = "input-row";
-  div.innerHTML = `
-    <input type="number" placeholder="Qty" class="qty">
-    <input type="number" placeholder="Level (1–30)" class="level">
-    <button class="remove-btn" onclick="this.parentNode.remove()">Remove</button>
-  `;
-  container.appendChild(div);
-}
+function calculateFinal() {
+  const buffH = parseFloat(document.getElementById('buffSpeedHours').value) || 0;
+  const buffM = parseFloat(document.getElementById('buffSpeedMinutes').value) || 0;
+  const buffS = parseFloat(document.getElementById('buffSpeedSeconds').value) || 0;
 
-function calculateAll() {
-  calculateResource("food");
-  calculateResource("iron");
-  calculateResource("coin");
-}
+  const totalBuffSecs = (buffH * 3600) + (buffM * 60) + buffS;
 
-function calculateResource(type) {
-  const container = document.getElementById(type + "Inputs");
-  const buff = parseFloat(document.getElementById(type + "Buff").value) || 0;
-  const secretaryUses = parseFloat(document.getElementById("secretaryUses").value) || 0;
-  let totalHourly = 0;
+  const manualD = parseFloat(document.getElementById('manualDays').value) || 0;
+  const manualH = parseFloat(document.getElementById('manualHours').value) || 0;
+  const manualM = parseFloat(document.getElementById('manualMinutes').value) || 0;
+  const totalManualSecs = (manualD * 86400) + (manualH * 3600) + (manualM * 60);
 
-  container.querySelectorAll(".input-row").forEach(row => {
-    const qty = parseInt(row.querySelector(".qty").value) || 0;
-    const level = parseInt(row.querySelector(".level").value) || 0;
-    const baseOutput = outputByLevel[level] || 0;
-    totalHourly += qty * baseOutput;
-  });
+  const helps = parseFloat(document.getElementById('helps').value) || 0;
+  const helpTime = parseFloat(document.getElementById('helpTime').value) || 7.5;
+  const totalHelpSecs = helps * helpTime * 60;
 
-  const buffedHourly = totalHourly * (1 + buff / 100);
-  const secBonus = buffedHourly * (5 / 60) * secretaryUses;
-  const daily = buffedHourly * 24 + secBonus;
-  const weekly = daily * 7;
-  const monthly = daily * 30;
+  const totalReductionSecs = totalBuffSecs + totalManualSecs + totalHelpSecs;
 
-  document.getElementById(type + "Result").innerHTML = `
-    Hourly: ${formatNumber(buffedHourly)}<br>
-    Daily: ${formatNumber(daily)}<br>
-    Weekly: ${formatNumber(weekly)}<br>
-    Monthly: ${formatNumber(monthly)}<br>
-    Secretary Bonus Daily: +${formatNumber(secBonus)}`;
+  const buffDaysFinal = Math.floor(totalBuffSecs / 86400);
+  let remBuff = totalBuffSecs % 86400;
+  const buffHoursFinal = Math.floor(remBuff / 3600);
+  remBuff %= 3600;
+  const buffMinutesFinal = Math.floor(remBuff / 60);
+  const buffSecondsFinal = Math.floor(remBuff % 60);
+
+  const manualDaysFinal = Math.floor(totalManualSecs / 86400);
+  let remManual = totalManualSecs % 86400;
+  const manualHoursFinal = Math.floor(remManual / 3600);
+  remManual %= 3600;
+  const manualMinutesFinal = Math.floor(remManual / 60);
+
+  let finalSecs = buffedTimeInSeconds - totalReductionSecs;
+  if (finalSecs < 0) finalSecs = 0;
+
+  const fd = Math.floor(finalSecs / 86400);
+  let rem = finalSecs % 86400;
+  const fh = Math.floor(rem / 3600);
+  rem %= 3600;
+  const fm = Math.floor(rem / 60);
+  const fs = Math.floor(rem % 60);
+
+  document.getElementById('finalResultBox').innerHTML =
+    `Final Time: ${fd}d ${fh}h ${fm}m ${fs}s<br><br>` +
+    `<u>Reduction Breakdown:</u><br>` +
+    `Free Speed-up Buff: ${buffDaysFinal}d ${buffHoursFinal}h ${buffMinutesFinal}m ${buffSecondsFinal}s<br>` +
+    `Instant Speed-ups Used: ${manualDaysFinal}d ${manualHoursFinal}h ${manualMinutesFinal}m<br>` +
+    `Alliance Help Reduction: ${Math.floor(totalHelpSecs / 60)} minutes`;
 }
 
 function resetForm() {
-  ["food", "iron", "coin"].forEach(type => {
-    document.getElementById(type + "Inputs").innerHTML = "";
-    document.getElementById(type + "Result").innerHTML = "";
-    document.getElementById(type + "Buff").value = "";
+  ['days','hours','minutes','seconds','buffPercent',
+   'buffSpeedHours','buffSpeedMinutes','buffSpeedSeconds',
+   'manualDays','manualHours','manualMinutes',
+   'helps','helpTime'].forEach(id => {
+    document.getElementById(id).value = "";
   });
-  document.getElementById("secretaryUses").value = "";
+  document.getElementById('resultBox').innerHTML = "";
+  document.getElementById('finalResultBox').innerHTML = "";
 }
 </script>
 </body>
