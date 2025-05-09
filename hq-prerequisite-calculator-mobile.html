@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HQ Upgrade Requirements</title>
+  <title>HQ Upgrade Requirement Calculator</title>
   <style>
     body {
       background-color: #000;
@@ -15,14 +15,24 @@
     h1 {
       color: gold;
     }
-    select, table {
-      margin-top: 20px;
+    input {
       padding: 10px;
       font-size: 1em;
       border-radius: 5px;
+      margin-top: 10px;
+    }
+    button {
+      padding: 10px;
+      background-color: gold;
+      color: black;
+      font-weight: bold;
+      border: none;
+      border-radius: 5px;
+      margin: 10px;
+      cursor: pointer;
     }
     table {
-      width: 90%;
+      width: 95%;
       margin: 20px auto;
       border-collapse: collapse;
       background-color: #111;
@@ -42,55 +52,57 @@
   </style>
 </head>
 <body>
-  <h1>🛠️ HQ Upgrade Requirements</h1>
-  <label for="hqLevel">Select HQ Level:</label>
-  <select id="hqLevel" onchange="displayRequirements()">
-    <option value="32">HQ Level 32</option>
-    <option value="33">HQ Level 33</option>
-    <option value="34">HQ Level 34</option>
-  </select>
-
+  <h1>🛠️ HQ Upgrade Requirement Calculator</h1>
+  <label for="baseLevel">Enter Your Current HQ Level:</label><br>
+  <input type="number" id="baseLevel" min="1" max="35">
+  <button onclick="showRequirements()">Show Requirements</button>
   <div id="requirementsTable"></div>
 
-  <script>
-    const requirements = {
-      32: [
-        { building: "Tech Center", level: 32, iron: "1.5G", food: "1.5G", coin: "490M", oil: "1.3M", time: "107d 13h" },
-        { building: "Barracks", level: 32, iron: "870M", food: "870M", coin: "350M", oil: "576K", time: "92d 4h" },
-        { building: "Tank Center", level: 32, iron: "1.3G", food: "440M", coin: "280M", oil: "900K", time: "92d 4h" },
-        { building: "Wall", level: 31, iron: "1.6G", food: "530M", coin: "340M", oil: "675K", time: "111d 18h" },
-        { building: "HQ", level: 32, iron: "1.7G", food: "1.7G", coin: "560M", oil: "2.3M", time: "122d 22h" }
-      ],
-      33: [
-        { building: "Tech Center", level: 33, iron: "1.7G", food: "1.7G", coin: "540M", oil: "2.2M", time: "118d 7h" },
-        { building: "Barracks", level: 33, iron: "960M", food: "960M", coin: "380M", oil: "979K", time: "101d 10h" },
-        { building: "Tank Center", level: 33, iron: "1.4G", food: "480M", coin: "310M", oil: "1.53M", time: "101d 10h" },
-        { building: "Alliance Center", level: 33, iron: "320M", food: "960M", coin: "310M", oil: "551K", time: "67d 14h" },
-        { building: "Wall", level: 32, iron: "1.7G", food: "580M", coin: "370M", oil: "1.08M", time: "122d 22h" },
-        { building: "HQ", level: 33, iron: "1.9G", food: "1.9G", coin: "620M", oil: "3.92M", time: "135d 5h" }
-      ]
-    };
+<script>
+const hqData = [
+  // Add all HQ level requirement data below. Truncated for brevity here.
+  { hq: 32, requirements: [
+    { building: "Tech Center", level: 32, iron: "1.5G", food: "1.5G", coin: "490M", oil: "1.3M", time: "107d 13h" },
+    { building: "Barracks", level: 32, iron: "870M", food: "870M", coin: "350M", oil: "576K", time: "92d 4h" },
+    { building: "Tank Center", level: 32, iron: "1.3G", food: "440M", coin: "280M", oil: "900K", time: "92d 4h" },
+    { building: "Wall", level: 31, iron: "1.6G", food: "530M", coin: "340M", oil: "675K", time: "111d 18h" },
+    { building: "HQ", level: 32, iron: "1.7G", food: "1.7G", coin: "560M", oil: "2.3M", time: "122d 22h" }
+  ]},
+  { hq: 33, requirements: [
+    { building: "Tech Center", level: 33, iron: "1.7G", food: "1.7G", coin: "540M", oil: "2.2M", time: "118d 7h" },
+    { building: "Barracks", level: 33, iron: "960M", food: "960M", coin: "380M", oil: "979K", time: "101d 10h" },
+    { building: "Tank Center", level: 33, iron: "1.4G", food: "480M", coin: "310M", oil: "1.53M", time: "101d 10h" },
+    { building: "Alliance Center", level: 33, iron: "320M", food: "960M", coin: "310M", oil: "551K", time: "67d 14h" },
+    { building: "Wall", level: 32, iron: "1.7G", food: "580M", coin: "370M", oil: "1.08M", time: "122d 22h" },
+    { building: "HQ", level: 33, iron: "1.9G", food: "1.9G", coin: "620M", oil: "3.92M", time: "135d 5h" }
+  ]},
+  { hq: 34, requirements: [
+    { building: "Tech Center", level: 34, iron: "1.8G", food: "1.8G", coin: "570M", oil: "3.97M", time: "124d 5h" },
+    { building: "Barracks", level: 34, iron: "1.0G", food: "1.0G", coin: "400M", oil: "1.76M", time: "106d 11h" },
+    { building: "Tank Center", level: 34, iron: "1.5G", food: "500M", coin: "320M", oil: "2.75M", time: "106d 11h" },
+    { building: "Hospital", level: 34, iron: "500M", food: "1.5G", coin: "400M", oil: "1.32M", time: "106d 11h" },
+    { building: "Drill Ground", level: 34, iron: "340M", food: "1.0G", coin: "270M", oil: "1.32M", time: "70d 23h" },
+    { building: "Wall", level: 33, iron: "1.9G", food: "640M", coin: "410M", oil: "1.84M", time: "135d 5h" },
+    { building: "HQ", level: 34, iron: "2.0G", food: "2.0G", coin: "650M", oil: "7.05M", time: "141d 23h" }
+  ]}
+];
 
-    function displayRequirements() {
-      const hqLevel = document.getElementById("hqLevel").value;
-      const data = requirements[hqLevel];
-      let html = `<table><tr><th>Building</th><th>Level</th><th><img src="iron_icon.png"> Iron</th><th><img src="food_icon.png"> Food</th><th><img src="coin_icon.png"> Coin</th><th><img src="oil_icon.png"> Oil</th><th>⏱️ Time</th></tr>`;
-      data.forEach(row => {
-        html += `<tr>
-          <td>${row.building}</td>
-          <td>${row.level}</td>
-          <td>${row.iron}</td>
-          <td>${row.food}</td>
-          <td>${row.coin}</td>
-          <td>${row.oil}</td>
-          <td>${row.time}</td>
-        </tr>`;
+function showRequirements() {
+  const baseLevel = parseInt(document.getElementById("baseLevel").value);
+  let output = "";
+  hqData.forEach(entry => {
+    if (entry.hq > baseLevel) {
+      output += `<h2 style='color:gold;'>HQ ${entry.hq} Requirements</h2>`;
+      output += `<table><tr><th>Building</th><th>Level</th><th><img src='iron_icon.png'> Iron</th><th><img src='food_icon.png'> Food</th><th><img src='coin_icon.png'> Coin</th><th><img src='oil_icon.png'> Oil</th><th>⏱️ Time</th></tr>`;
+      entry.requirements.forEach(req => {
+        output += `<tr><td>${req.building}</td><td>${req.level}</td><td>${req.iron}</td><td>${req.food}</td><td>${req.coin}</td><td>${req.oil}</td><td>${req.time}</td></tr>`;
       });
-      html += `</table>`;
-      document.getElementById("requirementsTable").innerHTML = html;
+      output += `</table>`;
     }
-
-    displayRequirements();
-  </script>
+  });
+  document.getElementById("requirementsTable").innerHTML = output;
+}
+</script>
 </body>
 </html>
+
