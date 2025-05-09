@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RSS Production Calculator</title>
+  <title>Resource Production Calculator</title>
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#FFD700">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -67,11 +67,34 @@
       font-weight: bold;
     }
   </style>
+  <link rel="manifest" href="manifest.json">
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function () {
+        navigator.serviceWorker.register('/service-worker.js').then(function (registration) {
+          console.log('ServiceWorker registered: ', registration.scope);
+        }, function (err) {
+          console.log('ServiceWorker registration failed: ', err);
+        });
+      });
+    }
+  </script>
 </head>
 <body>
+  <script>
+    if (!localStorage.getItem("badtripp_access_granted")) {
+      var password = prompt("Enter pass to access BAD TRIPP's Tools:");
+      if (password === "1009") {
+        localStorage.setItem("badtripp_access_granted", "true");
+      } else {
+        alert("Access denied.");
+        window.location.href = "https://www.lastwartutorial.com/";
+      }
+    }
+  </script>
   <div class="container">
     <img src="bad_tripp_logo.png" alt="BAD TRIPP Logo" style="max-width: 200px;"><br>
-    <h1>Ultimate RSS Calculator</h1>
+    <h1>Resource Production Calculator</h1>
 
     <label>Secretary Sessions per Day:</label>
     <input type="number" id="secretaryUses" placeholder="e.g. 5"><br><br>
