@@ -92,6 +92,9 @@
       border-radius: 5px;
       font-size: 1em;
     }
+    .result h3, .result h4 {
+      color: gold;
+    }
   </style>
 </head>
 <body>
@@ -113,13 +116,19 @@
   <script>
     let upgradeData = {};
 
-    fetch('hq_levels.json')
+    fetch('hq_levels_complete.json')
       .then(response => response.json())
       .then(data => upgradeData = data)
       .catch(err => {
         document.getElementById('upgradeResult').innerHTML = 'Error loading upgrade data.';
         console.error('Failed to load JSON:', err);
       });
+
+    function formatNumber(num) {
+      if (num >= 1_000_000_000) return (num / 1_000_000_000).toFixed(1).replace(/\.0$/, '') + 'G';
+      if (num >= 1_000_000) return (num / 1_000_000).toFixed(0) + 'M';
+      return num.toLocaleString();
+    }
 
     function showUpgradeData() {
       const level = document.getElementById("hqInput").value;
@@ -138,7 +147,7 @@
       }
       html += "</ul><h4>Resource Costs:</h4><ul>";
       for (const [resource, amount] of Object.entries(data.Resources)) {
-        html += `<li>${resource}: ${amount.toLocaleString()}</li>`;
+        html += `<li>${resource}: ${formatNumber(amount)}</li>`;
       }
       html += "</ul>";
       container.innerHTML = html;
