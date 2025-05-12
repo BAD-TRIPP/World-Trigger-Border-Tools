@@ -1,1 +1,256 @@
 
+{
+  "3": {
+    "Resources": {
+      "Iron": 1000,
+      "Food": 1000,
+      "Gold": 0
+    }
+  },
+  "4": {
+    "Resources": {
+      "Iron": 2500,
+      "Food": 2500,
+      "Gold": 0
+    }
+  },
+  "5": {
+    "Resources": {
+      "Iron": 20000,
+      "Food": 20000,
+      "Gold": 0
+    }
+  },
+  "6": {
+    "Resources": {
+      "Iron": 91000,
+      "Food": 91000,
+      "Gold": 0
+    }
+  },
+  "7": {
+    "Resources": {
+      "Iron": 240000,
+      "Food": 240000,
+      "Gold": 0
+    }
+  },
+  "8": {
+    "Resources": {
+      "Iron": 390000,
+      "Food": 390000,
+      "Gold": 0
+    }
+  },
+  "9": {
+    "Resources": {
+      "Iron": 620000,
+      "Food": 620000,
+      "Gold": 200000
+    }
+  },
+  "10": {
+    "Resources": {
+      "Iron": 750000,
+      "Food": 750000,
+      "Gold": 240000
+    }
+  },
+  "11": {
+    "Resources": {
+      "Iron": 1900000,
+      "Food": 1900000,
+      "Gold": 600000
+    }
+  },
+  "12": {
+    "Resources": {
+      "Iron": 3200000,
+      "Food": 3200000,
+      "Gold": 1000000
+    }
+  },
+  "13": {
+    "Resources": {
+      "Iron": 3500000,
+      "Food": 3500000,
+      "Gold": 1100000
+    }
+  },
+  "14": {
+    "Resources": {
+      "Iron": 4900000,
+      "Food": 4900000,
+      "Gold": 1600000
+    }
+  },
+  "15": {
+    "Resources": {
+      "Iron": 6800000,
+      "Food": 6800000,
+      "Gold": 2200000
+    }
+  },
+  "16": {
+    "Resources": {
+      "Iron": 12000000,
+      "Food": 12000000,
+      "Gold": 3900000
+    }
+  },
+  "17": {
+    "Resources": {
+      "Iron": 16000000,
+      "Food": 16000000,
+      "Gold": 5100000
+    }
+  },
+  "18": {
+    "Resources": {
+      "Iron": 28000000,
+      "Food": 28000000,
+      "Gold": 8900000
+    }
+  },
+  "19": {
+    "Resources": {
+      "Iron": 33000000,
+      "Food": 33000000,
+      "Gold": 11000000
+    }
+  },
+  "20": {
+    "Resources": {
+      "Iron": 60000000,
+      "Food": 60000000,
+      "Gold": 19000000
+    }
+  },
+  "21": {
+    "Resources": {
+      "Iron": 84000000,
+      "Food": 84000000,
+      "Gold": 27000000
+    }
+  },
+  "22": {
+    "Resources": {
+      "Iron": 110000000,
+      "Food": 110000000,
+      "Gold": 35000000
+    }
+  },
+  "23": {
+    "Resources": {
+      "Iron": 140000000,
+      "Food": 140000000,
+      "Gold": 44000000
+    }
+  },
+  "24": {
+    "Resources": {
+      "Iron": 170000000,
+      "Food": 170000000,
+      "Gold": 54000000
+    }
+  },
+  "25": {
+    "Resources": {
+      "Iron": 290000000,
+      "Food": 290000000,
+      "Gold": 93000000
+    }
+  },
+  "26": {
+    "Resources": {
+      "Iron": 400000000,
+      "Food": 400000000,
+      "Gold": 130000000
+    }
+  },
+  "27": {
+    "Resources": {
+      "Iron": 530000000,
+      "Food": 530000000,
+      "Gold": 170000000
+    }
+  },
+  "28": {
+    "Resources": {
+      "Iron": 740000000,
+      "Food": 740000000,
+      "Gold": 240000000
+    }
+  },
+  "29": {
+    "Resources": {
+      "Iron": 1,
+      "Food": 1,
+      "Gold": 330000000
+    }
+  },
+  "30": {
+    "Resources": {
+      "Iron": 1,
+      "Food": 1,
+      "Gold": 460000000
+    }
+  },
+  "31": {
+    "Research Center": 30,
+    "Tank Center": 30,
+    "Barracks": 30,
+    "Resources": {
+      "Iron": 79000000,
+      "Food": 240000000,
+      "Gold": 51000000
+    }
+  },
+  "32": {
+    "Research Center": 31,
+    "Tank Center": 31,
+    "Barracks": 31,
+    "Wall": 31,
+    "Resources": {
+      "Iron": 100000000,
+      "Food": 310000000,
+      "Gold": 65000000
+    }
+  },
+  "33": {
+    "Research Center": 32,
+    "Tank Center": 32,
+    "Barracks": 32,
+    "Hospital": 32,
+    "Drill Ground": 32,
+    "Resources": {
+      "Iron": 130000000,
+      "Food": 380000000,
+      "Gold": 82000000
+    }
+  },
+  "34": {
+    "Research Center": 33,
+    "Tank Center": 33,
+    "Barracks": 33,
+    "Wall": 33,
+    "Alliance Center": 33,
+    "Resources": {
+      "Iron": 150000000,
+      "Food": 450000000,
+      "Gold": 97000000
+    }
+  },
+  "35": {
+    "Research Center": 34,
+    "Tank Center": 34,
+    "Barracks": 34,
+    "Hospital": 34,
+    "Drill Ground": 34,
+    "Resources": {
+      "Iron": 180000000,
+      "Food": 530000000,
+      "Gold": 110000000
+    }
+  }
+}
