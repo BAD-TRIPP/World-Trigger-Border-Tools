@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HQ Upgrade Tracker</title>
+  <title>HQ Upgrade Tracker Mobile</title>
 
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#FFD700">
@@ -111,45 +111,15 @@
   </div>
 
   <script>
-    const upgradeData = {
-      "31": {
-        "Research Center": 30,
-        "Tank Center": 30,
-        "Barracks": 30,
-        "Resources": { "Iron": 79000000, "Food": 240000000, "Gold": 51000000 }
-      },
-      "32": {
-        "Research Center": 31,
-        "Tank Center": 31,
-        "Barracks": 31,
-        "Wall": 31,
-        "Resources": { "Iron": 100000000, "Food": 310000000, "Gold": 65000000 }
-      },
-      "33": {
-        "Research Center": 32,
-        "Tank Center": 32,
-        "Barracks": 32,
-        "Hospital": 32,
-        "Drill Ground": 32,
-        "Resources": { "Iron": 130000000, "Food": 380000000, "Gold": 82000000 }
-      },
-      "34": {
-        "Research Center": 33,
-        "Tank Center": 33,
-        "Barracks": 33,
-        "Wall": 33,
-        "Alliance Center": 33,
-        "Resources": { "Iron": 150000000, "Food": 450000000, "Gold": 97000000 }
-      },
-      "35": {
-        "Research Center": 34,
-        "Tank Center": 34,
-        "Barracks": 34,
-        "Hospital": 34,
-        "Drill Ground": 34,
-        "Resources": { "Iron": 180000000, "Food": 530000000, "Gold": 110000000 }
-      }
-    };
+    let upgradeData = {};
+
+    fetch('hq_levels.json')
+      .then(response => response.json())
+      .then(data => upgradeData = data)
+      .catch(err => {
+        document.getElementById('upgradeResult').innerHTML = 'Error loading upgrade data.';
+        console.error('Failed to load JSON:', err);
+      });
 
     function showUpgradeData() {
       const level = document.getElementById("hqInput").value;
@@ -157,7 +127,7 @@
       const container = document.getElementById("upgradeResult");
 
       if (!data) {
-        container.innerHTML = "<strong>No data available for HQ level " + level + ".</strong>";
+        container.innerHTML = `<strong>No data available for HQ level ${level}.</strong>`;
         return;
       }
 
@@ -173,39 +143,6 @@
       html += "</ul>";
       container.innerHTML = html;
     }
-
-  let upgradeData = {};
-
-  fetch('hq_levels.json')
-    .then(response => response.json())
-    .then(data => upgradeData = data)
-    .catch(err => {
-      document.getElementById('upgradeResult').innerHTML = 'Error loading upgrade data.';
-      console.error('Failed to load JSON:', err);
-    });
-
-  function showUpgradeData() {
-    const level = document.getElementById("hqInput").value;
-    const data = upgradeData[level];
-    const container = document.getElementById("upgradeResult");
-
-    if (!data) {
-      container.innerHTML = `<strong>No data available for HQ level ${level}.</strong>`;
-      return;
-    }
-
-    let html = `<h3>Requirements for HQ Level ${level}</h3><ul>`;
-    for (const [building, req] of Object.entries(data)) {
-      if (building === "Resources") continue;
-      html += `<li>${building}: Level ${req}</li>`;
-    }
-    html += "</ul><h4>Resource Costs:</h4><ul>";
-    for (const [resource, amount] of Object.entries(data.Resources)) {
-      html += `<li>${resource}: ${amount.toLocaleString()}</li>`;
-    }
-    html += "</ul>";
-    container.innerHTML = html;
-  }
   </script>
 </body>
 </html>
