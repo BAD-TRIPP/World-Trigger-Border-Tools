@@ -1,4 +1,224 @@
 {
+  "11": [
+    {
+      "Building": "Wall",
+      "Level": 10,
+      "Food": 1900000,
+      "Iron": 1900000,
+      "Gold": 600000,
+      "Source": "Actual",
+      "Notes": ""
+    }
+  ],
+  "12": [
+    {
+      "Building": "Barracks",
+      "Level": 11,
+      "Food": 3200000,
+      "Iron": 3200000,
+      "Gold": 1000000,
+      "Source": "Actual",
+      "Notes": ""
+    }
+  ],
+  "13": [
+    {
+      "Building": "Tank Center",
+      "Level": 12,
+      "Food": 3500000,
+      "Iron": 3500000,
+      "Gold": 1100000,
+      "Source": "Actual",
+      "Notes": ""
+    }
+  ],
+  "14": [
+    {
+      "Building": "Drill Ground",
+      "Level": 13,
+      "Food": 4800000,
+      "Iron": 4800000,
+      "Gold": 1500000,
+      "Source": "Actual",
+      "Notes": ""
+    }
+  ],
+  "15": [
+    {
+      "Building": "Wall",
+      "Level": 14,
+      "Food": 6600000,
+      "Iron": 6600000,
+      "Gold": 2100000,
+      "Source": "Actual",
+      "Notes": ""
+    }
+  ],
+  "16": [
+    {
+      "Building": "Alliance Center",
+      "Level": 15,
+      "Food": 11700000,
+      "Iron": 11700000,
+      "Gold": 3800000,
+      "Source": "Actual",
+      "Notes": ""
+    }
+  ],
+  "17": [
+    {
+      "Building": "Tank Center",
+      "Level": 16,
+      "Food": 15600000,
+      "Iron": 15600000,
+      "Gold": 4300000,
+      "Source": "Actual",
+      "Notes": ""
+    }
+  ],
+  "18": [
+    {
+      "Building": "Hospital",
+      "Level": 17,
+      "Food": 24500000,
+      "Iron": 24500000,
+      "Gold": 7000000,
+      "Source": "Actual",
+      "Notes": ""
+    }
+  ],
+  "19": [
+    {
+      "Building": "Wall",
+      "Level": 18,
+      "Food": 33000000,
+      "Iron": 33000000,
+      "Gold": 9000000,
+      "Source": "Actual",
+      "Notes": ""
+    }
+  ],
+  "20": [
+    {
+      "Building": "Barracks",
+      "Level": 19,
+      "Food": 60000000,
+      "Iron": 60000000,
+      "Gold": 16000000,
+      "Source": "Actual",
+      "Notes": ""
+    }
+  ],
+  "21": [
+    {
+      "Building": "Tank Center",
+      "Level": 20,
+      "Food": 79300000,
+      "Iron": 79300000,
+      "Gold": 25600000,
+      "Source": "Actual",
+      "Notes": ""
+    }
+  ],
+  "22": [
+    {
+      "Building": "Drill Ground",
+      "Level": 21,
+      "Food": 105600000,
+      "Iron": 105600000,
+      "Gold": 33600000,
+      "Source": "Actual",
+      "Notes": ""
+    }
+  ],
+  "23": [
+    {
+      "Building": "Wall",
+      "Level": 22,
+      "Food": 131600000,
+      "Iron": 131600000,
+      "Gold": 41300000,
+      "Source": "Actual",
+      "Notes": ""
+    }
+  ],
+  "24": [
+    {
+      "Building": "Alliance Center",
+      "Level": 23,
+      "Food": 158900000,
+      "Iron": 158900000,
+      "Gold": 50400000,
+      "Source": "Actual",
+      "Notes": ""
+    }
+  ],
+  "25": [
+    {
+      "Building": "Tank Center",
+      "Level": 24,
+      "Food": 270000000,
+      "Iron": 270000000,
+      "Gold": 86500000,
+      "Source": "Actual",
+      "Notes": ""
+    }
+  ],
+  "26": [
+    {
+      "Building": "Hospital",
+      "Level": 25,
+      "Food": 374000000,
+      "Iron": 374000000,
+      "Gold": 121500000,
+      "Source": "Actual",
+      "Notes": ""
+    }
+  ],
+  "27": [
+    {
+      "Building": "Wall",
+      "Level": 26,
+      "Food": 487600000,
+      "Iron": 487600000,
+      "Gold": 156000000,
+      "Source": "Actual",
+      "Notes": ""
+    }
+  ],
+  "28": [
+    {
+      "Building": "Barracks",
+      "Level": 27,
+      "Food": 684500000,
+      "Iron": 684500000,
+      "Gold": 222000000,
+      "Source": "Actual",
+      "Notes": ""
+    }
+  ],
+  "29": [
+    {
+      "Building": "Tank Center",
+      "Level": 28,
+      "Food": 925000000,
+      "Iron": 925000000,
+      "Gold": 305200000,
+      "Source": "Actual",
+      "Notes": ""
+    }
+  ],
+  "30": [
+    {
+      "Building": "Drill Ground",
+      "Level": 29,
+      "Food": 1280000000,
+      "Iron": 1280000000,
+      "Gold": 425000000,
+      "Source": "Actual",
+      "Notes": ""
+    }
+  ],
   "31": {
     "Buildings": {
       "Research Center": {
