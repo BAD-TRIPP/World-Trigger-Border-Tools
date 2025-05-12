@@ -219,213 +219,257 @@
       "Notes": ""
     }
   ],
-  "31": {
-    "Buildings": {
-      "Research Center": {
-        "Resources": {
-          "Food": 426763535,
-          "Iron": 217211536,
-          "Gold": 103176001
-        }
-      },
-      "Tank Center": {
-        "Resources": {
-          "Food": 426763535,
-          "Iron": 217211536,
-          "Gold": 103176001
-        }
-      },
-      "Barracks": {
-        "Resources": {
-          "Food": 426763535,
-          "Iron": 217211536,
-          "Gold": 103176001
-        }
-      }
+  "31": [
+    {
+      "Building": "Research Center",
+      "Level": 30,
+      "Food": 426763535,
+      "Iron": 217211536,
+      "Gold": 103176001,
+      "Source": "Linear Estimate",
+      "Notes": ""
     },
-    "HQ Upgrade": {
-      "Resources": {
-        "Food": 240000000,
-        "Iron": 79000000,
-        "Gold": 51000000
-      }
-    }
-  },
-  "32": {
-    "Buildings": {
-      "Research Center": {
-        "Resources": {
-          "Food": 438625000,
-          "Iron": 225523631,
-          "Gold": 106356316
-        }
-      },
-      "Tank Center": {
-        "Resources": {
-          "Food": 438625000,
-          "Iron": 225523631,
-          "Gold": 106356316
-        }
-      },
-      "Barracks": {
-        "Resources": {
-          "Food": 438625000,
-          "Iron": 225523631,
-          "Gold": 106356316
-        }
-      },
-      "Wall": {
-        "Resources": {
-          "Food": 438625000,
-          "Iron": 225523631,
-          "Gold": 106356316
-        }
-      }
+    {
+      "Building": "Tank Center",
+      "Level": 30,
+      "Food": 426763535,
+      "Iron": 217211536,
+      "Gold": 103176001,
+      "Source": "Linear Estimate",
+      "Notes": ""
     },
-    "HQ Upgrade": {
-      "Resources": {
-        "Food": 310000000,
-        "Iron": 100000000,
-        "Gold": 65000000
-      }
-    }
-  },
-  "33": {
-    "Buildings": {
-      "Research Center": {
-        "Resources": {
-          "Food": 532324737,
-          "Iron": 287633118,
-          "Gold": 131716855
-        }
-      },
-      "Tank Center": {
-        "Resources": {
-          "Food": 532324737,
-          "Iron": 287633118,
-          "Gold": 131716855
-        }
-      },
-      "Barracks": {
-        "Resources": {
-          "Food": 532324737,
-          "Iron": 287633118,
-          "Gold": 131716855
-        }
-      },
-      "Hospital": {
-        "Resources": {
-          "Food": 532324737,
-          "Iron": 287633118,
-          "Gold": 131716855
-        }
-      },
-      "Drill Ground": {
-        "Resources": {
-          "Food": 532324737,
-          "Iron": 287633118,
-          "Gold": 131716855
-        }
-      }
+    {
+      "Building": "Barracks",
+      "Level": 30,
+      "Food": 426763535,
+      "Iron": 217211536,
+      "Gold": 103176001,
+      "Source": "Linear Estimate",
+      "Notes": ""
     },
-    "HQ Upgrade": {
-      "Resources": {
-        "Food": 380000000,
-        "Iron": 130000000,
-        "Gold": 82000000
-      }
+    {
+      "Building": "HQ Upgrade",
+      "Level": 31,
+      "Food": 240000000,
+      "Iron": 79000000,
+      "Gold": 51000000,
+      "Source": "Actual",
+      "Notes": ""
     }
-  },
-  "34": {
-    "Buildings": {
-      "Research Center": {
-        "Resources": {
-          "Food": 477244596,
-          "Iron": 227119239,
-          "Gold": 112985730
-        }
-      },
-      "Tank Center": {
-        "Resources": {
-          "Food": 477244596,
-          "Iron": 227119239,
-          "Gold": 112985730
-        }
-      },
-      "Barracks": {
-        "Resources": {
-          "Food": 477244596,
-          "Iron": 227119239,
-          "Gold": 112985730
-        }
-      },
-      "Wall": {
-        "Resources": {
-          "Food": 477244596,
-          "Iron": 227119239,
-          "Gold": 112985730
-        }
-      },
-      "Alliance Center": {
-        "Resources": {
-          "Food": 477244596,
-          "Iron": 227119239,
-          "Gold": 112985730
-        }
-      }
+  ],
+  "32": [
+    {
+      "Building": "Research Center",
+      "Level": 31,
+      "Food": 438625000,
+      "Iron": 225523631,
+      "Gold": 106356316,
+      "Source": "Linear Estimate",
+      "Notes": ""
     },
-    "HQ Upgrade": {
-      "Resources": {
-        "Food": 450000000,
-        "Iron": 150000000,
-        "Gold": 97000000
-      }
-    }
-  },
-  "35": {
-    "Buildings": {
-      "Research Center": {
-        "Resources": {
-          "Food": 584609548,
-          "Iron": 307265048,
-          "Gold": 143219466
-        }
-      },
-      "Tank Center": {
-        "Resources": {
-          "Food": 584609548,
-          "Iron": 307265048,
-          "Gold": 143219466
-        }
-      },
-      "Barracks": {
-        "Resources": {
-          "Food": 584609548,
-          "Iron": 307265048,
-          "Gold": 143219466
-        }
-      },
-      "Hospital": {
-        "Resources": {
-          "Food": 584609548,
-          "Iron": 307265048,
-          "Gold": 143219466
-        }
-      },
-      "Drill Ground": {
-        "Resources": {
-          "Food": 584609548,
-          "Iron": 307265048,
-          "Gold": 143219466
-        }
-      }
+    {
+      "Building": "Tank Center",
+      "Level": 31,
+      "Food": 438625000,
+      "Iron": 225523631,
+      "Gold": 106356316,
+      "Source": "Linear Estimate",
+      "Notes": ""
     },
-    "HQ Upgrade": {
-      "Resources": {
-        "Food": 530000000,
-        "Iron": 180000000,
-        "Gold": 110000000
-      }
+    {
+      "Building": "Barracks",
+      "Level": 31,
+      "Food": 438625000,
+      "Iron": 225523631,
+      "Gold": 106356316,
+      "Source": "Linear Estimate",
+      "Notes": ""
+    },
+    {
+      "Building": "Wall",
+      "Level": 31,
+      "Food": 438625000,
+      "Iron": 225523631,
+      "Gold": 106356316,
+      "Source": "Linear Estimate",
+      "Notes": ""
+    },
+    {
+      "Building": "HQ Upgrade",
+      "Level": 32,
+      "Food": 310000000,
+      "Iron": 100000000,
+      "Gold": 65000000,
+      "Source": "Actual",
+      "Notes": ""
     }
-  }
+  ],
+  "33": [
+    {
+      "Building": "Research Center",
+      "Level": 32,
+      "Food": 532324737,
+      "Iron": 287633118,
+      "Gold": 131716855,
+      "Source": "Linear Estimate",
+      "Notes": ""
+    },
+    {
+      "Building": "Tank Center",
+      "Level": 32,
+      "Food": 532324737,
+      "Iron": 287633118,
+      "Gold": 131716855,
+      "Source": "Linear Estimate",
+      "Notes": ""
+    },
+    {
+      "Building": "Barracks",
+      "Level": 32,
+      "Food": 532324737,
+      "Iron": 287633118,
+      "Gold": 131716855,
+      "Source": "Linear Estimate",
+      "Notes": ""
+    },
+    {
+      "Building": "Hospital",
+      "Level": 32,
+      "Food": 532324737,
+      "Iron": 287633118,
+      "Gold": 131716855,
+      "Source": "Linear Estimate",
+      "Notes": ""
+    },
+    {
+      "Building": "Drill Ground",
+      "Level": 32,
+      "Food": 532324737,
+      "Iron": 287633118,
+      "Gold": 131716855,
+      "Source": "Linear Estimate",
+      "Notes": ""
+    },
+    {
+      "Building": "HQ Upgrade",
+      "Level": 33,
+      "Food": 380000000,
+      "Iron": 130000000,
+      "Gold": 82000000,
+      "Source": "Actual",
+      "Notes": ""
+    }
+  ],
+  "34": [
+    {
+      "Building": "Research Center",
+      "Level": 33,
+      "Food": 477244596,
+      "Iron": 227119239,
+      "Gold": 112985730,
+      "Source": "Linear Estimate",
+      "Notes": ""
+    },
+    {
+      "Building": "Tank Center",
+      "Level": 33,
+      "Food": 477244596,
+      "Iron": 227119239,
+      "Gold": 112985730,
+      "Source": "Linear Estimate",
+      "Notes": ""
+    },
+    {
+      "Building": "Barracks",
+      "Level": 33,
+      "Food": 477244596,
+      "Iron": 227119239,
+      "Gold": 112985730,
+      "Source": "Linear Estimate",
+      "Notes": ""
+    },
+    {
+      "Building": "Wall",
+      "Level": 33,
+      "Food": 477244596,
+      "Iron": 227119239,
+      "Gold": 112985730,
+      "Source": "Linear Estimate",
+      "Notes": ""
+    },
+    {
+      "Building": "Alliance Center",
+      "Level": 33,
+      "Food": 477244596,
+      "Iron": 227119239,
+      "Gold": 112985730,
+      "Source": "Linear Estimate",
+      "Notes": ""
+    },
+    {
+      "Building": "HQ Upgrade",
+      "Level": 34,
+      "Food": 450000000,
+      "Iron": 150000000,
+      "Gold": 97000000,
+      "Source": "Actual",
+      "Notes": ""
+    }
+  ],
+  "35": [
+    {
+      "Building": "Research Center",
+      "Level": 34,
+      "Food": 584609548,
+      "Iron": 307265048,
+      "Gold": 143219466,
+      "Source": "Linear Estimate",
+      "Notes": ""
+    },
+    {
+      "Building": "Tank Center",
+      "Level": 34,
+      "Food": 584609548,
+      "Iron": 307265048,
+      "Gold": 143219466,
+      "Source": "Linear Estimate",
+      "Notes": ""
+    },
+    {
+      "Building": "Barracks",
+      "Level": 34,
+      "Food": 584609548,
+      "Iron": 307265048,
+      "Gold": 143219466,
+      "Source": "Linear Estimate",
+      "Notes": ""
+    },
+    {
+      "Building": "Hospital",
+      "Level": 34,
+      "Food": 584609548,
+      "Iron": 307265048,
+      "Gold": 143219466,
+      "Source": "Linear Estimate",
+      "Notes": ""
+    },
+    {
+      "Building": "Drill Ground",
+      "Level": 34,
+      "Food": 584609548,
+      "Iron": 307265048,
+      "Gold": 143219466,
+      "Source": "Linear Estimate",
+      "Notes": ""
+    },
+    {
+      "Building": "HQ Upgrade",
+      "Level": 35,
+      "Food": 530000000,
+      "Iron": 180000000,
+      "Gold": 110000000,
+      "Source": "Actual",
+      "Notes": ""
+    }
+  ]
 }
