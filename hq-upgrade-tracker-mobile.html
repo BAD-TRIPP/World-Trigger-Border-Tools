@@ -116,7 +116,7 @@
   <script>
     let upgradeData = {};
 
-    fetch('hq_levels.json')
+    fetch('data/hq_levels.json')
       .then(response => response.json())
       .then(data => upgradeData = data)
       .catch(err => {
