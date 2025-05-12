@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Buff Calculator</title>
+</head>
+<body>
+    <h2>Buff Calculator</h2>
+    <label>Original Time:</label>
+    <input type="number" id="days" placeholder="Days">
+    <input type="number" id="hours" placeholder="Hours">
+    <input type="number" id="minutes" placeholder="Minutes">
+    <input type="number" id="seconds" placeholder="Seconds">
+    <br><br>
+    <label>Total Buff %:</label>
+    <input type="number" id="totalBuffPercent" placeholder="Total Buff %">
+    <br><br>
+    <button onclick="calculateBuffedTime()">Calculate Buffed Time</button>
+    <br><br>
+    <div id="result"></div>
+
+    <script>
+        function calculateBuffedTime() {
+            const days = parseFloat(document.getElementById('days').value) || 0;
+            const hours = parseFloat(document.getElementById('hours').value) || 0;
+            const minutes = parseFloat(document.getElementById('minutes').value) || 0;
+            const seconds = parseFloat(document.getElementById('seconds').value) || 0;
+            const totalBuffPercent = parseFloat(document.getElementById('totalBuffPercent').value) || 0;
+
+            const originalTimeSeconds = (((days * 24 + hours) * 60 + minutes) * 60 + seconds);
+            const buffMultiplier = 1 + (totalBuffPercent / 100);
+            const buffedTimeSeconds = originalTimeSeconds / buffMultiplier;
+
+            const d = Math.floor(buffedTimeSeconds / 86400);
+            const h = Math.floor((buffedTimeSeconds % 86400) / 3600);
+            const m = Math.floor((buffedTimeSeconds % 3600) / 60);
+            const s = Math.floor(buffedTimeSeconds % 60);
+
+            document.getElementById('result').innerText = `Buffed Time: ${d}d ${h}h ${m}m ${s}s`;
+        }
+    </script>
+</body>
+</html>
