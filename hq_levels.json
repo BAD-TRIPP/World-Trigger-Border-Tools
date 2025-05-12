@@ -1,0 +1,59 @@
+{
+  "31": {
+    "Research Center": 30,
+    "Tank Center": 30,
+    "Barracks": 30,
+    "Resources": {
+      "Iron": 79000000,
+      "Food": 240000000,
+      "Gold": 51000000
+    }
+  },
+  "32": {
+    "Research Center": 31,
+    "Tank Center": 31,
+    "Barracks": 31,
+    "Wall": 31,
+    "Resources": {
+      "Iron": 100000000,
+      "Food": 310000000,
+      "Gold": 65000000
+    }
+  },
+  "33": {
+    "Research Center": 32,
+    "Tank Center": 32,
+    "Barracks": 32,
+    "Hospital": 32,
+    "Drill Ground": 32,
+    "Resources": {
+      "Iron": 130000000,
+      "Food": 380000000,
+      "Gold": 82000000
+    }
+  },
+  "34": {
+    "Research Center": 33,
+    "Tank Center": 33,
+    "Barracks": 33,
+    "Wall": 33,
+    "Alliance Center": 33,
+    "Resources": {
+      "Iron": 150000000,
+      "Food": 450000000,
+      "Gold": 97000000
+    }
+  },
+  "35": {
+    "Research Center": 34,
+    "Tank Center": 34,
+    "Barracks": 34,
+    "Hospital": 34,
+    "Drill Ground": 34,
+    "Resources": {
+      "Iron": 180000000,
+      "Food": 530000000,
+      "Gold": 110000000
+    }
+  }
+}
