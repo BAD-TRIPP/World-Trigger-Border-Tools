@@ -173,6 +173,39 @@
       html += "</ul>";
       container.innerHTML = html;
     }
+
+  let upgradeData = {};
+
+  fetch('hq_levels.json')
+    .then(response => response.json())
+    .then(data => upgradeData = data)
+    .catch(err => {
+      document.getElementById('upgradeResult').innerHTML = 'Error loading upgrade data.';
+      console.error('Failed to load JSON:', err);
+    });
+
+  function showUpgradeData() {
+    const level = document.getElementById("hqInput").value;
+    const data = upgradeData[level];
+    const container = document.getElementById("upgradeResult");
+
+    if (!data) {
+      container.innerHTML = `<strong>No data available for HQ level ${level}.</strong>`;
+      return;
+    }
+
+    let html = `<h3>Requirements for HQ Level ${level}</h3><ul>`;
+    for (const [building, req] of Object.entries(data)) {
+      if (building === "Resources") continue;
+      html += `<li>${building}: Level ${req}</li>`;
+    }
+    html += "</ul><h4>Resource Costs:</h4><ul>";
+    for (const [resource, amount] of Object.entries(data.Resources)) {
+      html += `<li>${resource}: ${amount.toLocaleString()}</li>`;
+    }
+    html += "</ul>";
+    container.innerHTML = html;
+  }
   </script>
 </body>
 </html>
