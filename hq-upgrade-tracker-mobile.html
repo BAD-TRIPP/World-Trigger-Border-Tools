@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>HQ Upgrade Tracker Mobile</title>
 
   <link rel="manifest" href="manifest.json">
@@ -116,7 +116,7 @@
   <script>
     let upgradeData = {};
 
-    fetch('data/hq_levels.json')
+    fetch('data/hq_building_all_11_to_35_normalized.json')
       .then(response => response.json())
       .then(data => upgradeData = data)
       .catch(err => {
@@ -132,24 +132,36 @@
 
     function showUpgradeData() {
       const level = document.getElementById("hqInput").value;
-      const data = upgradeData[level];
+      const entries = upgradeData[level];
       const container = document.getElementById("upgradeResult");
 
-      if (!data) {
+      if (!entries) {
         container.innerHTML = `<strong>No data available for HQ level ${level}.</strong>`;
         return;
       }
 
       let html = `<h3>Requirements for HQ Level ${level}</h3><ul>`;
-      for (const [building, req] of Object.entries(data)) {
-        if (building === "Resources") continue;
-        html += `<li>${building}: Level ${req}</li>`;
-      }
+      let hqResources = null;
+
+      entries.forEach(entry => {
+        if (entry.Building === "HQ Upgrade") {
+          hqResources = entry;
+        } else {
+          html += `<li>${entry.Building}: Level ${entry.Level}</li>`;
+        }
+      });
+
       html += "</ul><h4>Resource Costs:</h4><ul>";
-      for (const [resource, amount] of Object.entries(data.Resources)) {
-        html += `<li>${resource}: ${formatNumber(amount)}</li>`;
+      if (hqResources) {
+        html += `<li><strong>HQ Upgrade</strong></li>`;
+        html += `<li>Food: ${formatNumber(hqResources.Food)}</li>`;
+        html += `<li>Iron: ${formatNumber(hqResources.Iron)}</li>`;
+        html += `<li>Gold: ${formatNumber(hqResources.Gold)}</li>`;
+      } else {
+        html += "<li>No HQ upgrade cost data.</li>";
       }
       html += "</ul>";
+
       container.innerHTML = html;
     }
   </script>
