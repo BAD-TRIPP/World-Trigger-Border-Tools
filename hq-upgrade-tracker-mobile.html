@@ -4,14 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>HQ Upgrade Tracker Mobile</title>
-  
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#FFD700">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-title" content="BAD TRIPP Tools">
   <link rel="apple-touch-icon" href="bad_tripp_logo.png">
-
   <script>
     if (!localStorage.getItem("badtripp_access_granted")) {
       var password = prompt("Enter Pass to access BAD TRIPP's Tools:");
@@ -23,7 +21,6 @@
       }
     }
   </script>
-
   <style>
     body {
       background-color: #000;
@@ -37,7 +34,9 @@
       margin: auto;
       padding: 10px;
     }
-    h1 { color: gold; }
+    h1 {
+      color: gold;
+    }
     input, button {
       padding: 10px;
       border-radius: 4px;
@@ -79,10 +78,10 @@
       padding: 15px;
       border-radius: 5px;
       font-size: 1em;
-      text-align: center;
     }
-    .result h3, .result h4 { color: gold; }
-    .building-line { margin: 8px 0; }
+    .result h3, .result h4 {
+      color: gold;
+    }
   </style>
 </head>
 <body>
@@ -90,79 +89,33 @@
     <img src="bad_tripp_logo.png" alt="BAD TRIPP Logo" style="max-width: 200px;"><br>
     <a href="index.html" class="back-button">← Back to Main Menu</a><br>
     <h1>HQ Upgrade Tracker</h1>
-
-    <label for="hqInput">Enter HQ Level (1–35):</label><br>
-    <input type="number" id="hqInput" placeholder="e.g. 1" min="1" max="35"><br>
+    <label for="hqInput">Enter HQ Level (11–35):</label><br>
+    <input type="number" id="hqInput" placeholder="e.g. 31" min="11" max="35"><br>
     <button onclick="showUpgradeData()">Show Requirements</button>
-    <div id="upgradeResult" class="result"></div>
-
     <hr style="border: 1px solid gold; margin: 20px 0;">
-
-    <button onclick="document.getElementById('progressionModal').style.display='block'" class="button">📊 View Full Progression Chart</button>
-
-    <div id="progressionModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); z-index:9999; overflow:auto;">
-      <div style="margin: 50px auto; padding: 20px; background:#111; color:gold; max-width: 90%; border: 2px solid gold; border-radius: 10px;">
-        <h2>🏗 HQ Building Progression (Lv 1–35)</h2>
-        <div id="progressionTable" style="overflow-x: auto; max-height: 75vh;"></div>
-        <br>
-        <button onclick="document.getElementById('progressionModal').style.display='none'" style="background:gold; color:black; padding:10px 20px; font-weight:bold;">Close</button>
-      </div>
-    </div>
-
-    <p style="margin-top: 15px;">Need help? <a href="quick_guide.html" style="color: gold;">Quick Guide</a></p>
+    <div id="upgradeResult" class="result"></div>
+    <p style="margin-top: 15px;">
+      Need help? <a href="quick_guide.html" style="color: gold;">Quick Guide</a><br>
+      <a href="#" onclick="document.getElementById('progressionModal').style.display='block'" style="color: gold; font-weight: bold;">📊 View Full HQ Progression Chart</a>
+    </p>
     <footer>🏹 Created for Server #1009 Only!<br>Courtesy of <strong>BAD TRIPP</strong></footer>
   </div>
 
+  <div id="progressionModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); z-index:9999; overflow:auto;">
+    <div style="margin: 50px auto; padding: 20px; background:#111; color:gold; max-width: 90%; border: 2px solid gold; border-radius: 10px;">
+      <h2>🏗 HQ Building Progression (Lv 1–35)</h2>
+      <div id="progressionTable" style="overflow-x: auto; max-height: 75vh;"></div>
+      <br>
+      <button onclick="document.getElementById('progressionModal').style.display='none'" style="background:gold; color:black; padding:10px 20px; font-weight:bold;">Close</button>
+    </div>
+  </div>
+
   <script>
-    let upgradeData = {};
-
-    fetch('data/hq_levels.json')
-      .then(response => response.json())
-      .then(data => upgradeData = data)
-      .catch(err => {
-        document.getElementById('upgradeResult').innerHTML = 'Error loading upgrade data.';
-        console.error('Failed to load JSON:', err);
-      });
-
     function formatNumber(num) {
       if (typeof num !== 'number') return num;
       if (num >= 1_000_000_000) return (num / 1_000_000_000).toFixed(1).replace(/\.0$/, '') + 'G';
       if (num >= 1_000_000) return (num / 1_000_000).toFixed(0) + 'M';
       return num.toLocaleString();
-    }
-
-    function showUpgradeData() {
-      const level = document.getElementById("hqInput").value;
-      const entries = upgradeData[level];
-      const container = document.getElementById("upgradeResult");
-
-      if (!entries) {
-        container.innerHTML = `<strong>No data available for HQ level ${level}.</strong>`;
-        return;
-      }
-
-      let html = `<h3>Requirements for HQ Level ${level}</h3>`;
-      let hqUpgrade = null;
-
-      entries.forEach(entry => {
-        if (entry.Building === "HQ Upgrade") {
-          hqUpgrade = entry;
-        } else {
-          html += `<div class="building-line">🏗️ ${entry.Building} ${entry.Level}: Food: ${formatNumber(entry.Food)}, Iron: ${formatNumber(entry.Iron)}, Gold: ${formatNumber(entry.Gold)}</div>`;
-        }
-      });
-
-      if (hqUpgrade) {
-        html += `<h4>🏛️ HQ Upgrade Resource Cost</h4>`;
-        html += `<div class="building-line">HQ Upgrade ${hqUpgrade.Level}: Food: ${formatNumber(hqUpgrade.Food)}, Iron: ${formatNumber(hqUpgrade.Iron)}, Gold: ${formatNumber(hqUpgrade.Gold)}${hqUpgrade.Oil ? `, Oil: ${formatNumber(hqUpgrade.Oil)}` : ''}</div>`;
-
-        if (hqUpgrade.HeroStats) {
-          const hero = hqUpgrade.HeroStats;
-          html += `<div class="building-line">🎖️ Hero Stats — Cap: ${hero.LevelCap}, HP: ${formatNumber(hero.HP)}, ATK: ${hero.Attack}, DEF: ${hero.Defense}</div>`;
-        }
-      }
-
-      container.innerHTML = html;
     }
 
     function buildProgressionChart(data) {
@@ -188,6 +141,43 @@
 
       table += `</tbody></table>`;
       document.getElementById('progressionTable').innerHTML = table;
+    }
+
+    function showUpgradeData() {
+      const level = document.getElementById("hqInput").value;
+      const container = document.getElementById("upgradeResult");
+      fetch('data/hq_levels.json')
+        .then(res => res.json())
+        .then(data => {
+          const entries = data[level];
+          if (!entries) {
+            container.innerHTML = `<strong>No data available for HQ level ${level}.</strong>`;
+            return;
+          }
+
+          let html = `<h3>Requirements for HQ Level ${level}</h3>`;
+          let hqUpgrade = null;
+
+          entries.forEach(entry => {
+            if (entry.Building === "HQ Upgrade") {
+              hqUpgrade = entry;
+            } else {
+              html += `<div style='text-align:left; padding:6px 0;'>${entry.Building} Lv ${entry.Level}: Food: ${formatNumber(entry.Food)}, Iron: ${formatNumber(entry.Iron)}, Gold: ${formatNumber(entry.Gold)}</div>`;
+            }
+          });
+
+          if (hqUpgrade) {
+            html += `<h4 style="color: gold; margin-top: 15px;">🏛️ HQ Upgrade Resource Cost:</h4>`;
+            html += `<div style='text-align:left; padding:6px 0;'>Food: ${formatNumber(hqUpgrade.Food)}, Iron: ${formatNumber(hqUpgrade.Iron)}, Gold: ${formatNumber(hqUpgrade.Gold)}</div>`;
+            if (hqUpgrade.Oil) html += `<div style='text-align:left;'>Oil: ${formatNumber(hqUpgrade.Oil)}</div>`;
+            if (hqUpgrade.HeroStats) {
+              const h = hqUpgrade.HeroStats;
+              html += `<div style='text-align:left; padding-top: 10px;'><strong>🎖️ Hero Stats:</strong><br>Level Cap: ${h.LevelCap}, HP: ${formatNumber(h.HP)}, ATK: ${h.Attack}, DEF: ${h.Defense}</div>`;
+            }
+          }
+
+          container.innerHTML = html;
+        });
     }
 
     fetch('data/hq_levels.json')
