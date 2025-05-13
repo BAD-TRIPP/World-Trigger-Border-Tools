@@ -1,4 +1,124 @@
 {
+  "1": [
+    {
+      "Building": "Tech Center",
+      "Level": 1,
+      "Food": 0,
+      "Iron": 0,
+      "Gold": 0,
+      "Oil": 0,
+      "Source": "Actual",
+      "Notes": ""
+    }
+  ],
+  "2": [
+    {
+      "Building": "Tech Center",
+      "Level": 2,
+      "Food": 68,
+      "Iron": 68,
+      "Gold": 0,
+      "Oil": 0,
+      "Source": "Actual",
+      "Notes": ""
+    }
+  ],
+  "3": [
+    {
+      "Building": "Tech Center",
+      "Level": 3,
+      "Food": 1000,
+      "Iron": 1000,
+      "Gold": 0,
+      "Oil": 0,
+      "Source": "Actual",
+      "Notes": ""
+    }
+  ],
+  "4": [
+    {
+      "Building": "Tech Center",
+      "Level": 4,
+      "Food": 2500,
+      "Iron": 2500,
+      "Gold": 0,
+      "Oil": 0,
+      "Source": "Actual",
+      "Notes": ""
+    }
+  ],
+  "5": [
+    {
+      "Building": "Tech Center",
+      "Level": 5,
+      "Food": 20000,
+      "Iron": 20000,
+      "Gold": 0,
+      "Oil": 0,
+      "Source": "Actual",
+      "Notes": ""
+    }
+  ],
+  "6": [
+    {
+      "Building": "Tech Center",
+      "Level": 6,
+      "Food": 91000,
+      "Iron": 91000,
+      "Gold": 0,
+      "Oil": 0,
+      "Source": "Actual",
+      "Notes": ""
+    }
+  ],
+  "7": [
+    {
+      "Building": "Tech Center",
+      "Level": 7,
+      "Food": 240000,
+      "Iron": 240000,
+      "Gold": 0,
+      "Oil": 0,
+      "Source": "Actual",
+      "Notes": ""
+    }
+  ],
+  "8": [
+    {
+      "Building": "Tech Center",
+      "Level": 8,
+      "Food": 390000,
+      "Iron": 390000,
+      "Gold": 0,
+      "Oil": 0,
+      "Source": "Actual",
+      "Notes": ""
+    }
+  ],
+  "9": [
+    {
+      "Building": "Tech Center",
+      "Level": 9,
+      "Food": 620000,
+      "Iron": 620000,
+      "Gold": 200000,
+      "Oil": 0,
+      "Source": "Actual",
+      "Notes": ""
+    }
+  ],
+  "10": [
+    {
+      "Building": "Tech Center",
+      "Level": 10,
+      "Food": 750000,
+      "Iron": 750000,
+      "Gold": 240000,
+      "Oil": 0,
+      "Source": "Actual",
+      "Notes": ""
+    }
+  ],
   "11": [
     {
       "Building": "Wall",
@@ -12,11 +132,12 @@
     {
       "Building": "Tech Center",
       "Level": 10,
-      "Food": 2000000,
-      "Iron": 2000000,
-      "Gold": 700000,
-      "Source": "Estimate",
-      "Notes": "Estimated based on growth pattern"
+      "Food": 1900000,
+      "Iron": 1900000,
+      "Gold": 600000,
+      "Oil": 0,
+      "Source": "Actual",
+      "Notes": ""
     }
   ],
   "12": [
@@ -32,11 +153,12 @@
     {
       "Building": "Tech Center",
       "Level": 11,
-      "Food": 2500000,
-      "Iron": 2500000,
-      "Gold": 875000,
-      "Source": "Estimate",
-      "Notes": "Estimated based on growth pattern"
+      "Food": 3200000,
+      "Iron": 3200000,
+      "Gold": 1000000,
+      "Oil": 0,
+      "Source": "Actual",
+      "Notes": ""
     }
   ],
   "13": [
@@ -52,11 +174,12 @@
     {
       "Building": "Tech Center",
       "Level": 12,
-      "Food": 3125000,
-      "Iron": 3125000,
-      "Gold": 1093750,
-      "Source": "Estimate",
-      "Notes": "Estimated based on growth pattern"
+      "Food": 3500000,
+      "Iron": 3500000,
+      "Gold": 1100000,
+      "Oil": 0,
+      "Source": "Actual",
+      "Notes": ""
     }
   ],
   "14": [
@@ -72,11 +195,12 @@
     {
       "Building": "Tech Center",
       "Level": 13,
-      "Food": 3906250,
-      "Iron": 3906250,
-      "Gold": 1367187,
-      "Source": "Estimate",
-      "Notes": "Estimated based on growth pattern"
+      "Food": 4900000,
+      "Iron": 4900000,
+      "Gold": 1600000,
+      "Oil": 0,
+      "Source": "Actual",
+      "Notes": ""
     }
   ],
   "15": [
@@ -92,11 +216,12 @@
     {
       "Building": "Tech Center",
       "Level": 14,
-      "Food": 4882812,
-      "Iron": 4882812,
-      "Gold": 1708984,
-      "Source": "Estimate",
-      "Notes": "Estimated based on growth pattern"
+      "Food": 6800000,
+      "Iron": 6800000,
+      "Gold": 2200000,
+      "Oil": 0,
+      "Source": "Actual",
+      "Notes": ""
     }
   ],
   "16": [
@@ -112,11 +237,12 @@
     {
       "Building": "Tech Center",
       "Level": 15,
-      "Food": 6103515,
-      "Iron": 6103515,
-      "Gold": 2136230,
-      "Source": "Estimate",
-      "Notes": "Estimated based on growth pattern"
+      "Food": 12000000,
+      "Iron": 12000000,
+      "Gold": 3900000,
+      "Oil": 0,
+      "Source": "Actual",
+      "Notes": ""
     }
   ],
   "17": [
@@ -132,11 +258,12 @@
     {
       "Building": "Tech Center",
       "Level": 16,
-      "Food": 7629394,
-      "Iron": 7629394,
-      "Gold": 2670288,
-      "Source": "Estimate",
-      "Notes": "Estimated based on growth pattern"
+      "Food": 16000000,
+      "Iron": 16000000,
+      "Gold": 5100000,
+      "Oil": 0,
+      "Source": "Actual",
+      "Notes": ""
     }
   ],
   "18": [
@@ -152,11 +279,12 @@
     {
       "Building": "Tech Center",
       "Level": 17,
-      "Food": 9536743,
-      "Iron": 9536743,
-      "Gold": 3337860,
-      "Source": "Estimate",
-      "Notes": "Estimated based on growth pattern"
+      "Food": 28000000,
+      "Iron": 28000000,
+      "Gold": 8900000,
+      "Oil": 0,
+      "Source": "Actual",
+      "Notes": ""
     }
   ],
   "19": [
@@ -172,11 +300,12 @@
     {
       "Building": "Tech Center",
       "Level": 18,
-      "Food": 11920928,
-      "Iron": 11920928,
-      "Gold": 4172325,
-      "Source": "Estimate",
-      "Notes": "Estimated based on growth pattern"
+      "Food": 33000000,
+      "Iron": 33000000,
+      "Gold": 11000000,
+      "Oil": 0,
+      "Source": "Actual",
+      "Notes": ""
     }
   ],
   "20": [
@@ -192,11 +321,12 @@
     {
       "Building": "Tech Center",
       "Level": 19,
-      "Food": 14901161,
-      "Iron": 14901161,
-      "Gold": 5215406,
-      "Source": "Estimate",
-      "Notes": "Estimated based on growth pattern"
+      "Food": 60000000,
+      "Iron": 60000000,
+      "Gold": 19000000,
+      "Oil": 0,
+      "Source": "Actual",
+      "Notes": ""
     }
   ],
   "21": [
@@ -212,11 +342,12 @@
     {
       "Building": "Tech Center",
       "Level": 20,
-      "Food": 18626451,
-      "Iron": 18626451,
-      "Gold": 6519258,
-      "Source": "Estimate",
-      "Notes": "Estimated based on growth pattern"
+      "Food": 84000000,
+      "Iron": 84000000,
+      "Gold": 27000000,
+      "Oil": 0,
+      "Source": "Actual",
+      "Notes": ""
     }
   ],
   "22": [
@@ -232,11 +363,12 @@
     {
       "Building": "Tech Center",
       "Level": 21,
-      "Food": 23283064,
-      "Iron": 23283064,
-      "Gold": 8149072,
-      "Source": "Estimate",
-      "Notes": "Estimated based on growth pattern"
+      "Food": 110000000,
+      "Iron": 110000000,
+      "Gold": 35000000,
+      "Oil": 0,
+      "Source": "Actual",
+      "Notes": ""
     }
   ],
   "23": [
@@ -252,11 +384,12 @@
     {
       "Building": "Tech Center",
       "Level": 22,
-      "Food": 29103830,
-      "Iron": 29103830,
-      "Gold": 10186340,
-      "Source": "Estimate",
-      "Notes": "Estimated based on growth pattern"
+      "Food": 140000000,
+      "Iron": 140000000,
+      "Gold": 44000000,
+      "Oil": 0,
+      "Source": "Actual",
+      "Notes": ""
     }
   ],
   "24": [
@@ -272,11 +405,12 @@
     {
       "Building": "Tech Center",
       "Level": 23,
-      "Food": 36379788,
-      "Iron": 36379788,
-      "Gold": 12732925,
-      "Source": "Estimate",
-      "Notes": "Estimated based on growth pattern"
+      "Food": 170000000,
+      "Iron": 170000000,
+      "Gold": 54000000,
+      "Oil": 0,
+      "Source": "Actual",
+      "Notes": ""
     }
   ],
   "25": [
@@ -292,11 +426,12 @@
     {
       "Building": "Tech Center",
       "Level": 24,
-      "Food": 45474735,
-      "Iron": 45474735,
-      "Gold": 15916157,
-      "Source": "Estimate",
-      "Notes": "Estimated based on growth pattern"
+      "Food": 290000000,
+      "Iron": 290000000,
+      "Gold": 93000000,
+      "Oil": 0,
+      "Source": "Actual",
+      "Notes": ""
     }
   ],
   "26": [
@@ -312,11 +447,12 @@
     {
       "Building": "Tech Center",
       "Level": 25,
-      "Food": 56843418,
-      "Iron": 56843418,
-      "Gold": 19895196,
-      "Source": "Estimate",
-      "Notes": "Estimated based on growth pattern"
+      "Food": 400000000,
+      "Iron": 400000000,
+      "Gold": 130000000,
+      "Oil": 0,
+      "Source": "Actual",
+      "Notes": ""
     }
   ],
   "27": [
@@ -332,11 +468,12 @@
     {
       "Building": "Tech Center",
       "Level": 26,
-      "Food": 71054273,
-      "Iron": 71054273,
-      "Gold": 24868995,
-      "Source": "Estimate",
-      "Notes": "Estimated based on growth pattern"
+      "Food": 530000000,
+      "Iron": 530000000,
+      "Gold": 170000000,
+      "Oil": 0,
+      "Source": "Actual",
+      "Notes": ""
     }
   ],
   "28": [
@@ -352,11 +489,12 @@
     {
       "Building": "Tech Center",
       "Level": 27,
-      "Food": 88817841,
-      "Iron": 88817841,
-      "Gold": 31086244,
-      "Source": "Estimate",
-      "Notes": "Estimated based on growth pattern"
+      "Food": 740000000,
+      "Iron": 740000000,
+      "Gold": 240000000,
+      "Oil": 0,
+      "Source": "Actual",
+      "Notes": ""
     }
   ],
   "29": [
@@ -372,11 +510,12 @@
     {
       "Building": "Tech Center",
       "Level": 28,
-      "Food": 111022302,
-      "Iron": 111022302,
-      "Gold": 38857805,
-      "Source": "Estimate",
-      "Notes": "Estimated based on growth pattern"
+      "Food": 1000000000,
+      "Iron": 1000000000,
+      "Gold": 330000000,
+      "Oil": 0,
+      "Source": "Actual",
+      "Notes": ""
     }
   ],
   "30": [
@@ -392,23 +531,15 @@
     {
       "Building": "Tech Center",
       "Level": 29,
-      "Food": 138777878,
-      "Iron": 138777878,
-      "Gold": 48572257,
-      "Source": "Estimate",
-      "Notes": "Estimated based on growth pattern"
+      "Food": 1400000000,
+      "Iron": 1400000000,
+      "Gold": 460000000,
+      "Oil": 0,
+      "Source": "Actual",
+      "Notes": ""
     }
   ],
   "31": [
-    {
-      "Building": "Tech Center",
-      "Level": 30,
-      "Food": 426763535,
-      "Iron": 217211536,
-      "Gold": 103176001,
-      "Source": "Linear Estimate",
-      "Notes": ""
-    },
     {
       "Building": "Tank Center",
       "Level": 30,
@@ -442,18 +573,19 @@
         "Attack": 761.9,
         "Defense": 152.4
       }
+    },
+    {
+      "Building": "Tech Center",
+      "Level": 30,
+      "Food": 1600000000,
+      "Iron": 1600000000,
+      "Gold": 510000000,
+      "Oil": 1440000000,
+      "Source": "Actual",
+      "Notes": ""
     }
   ],
   "32": [
-    {
-      "Building": "Tech Center",
-      "Level": 31,
-      "Food": 438625000,
-      "Iron": 225523631,
-      "Gold": 106356316,
-      "Source": "Linear Estimate",
-      "Notes": ""
-    },
     {
       "Building": "Tank Center",
       "Level": 31,
@@ -496,18 +628,19 @@
         "Attack": 809.5,
         "Defense": 161.9
       }
+    },
+    {
+      "Building": "Tech Center",
+      "Level": 31,
+      "Food": 1700000000,
+      "Iron": 1700000000,
+      "Gold": 560000000,
+      "Oil": 2304000000,
+      "Source": "Actual",
+      "Notes": ""
     }
   ],
   "33": [
-    {
-      "Building": "Tech Center",
-      "Level": 32,
-      "Food": 532324737,
-      "Iron": 287633118,
-      "Gold": 131716855,
-      "Source": "Linear Estimate",
-      "Notes": ""
-    },
     {
       "Building": "Tank Center",
       "Level": 32,
@@ -559,18 +692,19 @@
         "Attack": 857.1,
         "Defense": 171.4
       }
+    },
+    {
+      "Building": "Tech Center",
+      "Level": 32,
+      "Food": 1900000000,
+      "Iron": 1900000000,
+      "Gold": 620000000,
+      "Oil": 3916800000,
+      "Source": "Actual",
+      "Notes": ""
     }
   ],
   "34": [
-    {
-      "Building": "Tech Center",
-      "Level": 33,
-      "Food": 477244596,
-      "Iron": 227119239,
-      "Gold": 112985730,
-      "Source": "Linear Estimate",
-      "Notes": ""
-    },
     {
       "Building": "Tank Center",
       "Level": 33,
@@ -622,18 +756,19 @@
         "Attack": 904.8,
         "Defense": 181
       }
+    },
+    {
+      "Building": "Tech Center",
+      "Level": 33,
+      "Food": 2000000000,
+      "Iron": 2000000000,
+      "Gold": 650000000,
+      "Oil": 7050240000,
+      "Source": "Actual",
+      "Notes": ""
     }
   ],
   "35": [
-    {
-      "Building": "Tech Center",
-      "Level": 34,
-      "Food": 584609548,
-      "Iron": 307265048,
-      "Gold": 143219466,
-      "Source": "Linear Estimate",
-      "Notes": ""
-    },
     {
       "Building": "Tank Center",
       "Level": 34,
@@ -685,6 +820,16 @@
         "Attack": 952.4,
         "Defense": 190.5
       }
+    },
+    {
+      "Building": "Tech Center",
+      "Level": 34,
+      "Food": 2100000000,
+      "Iron": 2100000000,
+      "Gold": 680000000,
+      "Oil": 14100480000,
+      "Source": "Actual",
+      "Notes": ""
     }
   ]
 }
