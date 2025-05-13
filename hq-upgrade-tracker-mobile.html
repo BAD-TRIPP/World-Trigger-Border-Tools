@@ -140,31 +140,27 @@ function showUpgradeData() {
     return;
   }
 
-  let html = `<h3>Requirements for HQ Level ${level}</h3><ul>`;
+  let html = `<h3>Requirements for HQ Level ${level}</h3>`;
   let hqUpgrade = null;
+  let count = 1;
 
   entries.forEach(entry => {
     if (entry.Building === "HQ Upgrade") {
       hqUpgrade = entry;
     } else {
-      html += `<li>
-        <strong>${entry.Building} (Lv ${entry.Level})</strong><br>
-        Food: ${formatNumber(entry.Food)}<br>
-        Iron: ${formatNumber(entry.Iron)}<br>
-        Gold: ${formatNumber(entry.Gold)}
-      </li><br>`;
+      html += `<p>
+        <strong>Building ${count}: ${entry.Building} (Lv ${entry.Level})</strong><br>
+        Food: ${formatNumber(entry.Food)} | Iron: ${formatNumber(entry.Iron)} | Gold: ${formatNumber(entry.Gold)}
+      </p>`;
+      count++;
     }
   });
 
-  html += "</ul><h4>HQ Upgrade Resource Cost:</h4>";
   if (hqUpgrade) {
-    html += `<ul>
-      <li>Food: ${formatNumber(hqUpgrade.Food)}</li>
-      <li>Iron: ${formatNumber(hqUpgrade.Iron)}</li>
-      <li>Gold: ${formatNumber(hqUpgrade.Gold)}</li>
-    </ul>`;
-  } else {
-    html += `<p>No HQ upgrade cost listed.</p>`;
+    html += `<h4>🏛️ HQ Upgrade Resource Cost:</h4>`;
+    html += `<p>
+      Food: ${formatNumber(hqUpgrade.Food)} | Iron: ${formatNumber(hqUpgrade.Iron)} | Gold: ${formatNumber(hqUpgrade.Gold)}
+    </p>`;
   }
 
   container.innerHTML = html;
