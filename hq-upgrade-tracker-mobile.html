@@ -198,9 +198,22 @@
             <div class="resource-info">
               Food: ${formatNumber(hqUpgrade.Food)}<br>
               Iron: ${formatNumber(hqUpgrade.Iron)}<br>
-              Gold: ${formatNumber(hqUpgrade.Gold)}
-            </div>
-          </div>`;
+              Gold: ${formatNumber(hqUpgrade.Gold)}`;
+
+        if (hqUpgrade.Oil) {
+          html += `<br>Oil: ${formatNumber(hqUpgrade.Oil)}`;
+        }
+
+        if (hqUpgrade.HeroStats) {
+          const hero = hqUpgrade.HeroStats;
+          html += `<br><strong>🎖️ Hero Stats:</strong>`;
+          html += `<br>Level Cap: ${hero.LevelCap}`;
+          html += `<br>HP: ${formatNumber(hero.HP)}`;
+          html += `<br>ATK: ${hero.Attack}`;
+          html += `<br>DEF: ${hero.Defense}`;
+        }
+
+        html += `</div></div>`;
       }
 
       container.innerHTML = html;
