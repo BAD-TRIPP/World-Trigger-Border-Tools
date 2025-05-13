@@ -148,23 +148,35 @@ function showUpgradeData() {
     if (entry.Building === "HQ Upgrade") {
       hqUpgrade = entry;
     } else {
-      html += `<p>
-        <strong>Building ${count}: ${entry.Building} (Lv ${entry.Level})</strong><br>
-        Food: ${formatNumber(entry.Food)} | Iron: ${formatNumber(entry.Iron)} | Gold: ${formatNumber(entry.Gold)}
-      </p>`;
+      html += `
+        <div class="building-row">
+          <div class="building-label">Building ${count}: ${entry.Building} (Lv ${entry.Level})</div>
+          <div class="resource-info">
+            Food: ${formatNumber(entry.Food)}<br>
+            Iron: ${formatNumber(entry.Iron)}<br>
+            Gold: ${formatNumber(entry.Gold)}
+          </div>
+        </div>`;
       count++;
     }
   });
 
   if (hqUpgrade) {
-    html += `<h4>🏛️ HQ Upgrade Resource Cost:</h4>`;
-    html += `<p>
-      Food: ${formatNumber(hqUpgrade.Food)} | Iron: ${formatNumber(hqUpgrade.Iron)} | Gold: ${formatNumber(hqUpgrade.Gold)}
-    </p>`;
+    html += `<h4 style="color: gold; margin-top: 20px;">🏛️ HQ Upgrade Resource Cost:</h4>`;
+    html += `
+      <div class="building-row">
+        <div class="building-label">HQ Upgrade (Lv ${hqUpgrade.Level})</div>
+        <div class="resource-info">
+          Food: ${formatNumber(hqUpgrade.Food)}<br>
+          Iron: ${formatNumber(hqUpgrade.Iron)}<br>
+          Gold: ${formatNumber(hqUpgrade.Gold)}
+        </div>
+      </div>`;
   }
 
   container.innerHTML = html;
 }
+
   </script>
 </body>
 </html>
