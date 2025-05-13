@@ -6,7 +6,6 @@
   <title>HQ Upgrade Tracker Mobile</title>
   
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#FFD700">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -33,17 +32,12 @@
       text-align: center;
       padding: 10px;
     }
-
     .container {
       max-width: 600px;
       margin: auto;
       padding: 10px;
     }
-
-    h1 {
-      color: gold;
-    }
-
+    h1 { color: gold; }
     input, button {
       padding: 10px;
       border-radius: 4px;
@@ -53,7 +47,6 @@
       font-size: 1em;
       margin: 5px 0;
     }
-
     button {
       background-color: gold;
       color: black;
@@ -61,12 +54,10 @@
       width: 100%;
       border: 2px solid gold;
     }
-
     button:hover {
       background-color: transparent;
       color: gold;
     }
-
     .back-button {
       display: inline-block;
       margin-bottom: 10px;
@@ -78,12 +69,10 @@
       border: 2px solid gold;
       border-radius: 5px;
     }
-
     .back-button:hover {
       background-color: transparent;
       color: gold;
     }
-
     .result {
       margin-top: 10px;
       background: #222;
@@ -92,15 +81,8 @@
       font-size: 1em;
       text-align: center;
     }
-
-    .result h3, .result h4 {
-      color: gold;
-      text-align: center;
-    }
-
-    .building-line {
-      margin: 8px 0;
-    }
+    .result h3, .result h4 { color: gold; }
+    .building-line { margin: 8px 0; }
   </style>
 </head>
 <body>
@@ -109,26 +91,23 @@
     <a href="index.html" class="back-button">← Back to Main Menu</a><br>
     <h1>HQ Upgrade Tracker</h1>
 
-<label for="hqInput">Enter HQ Level (1–35):</label><br>
-<input type="number" id="hqInput" placeholder="e.g. 1" min="1" max="35"><br>
-
+    <label for="hqInput">Enter HQ Level (1–35):</label><br>
+    <input type="number" id="hqInput" placeholder="e.g. 1" min="1" max="35"><br>
     <button onclick="showUpgradeData()">Show Requirements</button>
-
     <div id="upgradeResult" class="result"></div>
-    <hr style="border: 1px solid gold; margin: 20px 0;">
-    
-    <!-- Button to open the modal -->
-<button onclick="document.getElementById('progressionModal').style.display='block'" class="button">📊 View Full Progression Chart</button>
 
-<!-- Modal -->
-<div id="progressionModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); z-index:9999; overflow:auto;">
-  <div style="margin: 50px auto; padding: 20px; background:#111; color:gold; max-width: 90%; border: 2px solid gold; border-radius: 10px;">
-    <h2>🏗 HQ Building Progression (Lv 11–35)</h2>
-    <div id="progressionTable" style="overflow-x: auto; max-height: 75vh;"></div>
-    <br>
-    <button onclick="document.getElementById('progressionModal').style.display='none'" style="background:gold; color:black; padding:10px 20px; font-weight:bold;">Close</button>
-  </div>
-</div>
+    <hr style="border: 1px solid gold; margin: 20px 0;">
+
+    <button onclick="document.getElementById('progressionModal').style.display='block'" class="button">📊 View Full Progression Chart</button>
+
+    <div id="progressionModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); z-index:9999; overflow:auto;">
+      <div style="margin: 50px auto; padding: 20px; background:#111; color:gold; max-width: 90%; border: 2px solid gold; border-radius: 10px;">
+        <h2>🏗 HQ Building Progression (Lv 1–35)</h2>
+        <div id="progressionTable" style="overflow-x: auto; max-height: 75vh;"></div>
+        <br>
+        <button onclick="document.getElementById('progressionModal').style.display='none'" style="background:gold; color:black; padding:10px 20px; font-weight:bold;">Close</button>
+      </div>
+    </div>
 
     <p style="margin-top: 15px;">Need help? <a href="quick_guide.html" style="color: gold;">Quick Guide</a></p>
     <footer>🏹 Created for Server #1009 Only!<br>Courtesy of <strong>BAD TRIPP</strong></footer>
@@ -137,7 +116,7 @@
   <script>
     let upgradeData = {};
 
-    fetch('data/hq_levels.json')
+    fetch('data/hq_levels_1_to_35_complete.json')
       .then(response => response.json())
       .then(data => upgradeData = data)
       .catch(err => {
@@ -164,14 +143,12 @@
 
       let html = `<h3>Requirements for HQ Level ${level}</h3>`;
       let hqUpgrade = null;
-      let count = 1;
 
       entries.forEach(entry => {
         if (entry.Building === "HQ Upgrade") {
           hqUpgrade = entry;
         } else {
           html += `<div class="building-line">🏗️ ${entry.Building} ${entry.Level}: Food: ${formatNumber(entry.Food)}, Iron: ${formatNumber(entry.Iron)}, Gold: ${formatNumber(entry.Gold)}</div>`;
-          count++;
         }
       });
 
@@ -187,42 +164,36 @@
 
       container.innerHTML = html;
     }
-    
+
     function buildProgressionChart(data) {
-  const buildingTypes = [
-    "Tech Center", "Tank Center", "Barracks", "Drill Ground",
-    "Hospital", "Wall", "Alliance Center"
-  ];
+      const buildingTypes = ["Tech Center", "Tank Center", "Barracks", "Drill Ground", "Hospital", "Wall", "Alliance Center"];
 
-  let table = `<table border="1" style="border-collapse: collapse; width: 100%; color: white; font-size: 0.9em;">
-    <thead style="background: #222;"><tr><th>HQ Level</th>`;
-  
-  buildingTypes.forEach(b => table += `<th>${b}</th>`);
-  table += `</tr></thead><tbody>`;
+      let table = `<table border="1" style="border-collapse: collapse; width: 100%; color: white; font-size: 0.9em;">
+        <thead style="background: #222;"><tr><th>HQ Level</th>`;
+      buildingTypes.forEach(b => table += `<th>${b}</th>`);
+      table += `</tr></thead><tbody>`;
 
-for (let level = 1; level <= 35; level++) {
-    let row = `<tr><td>${level}</td>`;
-    const entries = data[level.toString()] || [];
+      for (let level = 1; level <= 35; level++) {
+        let row = `<tr><td>${level}</td>`;
+        const entries = data[level.toString()] || [];
 
-    buildingTypes.forEach(type => {
-      const found = entries.find(e => e.Building === type);
-      row += `<td>${found ? `Lv ${found.Level}` : '-'}</td>`;
-    });
+        buildingTypes.forEach(type => {
+          const found = entries.find(e => e.Building === type);
+          row += `<td>${found ? `Lv ${found.Level}` : '-'}</td>`;
+        });
 
-    row += `</tr>`;
-    table += row;
-  }
+        row += `</tr>`;
+        table += row;
+      }
 
-  table += `</tbody></table>`;
-  document.getElementById('progressionTable').innerHTML = table;
-}
+      table += `</tbody></table>`;
+      document.getElementById('progressionTable').innerHTML = table;
+    }
 
-// Load JSON and build the chart once
-fetch('data/hq_levels.json')
-  .then(res => res.json())
-  .then(json => buildProgressionChart(json))
-  .catch(err => console.error('Error loading HQ data:', err));
-
+    fetch('data/hq_levels_1_to_35_complete.json')
+      .then(res => res.json())
+      .then(json => buildProgressionChart(json))
+      .catch(err => console.error('Error loading HQ data:', err));
   </script>
 </body>
 </html>
