@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>HQ Upgrade Tracker Mobile</title>
 
+  <!-- ✅ Modern font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#FFD700">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -39,7 +42,7 @@
     body {
       background-color: #000;
       color: #f0f0f0;
-      font-family: Arial, sans-serif;
+      font-family: 'Inter', sans-serif;
       text-align: center;
       padding: 10px;
     }
@@ -95,25 +98,31 @@
     .result h3, .result h4 {
       color: gold;
     }
-.building-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 6px 0;
-  padding: 8px;
-  border-bottom: 1px solid #333;
-}
 
-.building-label {
-  text-align: left;
-  font-weight: bold;
-  color: gold;
-}
+    .building-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 6px 0;
+      padding: 8px;
+      border-bottom: 1px solid #333;
+    }
 
-.resource-info {
-  text-align: right;
-  font-family: monospace;
-}
+    .building-label {
+      text-align: left;
+      font-weight: bold;
+      color: gold;
+      flex: 1 1 60%;
+    }
+
+    .resource-info {
+      text-align: right;
+      font-family: 'Courier New', monospace;
+      font-size: 0.95em;
+      flex: 1 1 35%;
+    }
   </style>
 </head>
 <body>
@@ -126,6 +135,7 @@
     <input type="number" id="hqInput" placeholder="e.g. 31" min="11" max="35"><br>
     <button onclick="showUpgradeData()">Show Requirements</button>
 
+    <hr style="border: 1px solid gold; margin: 20px 0;">
     <div id="upgradeResult" class="result"></div>
 
     <p style="margin-top: 15px;">Need help? <a href="quick_guide.html" style="color: gold;">Quick Guide</a></p>
@@ -149,53 +159,52 @@
       return num.toLocaleString();
     }
 
-function showUpgradeData() {
-  const level = document.getElementById("hqInput").value;
-  const entries = upgradeData[level];
-  const container = document.getElementById("upgradeResult");
+    function showUpgradeData() {
+      const level = document.getElementById("hqInput").value;
+      const entries = upgradeData[level];
+      const container = document.getElementById("upgradeResult");
 
-  if (!entries) {
-    container.innerHTML = `<strong>No data available for HQ level ${level}.</strong>`;
-    return;
-  }
+      if (!entries) {
+        container.innerHTML = `<strong>No data available for HQ level ${level}.</strong>`;
+        return;
+      }
 
-  let html = `<h3>Requirements for HQ Level ${level}</h3>`;
-  let hqUpgrade = null;
-  let count = 1;
+      let html = `<h3>Requirements for HQ Level ${level}</h3>`;
+      let hqUpgrade = null;
+      let count = 1;
 
-  entries.forEach(entry => {
-    if (entry.Building === "HQ Upgrade") {
-      hqUpgrade = entry;
-    } else {
-      html += `
-        <div class="building-row">
-          <div class="building-label">Building ${count}: ${entry.Building} (Lv ${entry.Level})</div>
-          <div class="resource-info">
-            Food: ${formatNumber(entry.Food)}<br>
-            Iron: ${formatNumber(entry.Iron)}<br>
-            Gold: ${formatNumber(entry.Gold)}
-          </div>
-        </div>`;
-      count++;
+      entries.forEach(entry => {
+        if (entry.Building === "HQ Upgrade") {
+          hqUpgrade = entry;
+        } else {
+          html += `
+            <div class="building-row">
+              <div class="building-label">Building ${count}: ${entry.Building} (Lv ${entry.Level})</div>
+              <div class="resource-info">
+                Food: ${formatNumber(entry.Food)}<br>
+                Iron: ${formatNumber(entry.Iron)}<br>
+                Gold: ${formatNumber(entry.Gold)}
+              </div>
+            </div>`;
+          count++;
+        }
+      });
+
+      if (hqUpgrade) {
+        html += `<h4 style="color: gold; margin-top: 20px;">🏛️ HQ Upgrade Resource Cost:</h4>`;
+        html += `
+          <div class="building-row">
+            <div class="building-label">HQ Upgrade (Lv ${hqUpgrade.Level})</div>
+            <div class="resource-info">
+              Food: ${formatNumber(hqUpgrade.Food)}<br>
+              Iron: ${formatNumber(hqUpgrade.Iron)}<br>
+              Gold: ${formatNumber(hqUpgrade.Gold)}
+            </div>
+          </div>`;
+      }
+
+      container.innerHTML = html;
     }
-  });
-
-  if (hqUpgrade) {
-    html += `<h4 style="color: gold; margin-top: 20px;">🏛️ HQ Upgrade Resource Cost:</h4>`;
-    html += `
-      <div class="building-row">
-        <div class="building-label">HQ Upgrade (Lv ${hqUpgrade.Level})</div>
-        <div class="resource-info">
-          Food: ${formatNumber(hqUpgrade.Food)}<br>
-          Iron: ${formatNumber(hqUpgrade.Iron)}<br>
-          Gold: ${formatNumber(hqUpgrade.Gold)}
-        </div>
-      </div>`;
-  }
-
-  container.innerHTML = html;
-}
-
   </script>
 </body>
 </html>
