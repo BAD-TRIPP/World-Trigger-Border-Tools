@@ -221,7 +221,7 @@
   ],
   "31": [
     {
-      "Building": "Research Center",
+      "Building": "Tech Center",
       "Level": 30,
       "Food": 426763535,
       "Iron": 217211536,
@@ -254,12 +254,19 @@
       "Iron": 79000000,
       "Gold": 51000000,
       "Source": "Actual",
-      "Notes": ""
+      "Notes": "",
+      "Oil": 1440000000,
+      "HeroStats": {
+        "LevelCap": 155,
+        "HP": 16000,
+        "Attack": 761.9,
+        "Defense": 152.4
+      }
     }
   ],
   "32": [
     {
-      "Building": "Research Center",
+      "Building": "Tech Center",
       "Level": 31,
       "Food": 438625000,
       "Iron": 225523631,
@@ -301,12 +308,19 @@
       "Iron": 100000000,
       "Gold": 65000000,
       "Source": "Actual",
-      "Notes": ""
+      "Notes": "",
+      "Oil": 2304000000,
+      "HeroStats": {
+        "LevelCap": 160,
+        "HP": 17000,
+        "Attack": 809.5,
+        "Defense": 161.9
+      }
     }
   ],
   "33": [
     {
-      "Building": "Research Center",
+      "Building": "Tech Center",
       "Level": 32,
       "Food": 532324737,
       "Iron": 287633118,
@@ -357,12 +371,19 @@
       "Iron": 130000000,
       "Gold": 82000000,
       "Source": "Actual",
-      "Notes": ""
+      "Notes": "",
+      "Oil": 3916800000,
+      "HeroStats": {
+        "LevelCap": 165,
+        "HP": 18000,
+        "Attack": 857.1,
+        "Defense": 171.4
+      }
     }
   ],
   "34": [
     {
-      "Building": "Research Center",
+      "Building": "Tech Center",
       "Level": 33,
       "Food": 477244596,
       "Iron": 227119239,
@@ -413,12 +434,19 @@
       "Iron": 150000000,
       "Gold": 97000000,
       "Source": "Actual",
-      "Notes": ""
+      "Notes": "",
+      "Oil": 7050240000,
+      "HeroStats": {
+        "LevelCap": 170,
+        "HP": 19000,
+        "Attack": 904.8,
+        "Defense": 181
+      }
     }
   ],
   "35": [
     {
-      "Building": "Research Center",
+      "Building": "Tech Center",
       "Level": 34,
       "Food": 584609548,
       "Iron": 307265048,
@@ -469,7 +497,14 @@
       "Iron": 180000000,
       "Gold": 110000000,
       "Source": "Actual",
-      "Notes": ""
+      "Notes": "",
+      "Oil": 14100480000,
+      "HeroStats": {
+        "LevelCap": 175,
+        "HP": 20000,
+        "Attack": 952.4,
+        "Defense": 190.5
+      }
     }
   ]
 }
