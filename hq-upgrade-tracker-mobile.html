@@ -16,25 +16,13 @@
 
   <script>
     if (!localStorage.getItem("badtripp_access_granted")) {
-      var password = prompt("Enter pass to access BAD TRIPP's Tools:");
+      var password = prompt("Enter Pass to access BAD TRIPP's Tools:");
       if (password === "1009") {
         localStorage.setItem("badtripp_access_granted", "true"); 
       } else {
         alert("Access denied.");
         window.location.href = "https://www.lastwartutorial.com/";
       }
-    }
-  </script>
-
-  <script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', function () {
-        navigator.serviceWorker.register('/service-worker.js').then(function (registration) {
-          console.log('ServiceWorker registered: ', registration.scope);
-        }, function (err) {
-          console.log('ServiceWorker registration failed: ', err);
-        });
-      });
     }
   </script>
 
@@ -46,13 +34,17 @@
       text-align: center;
       padding: 10px;
     }
+
     .container {
       max-width: 600px;
       margin: auto;
+      padding: 10px;
     }
+
     h1 {
       color: gold;
     }
+
     input, button {
       padding: 10px;
       border-radius: 4px;
@@ -62,6 +54,7 @@
       font-size: 1em;
       margin: 5px 0;
     }
+
     button {
       background-color: gold;
       color: black;
@@ -69,10 +62,12 @@
       width: 100%;
       border: 2px solid gold;
     }
+
     button:hover {
       background-color: transparent;
       color: gold;
     }
+
     .back-button {
       display: inline-block;
       margin-bottom: 10px;
@@ -84,10 +79,12 @@
       border: 2px solid gold;
       border-radius: 5px;
     }
+
     .back-button:hover {
       background-color: transparent;
       color: gold;
     }
+
     .result {
       margin-top: 10px;
       background: #222;
@@ -95,6 +92,7 @@
       border-radius: 5px;
       font-size: 1em;
     }
+
     .result h3, .result h4 {
       color: gold;
     }
@@ -154,6 +152,7 @@
       });
 
     function formatNumber(num) {
+      if (typeof num !== 'number') return num;
       if (num >= 1_000_000_000) return (num / 1_000_000_000).toFixed(1).replace(/\.0$/, '') + 'G';
       if (num >= 1_000_000) return (num / 1_000_000).toFixed(0) + 'M';
       return num.toLocaleString();
@@ -198,22 +197,17 @@
             <div class="resource-info">
               Food: ${formatNumber(hqUpgrade.Food)}<br>
               Iron: ${formatNumber(hqUpgrade.Iron)}<br>
-              Gold: ${formatNumber(hqUpgrade.Gold)}`;
-
-        if (hqUpgrade.Oil) {
-          html += `<br>Oil: ${formatNumber(hqUpgrade.Oil)}`;
-        }
-
-        if (hqUpgrade.HeroStats) {
-          const hero = hqUpgrade.HeroStats;
-          html += `<br><strong>🎖️ Hero Stats:</strong>`;
-          html += `<br>Level Cap: ${hero.LevelCap}`;
-          html += `<br>HP: ${formatNumber(hero.HP)}`;
-          html += `<br>ATK: ${hero.Attack}`;
-          html += `<br>DEF: ${hero.Defense}`;
-        }
-
-        html += `</div></div>`;
+              Gold: ${formatNumber(hqUpgrade.Gold)}
+              ${hqUpgrade.Oil ? `<br>Oil: ${formatNumber(hqUpgrade.Oil)}` : ''}
+              ${hqUpgrade.HeroStats ? `
+                <br><strong>🎖️ Hero Stats:</strong><br>
+                Level Cap: ${hqUpgrade.HeroStats.LevelCap}<br>
+                HP: ${formatNumber(hqUpgrade.HeroStats.HP)}<br>
+                ATK: ${hqUpgrade.HeroStats.Attack}<br>
+                DEF: ${hqUpgrade.HeroStats.Defense}
+              ` : ''}
+            </div>
+          </div>`;
       }
 
       container.innerHTML = html;
