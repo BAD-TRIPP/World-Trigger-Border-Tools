@@ -190,7 +190,7 @@
       document.getElementById('progressionTable').innerHTML = table;
     }
 
-    fetch('data/hq_levels_1_to_35_complete.json')
+    fetch('data/hq_levels.json')
       .then(res => res.json())
       .then(json => buildProgressionChart(json))
       .catch(err => console.error('Error loading HQ data:', err));
