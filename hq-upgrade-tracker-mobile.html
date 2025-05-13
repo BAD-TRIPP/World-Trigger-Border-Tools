@@ -116,6 +116,19 @@
     <hr style="border: 1px solid gold; margin: 20px 0;">
     <div id="upgradeResult" class="result"></div>
 
+    <!-- Button to open the modal -->
+<button onclick="document.getElementById('progressionModal').style.display='block'" class="button">📊 View Full Progression Chart</button>
+
+<!-- Modal -->
+<div id="progressionModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); z-index:9999; overflow:auto;">
+  <div style="margin: 50px auto; padding: 20px; background:#111; color:gold; max-width: 90%; border: 2px solid gold; border-radius: 10px;">
+    <h2>🏗 HQ Building Progression (Lv 11–35)</h2>
+    <div id="progressionTable" style="overflow-x: auto; max-height: 75vh;"></div>
+    <br>
+    <button onclick="document.getElementById('progressionModal').style.display='none'" style="background:gold; color:black; padding:10px 20px; font-weight:bold;">Close</button>
+  </div>
+</div>
+
     <p style="margin-top: 15px;">Need help? <a href="quick_guide.html" style="color: gold;">Quick Guide</a></p>
     <footer>🏹 Created for Server #1009 Only!<br>Courtesy of <strong>BAD TRIPP</strong></footer>
   </div>
@@ -173,6 +186,42 @@
 
       container.innerHTML = html;
     }
+    
+    function buildProgressionChart(data) {
+  const buildingTypes = [
+    "Tech Center", "Tank Center", "Barracks", "Drill Ground",
+    "Hospital", "Wall", "Alliance Center"
+  ];
+
+  let table = `<table border="1" style="border-collapse: collapse; width: 100%; color: white; font-size: 0.9em;">
+    <thead style="background: #222;"><tr><th>HQ Level</th>`;
+  
+  buildingTypes.forEach(b => table += `<th>${b}</th>`);
+  table += `</tr></thead><tbody>`;
+
+  for (let level = 11; level <= 35; level++) {
+    let row = `<tr><td>${level}</td>`;
+    const entries = data[level.toString()] || [];
+
+    buildingTypes.forEach(type => {
+      const found = entries.find(e => e.Building === type);
+      row += `<td>${found ? `Lv ${found.Level}` : '-'}</td>`;
+    });
+
+    row += `</tr>`;
+    table += row;
+  }
+
+  table += `</tbody></table>`;
+  document.getElementById('progressionTable').innerHTML = table;
+}
+
+// Load JSON and build the chart once
+fetch('data/hq_levels.json')
+  .then(res => res.json())
+  .then(json => buildProgressionChart(json))
+  .catch(err => console.error('Error loading HQ data:', err));
+
   </script>
 </body>
 </html>
