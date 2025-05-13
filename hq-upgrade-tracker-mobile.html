@@ -130,40 +130,45 @@
       return num.toLocaleString();
     }
 
-    function showUpgradeData() {
-      const level = document.getElementById("hqInput").value;
-      const entries = upgradeData[level];
-      const container = document.getElementById("upgradeResult");
+function showUpgradeData() {
+  const level = document.getElementById("hqInput").value;
+  const entries = upgradeData[level];
+  const container = document.getElementById("upgradeResult");
 
-      if (!entries) {
-        container.innerHTML = `<strong>No data available for HQ level ${level}.</strong>`;
-        return;
-      }
+  if (!entries) {
+    container.innerHTML = `<strong>No data available for HQ level ${level}.</strong>`;
+    return;
+  }
 
-      let html = `<h3>Requirements for HQ Level ${level}</h3><ul>`;
-      let hqResources = null;
+  let html = `<h3>Requirements for HQ Level ${level}</h3><ul>`;
+  let hqUpgrade = null;
 
-      entries.forEach(entry => {
-        if (entry.Building === "HQ Upgrade") {
-          hqResources = entry;
-        } else {
-          html += `<li>${entry.Building}: Level ${entry.Level}</li>`;
-        }
-      });
-
-      html += "</ul><h4>Resource Costs:</h4><ul>";
-      if (hqResources) {
-        html += `<li><strong>HQ Upgrade</strong></li>`;
-        html += `<li>Food: ${formatNumber(hqResources.Food)}</li>`;
-        html += `<li>Iron: ${formatNumber(hqResources.Iron)}</li>`;
-        html += `<li>Gold: ${formatNumber(hqResources.Gold)}</li>`;
-      } else {
-        html += "<li>No HQ upgrade cost data.</li>";
-      }
-      html += "</ul>";
-
-      container.innerHTML = html;
+  entries.forEach(entry => {
+    if (entry.Building === "HQ Upgrade") {
+      hqUpgrade = entry;
+    } else {
+      html += `<li>
+        <strong>${entry.Building} (Lv ${entry.Level})</strong><br>
+        Food: ${formatNumber(entry.Food)}<br>
+        Iron: ${formatNumber(entry.Iron)}<br>
+        Gold: ${formatNumber(entry.Gold)}
+      </li><br>`;
     }
+  });
+
+  html += "</ul><h4>HQ Upgrade Resource Cost:</h4>";
+  if (hqUpgrade) {
+    html += `<ul>
+      <li>Food: ${formatNumber(hqUpgrade.Food)}</li>
+      <li>Iron: ${formatNumber(hqUpgrade.Iron)}</li>
+      <li>Gold: ${formatNumber(hqUpgrade.Gold)}</li>
+    </ul>`;
+  } else {
+    html += `<p>No HQ upgrade cost listed.</p>`;
+  }
+
+  container.innerHTML = html;
+}
   </script>
 </body>
 </html>
