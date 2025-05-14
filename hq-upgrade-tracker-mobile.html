@@ -179,8 +179,8 @@
         levels.forEach(level => {
           const row = data[level];
           if (row) {
-            const tech = row.TechCenter || '-';
-            const others = (row.OtherBuildings || []).join('<br>') || '-';
+          const tech = row.techCenter || '-';
+          const others = (row.otherBuildings || []).join('<br>') || '-';
             tableRows.push(`<tr><td style="color:white;">Lv ${level}</td><td style="color:white;">${tech}</td><td style="color:white;">${others}</td></tr>`);
           }
         });
