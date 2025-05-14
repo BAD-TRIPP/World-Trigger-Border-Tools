@@ -12,18 +12,6 @@
   <meta name="apple-mobile-web-app-title" content="BAD TRIPP Tools">
   <link rel="apple-touch-icon" href="bad_tripp_logo.png">
 
-  <script>
-    if (!localStorage.getItem("badtripp_access_granted")) {
-      var password = prompt("Enter Pass to access BAD TRIPP's Tools:");
-      if (password === "1009") {
-        localStorage.setItem("badtripp_access_granted", "true");
-      } else {
-        alert("Access denied.");
-        window.location.href = "https://www.lastwartutorial.com/";
-      }
-    }
-  </script>
-
   <style>
     body {
       background-color: #000;
@@ -92,7 +80,6 @@
     }
   </style>
 </head>
-
 <body>
   <div class="container">
     <img src="bad_tripp_logo.png" alt="BAD TRIPP Logo" style="max-width: 200px;"><br>
@@ -112,7 +99,7 @@
       📊 View Full Progression Chart
     </button>
 
-    <!-- Modal -->
+    <!-- Progression Modal -->
     <div id="progressionModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); z-index:9999; overflow:auto;">
       <div style="margin: 50px auto; padding: 20px; background:#111; color:gold; max-width: 90%; border: 2px solid gold; border-radius: 10px;">
         <h2 style="text-align:center; font-size:1.5em;">🏗 HQ Building Progression (Lv 1–35)</h2>
@@ -131,6 +118,7 @@
   </div>
 
   <script>
+    // Display requirements for specific HQ level
     let upgradeData = {};
 
     fetch('data/hq_levels.json')
@@ -182,7 +170,7 @@
       container.innerHTML = html;
     }
 
-    // This script builds the modal progression chart from hq_levels_chart.json
+    // Load hq_levels_chart.json and populate modal chart
     fetch('data/hq_levels_chart.json')
       .then(res => res.json())
       .then(data => {
@@ -192,8 +180,8 @@
         levels.forEach(level => {
           const row = data[level];
           if (row) {
-            const tech = row.TechCenter || '';
-            const others = (row.OtherBuildings || []).join('<br>');
+            const tech = row.TechCenter || '-';
+            const others = (row.OtherBuildings || []).join('<br>') || '-';
             tableRows.push(`<tr><td style="color:white;">Lv ${level}</td><td style="color:white;">${tech}</td><td style="color:white;">${others}</td></tr>`);
           }
         });
