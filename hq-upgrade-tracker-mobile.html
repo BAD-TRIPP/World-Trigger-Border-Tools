@@ -115,9 +115,8 @@
     <div id="progressionModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); z-index:9999; overflow:auto;">
       <div style="margin: 50px auto; padding: 20px; background:#111; color:gold; max-width: 90%; border: 2px solid gold; border-radius: 10px;">
         <h2>🏗 HQ Building Progression (Lv 1–35)</h2>
-        
         <div id="progressionTable" style="overflow-x: auto; max-height: 75vh;"></div><br>
-        <utton onclick="buildProgressionChart(upgradeData); document.getElementById('progressionModal').style.display='none'" style="background:gold; color:black; padding:10px 20px; font-weight:bold;">
+        <button onclick="document.getElementById('progressionModal').style.display='none'" style="background:gold; color:black; padding:10px 20px; font-weight:bold;">
           Close
         </button>
       </div>
@@ -133,7 +132,7 @@
   <script>
     let upgradeData = {};
 
-    fetch('data/hq_tracker.json')
+    fetch('data/hq_levels.json')
       .then(response => response.json())
       .then(data => upgradeData = data)
       .catch(err => {
@@ -148,38 +147,15 @@
       return num.toLocaleString();
     }
 
-    
-function showUpgradeData() {
-  const level = document.getElementById("hqInput").value;
-  const entries = upgradeData[level];
-  const container = document.getElementById("upgradeResult");
+    function showUpgradeData() {
+      const level = document.getElementById("hqInput").value;
+      const entries = upgradeData[level];
+      const container = document.getElementById("upgradeResult");
 
-  if (!entries) {
-    container.innerHTML = `<strong>No data available for HQ level ${level}.</strong>`;
-    return;
-  }
-
-  let html = `<h3>Requirements for HQ Level ${level}</h3>`;
-  const hqUpgrade = entries.find(e => e.Building === "HQ Upgrade");
-
-  if (hqUpgrade) {
-    html += `<h4>🏛️ HQ Upgrade Resource Cost</h4>`;
-    html += `<div class="building-line">HQ Upgrade ${hqUpgrade.Level}: Food: ${formatNumber(hqUpgrade.Food)}, Iron: ${formatNumber(hqUpgrade.Iron)}, Gold: ${formatNumber(hqUpgrade.Gold)}</div>`;
-    if (hqUpgrade.HeroStats && Object.keys(hqUpgrade.HeroStats).length) {
-      const hero = hqUpgrade.HeroStats;
-      html += `<div class="building-line">🎖️ Hero Stats — Cap: ${hero.LevelCap}, HP: ${formatNumber(hero.HP)}, ATK: ${hero.Attack}, DEF: ${hero.Defense}</div>`;
-    }
-  }
-
-  html += `<h4>🏗️ Required Building Upgrades</h4>`;
-  entries
-    .filter(e => e.Building !== "HQ Upgrade")
-    .forEach(entry => {
-      html += `<div class="building-line">🔧 ${entry.Building} ${entry.Level}: Food: ${formatNumber(entry.Food)}, Iron: ${formatNumber(entry.Iron)}, Gold: ${formatNumber(entry.Gold)}${entry.Source ? ` (${entry.Source})` : ''}</div>`;
-    });
-
-  container.innerHTML = html;
-}
+      if (!entries) {
+        container.innerHTML = `<strong>No data available for HQ level ${level}.</strong>`;
+        return;
+      }
 
       let html = `<h3>Requirements for HQ Level ${level}</h3>`;
       let hqUpgrade = null;
@@ -206,9 +182,9 @@ function showUpgradeData() {
     }
 
 function buildProgressionChart(data) {
-const buildingTypes = [
-  "HQ Upgrade", "Tech Center", "Any (Tank, Missile, Aircraft Center)",
-  "Barracks", "Drill Ground", "Hospital", "Wall"
+  const buildingTypes = [
+    "HQ Upgrade", "Tech Center", "Tank Center", "Barracks", "Drill Ground",
+    "Hospital", "Wall", "Alliance Center"
   ];
 
   let table = `<table border="1" style="border-collapse: collapse; width: 100%; color: white; font-size: 0.9em;">
@@ -235,11 +211,45 @@ const buildingTypes = [
 }
 
 // Load JSON and build the chart once
-fetch('data/hq_tracker.json')
+fetch('data/hq_levels.json')
   .then(res => res.json())
   .then(json => buildProgressionChart(json))
   .catch(err => console.error('Error loading HQ data:', err));
 
   </script>
+
+<script>
+function buildProgressionChart(data) {
+  const levels = Object.keys(data).sort((a, b) => parseInt(a) - parseInt(b));
+  const allBuildings = new Set();
+
+  levels.forEach(level => {
+    data[level].forEach(item => allBuildings.add(item.Building));
+  });
+
+  const tableRows = [];
+  const headerRow = ['<th>HQ Level</th>', ...[...allBuildings].map(b => `<th>${b}</th>`)].join('');
+  tableRows.push(`<tr>${headerRow}</tr>`);
+
+  levels.forEach(level => {
+    const row = [`<td>Lv ${level}</td>`];
+    const buildingMap = {};
+    data[level].forEach(b => {
+      const stats = [`Lv ${b.Level || ''}`, `${b.Food || 0}F`, `${b.Iron || 0}I`, `${b.Gold || 0}G`].join('<br>');
+      buildingMap[b.Building] = stats;
+    });
+
+    [...allBuildings].forEach(b => {
+      row.push(`<td>${buildingMap[b] || ''}</td>`);
+    });
+
+    tableRows.push(`<tr>${row.join('')}</tr>`);
+  });
+
+  const table = `<table border="1" style="width:100%; text-align:center;">${tableRows.join('')}</table>`;
+  document.getElementById('progressionTable').innerHTML = table;
+}
+</script>
+
 </body>
 </html>
