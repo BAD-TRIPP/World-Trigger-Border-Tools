@@ -132,7 +132,7 @@
   <script>
     let upgradeData = {};
 
-    fetch('hq_tracker.json')
+    fetch('data/hq_tracker.json')
       .then(response => response.json())
       .then(data => upgradeData = data)
       .catch(err => {
@@ -234,7 +234,7 @@ function buildProgressionChart(data) {
 }
 
 // Load JSON and build the chart once
-fetch('hq_tracker.json')
+fetch('data/hq_tracker.json')
   .then(res => res.json())
   .then(json => buildProgressionChart(json))
   .catch(err => console.error('Error loading HQ data:', err));
