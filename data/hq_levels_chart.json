@@ -6,8 +6,7 @@
   "HQ 2": {
     "techCenter": "N/A",
     "otherBuildings": [
-      "Drill Ground 1",
-      "Parking Lot 1"
+      "Drill Ground 1 + Parking Lot 1"
     ]
   },
   "HQ 3": {
@@ -19,29 +18,25 @@
   "HQ 4": {
     "techCenter": "N/A",
     "otherBuildings": [
-      "Barracks 3",
-      "Drill Ground 3"
+      "Barracks 3 + Drill Ground 3"
     ]
   },
   "HQ 5": {
     "techCenter": "N/A",
     "otherBuildings": [
-      "Wall 4",
-      "Barracks 4"
+      "Wall 4 + Barracks 4"
     ]
   },
   "HQ 6": {
     "techCenter": "N/A",
     "otherBuildings": [
-      "Wall 5",
-      "Drill Ground 5"
+      "Wall 5 + Drill Ground 5"
     ]
   },
   "HQ 7": {
     "techCenter": "N/A",
     "otherBuildings": [
-      "Wall 6",
-      "Tank Center 6"
+      "Wall 6 + Tank Center 6"
     ]
   },
   "HQ 8": {
