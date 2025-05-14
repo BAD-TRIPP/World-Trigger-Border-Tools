@@ -251,5 +251,51 @@ function buildProgressionChart(data) {
 }
 </script>
 
+
+<script>
+function formatResource(val) {
+  if (!val || isNaN(val)) return '0';
+  if (val >= 1_000_000_000) return (val / 1_000_000_000).toFixed(1) + 'G';
+  if (val >= 1_000_000) return (val / 1_000_000).toFixed(0) + 'M';
+  return val.toString();
+}
+
+function buildProgressionChart(data) {
+  const levels = Object.keys(data).sort((a, b) => parseInt(a) - parseInt(b));
+  const allBuildings = new Set();
+
+  levels.forEach(level => {
+    data[level].forEach(item => allBuildings.add(item.Building));
+  });
+
+  const tableRows = [];
+  const headerRow = ['<th>HQ Level</th>', ...[...allBuildings].map(b => `<th>${b}</th>`)].join('');
+  tableRows.push(`<tr>${headerRow}</tr>`);
+
+  levels.forEach(level => {
+    const row = [`<td>Lv ${level}</td>`];
+    const buildingMap = {};
+    data[level].forEach(b => {
+      const stats = [
+        `Lv ${b.Level || ''}`,
+        `F: ${formatResource(b.Food)}`,
+        `I: ${formatResource(b.Iron)}`,
+        `G: ${formatResource(b.Gold)}`
+      ].join('<br>');
+      buildingMap[b.Building] = stats;
+    });
+
+    [...allBuildings].forEach(b => {
+      row.push(`<td>${buildingMap[b] || ''}</td>`);
+    });
+
+    tableRows.push(`<tr>${row.join('')}</tr>`);
+  });
+
+  const table = `<table border="1" style="width:100%; text-align:center;">${tableRows.join('')}</table>`;
+  document.getElementById('progressionTable').innerHTML = table;
+}
+</script>
+
 </body>
 </html>
