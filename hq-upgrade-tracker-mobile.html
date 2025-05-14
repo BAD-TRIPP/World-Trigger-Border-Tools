@@ -297,5 +297,17 @@ function buildProgressionChart(data) {
 }
 </script>
 
+
+<script>
+function buildProgressionChart(data) {
+  const table = `
+<table border="1" style="width:100%; text-align:center;">
+  <tr><th>HQ Level</th><th>Required Buildings</th></tr><tr><td>Lv 1</td><td></td></tr><tr><td>Lv 2</td><td></td></tr><tr><td>Lv 3</td><td></td></tr><tr><td>Lv 4</td><td></td></tr><tr><td>Lv 5</td><td></td></tr><tr><td>Lv 6</td><td></td></tr><tr><td>Lv 7</td><td></td></tr><tr><td>Lv 8</td><td></td></tr><tr><td>Lv 9</td><td></td></tr><tr><td>Lv 10</td><td>Wall</td></tr><tr><td>Lv 11</td><td>Barracks<br>Wall</td></tr><tr><td>Lv 12</td><td>Any (Tank, Missile, Aircraft Center)<br>Barracks</td></tr><tr><td>Lv 13</td><td>Any (Tank, Missile, Aircraft Center)<br>Drill Ground</td></tr><tr><td>Lv 14</td><td>Drill Ground<br>Wall</td></tr><tr><td>Lv 15</td><td>Tech Center<br>Wall</td></tr><tr><td>Lv 16</td><td>Any (Tank, Missile, Aircraft Center)<br>Tech Center</td></tr><tr><td>Lv 17</td><td>Any (Tank, Missile, Aircraft Center)<br>Hospital</td></tr><tr><td>Lv 18</td><td>Hospital</td></tr><tr><td>Lv 19</td><td>Barracks<br>Wall</td></tr><tr><td>Lv 20</td><td>Any (Tank, Missile, Aircraft Center)<br>Barracks</td></tr><tr><td>Lv 21</td><td>Any (Tank, Missile, Aircraft Center)<br>Drill Ground</td></tr><tr><td>Lv 22</td><td>Drill Ground</td></tr><tr><td>Lv 23</td><td>Tech Center<br>Wall</td></tr><tr><td>Lv 24</td><td>Any (Tank, Missile, Aircraft Center)<br>Tech Center</td></tr><tr><td>Lv 25</td><td>Any (Tank, Missile, Aircraft Center)<br>Hospital</td></tr><tr><td>Lv 26</td><td>Hospital<br>Wall</td></tr><tr><td>Lv 27</td><td>Barracks<br>Wall</td></tr><tr><td>Lv 28</td><td>Any (Tank, Missile, Aircraft Center)<br>Barracks</td></tr><tr><td>Lv 29</td><td>Any (Tank, Missile, Aircraft Center)<br>Drill Ground</td></tr><tr><td>Lv 30</td><td>Drill Ground</td></tr><tr><td>Lv 31</td><td>Any (Tank, Missile, Aircraft Center)<br>Barracks<br>Tech Center</td></tr><tr><td>Lv 32</td><td>Any (Tank, Missile, Aircraft Center)<br>Barracks<br>Tech Center<br>Wall</td></tr><tr><td>Lv 33</td><td>Any (Tank, Missile, Aircraft Center)<br>Barracks<br>Drill Ground<br>Hospital<br>Tech Center</td></tr><tr><td>Lv 34</td><td>Any (Tank, Missile, Aircraft Center)<br>Barracks<br>Tech Center<br>Wall</td></tr><tr><td>Lv 35</td><td>Any (Tank, Missile, Aircraft Center)<br>Barracks<br>Drill Ground<br>Hospital<br>Tech Center</td></tr>
+</table>
+`;
+  document.getElementById('progressionTable').innerHTML = table;
+}
+</script>
+
 </body>
 </html>
