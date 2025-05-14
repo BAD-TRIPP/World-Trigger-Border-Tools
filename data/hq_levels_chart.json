@@ -1,40 +1,40 @@
 {
   "1": {
-    "Tech Center": null,
+    "Tech Center": "N/A",
     "Other Buildings": [
       "Drill Ground 1",
       "Parking Lots 1"
     ]
   },
   "2": {
-    "Tech Center": null,
+    "Tech Center": "Tech Center 1",
     "Other Buildings": [
       "Wall 2"
     ]
   },
   "3": {
-    "Tech Center": null,
+    "Tech Center": "Tech Center 2",
     "Other Buildings": [
       "Barracks 3",
       "Drill Ground 3"
     ]
   },
   "4": {
-    "Tech Center": null,
+    "Tech Center": "Tech Center 3",
     "Other Buildings": [
       "Wall 4",
       "Barracks 4"
     ]
   },
   "5": {
-    "Tech Center": null,
+    "Tech Center": "Tech Center 4",
     "Other Buildings": [
       "Wall 5",
       "Drill Ground 5"
     ]
   },
   "6": {
-    "Tech Center": null,
+    "Tech Center": "Tech Center 5",
     "Other Buildings": [
       "Wall 6",
       "Tank Center 6"
