@@ -6,862 +6,1377 @@
       "Iron": 0,
       "Food": 0,
       "Gold": 0,
-      "UpgradeTime": "0s",
+      "UpgradeTime": "-",
       "HeroStats": {},
       "Notes": "-"
     }
   ],
   "2": [
     {
-      "Building": "Drill Ground",
-      "Level": 1,
-      "Iron": 0,
-      "Food": 0,
-      "Gold": 0,
-      "Source": "Inferred"
-    },
-    {
       "Building": "HQ Upgrade",
       "Level": 2,
       "Iron": 68,
       "Food": 68,
       "Gold": 0,
-      "UpgradeTime": "4s",
-      "HeroStats": {
-        "LevelCap": 10,
-        "HP": 1000,
-        "Attack": 47.6,
-        "Defense": 9.6
-      },
-      "Notes": "Requires Drill Ground lvl 1, Squad lvl 1"
+      "UpgradeTime": "-",
+      "HeroStats": {},
+      "Notes": "-"
     }
   ],
   "3": [
-    {
-      "Building": "Wall",
-      "Level": 2,
-      "Iron": 0,
-      "Food": 0,
-      "Gold": 0,
-      "Source": "Inferred"
-    },
     {
       "Building": "HQ Upgrade",
       "Level": 3,
       "Iron": 1000,
       "Food": 1000,
       "Gold": 0,
-      "UpgradeTime": "47s",
-      "HeroStats": {
-        "LevelCap": 15,
-        "HP": 1500,
-        "Attack": 71.4,
-        "Defense": 14.3
-      },
-      "Notes": "Requires Wall lvl 2"
+      "UpgradeTime": "-",
+      "HeroStats": {},
+      "Notes": "-"
     }
   ],
   "4": [
-    {
-      "Building": "Hospital",
-      "Level": 2,
-      "Iron": 0,
-      "Food": 0,
-      "Gold": 0,
-      "Source": "Inferred"
-    },
     {
       "Building": "HQ Upgrade",
       "Level": 4,
       "Iron": 3000,
       "Food": 3000,
       "Gold": 0,
-      "UpgradeTime": "1m 29s",
-      "HeroStats": {
-        "LevelCap": 20,
-        "HP": 2000,
-        "Attack": 95.2,
-        "Defense": 19
-      },
-      "Notes": "Requires Hospital lvl 2"
+      "UpgradeTime": "-",
+      "HeroStats": {},
+      "Notes": "-"
     }
   ],
   "5": [
-    {
-      "Building": "Tech Center",
-      "Level": 1,
-      "Iron": 0,
-      "Food": 0,
-      "Gold": 0,
-      "Source": "Inferred"
-    },
     {
       "Building": "HQ Upgrade",
       "Level": 5,
       "Iron": 7000,
       "Food": 7000,
       "Gold": 0,
-      "UpgradeTime": "2m 51s",
-      "HeroStats": {
-        "LevelCap": 25,
-        "HP": 2500,
-        "Attack": 119.0,
-        "Defense": 23.8
-      },
-      "Notes": "Requires Tech Center lvl 1"
+      "UpgradeTime": "-",
+      "HeroStats": {},
+      "Notes": "-"
     }
   ],
   "6": [
-    {
-      "Building": "Tech Center",
-      "Level": 1,
-      "Iron": 50000,
-      "Food": 50000,
-      "Gold": 10000,
-      "Source": "Estimated"
-    },
     {
       "Building": "HQ Upgrade",
       "Level": 6,
       "Iron": 600000,
       "Food": 600000,
       "Gold": 180000,
-      "UpgradeTime": "12m",
-      "HeroStats": {
-        "LevelCap": 30,
-        "HP": 3000,
-        "Attack": 142.8,
-        "Defense": 28.6
-      },
-      "Notes": "Requires Tech Center lvl 1"
+      "UpgradeTime": "-",
+      "HeroStats": {},
+      "Notes": "-"
     }
   ],
   "7": [
-    {
-      "Building": "Tech Center",
-      "Level": 2,
-      "Iron": 100000,
-      "Food": 100000,
-      "Gold": 20000,
-      "Source": "Estimated"
-    },
     {
       "Building": "HQ Upgrade",
       "Level": 7,
       "Iron": 700000,
       "Food": 700000,
       "Gold": 210000,
-      "UpgradeTime": "14m",
-      "HeroStats": {
-        "LevelCap": 35,
-        "HP": 3500,
-        "Attack": 166.6,
-        "Defense": 33.4
-      },
-      "Notes": "Requires Tech Center lvl 2"
+      "UpgradeTime": "-",
+      "HeroStats": {},
+      "Notes": "-"
     }
   ],
   "8": [
-    {
-      "Building": "Tech Center",
-      "Level": 3,
-      "Iron": 150000,
-      "Food": 150000,
-      "Gold": 30000,
-      "Source": "Estimated"
-    },
     {
       "Building": "HQ Upgrade",
       "Level": 8,
       "Iron": 800000,
       "Food": 800000,
       "Gold": 240000,
-      "UpgradeTime": "16m",
-      "HeroStats": {
-        "LevelCap": 40,
-        "HP": 4000,
-        "Attack": 190.4,
-        "Defense": 38.2
-      },
-      "Notes": "Requires Tech Center lvl 3"
+      "UpgradeTime": "-",
+      "HeroStats": {},
+      "Notes": "-"
     }
   ],
   "9": [
-    {
-      "Building": "Tech Center",
-      "Level": 4,
-      "Iron": 200000,
-      "Food": 200000,
-      "Gold": 40000,
-      "Source": "Estimated"
-    },
     {
       "Building": "HQ Upgrade",
       "Level": 9,
       "Iron": 900000,
       "Food": 900000,
       "Gold": 270000,
-      "UpgradeTime": "18m",
-      "HeroStats": {
-        "LevelCap": 45,
-        "HP": 4500,
-        "Attack": 214.2,
-        "Defense": 43.0
-      },
-      "Notes": "Requires Tech Center lvl 4"
+      "UpgradeTime": "-",
+      "HeroStats": {},
+      "Notes": "-"
     }
   ],
   "10": [
-    {
-      "Building": "Tech Center",
-      "Level": 5,
-      "Iron": 250000,
-      "Food": 250000,
-      "Gold": 50000,
-      "Source": "Estimated"
-    },
     {
       "Building": "HQ Upgrade",
       "Level": 10,
       "Iron": 1000000,
       "Food": 1000000,
       "Gold": 300000,
-      "UpgradeTime": "20m",
-      "HeroStats": {
-        "LevelCap": 50,
-        "HP": 5000,
-        "Attack": 238.0,
-        "Defense": 47.8
-      },
-      "Notes": "Requires Tech Center lvl 5"
+      "UpgradeTime": "-",
+      "HeroStats": {},
+      "Notes": "-"
+    },
+    {
+      "Building": "Tech Center",
+      "Level": 10,
+      "Iron": 1000000,
+      "Food": 3300000,
+      "Gold": 1000000,
+      "Source": "Estimated"
+    },
+    {
+      "Building": "Barracks",
+      "Level": 10,
+      "Iron": 930000,
+      "Food": 930000,
+      "Gold": 370000,
+      "Source": "Estimated"
+    },
+    {
+      "Building": "Drill Ground",
+      "Level": 10,
+      "Iron": 570000,
+      "Food": 1600000,
+      "Gold": 460000,
+      "Source": "Estimated"
+    },
+    {
+      "Building": "Hospital",
+      "Level": 10,
+      "Iron": 3700000,
+      "Food": 11300000,
+      "Gold": 2900000,
+      "Source": "Estimated"
+    },
+    {
+      "Building": "Any (Tank, Missile, Aircraft Center)",
+      "Level": 10,
+      "Iron": 2400000,
+      "Food": 790000,
+      "Gold": 510000,
+      "Source": "Estimated"
+    },
+    {
+      "Building": "Wall",
+      "Level": 10,
+      "Iron": 250000,
+      "Food": 750000,
+      "Gold": 160000,
+      "Source": "Actual"
     }
   ],
   "11": [
-    {
-      "Building": "Tech Center",
-      "Level": 6,
-      "Iron": 300000,
-      "Food": 300000,
-      "Gold": 60000,
-      "Source": "Estimated"
-    },
     {
       "Building": "HQ Upgrade",
       "Level": 11,
       "Iron": 1100000,
       "Food": 1100000,
       "Gold": 330000,
-      "UpgradeTime": "22m",
-      "HeroStats": {
-        "LevelCap": 55,
-        "HP": 5500,
-        "Attack": 261.8,
-        "Defense": 52.6
-      },
-      "Notes": "Requires Tech Center lvl 6"
+      "UpgradeTime": "-",
+      "HeroStats": {},
+      "Notes": "-"
+    },
+    {
+      "Building": "Tech Center",
+      "Level": 11,
+      "Iron": 1000000,
+      "Food": 3300000,
+      "Gold": 1000000,
+      "Source": "Estimated"
+    },
+    {
+      "Building": "Barracks",
+      "Level": 11,
+      "Iron": 930000,
+      "Food": 930000,
+      "Gold": 370000,
+      "Source": "Actual"
+    },
+    {
+      "Building": "Drill Ground",
+      "Level": 11,
+      "Iron": 570000,
+      "Food": 1600000,
+      "Gold": 460000,
+      "Source": "Estimated"
+    },
+    {
+      "Building": "Hospital",
+      "Level": 11,
+      "Iron": 3700000,
+      "Food": 11300000,
+      "Gold": 2900000,
+      "Source": "Estimated"
+    },
+    {
+      "Building": "Any (Tank, Missile, Aircraft Center)",
+      "Level": 11,
+      "Iron": 2400000,
+      "Food": 790000,
+      "Gold": 510000,
+      "Source": "Estimated"
+    },
+    {
+      "Building": "Wall",
+      "Level": 11,
+      "Iron": 1387500,
+      "Food": 937500,
+      "Gold": 365000,
+      "Source": "Estimated"
     }
   ],
   "12": [
-    {
-      "Building": "Tech Center",
-      "Level": 7,
-      "Iron": 350000,
-      "Food": 350000,
-      "Gold": 70000,
-      "Source": "Estimated"
-    },
     {
       "Building": "HQ Upgrade",
       "Level": 12,
       "Iron": 1200000,
       "Food": 1200000,
       "Gold": 360000,
-      "UpgradeTime": "24m",
-      "HeroStats": {
-        "LevelCap": 60,
-        "HP": 6000,
-        "Attack": 285.6,
-        "Defense": 57.4
-      },
-      "Notes": "Requires Tech Center lvl 7"
+      "UpgradeTime": "-",
+      "HeroStats": {},
+      "Notes": "-"
+    },
+    {
+      "Building": "Tech Center",
+      "Level": 12,
+      "Iron": 1000000,
+      "Food": 3300000,
+      "Gold": 1000000,
+      "Source": "Estimated"
+    },
+    {
+      "Building": "Barracks",
+      "Level": 12,
+      "Iron": 2788750,
+      "Food": 2788750,
+      "Gold": 1086250,
+      "Source": "Estimated"
+    },
+    {
+      "Building": "Drill Ground",
+      "Level": 12,
+      "Iron": 570000,
+      "Food": 1600000,
+      "Gold": 460000,
+      "Source": "Estimated"
+    },
+    {
+      "Building": "Hospital",
+      "Level": 12,
+      "Iron": 3700000,
+      "Food": 11300000,
+      "Gold": 2900000,
+      "Source": "Estimated"
+    },
+    {
+      "Building": "Any (Tank, Missile, Aircraft Center)",
+      "Level": 12,
+      "Iron": 2400000,
+      "Food": 790000,
+      "Gold": 510000,
+      "Source": "Actual"
+    },
+    {
+      "Building": "Wall",
+      "Level": 12,
+      "Iron": 2525000,
+      "Food": 1125000,
+      "Gold": 570000,
+      "Source": "Estimated"
     }
   ],
   "13": [
-    {
-      "Building": "Tech Center",
-      "Level": 8,
-      "Iron": 400000,
-      "Food": 400000,
-      "Gold": 80000,
-      "Source": "Estimated"
-    },
     {
       "Building": "HQ Upgrade",
       "Level": 13,
       "Iron": 1300000,
       "Food": 1300000,
       "Gold": 390000,
-      "UpgradeTime": "26m",
-      "HeroStats": {
-        "LevelCap": 65,
-        "HP": 6500,
-        "Attack": 309.4,
-        "Defense": 62.2
-      },
-      "Notes": "Requires Tech Center lvl 8"
+      "UpgradeTime": "-",
+      "HeroStats": {},
+      "Notes": "-"
+    },
+    {
+      "Building": "Tech Center",
+      "Level": 13,
+      "Iron": 1000000,
+      "Food": 3300000,
+      "Gold": 1000000,
+      "Source": "Estimated"
+    },
+    {
+      "Building": "Barracks",
+      "Level": 13,
+      "Iron": 4647500,
+      "Food": 4647500,
+      "Gold": 1802500,
+      "Source": "Estimated"
+    },
+    {
+      "Building": "Drill Ground",
+      "Level": 13,
+      "Iron": 570000,
+      "Food": 1600000,
+      "Gold": 460000,
+      "Source": "Actual"
+    },
+    {
+      "Building": "Hospital",
+      "Level": 13,
+      "Iron": 3700000,
+      "Food": 11300000,
+      "Gold": 2900000,
+      "Source": "Estimated"
+    },
+    {
+      "Building": "Any (Tank, Missile, Aircraft Center)",
+      "Level": 13,
+      "Iron": 4025000,
+      "Food": 1317500,
+      "Gold": 832500,
+      "Source": "Estimated"
+    },
+    {
+      "Building": "Wall",
+      "Level": 13,
+      "Iron": 3662500,
+      "Food": 1312500,
+      "Gold": 775000,
+      "Source": "Estimated"
     }
   ],
   "14": [
-    {
-      "Building": "Tech Center",
-      "Level": 9,
-      "Iron": 450000,
-      "Food": 450000,
-      "Gold": 90000,
-      "Source": "Estimated"
-    },
     {
       "Building": "HQ Upgrade",
       "Level": 14,
       "Iron": 1400000,
       "Food": 1400000,
       "Gold": 420000,
-      "UpgradeTime": "28m",
-      "HeroStats": {
-        "LevelCap": 70,
-        "HP": 7000,
-        "Attack": 333.2,
-        "Defense": 67.0
-      },
-      "Notes": "Requires Tech Center lvl 9"
+      "UpgradeTime": "-",
+      "HeroStats": {},
+      "Notes": "-"
+    },
+    {
+      "Building": "Tech Center",
+      "Level": 14,
+      "Iron": 1000000,
+      "Food": 3300000,
+      "Gold": 1000000,
+      "Source": "Estimated"
+    },
+    {
+      "Building": "Barracks",
+      "Level": 14,
+      "Iron": 6506250,
+      "Food": 6506250,
+      "Gold": 2518750,
+      "Source": "Estimated"
+    },
+    {
+      "Building": "Drill Ground",
+      "Level": 14,
+      "Iron": 5373750,
+      "Food": 6275000,
+      "Gold": 2377500,
+      "Source": "Estimated"
+    },
+    {
+      "Building": "Hospital",
+      "Level": 14,
+      "Iron": 3700000,
+      "Food": 11300000,
+      "Gold": 2900000,
+      "Source": "Estimated"
+    },
+    {
+      "Building": "Any (Tank, Missile, Aircraft Center)",
+      "Level": 14,
+      "Iron": 5650000,
+      "Food": 1845000,
+      "Gold": 1155000,
+      "Source": "Estimated"
+    },
+    {
+      "Building": "Wall",
+      "Level": 14,
+      "Iron": 4800000,
+      "Food": 1500000,
+      "Gold": 980000,
+      "Source": "Actual"
     }
   ],
   "15": [
-    {
-      "Building": "Tech Center",
-      "Level": 10,
-      "Iron": 500000,
-      "Food": 500000,
-      "Gold": 100000,
-      "Source": "Estimated"
-    },
     {
       "Building": "HQ Upgrade",
       "Level": 15,
       "Iron": 1500000,
       "Food": 1500000,
       "Gold": 450000,
-      "UpgradeTime": "30m",
-      "HeroStats": {
-        "LevelCap": 75,
-        "HP": 7500,
-        "Attack": 357.0,
-        "Defense": 71.8
-      },
-      "Notes": "Requires Tech Center lvl 10"
+      "UpgradeTime": "-",
+      "HeroStats": {},
+      "Notes": "-"
+    },
+    {
+      "Building": "Tech Center",
+      "Level": 15,
+      "Iron": 1000000,
+      "Food": 3300000,
+      "Gold": 1000000,
+      "Source": "Actual"
+    },
+    {
+      "Building": "Barracks",
+      "Level": 15,
+      "Iron": 8365000,
+      "Food": 8365000,
+      "Gold": 3235000,
+      "Source": "Estimated"
+    },
+    {
+      "Building": "Drill Ground",
+      "Level": 15,
+      "Iron": 10177500,
+      "Food": 10950000,
+      "Gold": 4295000,
+      "Source": "Estimated"
+    },
+    {
+      "Building": "Hospital",
+      "Level": 15,
+      "Iron": 3700000,
+      "Food": 11300000,
+      "Gold": 2900000,
+      "Source": "Estimated"
+    },
+    {
+      "Building": "Any (Tank, Missile, Aircraft Center)",
+      "Level": 15,
+      "Iron": 7275000,
+      "Food": 2372500,
+      "Gold": 1477500,
+      "Source": "Estimated"
+    },
+    {
+      "Building": "Wall",
+      "Level": 15,
+      "Iron": 7550000,
+      "Food": 5075000,
+      "Gold": 2260000,
+      "Source": "Estimated"
     }
   ],
   "16": [
-    {
-      "Building": "Tech Center",
-      "Level": 11,
-      "Iron": 550000,
-      "Food": 550000,
-      "Gold": 110000,
-      "Source": "Estimated"
-    },
     {
       "Building": "HQ Upgrade",
       "Level": 16,
       "Iron": 1600000,
       "Food": 1600000,
       "Gold": 480000,
-      "UpgradeTime": "32m",
-      "HeroStats": {
-        "LevelCap": 80,
-        "HP": 8000,
-        "Attack": 380.8,
-        "Defense": 76.6
-      },
-      "Notes": "Requires Tech Center lvl 11"
+      "UpgradeTime": "-",
+      "HeroStats": {},
+      "Notes": "-"
+    },
+    {
+      "Building": "Tech Center",
+      "Level": 16,
+      "Iron": 3587500,
+      "Food": 10912500,
+      "Gold": 3462500,
+      "Source": "Estimated"
+    },
+    {
+      "Building": "Barracks",
+      "Level": 16,
+      "Iron": 10223750,
+      "Food": 10223750,
+      "Gold": 3951250,
+      "Source": "Estimated"
+    },
+    {
+      "Building": "Drill Ground",
+      "Level": 16,
+      "Iron": 14981250,
+      "Food": 15625000,
+      "Gold": 6212500,
+      "Source": "Estimated"
+    },
+    {
+      "Building": "Hospital",
+      "Level": 16,
+      "Iron": 3700000,
+      "Food": 11300000,
+      "Gold": 2900000,
+      "Source": "Estimated"
+    },
+    {
+      "Building": "Any (Tank, Missile, Aircraft Center)",
+      "Level": 16,
+      "Iron": 8900000,
+      "Food": 2900000,
+      "Gold": 1800000,
+      "Source": "Actual"
+    },
+    {
+      "Building": "Wall",
+      "Level": 16,
+      "Iron": 10300000,
+      "Food": 8650000,
+      "Gold": 3540000,
+      "Source": "Estimated"
     }
   ],
   "17": [
-    {
-      "Building": "Tech Center",
-      "Level": 12,
-      "Iron": 600000,
-      "Food": 600000,
-      "Gold": 120000,
-      "Source": "Estimated"
-    },
     {
       "Building": "HQ Upgrade",
       "Level": 17,
       "Iron": 1700000,
       "Food": 1700000,
       "Gold": 510000,
-      "UpgradeTime": "34m",
-      "HeroStats": {
-        "LevelCap": 85,
-        "HP": 8500,
-        "Attack": 404.6,
-        "Defense": 81.4
-      },
-      "Notes": "Requires Tech Center lvl 12"
+      "UpgradeTime": "-",
+      "HeroStats": {},
+      "Notes": "-"
+    },
+    {
+      "Building": "Tech Center",
+      "Level": 17,
+      "Iron": 6175000,
+      "Food": 18525000,
+      "Gold": 5925000,
+      "Source": "Estimated"
+    },
+    {
+      "Building": "Barracks",
+      "Level": 17,
+      "Iron": 12082500,
+      "Food": 12082500,
+      "Gold": 4667500,
+      "Source": "Estimated"
+    },
+    {
+      "Building": "Drill Ground",
+      "Level": 17,
+      "Iron": 19785000,
+      "Food": 20300000,
+      "Gold": 8130000,
+      "Source": "Estimated"
+    },
+    {
+      "Building": "Hospital",
+      "Level": 17,
+      "Iron": 3700000,
+      "Food": 11300000,
+      "Gold": 2900000,
+      "Source": "Actual"
+    },
+    {
+      "Building": "Any (Tank, Missile, Aircraft Center)",
+      "Level": 17,
+      "Iron": 17250000,
+      "Food": 5700000,
+      "Gold": 3600000,
+      "Source": "Estimated"
+    },
+    {
+      "Building": "Wall",
+      "Level": 17,
+      "Iron": 13050000,
+      "Food": 12225000,
+      "Gold": 4820000,
+      "Source": "Estimated"
     }
   ],
   "18": [
-    {
-      "Building": "Tech Center",
-      "Level": 13,
-      "Iron": 650000,
-      "Food": 650000,
-      "Gold": 130000,
-      "Source": "Estimated"
-    },
     {
       "Building": "HQ Upgrade",
       "Level": 18,
       "Iron": 1800000,
       "Food": 1800000,
       "Gold": 540000,
-      "UpgradeTime": "36m",
-      "HeroStats": {
-        "LevelCap": 90,
-        "HP": 9000,
-        "Attack": 428.4,
-        "Defense": 86.2
-      },
-      "Notes": "Requires Tech Center lvl 13"
+      "UpgradeTime": "-",
+      "HeroStats": {},
+      "Notes": "-"
+    },
+    {
+      "Building": "Tech Center",
+      "Level": 18,
+      "Iron": 8762500,
+      "Food": 26137500,
+      "Gold": 8387500,
+      "Source": "Estimated"
+    },
+    {
+      "Building": "Barracks",
+      "Level": 18,
+      "Iron": 13941250,
+      "Food": 13941250,
+      "Gold": 5383750,
+      "Source": "Estimated"
+    },
+    {
+      "Building": "Drill Ground",
+      "Level": 18,
+      "Iron": 24588750,
+      "Food": 24975000,
+      "Gold": 10047500,
+      "Source": "Estimated"
+    },
+    {
+      "Building": "Hospital",
+      "Level": 18,
+      "Iron": 11650000,
+      "Food": 35600000,
+      "Gold": 9312500,
+      "Source": "Estimated"
+    },
+    {
+      "Building": "Any (Tank, Missile, Aircraft Center)",
+      "Level": 18,
+      "Iron": 25600000,
+      "Food": 8500000,
+      "Gold": 5400000,
+      "Source": "Estimated"
+    },
+    {
+      "Building": "Wall",
+      "Level": 18,
+      "Iron": 15800000,
+      "Food": 15800000,
+      "Gold": 6100000,
+      "Source": "Actual"
     }
   ],
   "19": [
-    {
-      "Building": "Tech Center",
-      "Level": 14,
-      "Iron": 700000,
-      "Food": 700000,
-      "Gold": 140000,
-      "Source": "Estimated"
-    },
     {
       "Building": "HQ Upgrade",
       "Level": 19,
       "Iron": 1900000,
       "Food": 1900000,
       "Gold": 570000,
-      "UpgradeTime": "38m",
-      "HeroStats": {
-        "LevelCap": 95,
-        "HP": 9500,
-        "Attack": 452.2,
-        "Defense": 91.0
-      },
-      "Notes": "Requires Tech Center lvl 14"
+      "UpgradeTime": "-",
+      "HeroStats": {},
+      "Notes": "-"
+    },
+    {
+      "Building": "Tech Center",
+      "Level": 19,
+      "Iron": 11350000,
+      "Food": 33750000,
+      "Gold": 10850000,
+      "Source": "Estimated"
+    },
+    {
+      "Building": "Barracks",
+      "Level": 19,
+      "Iron": 15800000,
+      "Food": 15800000,
+      "Gold": 6100000,
+      "Source": "Actual"
+    },
+    {
+      "Building": "Drill Ground",
+      "Level": 19,
+      "Iron": 29392500,
+      "Food": 29650000,
+      "Gold": 11965000,
+      "Source": "Estimated"
+    },
+    {
+      "Building": "Hospital",
+      "Level": 19,
+      "Iron": 19600000,
+      "Food": 59900000,
+      "Gold": 15725000,
+      "Source": "Estimated"
+    },
+    {
+      "Building": "Any (Tank, Missile, Aircraft Center)",
+      "Level": 19,
+      "Iron": 33950000,
+      "Food": 11300000,
+      "Gold": 7200000,
+      "Source": "Estimated"
+    },
+    {
+      "Building": "Wall",
+      "Level": 19,
+      "Iron": 104850000,
+      "Food": 42100000,
+      "Gold": 24575000,
+      "Source": "Estimated"
     }
   ],
   "20": [
-    {
-      "Building": "Tech Center",
-      "Level": 15,
-      "Iron": 750000,
-      "Food": 750000,
-      "Gold": 150000,
-      "Source": "Estimated"
-    },
     {
       "Building": "HQ Upgrade",
       "Level": 20,
       "Iron": 2000000,
       "Food": 2000000,
       "Gold": 600000,
-      "UpgradeTime": "40m",
-      "HeroStats": {
-        "LevelCap": 100,
-        "HP": 10000,
-        "Attack": 476.0,
-        "Defense": 95.8
-      },
-      "Notes": "Requires Tech Center lvl 15"
+      "UpgradeTime": "-",
+      "HeroStats": {},
+      "Notes": "-"
+    },
+    {
+      "Building": "Tech Center",
+      "Level": 20,
+      "Iron": 13937500,
+      "Food": 41362500,
+      "Gold": 13312500,
+      "Source": "Estimated"
+    },
+    {
+      "Building": "Barracks",
+      "Level": 20,
+      "Iron": 43950000,
+      "Food": 43950000,
+      "Gold": 18125000,
+      "Source": "Estimated"
+    },
+    {
+      "Building": "Drill Ground",
+      "Level": 20,
+      "Iron": 34196250,
+      "Food": 34325000,
+      "Gold": 13882500,
+      "Source": "Estimated"
+    },
+    {
+      "Building": "Hospital",
+      "Level": 20,
+      "Iron": 27550000,
+      "Food": 84200000,
+      "Gold": 22137500,
+      "Source": "Estimated"
+    },
+    {
+      "Building": "Any (Tank, Missile, Aircraft Center)",
+      "Level": 20,
+      "Iron": 42300000,
+      "Food": 14100000,
+      "Gold": 9000000,
+      "Source": "Actual"
+    },
+    {
+      "Building": "Wall",
+      "Level": 20,
+      "Iron": 193900000,
+      "Food": 68400000,
+      "Gold": 43050000,
+      "Source": "Estimated"
     }
   ],
   "21": [
-    {
-      "Building": "Tech Center",
-      "Level": 16,
-      "Iron": 800000,
-      "Food": 800000,
-      "Gold": 160000,
-      "Source": "Estimated"
-    },
     {
       "Building": "HQ Upgrade",
       "Level": 21,
       "Iron": 2100000,
       "Food": 2100000,
       "Gold": 630000,
-      "UpgradeTime": "42m",
-      "HeroStats": {
-        "LevelCap": 105,
-        "HP": 10500,
-        "Attack": 499.8,
-        "Defense": 100.6
-      },
-      "Notes": "Requires Tech Center lvl 16"
+      "UpgradeTime": "-",
+      "HeroStats": {},
+      "Notes": "-"
+    },
+    {
+      "Building": "Tech Center",
+      "Level": 21,
+      "Iron": 16525000,
+      "Food": 48975000,
+      "Gold": 15775000,
+      "Source": "Estimated"
+    },
+    {
+      "Building": "Barracks",
+      "Level": 21,
+      "Iron": 72100000,
+      "Food": 72100000,
+      "Gold": 30150000,
+      "Source": "Estimated"
+    },
+    {
+      "Building": "Drill Ground",
+      "Level": 21,
+      "Iron": 39000000,
+      "Food": 39000000,
+      "Gold": 15800000,
+      "Source": "Actual"
+    },
+    {
+      "Building": "Hospital",
+      "Level": 21,
+      "Iron": 35500000,
+      "Food": 108500000,
+      "Gold": 28550000,
+      "Source": "Estimated"
+    },
+    {
+      "Building": "Any (Tank, Missile, Aircraft Center)",
+      "Level": 21,
+      "Iron": 66775000,
+      "Food": 45625000,
+      "Gold": 17950000,
+      "Source": "Estimated"
+    },
+    {
+      "Building": "Wall",
+      "Level": 21,
+      "Iron": 282950000,
+      "Food": 94700000,
+      "Gold": 61525000,
+      "Source": "Estimated"
     }
   ],
   "22": [
-    {
-      "Building": "Tech Center",
-      "Level": 17,
-      "Iron": 850000,
-      "Food": 850000,
-      "Gold": 170000,
-      "Source": "Estimated"
-    },
     {
       "Building": "HQ Upgrade",
       "Level": 22,
       "Iron": 2200000,
       "Food": 2200000,
       "Gold": 660000,
-      "UpgradeTime": "44m",
-      "HeroStats": {
-        "LevelCap": 110,
-        "HP": 11000,
-        "Attack": 523.6,
-        "Defense": 105.4
-      },
-      "Notes": "Requires Tech Center lvl 17"
+      "UpgradeTime": "-",
+      "HeroStats": {},
+      "Notes": "-"
+    },
+    {
+      "Building": "Tech Center",
+      "Level": 22,
+      "Iron": 19112500,
+      "Food": 56587500,
+      "Gold": 18237500,
+      "Source": "Estimated"
+    },
+    {
+      "Building": "Barracks",
+      "Level": 22,
+      "Iron": 100250000,
+      "Food": 100250000,
+      "Gold": 42175000,
+      "Source": "Estimated"
+    },
+    {
+      "Building": "Drill Ground",
+      "Level": 22,
+      "Iron": 53987500,
+      "Food": 94900000,
+      "Gold": 30187500,
+      "Source": "Estimated"
+    },
+    {
+      "Building": "Hospital",
+      "Level": 22,
+      "Iron": 43450000,
+      "Food": 132800000,
+      "Gold": 34962500,
+      "Source": "Estimated"
+    },
+    {
+      "Building": "Any (Tank, Missile, Aircraft Center)",
+      "Level": 22,
+      "Iron": 91250000,
+      "Food": 77150000,
+      "Gold": 26900000,
+      "Source": "Estimated"
+    },
+    {
+      "Building": "Wall",
+      "Level": 22,
+      "Iron": 372000000,
+      "Food": 121000000,
+      "Gold": 80000000,
+      "Source": "Actual"
     }
   ],
   "23": [
-    {
-      "Building": "Tech Center",
-      "Level": 18,
-      "Iron": 900000,
-      "Food": 900000,
-      "Gold": 180000,
-      "Source": "Estimated"
-    },
     {
       "Building": "HQ Upgrade",
       "Level": 23,
       "Iron": 2300000,
       "Food": 2300000,
       "Gold": 690000,
-      "UpgradeTime": "46m",
-      "HeroStats": {
-        "LevelCap": 115,
-        "HP": 11500,
-        "Attack": 547.4,
-        "Defense": 110.2
-      },
-      "Notes": "Requires Tech Center lvl 18"
+      "UpgradeTime": "-",
+      "HeroStats": {},
+      "Notes": "-"
+    },
+    {
+      "Building": "Tech Center",
+      "Level": 23,
+      "Iron": 21700000,
+      "Food": 64200000,
+      "Gold": 20700000,
+      "Source": "Actual"
+    },
+    {
+      "Building": "Barracks",
+      "Level": 23,
+      "Iron": 128400000,
+      "Food": 128400000,
+      "Gold": 54200000,
+      "Source": "Estimated"
+    },
+    {
+      "Building": "Drill Ground",
+      "Level": 23,
+      "Iron": 68975000,
+      "Food": 150800000,
+      "Gold": 44575000,
+      "Source": "Estimated"
+    },
+    {
+      "Building": "Hospital",
+      "Level": 23,
+      "Iron": 51400000,
+      "Food": 157100000,
+      "Gold": 41375000,
+      "Source": "Estimated"
+    },
+    {
+      "Building": "Any (Tank, Missile, Aircraft Center)",
+      "Level": 23,
+      "Iron": 115725000,
+      "Food": 108675000,
+      "Gold": 35850000,
+      "Source": "Estimated"
+    },
+    {
+      "Building": "Wall",
+      "Level": 23,
+      "Iron": 372000000,
+      "Food": 121000000,
+      "Gold": 80000000,
+      "Source": "Estimated"
     }
   ],
   "24": [
-    {
-      "Building": "Tech Center",
-      "Level": 19,
-      "Iron": 950000,
-      "Food": 950000,
-      "Gold": 190000,
-      "Source": "Estimated"
-    },
     {
       "Building": "HQ Upgrade",
       "Level": 24,
       "Iron": 2400000,
       "Food": 2400000,
       "Gold": 720000,
-      "UpgradeTime": "48m",
-      "HeroStats": {
-        "LevelCap": 120,
-        "HP": 12000,
-        "Attack": 571.2,
-        "Defense": 115.0
-      },
-      "Notes": "Requires Tech Center lvl 19"
+      "UpgradeTime": "-",
+      "HeroStats": {},
+      "Notes": "-"
+    },
+    {
+      "Building": "Tech Center",
+      "Level": 24,
+      "Iron": 21700000,
+      "Food": 64200000,
+      "Gold": 20700000,
+      "Source": "Estimated"
+    },
+    {
+      "Building": "Barracks",
+      "Level": 24,
+      "Iron": 156550000,
+      "Food": 156550000,
+      "Gold": 66225000,
+      "Source": "Estimated"
+    },
+    {
+      "Building": "Drill Ground",
+      "Level": 24,
+      "Iron": 83962500,
+      "Food": 206700000,
+      "Gold": 58962500,
+      "Source": "Estimated"
+    },
+    {
+      "Building": "Hospital",
+      "Level": 24,
+      "Iron": 59350000,
+      "Food": 181400000,
+      "Gold": 47787500,
+      "Source": "Estimated"
+    },
+    {
+      "Building": "Any (Tank, Missile, Aircraft Center)",
+      "Level": 24,
+      "Iron": 140200000,
+      "Food": 140200000,
+      "Gold": 44800000,
+      "Source": "Actual"
+    },
+    {
+      "Building": "Wall",
+      "Level": 24,
+      "Iron": 372000000,
+      "Food": 121000000,
+      "Gold": 80000000,
+      "Source": "Estimated"
     }
   ],
   "25": [
-    {
-      "Building": "Tech Center",
-      "Level": 20,
-      "Iron": 1000000,
-      "Food": 1000000,
-      "Gold": 200000,
-      "Source": "Estimated"
-    },
     {
       "Building": "HQ Upgrade",
       "Level": 25,
       "Iron": 2500000,
       "Food": 2500000,
       "Gold": 750000,
-      "UpgradeTime": "50m",
-      "HeroStats": {
-        "LevelCap": 125,
-        "HP": 12500,
-        "Attack": 595.0,
-        "Defense": 119.8
-      },
-      "Notes": "Requires Tech Center lvl 20"
+      "UpgradeTime": "-",
+      "HeroStats": {},
+      "Notes": "-"
+    },
+    {
+      "Building": "Tech Center",
+      "Level": 25,
+      "Iron": 21700000,
+      "Food": 64200000,
+      "Gold": 20700000,
+      "Source": "Estimated"
+    },
+    {
+      "Building": "Barracks",
+      "Level": 25,
+      "Iron": 184700000,
+      "Food": 184700000,
+      "Gold": 78250000,
+      "Source": "Estimated"
+    },
+    {
+      "Building": "Drill Ground",
+      "Level": 25,
+      "Iron": 98950000,
+      "Food": 262600000,
+      "Gold": 73350000,
+      "Source": "Estimated"
+    },
+    {
+      "Building": "Hospital",
+      "Level": 25,
+      "Iron": 67300000,
+      "Food": 205700000,
+      "Gold": 54200000,
+      "Source": "Actual"
+    },
+    {
+      "Building": "Any (Tank, Missile, Aircraft Center)",
+      "Level": 25,
+      "Iron": 233700000,
+      "Food": 147225000,
+      "Gold": 61650000,
+      "Source": "Estimated"
+    },
+    {
+      "Building": "Wall",
+      "Level": 25,
+      "Iron": 372000000,
+      "Food": 121000000,
+      "Gold": 80000000,
+      "Source": "Estimated"
     }
   ],
   "26": [
-    {
-      "Building": "Tech Center",
-      "Level": 21,
-      "Iron": 1050000,
-      "Food": 1050000,
-      "Gold": 210000,
-      "Source": "Estimated"
-    },
     {
       "Building": "HQ Upgrade",
       "Level": 26,
       "Iron": 2600000,
       "Food": 2600000,
       "Gold": 780000,
-      "UpgradeTime": "52m",
-      "HeroStats": {
-        "LevelCap": 130,
-        "HP": 13000,
-        "Attack": 618.8,
-        "Defense": 124.6
-      },
-      "Notes": "Requires Tech Center lvl 21"
+      "UpgradeTime": "-",
+      "HeroStats": {},
+      "Notes": "-"
+    },
+    {
+      "Building": "Tech Center",
+      "Level": 26,
+      "Iron": 21700000,
+      "Food": 64200000,
+      "Gold": 20700000,
+      "Source": "Estimated"
+    },
+    {
+      "Building": "Barracks",
+      "Level": 26,
+      "Iron": 212850000,
+      "Food": 212850000,
+      "Gold": 90275000,
+      "Source": "Estimated"
+    },
+    {
+      "Building": "Drill Ground",
+      "Level": 26,
+      "Iron": 113937500,
+      "Food": 318500000,
+      "Gold": 87737500,
+      "Source": "Estimated"
+    },
+    {
+      "Building": "Hospital",
+      "Level": 26,
+      "Iron": 67300000,
+      "Food": 205700000,
+      "Gold": 54200000,
+      "Source": "Estimated"
+    },
+    {
+      "Building": "Any (Tank, Missile, Aircraft Center)",
+      "Level": 26,
+      "Iron": 327200000,
+      "Food": 154250000,
+      "Gold": 78500000,
+      "Source": "Estimated"
+    },
+    {
+      "Building": "Wall",
+      "Level": 26,
+      "Iron": 372000000,
+      "Food": 121000000,
+      "Gold": 80000000,
+      "Source": "Actual"
     }
   ],
   "27": [
-    {
-      "Building": "Tech Center",
-      "Level": 22,
-      "Iron": 1100000,
-      "Food": 1100000,
-      "Gold": 220000,
-      "Source": "Estimated"
-    },
     {
       "Building": "HQ Upgrade",
       "Level": 27,
       "Iron": 2700000,
       "Food": 2700000,
       "Gold": 810000,
-      "UpgradeTime": "54m",
-      "HeroStats": {
-        "LevelCap": 135,
-        "HP": 13500,
-        "Attack": 642.6,
-        "Defense": 129.4
-      },
-      "Notes": "Requires Tech Center lvl 22"
+      "UpgradeTime": "-",
+      "HeroStats": {},
+      "Notes": "-"
+    },
+    {
+      "Building": "Tech Center",
+      "Level": 27,
+      "Iron": 21700000,
+      "Food": 64200000,
+      "Gold": 20700000,
+      "Source": "Estimated"
+    },
+    {
+      "Building": "Barracks",
+      "Level": 27,
+      "Iron": 241000000,
+      "Food": 241000000,
+      "Gold": 102300000,
+      "Source": "Actual"
+    },
+    {
+      "Building": "Drill Ground",
+      "Level": 27,
+      "Iron": 128925000,
+      "Food": 374400000,
+      "Gold": 102125000,
+      "Source": "Estimated"
+    },
+    {
+      "Building": "Hospital",
+      "Level": 27,
+      "Iron": 67300000,
+      "Food": 205700000,
+      "Gold": 54200000,
+      "Source": "Estimated"
+    },
+    {
+      "Building": "Any (Tank, Missile, Aircraft Center)",
+      "Level": 27,
+      "Iron": 420700000,
+      "Food": 161275000,
+      "Gold": 95350000,
+      "Source": "Estimated"
+    },
+    {
+      "Building": "Wall",
+      "Level": 27,
+      "Iron": 372000000,
+      "Food": 121000000,
+      "Gold": 80000000,
+      "Source": "Estimated"
     }
   ],
   "28": [
-    {
-      "Building": "Tech Center",
-      "Level": 23,
-      "Iron": 1150000,
-      "Food": 1150000,
-      "Gold": 230000,
-      "Source": "Estimated"
-    },
     {
       "Building": "HQ Upgrade",
       "Level": 28,
       "Iron": 2800000,
       "Food": 2800000,
       "Gold": 840000,
-      "UpgradeTime": "56m",
-      "HeroStats": {
-        "LevelCap": 140,
-        "HP": 14000,
-        "Attack": 666.4,
-        "Defense": 134.2
-      },
-      "Notes": "Requires Tech Center lvl 23"
+      "UpgradeTime": "-",
+      "HeroStats": {},
+      "Notes": "-"
+    },
+    {
+      "Building": "Tech Center",
+      "Level": 28,
+      "Iron": 21700000,
+      "Food": 64200000,
+      "Gold": 20700000,
+      "Source": "Estimated"
+    },
+    {
+      "Building": "Barracks",
+      "Level": 28,
+      "Iron": 241000000,
+      "Food": 241000000,
+      "Gold": 102300000,
+      "Source": "Estimated"
+    },
+    {
+      "Building": "Drill Ground",
+      "Level": 28,
+      "Iron": 143912500,
+      "Food": 430300000,
+      "Gold": 116512500,
+      "Source": "Estimated"
+    },
+    {
+      "Building": "Hospital",
+      "Level": 28,
+      "Iron": 67300000,
+      "Food": 205700000,
+      "Gold": 54200000,
+      "Source": "Estimated"
+    },
+    {
+      "Building": "Any (Tank, Missile, Aircraft Center)",
+      "Level": 28,
+      "Iron": 514200000,
+      "Food": 168300000,
+      "Gold": 112200000,
+      "Source": "Actual"
+    },
+    {
+      "Building": "Wall",
+      "Level": 28,
+      "Iron": 372000000,
+      "Food": 121000000,
+      "Gold": 80000000,
+      "Source": "Estimated"
     }
   ],
   "29": [
-    {
-      "Building": "Tech Center",
-      "Level": 24,
-      "Iron": 1200000,
-      "Food": 1200000,
-      "Gold": 240000,
-      "Source": "Estimated"
-    },
     {
       "Building": "HQ Upgrade",
       "Level": 29,
       "Iron": 2900000,
       "Food": 2900000,
       "Gold": 870000,
-      "UpgradeTime": "58m",
-      "HeroStats": {
-        "LevelCap": 145,
-        "HP": 14500,
-        "Attack": 690.2,
-        "Defense": 139.0
-      },
-      "Notes": "Requires Tech Center lvl 24"
+      "UpgradeTime": "-",
+      "HeroStats": {},
+      "Notes": "-"
+    },
+    {
+      "Building": "Tech Center",
+      "Level": 29,
+      "Iron": 21700000,
+      "Food": 64200000,
+      "Gold": 20700000,
+      "Source": "Estimated"
+    },
+    {
+      "Building": "Barracks",
+      "Level": 29,
+      "Iron": 241000000,
+      "Food": 241000000,
+      "Gold": 102300000,
+      "Source": "Estimated"
+    },
+    {
+      "Building": "Drill Ground",
+      "Level": 29,
+      "Iron": 158900000,
+      "Food": 486200000,
+      "Gold": 130900000,
+      "Source": "Actual"
+    },
+    {
+      "Building": "Hospital",
+      "Level": 29,
+      "Iron": 67300000,
+      "Food": 205700000,
+      "Gold": 54200000,
+      "Source": "Estimated"
+    },
+    {
+      "Building": "Any (Tank, Missile, Aircraft Center)",
+      "Level": 29,
+      "Iron": 514200000,
+      "Food": 168300000,
+      "Gold": 112200000,
+      "Source": "Estimated"
+    },
+    {
+      "Building": "Wall",
+      "Level": 29,
+      "Iron": 372000000,
+      "Food": 121000000,
+      "Gold": 80000000,
+      "Source": "Estimated"
     }
   ],
   "30": [
-    {
-      "Building": "Tech Center",
-      "Level": 25,
-      "Iron": 1250000,
-      "Food": 1250000,
-      "Gold": 250000,
-      "Source": "Estimated"
-    },
     {
       "Building": "HQ Upgrade",
       "Level": 30,
       "Iron": 3000000,
       "Food": 3000000,
       "Gold": 900000,
-      "UpgradeTime": "60m",
-      "HeroStats": {
-        "LevelCap": 150,
-        "HP": 15000,
-        "Attack": 714.0,
-        "Defense": 143.8
-      },
-      "Notes": "Requires Tech Center lvl 25"
+      "UpgradeTime": "-",
+      "HeroStats": {},
+      "Notes": "-"
     }
   ],
   "31": [
-    {
-      "Building": "Tech Center",
-      "Level": 26,
-      "Iron": 1300000,
-      "Food": 1300000,
-      "Gold": 260000,
-      "Source": "Estimated"
-    },
     {
       "Building": "HQ Upgrade",
       "Level": 31,
       "Iron": 3100000,
       "Food": 3100000,
       "Gold": 930000,
-      "UpgradeTime": "62m",
-      "HeroStats": {
-        "LevelCap": 155,
-        "HP": 15500,
-        "Attack": 737.8,
-        "Defense": 148.6
-      },
-      "Notes": "Requires Tech Center lvl 26"
+      "UpgradeTime": "-",
+      "HeroStats": {},
+      "Notes": "-"
     }
   ],
   "32": [
-    {
-      "Building": "Tech Center",
-      "Level": 27,
-      "Iron": 1350000,
-      "Food": 1350000,
-      "Gold": 270000,
-      "Source": "Estimated"
-    },
     {
       "Building": "HQ Upgrade",
       "Level": 32,
       "Iron": 3200000,
       "Food": 3200000,
       "Gold": 960000,
- 
-      "UpgradeTime": "64m",
-      "HeroStats": {
-        "LevelCap": 160,
-        "HP": 16000,
-        "Attack": 761.6,
-        "Defense": 153.4
-      },
-      "Notes": "Requires Tech Center lvl 27"
+      "UpgradeTime": "-",
+      "HeroStats": {},
+      "Notes": "-"
     }
   ],
   "33": [
-    {
-      "Building": "Tech Center",
-      "Level": 28,
-      "Iron": 1400000,
-      "Food": 1400000,
-      "Gold": 280000,
-      "Source": "Estimated"
-    },
     {
       "Building": "HQ Upgrade",
       "Level": 33,
       "Iron": 3300000,
       "Food": 3300000,
       "Gold": 990000,
- 
-      "UpgradeTime": "66m",
-      "HeroStats": {
-        "LevelCap": 165,
-        "HP": 16500,
-        "Attack": 785.4,
-        "Defense": 158.2
-      },
-      "Notes": "Requires Tech Center lvl 28"
+      "UpgradeTime": "-",
+      "HeroStats": {},
+      "Notes": "-"
     }
   ],
   "34": [
-    {
-      "Building": "Tech Center",
-      "Level": 29,
-      "Iron": 1450000,
-      "Food": 1450000,
-      "Gold": 290000,
-      "Source": "Estimated"
-    },
     {
       "Building": "HQ Upgrade",
       "Level": 34,
       "Iron": 3400000,
       "Food": 3400000,
       "Gold": 1020000,
- 
-      "UpgradeTime": "68m",
-      "HeroStats": {
-        "LevelCap": 170,
-        "HP": 17000,
-        "Attack": 809.2,
-        "Defense": 163.0
-      },
-      "Notes": "Requires Tech Center lvl 29"
+      "UpgradeTime": "-",
+      "HeroStats": {},
+      "Notes": "-"
     }
   ],
   "35": [
-    {
-      "Building": "Tech Center",
-      "Level": 30,
-      "Iron": 1500000,
-      "Food": 1500000,
-      "Gold": 300000,
-      "Source": "Estimated"
-    },
     {
       "Building": "HQ Upgrade",
       "Level": 35,
       "Iron": 3500000,
       "Food": 3500000,
       "Gold": 1050000,
-      "UpgradeTime": "70m",
-      "HeroStats": {
-        "LevelCap": 175,
-        "HP": 17500,
-        "Attack": 833.0,
-        "Defense": 167.8
-      },
-      "Notes": "Requires Tech Center lvl 30"
+      "UpgradeTime": "-",
+      "HeroStats": {},
+      "Notes": "-"
     }
   ]
 }
