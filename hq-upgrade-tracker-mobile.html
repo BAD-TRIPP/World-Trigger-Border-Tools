@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -112,11 +113,12 @@
       📊 View Full Progression Chart
     </button>
 
+    <!-- Modal -->
     <div id="progressionModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); z-index:9999; overflow:auto;">
       <div style="margin: 50px auto; padding: 20px; background:#111; color:gold; max-width: 90%; border: 2px solid gold; border-radius: 10px;">
-        <h2>🏗 HQ Building Progression (Lv 1–35)</h2>
-        <div id="progressionTable" style="overflow-x: auto; max-height: 75vh;"></div><br>
-        <button onclick="document.getElementById('progressionModal').style.display='none'" style="background:gold; color:black; padding:10px 20px; font-weight:bold;">
+        <h2 style="text-align:center; font-size:1.5em;">🏗 HQ Building Progression (Lv 1–35)</h2>
+        <div id="progressionTable" style="overflow-x: auto; max-height: 75vh; margin-top: 1em;"></div><br>
+        <button onclick="document.getElementById('progressionModal').style.display='none'" style="background:gold; color:black; padding:10px 20px; font-weight:bold; border:none; border-radius:5px;">
           Close
         </button>
       </div>
@@ -181,159 +183,29 @@
       container.innerHTML = html;
     }
 
-function buildProgressionChart(data) {
-  const buildingTypes = [
-    "HQ Upgrade", "Tech Center", "Tank Center", "Barracks", "Drill Ground",
-    "Hospital", "Wall", "Alliance Center"
-  ];
+    // This script builds the modal progression chart from hq_levels_chart.json
+    fetch('data/hq_levels_chart.json')
+      .then(res => res.json())
+      .then(data => {
+        const levels = Object.keys(data).sort((a, b) => parseInt(a) - parseInt(b));
+        const tableRows = ['<tr><th style="color:white;">HQ Level</th><th style="color:white;">Tech Center</th><th style="color:white;">Other Buildings</th></tr>'];
 
-  let table = `<table border="1" style="border-collapse: collapse; width: 100%; color: white; font-size: 0.9em;">
-    <thead style="background: #222;"><tr><th>HQ Level</th>`;
-  
-  buildingTypes.forEach(b => table += `<th>${b}</th>`);
-  table += `</tr></thead><tbody>`;
+        levels.forEach(level => {
+          const row = data[level];
+          if (row) {
+            const tech = row.TechCenter || '';
+            const others = (row.OtherBuildings || []).join('<br>');
+            tableRows.push(`<tr><td style="color:white;">Lv ${level}</td><td style="color:white;">${tech}</td><td style="color:white;">${others}</td></tr>`);
+          }
+        });
 
-  for (let level = 1; level <= 35; level++) {
-    let row = `<tr><td>${level}</td>`;
-    const entries = data[level.toString()] || [];
-
-    buildingTypes.forEach(type => {
-      const found = entries.find(e => e.Building === type);
-      row += `<td>${found ? `Lv ${found.Level}` : '-'}</td>`;
-    });
-
-    row += `</tr>`;
-    table += row;
-  }
-
-  table += `</tbody></table>`;
-  document.getElementById('progressionTable').innerHTML = table;
-}
-
-// Load JSON and build the chart once
-fetch('data/hq_levels.json')
-  .then(res => res.json())
-  .then(json => buildProgressionChart(json))
-  .catch(err => console.error('Error loading HQ data:', err));
-
+        const table = `<table border="1" style="width:100%; text-align:center; color:white; border-collapse:collapse;">${tableRows.join('')}</table>`;
+        document.getElementById('progressionTable').innerHTML = table;
+      })
+      .catch(err => {
+        console.error('Error loading HQ chart data:', err);
+        document.getElementById('progressionTable').innerHTML = '<p style="color:red;">Failed to load progression chart.</p>';
+      });
   </script>
-
-<script>
-function buildProgressionChart(data) {
-  const levels = Object.keys(data).sort((a, b) => parseInt(a) - parseInt(b));
-  const allBuildings = new Set();
-
-  levels.forEach(level => {
-    data[level].forEach(item => allBuildings.add(item.Building));
-  });
-
-  const tableRows = [];
-  const headerRow = ['<th>HQ Level</th>', ...[...allBuildings].map(b => `<th>${b}</th>`)].join('');
-  tableRows.push(`<tr>${headerRow}</tr>`);
-
-  levels.forEach(level => {
-    const row = [`<td>Lv ${level}</td>`];
-    const buildingMap = {};
-    data[level].forEach(b => {
-      const stats = [`Lv ${b.Level || ''}`, `${b.Food || 0}F`, `${b.Iron || 0}I`, `${b.Gold || 0}G`].join('<br>');
-      buildingMap[b.Building] = stats;
-    });
-
-    [...allBuildings].forEach(b => {
-      row.push(`<td>${buildingMap[b] || ''}</td>`);
-    });
-
-    tableRows.push(`<tr>${row.join('')}</tr>`);
-  });
-
-  const table = `<table border="1" style="width:100%; text-align:center;">${tableRows.join('')}</table>`;
-  document.getElementById('progressionTable').innerHTML = table;
-}
-</script>
-
-
-<script>
-function formatResource(val) {
-  if (!val || isNaN(val)) return '0';
-  if (val >= 1_000_000_000) return (val / 1_000_000_000).toFixed(1) + 'G';
-  if (val >= 1_000_000) return (val / 1_000_000).toFixed(0) + 'M';
-  return val.toString();
-}
-
-function buildProgressionChart(data) {
-  const levels = Object.keys(data).sort((a, b) => parseInt(a) - parseInt(b));
-  const allBuildings = new Set();
-
-  levels.forEach(level => {
-    data[level].forEach(item => allBuildings.add(item.Building));
-  });
-
-  const tableRows = [];
-  const headerRow = ['<th>HQ Level</th>', ...[...allBuildings].map(b => `<th>${b}</th>`)].join('');
-  tableRows.push(`<tr>${headerRow}</tr>`);
-
-  levels.forEach(level => {
-    const row = [`<td>Lv ${level}</td>`];
-    const buildingMap = {};
-    data[level].forEach(b => {
-      const stats = [
-        `Lv ${b.Level || ''}`,
-        `F: ${formatResource(b.Food)}`,
-        `I: ${formatResource(b.Iron)}`,
-        `G: ${formatResource(b.Gold)}`
-      ].join('<br>');
-      buildingMap[b.Building] = stats;
-    });
-
-    [...allBuildings].forEach(b => {
-      row.push(`<td>${buildingMap[b] || ''}</td>`);
-    });
-
-    tableRows.push(`<tr>${row.join('')}</tr>`);
-  });
-
-  const table = `<table border="1" style="width:100%; text-align:center;">${tableRows.join('')}</table>`;
-  document.getElementById('progressionTable').innerHTML = table;
-}
-</script>
-
-
-<script>
-function buildProgressionChart(data) {
-  const table = `
-<table border="1" style="width:100%; text-align:center;">
-  <tr><th>HQ Level</th><th>Required Buildings</th></tr><tr><td>Lv 1</td><td></td></tr><tr><td>Lv 2</td><td></td></tr><tr><td>Lv 3</td><td></td></tr><tr><td>Lv 4</td><td></td></tr><tr><td>Lv 5</td><td></td></tr><tr><td>Lv 6</td><td></td></tr><tr><td>Lv 7</td><td></td></tr><tr><td>Lv 8</td><td></td></tr><tr><td>Lv 9</td><td></td></tr><tr><td>Lv 10</td><td>Wall</td></tr><tr><td>Lv 11</td><td>Barracks<br>Wall</td></tr><tr><td>Lv 12</td><td>Any (Tank, Missile, Aircraft Center)<br>Barracks</td></tr><tr><td>Lv 13</td><td>Any (Tank, Missile, Aircraft Center)<br>Drill Ground</td></tr><tr><td>Lv 14</td><td>Drill Ground<br>Wall</td></tr><tr><td>Lv 15</td><td>Tech Center<br>Wall</td></tr><tr><td>Lv 16</td><td>Any (Tank, Missile, Aircraft Center)<br>Tech Center</td></tr><tr><td>Lv 17</td><td>Any (Tank, Missile, Aircraft Center)<br>Hospital</td></tr><tr><td>Lv 18</td><td>Hospital</td></tr><tr><td>Lv 19</td><td>Barracks<br>Wall</td></tr><tr><td>Lv 20</td><td>Any (Tank, Missile, Aircraft Center)<br>Barracks</td></tr><tr><td>Lv 21</td><td>Any (Tank, Missile, Aircraft Center)<br>Drill Ground</td></tr><tr><td>Lv 22</td><td>Drill Ground</td></tr><tr><td>Lv 23</td><td>Tech Center<br>Wall</td></tr><tr><td>Lv 24</td><td>Any (Tank, Missile, Aircraft Center)<br>Tech Center</td></tr><tr><td>Lv 25</td><td>Any (Tank, Missile, Aircraft Center)<br>Hospital</td></tr><tr><td>Lv 26</td><td>Hospital<br>Wall</td></tr><tr><td>Lv 27</td><td>Barracks<br>Wall</td></tr><tr><td>Lv 28</td><td>Any (Tank, Missile, Aircraft Center)<br>Barracks</td></tr><tr><td>Lv 29</td><td>Any (Tank, Missile, Aircraft Center)<br>Drill Ground</td></tr><tr><td>Lv 30</td><td>Drill Ground</td></tr><tr><td>Lv 31</td><td>Any (Tank, Missile, Aircraft Center)<br>Barracks<br>Tech Center</td></tr><tr><td>Lv 32</td><td>Any (Tank, Missile, Aircraft Center)<br>Barracks<br>Tech Center<br>Wall</td></tr><tr><td>Lv 33</td><td>Any (Tank, Missile, Aircraft Center)<br>Barracks<br>Drill Ground<br>Hospital<br>Tech Center</td></tr><tr><td>Lv 34</td><td>Any (Tank, Missile, Aircraft Center)<br>Barracks<br>Tech Center<br>Wall</td></tr><tr><td>Lv 35</td><td>Any (Tank, Missile, Aircraft Center)<br>Barracks<br>Drill Ground<br>Hospital<br>Tech Center</td></tr>
-</table>
-`;
-  document.getElementById('progressionTable').innerHTML = table;
-}
-</script>
-
-
-<script>
-function buildProgressionChart(data) {
-  const levels = Object.keys(data).sort((a, b) => parseInt(a) - parseInt(b));
-  const allBuildings = new Set();
-
-  levels.forEach(level => {
-    data[level].forEach(item => allBuildings.add(item.Building));
-  });
-
-  const tableRows = ['<tr><th style="color:white;">HQ Level</th><th style="color:white;">Required Buildings</th></tr>'];
-  levels.forEach(level => {
-    const buildings = data[level]
-      .filter(item => item.Building !== "HQ Upgrade")
-      .map(item => item.Building)
-      .filter((v, i, a) => a.indexOf(v) === i)  // unique
-      .sort();
-    const bList = buildings.join("<br>");
-    tableRows.push(`<tr><td style="color:white;">Lv ${level}</td><td style="color:white;">${bList}</td></tr>`);
-  });
-
-  const table = `<table border="1" style="width:100%; text-align:center; color:white;">${tableRows.join('')}</table>`;
-  document.getElementById('progressionTable').innerHTML = table;
-}
-</script>
-
 </body>
 </html>
