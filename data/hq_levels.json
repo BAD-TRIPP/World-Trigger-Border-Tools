@@ -256,10 +256,10 @@
       "Building": "Tech Center",
       "Level": 15,
       "Iron": 1,
-      "Food": 3.3,
+      "Food": 3,
       "Gold": 1,
       "UpgradeTime": "11hrs",
-      "Source": "Actual"
+      "Source": "Interpolated"
     }
   ],
   "16": [
@@ -269,7 +269,7 @@
       "Food": 11700000,
       "Iron": 11700000,
       "Gold": 3800000,
-      "Source": "Actual",
+      "Source": "Interpolated",
       "Notes": ""
     },
     {
@@ -397,11 +397,11 @@
     {
       "Building": "Tech Center",
       "Level": 23,
-      "Iron": 21.7,
-      "Food": 64.2,
-      "Gold": 20.7,
+      "Iron": 22,
+      "Food": 64,
+      "Gold": 21,
       "UpgradeTime": "3.13days",
-      "Source": "Actual"
+      "Source": "Interpolated"
     }
   ],
   "24": [
@@ -411,7 +411,7 @@
       "Food": 158900000,
       "Iron": 158900000,
       "Gold": 50400000,
-      "Source": "Actual",
+      "Source": "Interpolated",
       "Notes": ""
     },
     {
@@ -576,7 +576,7 @@
       "Food": 426763535,
       "Iron": 217211536,
       "Gold": 103176001,
-      "Source": "Linear Estimate",
+      "Source": "Interpolated",
       "Notes": ""
     }
   ],
@@ -630,7 +630,7 @@
       "Food": 438625000,
       "Iron": 225523631,
       "Gold": 106356316,
-      "Source": "Linear Estimate",
+      "Source": "Interpolated",
       "Notes": ""
     }
   ],
@@ -693,7 +693,7 @@
       "Food": 532324737,
       "Iron": 287633118,
       "Gold": 131716855,
-      "Source": "Linear Estimate",
+      "Source": "Interpolated",
       "Notes": ""
     }
   ],
@@ -731,7 +731,7 @@
       "Food": 477244596,
       "Iron": 227119239,
       "Gold": 112985730,
-      "Source": "Linear Estimate",
+      "Source": "Interpolated",
       "Notes": ""
     },
     {
@@ -756,7 +756,7 @@
       "Food": 477244596,
       "Iron": 227119239,
       "Gold": 112985730,
-      "Source": "Linear Estimate",
+      "Source": "Interpolated",
       "Notes": ""
     }
   ],
@@ -819,7 +819,7 @@
       "Food": 584609548,
       "Iron": 307265048,
       "Gold": 143219466,
-      "Source": "Linear Estimate",
+      "Source": "Interpolated",
       "Notes": ""
     }
   ]
