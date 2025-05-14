@@ -309,5 +309,31 @@ function buildProgressionChart(data) {
 }
 </script>
 
+
+<script>
+function buildProgressionChart(data) {
+  const levels = Object.keys(data).sort((a, b) => parseInt(a) - parseInt(b));
+  const allBuildings = new Set();
+
+  levels.forEach(level => {
+    data[level].forEach(item => allBuildings.add(item.Building));
+  });
+
+  const tableRows = ['<tr><th style="color:white;">HQ Level</th><th style="color:white;">Required Buildings</th></tr>'];
+  levels.forEach(level => {
+    const buildings = data[level]
+      .filter(item => item.Building !== "HQ Upgrade")
+      .map(item => item.Building)
+      .filter((v, i, a) => a.indexOf(v) === i)  // unique
+      .sort();
+    const bList = buildings.join("<br>");
+    tableRows.push(`<tr><td style="color:white;">Lv ${level}</td><td style="color:white;">${bList}</td></tr>`);
+  });
+
+  const table = `<table border="1" style="width:100%; text-align:center; color:white;">${tableRows.join('')}</table>`;
+  document.getElementById('progressionTable').innerHTML = table;
+}
+</script>
+
 </body>
 </html>
