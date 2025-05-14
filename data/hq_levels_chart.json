@@ -1,214 +1,214 @@
 {
   "1": {
-    "TechCenter": "-",
-    "OtherBuildings": []
+    "techCenter": "-",
+    "otherBuildings": []
   },
   "2": {
-    "TechCenter": "-",
-    "OtherBuildings": [
+    "techCenter": "-",
+    "otherBuildings": [
       "Drill Ground",
       "Parking Lots"
     ]
   },
   "3": {
-    "TechCenter": "-",
-    "OtherBuildings": [
+    "techCenter": "-",
+    "otherBuildings": [
       "Wall"
     ]
   },
   "4": {
-    "TechCenter": "-",
-    "OtherBuildings": [
+    "techCenter": "-",
+    "otherBuildings": [
       "Barracks",
       "Drill Ground"
     ]
   },
   "5": {
-    "TechCenter": "-",
-    "OtherBuildings": [
+    "techCenter": "-",
+    "otherBuildings": [
       "Wall",
       "Barracks"
     ]
   },
   "6": {
-    "TechCenter": "-",
-    "OtherBuildings": [
+    "techCenter": "-",
+    "otherBuildings": [
       "Wall",
       "Drill Ground"
     ]
   },
   "7": {
-    "TechCenter": "-",
-    "OtherBuildings": [
+    "techCenter": "-",
+    "otherBuildings": [
       "Wall",
       "Tank Center"
     ]
   },
   "8": {
-    "TechCenter": "Tech Center",
-    "OtherBuildings": [
+    "techCenter": "Tech Center",
+    "otherBuildings": [
       "Alliance Center"
     ]
   },
   "9": {
-    "TechCenter": "Tech Center",
-    "OtherBuildings": [
+    "techCenter": "Tech Center",
+    "otherBuildings": [
       "Tank Center"
     ]
   },
   "10": {
-    "TechCenter": "Tech Center",
-    "OtherBuildings": [
+    "techCenter": "Tech Center",
+    "otherBuildings": [
       "Hospital"
     ]
   },
   "11": {
-    "TechCenter": "Tech Center",
-    "OtherBuildings": [
+    "techCenter": "Tech Center",
+    "otherBuildings": [
       "Wall"
     ]
   },
   "12": {
-    "TechCenter": "Tech Center",
-    "OtherBuildings": [
+    "techCenter": "Tech Center",
+    "otherBuildings": [
       "Barracks"
     ]
   },
   "13": {
-    "TechCenter": "Tech Center",
-    "OtherBuildings": [
+    "techCenter": "Tech Center",
+    "otherBuildings": [
       "Tank Center"
     ]
   },
   "14": {
-    "TechCenter": "Tech Center",
-    "OtherBuildings": [
+    "techCenter": "Tech Center",
+    "otherBuildings": [
       "Drill Ground"
     ]
   },
   "15": {
-    "TechCenter": "Tech Center",
-    "OtherBuildings": [
+    "techCenter": "Tech Center",
+    "otherBuildings": [
       "Wall"
     ]
   },
   "16": {
-    "TechCenter": "Tech Center",
-    "OtherBuildings": [
+    "techCenter": "Tech Center",
+    "otherBuildings": [
       "Alliance Center"
     ]
   },
   "17": {
-    "TechCenter": "Tech Center",
-    "OtherBuildings": [
+    "techCenter": "Tech Center",
+    "otherBuildings": [
       "Tank Center"
     ]
   },
   "18": {
-    "TechCenter": "Tech Center",
-    "OtherBuildings": [
+    "techCenter": "Tech Center",
+    "otherBuildings": [
       "Hospital"
     ]
   },
   "19": {
-    "TechCenter": "Tech Center",
-    "OtherBuildings": [
+    "techCenter": "Tech Center",
+    "otherBuildings": [
       "Wall"
     ]
   },
   "20": {
-    "TechCenter": "Tech Center",
-    "OtherBuildings": [
+    "techCenter": "Tech Center",
+    "otherBuildings": [
       "Barracks"
     ]
   },
   "21": {
-    "TechCenter": "Tech Center",
-    "OtherBuildings": [
+    "techCenter": "Tech Center",
+    "otherBuildings": [
       "Tank Center"
     ]
   },
   "22": {
-    "TechCenter": "Tech Center",
-    "OtherBuildings": [
+    "techCenter": "Tech Center",
+    "otherBuildings": [
       "Drill Ground"
     ]
   },
   "23": {
-    "TechCenter": "Tech Center",
-    "OtherBuildings": [
+    "techCenter": "Tech Center",
+    "otherBuildings": [
       "Wall"
     ]
   },
   "24": {
-    "TechCenter": "Tech Center",
-    "OtherBuildings": [
+    "techCenter": "Tech Center",
+    "otherBuildings": [
       "Alliance Center"
     ]
   },
   "25": {
-    "TechCenter": "Tech Center",
-    "OtherBuildings": [
+    "techCenter": "Tech Center",
+    "otherBuildings": [
       "Tank Center"
     ]
   },
   "26": {
-    "TechCenter": "Tech Center",
-    "OtherBuildings": [
+    "techCenter": "Tech Center",
+    "otherBuildings": [
       "Hospital"
     ]
   },
   "27": {
-    "TechCenter": "Tech Center",
-    "OtherBuildings": [
+    "techCenter": "Tech Center",
+    "otherBuildings": [
       "Wall"
     ]
   },
   "28": {
-    "TechCenter": "Tech Center",
-    "OtherBuildings": [
+    "techCenter": "Tech Center",
+    "otherBuildings": [
       "Barracks"
     ]
   },
   "29": {
-    "TechCenter": "Tech Center",
-    "OtherBuildings": [
+    "techCenter": "Tech Center",
+    "otherBuildings": [
       "Tank Center"
     ]
   },
   "30": {
-    "TechCenter": "Tech Center",
-    "OtherBuildings": [
+    "techCenter": "Tech Center",
+    "otherBuildings": [
       "Drill Ground"
     ]
   },
   "31": {
-    "TechCenter": "Tech Center",
-    "OtherBuildings": [
+    "techCenter": "Tech Center",
+    "otherBuildings": [
       "Tank Center + Barracks"
     ]
   },
   "32": {
-    "TechCenter": "Tech Center",
-    "OtherBuildings": [
+    "techCenter": "Tech Center",
+    "otherBuildings": [
       "Tank Center + Barracks + Wall"
     ]
   },
   "33": {
-    "TechCenter": "Tech Center",
-    "OtherBuildings": [
+    "techCenter": "Tech Center",
+    "otherBuildings": [
       "Tank Center + Barracks + Hospital + Drill Ground"
     ]
   },
   "34": {
-    "TechCenter": "Tech Center",
-    "OtherBuildings": [
+    "techCenter": "Tech Center",
+    "otherBuildings": [
       "Tank Center + Barracks + Wall + Alliance Center"
     ]
   },
   "35": {
-    "TechCenter": "Tech Center",
-    "OtherBuildings": [
+    "techCenter": "Tech Center",
+    "otherBuildings": [
       "Tank Center + Barracks + Hospital + Drill Ground"
     ]
   }
