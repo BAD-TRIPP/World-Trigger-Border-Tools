@@ -1,37 +1,87 @@
 {
-  "1": [],
+  "1": [
+    {
+      "Building": "HQ Upgrade",
+      "Level": 1,
+      "Food": 0.0,
+      "Iron": 0.0,
+      "Gold": 0.0,
+      "Source": "Screenshot"
+    }
+  ],
   "2": [
     {
       "Building": "HQ Upgrade",
       "Level": 2,
-      "Food": 67.99,
-      "Iron": 67.99,
+      "Food": 67.9864,
+      "Iron": 67.9864,
       "Gold": 0.0,
       "Source": "Screenshot",
-      "Notes": "Drill Ground lvl 1, Squad lvl 1",
       "HeroStats": {
         "LevelCap": 10,
         "HP": 1000,
         "Attack": 47.6,
         "Defense": 9.6
       }
+    },
+    {
+      "Building": "Tech Center",
+      "Level": 1,
+      "Source": "Actual",
+      "Iron": 89.98,
+      "Food": 89.98,
+      "Gold": 8.0,
+      "Upgrade Time": "6s",
+      "Power": 899.82,
+      "Research Speedup": "0.5%"
+    },
+    {
+      "Building": "Drill Ground",
+      "Level": 1,
+      "Source": "Actual",
+      "Iron": 20.0,
+      "Food": 59.99,
+      "Upgrade Time": "4s",
+      "Power": 699.86,
+      "Unit Count": 1999.6
     }
   ],
   "3": [
     {
       "Building": "HQ Upgrade",
       "Level": 3,
-      "Food": 999.8,
-      "Iron": 999.8,
+      "Food": 999.8000000000001,
+      "Iron": 999.8000000000001,
       "Gold": 0.0,
       "Source": "Screenshot",
-      "Notes": "Wall lvl 2",
       "HeroStats": {
         "LevelCap": 15,
         "HP": 1500,
         "Attack": 71.4,
         "Defense": 14.3
       }
+    },
+    {
+      "Building": "Tech Center",
+      "Level": 2,
+      "Source": "Actual",
+      "Iron": 229.95,
+      "Food": 229.95,
+      "Gold": 25.99,
+      "Upgrade Time": "12s",
+      "Power": 1799.64,
+      "Research Speedup": "1%"
+    },
+    {
+      "Building": "Wall",
+      "Level": 2,
+      "Source": "Actual",
+      "Iron": 67.99,
+      "Food": 23.0,
+      "Upgrade Time": "4s",
+      "Power": 1199.76,
+      "Slower Durability Loss When Burning": "2%",
+      "Faster Durability Restoration": "2%"
     }
   ],
   "4": [
@@ -42,13 +92,43 @@
       "Iron": 2499.5,
       "Gold": 0.0,
       "Source": "Screenshot",
-      "Notes": "Barracks lvl 3, Drill Ground lvl 3",
       "HeroStats": {
         "LevelCap": 20,
         "HP": 2000,
         "Attack": 95.3,
         "Defense": 19.1
       }
+    },
+    {
+      "Building": "Tech Center",
+      "Level": 3,
+      "Source": "Actual",
+      "Iron": 999.8,
+      "Food": 999.8,
+      "Gold": 78.98,
+      "Upgrade Time": "47s",
+      "Power": 2699.46,
+      "Research Speedup": "1.5%"
+    },
+    {
+      "Building": "Barracks",
+      "Level": 3,
+      "Source": "Actual",
+      "Iron": 679.86,
+      "Food": 679.86,
+      "Upgrade Time": "47s",
+      "Unit Training Cap": 99.98,
+      "Power": 2099.58
+    },
+    {
+      "Building": "Drill Ground",
+      "Level": 3,
+      "Source": "Actual",
+      "Iron": 339.93,
+      "Food": 999.8,
+      "Upgrade Time": "40s",
+      "Power": 2099.58,
+      "Unit Count": 2499.5
     }
   ],
   "5": [
@@ -59,13 +139,44 @@
       "Iron": 19996.0,
       "Gold": 0.0,
       "Source": "Screenshot",
-      "Notes": "Barrack lvl 4, Wall lvl 4",
       "HeroStats": {
         "LevelCap": 25,
         "HP": 2500,
         "Attack": 119.1,
         "Defense": 23.8
       }
+    },
+    {
+      "Building": "Tech Center",
+      "Level": 4,
+      "Source": "Actual",
+      "Iron": 2499.5,
+      "Food": 2499.5,
+      "Gold": 242.95,
+      "Upgrade Time": "1m 57s",
+      "Power": 3599.28,
+      "Research Speedup": "2%"
+    },
+    {
+      "Building": "Wall",
+      "Level": 4,
+      "Source": "Actual",
+      "Iron": 2499.5,
+      "Food": 839.83,
+      "Upgrade Time": "1m 57s",
+      "Power": 2399.52,
+      "Slower Durability Loss When Burning": "4%",
+      "Faster Durability Restoration": "4%"
+    },
+    {
+      "Building": "Barracks",
+      "Level": 4,
+      "Source": "Actual",
+      "Iron": 1699.66,
+      "Food": 1699.66,
+      "Upgrade Time": "1m 57s",
+      "Unit Training Cap": 149.97,
+      "Power": 2799.44
     }
   ],
   "6": [
@@ -76,13 +187,44 @@
       "Iron": 90981.8,
       "Gold": 0.0,
       "Source": "Screenshot",
-      "Notes": "Wall lvl 5, Drill Ground lvl 5",
       "HeroStats": {
         "LevelCap": 30,
         "HP": 3000,
         "Attack": 142.9,
         "Defense": 28.6
       }
+    },
+    {
+      "Building": "Tech Center",
+      "Level": 5,
+      "Source": "Actual",
+      "Iron": 19996.0,
+      "Food": 19996.0,
+      "Gold": 749.85,
+      "Upgrade Time": "11m 42s",
+      "Power": 4499.1,
+      "Research Speedup": "2.5%"
+    },
+    {
+      "Building": "Wall",
+      "Level": 5,
+      "Source": "Actual",
+      "Iron": 19996.0,
+      "Food": 6798.64,
+      "Upgrade Time": "11m 42s",
+      "Power": 2999.4,
+      "Slower Durability Loss When Burning": "5%",
+      "Faster Durability Restoration": "5%"
+    },
+    {
+      "Building": "Drill Ground",
+      "Level": 5,
+      "Source": "Actual",
+      "Iron": 6798.64,
+      "Food": 19996.0,
+      "Upgrade Time": "11m 42s",
+      "Power": 3499.3,
+      "Unit Count": 2999.4
     }
   ],
   "7": [
@@ -93,13 +235,46 @@
       "Iron": 239952.0,
       "Gold": 0.0,
       "Source": "Screenshot",
-      "Notes": "Wall lvl 6, Tank Center lvl 6",
       "HeroStats": {
         "LevelCap": 35,
         "HP": 3500,
         "Attack": 166.7,
         "Defense": 33.3
       }
+    },
+    {
+      "Building": "Tech Center",
+      "Level": 6,
+      "Source": "Actual",
+      "Iron": 90981.8,
+      "Food": 90981.8,
+      "Gold": 2299.54,
+      "Upgrade Time": "35m 6s",
+      "Power": 5398.92,
+      "Research Speedup": "3%"
+    },
+    {
+      "Building": "Wall",
+      "Level": 6,
+      "Source": "Actual",
+      "Iron": 90981.8,
+      "Food": 29994.0,
+      "Upgrade Time": "35m 6s",
+      "Power": 3599.28,
+      "Slower Durability Loss When Burning": "6%",
+      "Faster Durability Restoration": "6%"
+    },
+    {
+      "Building": "Tank Center",
+      "Level": 6,
+      "Source": "Actual",
+      "Iron": 90981.8,
+      "Food": 29994.0,
+      "Upgrade Time": "35m 6s",
+      "Tank Hero March Size": 25.0,
+      "Tank Hero HP": 2999.4,
+      "Tank Hero Attack": 142.87,
+      "Tank Hero Defense": 28.59
     }
   ],
   "8": [
@@ -110,13 +285,33 @@
       "Iron": 389922.0,
       "Gold": 0.0,
       "Source": "Screenshot",
-      "Notes": "Tech Center lvl 7, Alliance Center lvl 7",
       "HeroStats": {
         "LevelCap": 40,
         "HP": 4000,
         "Attack": 190.5,
         "Defense": 38.1
       }
+    },
+    {
+      "Building": "Tech Center",
+      "Level": 7,
+      "Source": "Actual",
+      "Iron": 209958.0,
+      "Food": 209958.0,
+      "Gold": 7098.58,
+      "Upgrade Time": "1h 21m 54s",
+      "Power": 6298.74,
+      "Research Speedup": "3.5%"
+    },
+    {
+      "Building": "Alliance Center",
+      "Level": 7,
+      "Source": "Actual",
+      "Iron": 40991.8,
+      "Food": 119976.0,
+      "Upgrade Time": "46m 48s",
+      "Power": 4899.02,
+      "Help Received": 8.0
     }
   ],
   "9": [
@@ -127,13 +322,35 @@
       "Iron": 619876.0,
       "Gold": 199960.0,
       "Source": "Screenshot",
-      "Notes": "Tech Center lvl 8, Tank Center lvl 8",
       "HeroStats": {
         "LevelCap": 45,
         "HP": 4500,
         "Attack": 214.3,
         "Defense": 42.9
       }
+    },
+    {
+      "Building": "Tech Center",
+      "Level": 8,
+      "Source": "Actual",
+      "Iron": 339932.0,
+      "Food": 339932.0,
+      "Gold": 21995.6,
+      "Upgrade Time": "2h 43m 48s",
+      "Power": 7198.56,
+      "Research Speedup": "4%"
+    },
+    {
+      "Building": "Tank Center",
+      "Level": 8,
+      "Source": "Actual",
+      "Iron": 289942.0,
+      "Food": 96980.6,
+      "Upgrade Time": "2h 20m 24s",
+      "Tank Hero March Size": 30.99,
+      "Tank Hero HP": 3999.2,
+      "Tank Hero Attack": 190.46,
+      "Tank Hero Defense": 38.09
     }
   ],
   "10": [
@@ -144,7 +361,6 @@
       "Iron": 749850.0,
       "Gold": 239952.0,
       "Source": "Screenshot",
-      "Notes": "Tech Center lvl 9, Hospital lvl 9",
       "HeroStats": {
         "LevelCap": 50,
         "HP": 5000,
@@ -153,416 +369,812 @@
       }
     },
     {
-      "Building": "Wall",
-      "Level": 10,
-      "Iron": 0.25,
-      "Food": 0.75,
-      "Gold": 0.16,
-      "UpgradeTime": "Irrelevant",
-      "Source": "Actual"
+      "Building": "Tech Center",
+      "Level": 9,
+      "Source": "Actual",
+      "Iron": 539892.0,
+      "Food": 539892.0,
+      "Gold": 67986.4,
+      "Upgrade Time": "3h 49m 20s",
+      "Power": 8398.32,
+      "Research Speedup": "4.5%"
+    },
+    {
+      "Building": "Hospital",
+      "Level": 9,
+      "Source": "Actual",
+      "Iron": 159968.0,
+      "Food": 469906.0,
+      "Gold": 119976.0,
+      "Upgrade Time": "3h 16m 34s",
+      "Unit Limit": 1049.79,
+      "Power": 6598.68
     }
   ],
   "11": [
     {
-      "Building": "Wall",
-      "Level": 10,
+      "Building": "HQ Upgrade",
+      "Level": 11,
       "Food": 1899620.0,
       "Iron": 1899620.0,
       "Gold": 599880.0,
-      "Source": "Actual",
-      "Notes": ""
+      "Source": "Screenshot",
+      "HeroStats": {
+        "LevelCap": 55,
+        "HP": 5500,
+        "Attack": 261.9,
+        "Defense": 52.4
+      }
     },
     {
-      "Building": "Barracks",
-      "Level": 11,
-      "Iron": 0.93,
-      "Food": 0.93,
-      "Gold": 0.37,
-      "UpgradeTime": "Irrelevant",
-      "Source": "Actual"
+      "Building": "Tech Center",
+      "Level": 10,
+      "Source": "Actual",
+      "Iron": 649870.0,
+      "Food": 649870.0,
+      "Gold": 209958.0,
+      "Upgrade Time": "4h 58m 7s",
+      "Power": 9698.06,
+      "Research Speedup": "5%"
+    },
+    {
+      "Building": "Wall",
+      "Level": 10,
+      "Source": "Actual",
+      "Iron": 749850.0,
+      "Food": 249950.0,
+      "Gold": 159968.0,
+      "Upgrade Time": "5h 32m 25s",
+      "Power": 7298.54,
+      "Slower Durability Loss When Burning": "10%",
+      "Faster Durability Restoration": "10%"
     }
   ],
   "12": [
     {
-      "Building": "Barracks",
-      "Level": 11,
+      "Building": "HQ Upgrade",
+      "Level": 12,
       "Food": 3199360.0,
       "Iron": 3199360.0,
       "Gold": 999800.0,
-      "Source": "Actual",
-      "Notes": ""
+      "Source": "Screenshot",
+      "HeroStats": {
+        "LevelCap": 60,
+        "HP": 6000,
+        "Attack": 285.7,
+        "Defense": 57.1
+      }
     },
     {
-      "Building": "Any (Tank, Missile, Aircraft Center)",
-      "Level": 12,
-      "Iron": 2.4,
-      "Food": 0.79,
-      "Gold": 0.51,
-      "UpgradeTime": "Irrelevant",
-      "Source": "Actual"
+      "Building": "Tech Center",
+      "Level": 11,
+      "Source": "Actual",
+      "Iron": 1599680.0,
+      "Food": 1599680.0,
+      "Gold": 519896.0,
+      "Upgrade Time": "5h 44m 31s",
+      "Power": 11797.64,
+      "Research Speedup": "5.5%"
+    },
+    {
+      "Building": "Barracks",
+      "Level": 11,
+      "Source": "Actual",
+      "Iron": 929814.0,
+      "Food": 929814.0,
+      "Gold": 369926.0,
+      "Upgrade Time": "4h 55m 18s",
+      "Unit Training Cap": 379.92,
+      "Power": 9198.16
     }
   ],
   "13": [
     {
-      "Building": "Any (Tank, Missile, Aircraft Center)",
-      "Level": 12,
+      "Building": "HQ Upgrade",
+      "Level": 13,
       "Food": 3499300.0,
       "Iron": 3499300.0,
       "Gold": 1099780.0,
-      "Source": "Actual",
-      "Notes": ""
+      "Source": "Screenshot",
+      "HeroStats": {
+        "LevelCap": 65,
+        "HP": 6500,
+        "Attack": 309.5,
+        "Defense": 61.9
+      }
     },
     {
-      "Building": "Drill Ground",
-      "Level": 13,
-      "Iron": 0.57,
-      "Food": 1.6,
-      "Gold": 0.46,
-      "UpgradeTime": "Irrelevant",
-      "Source": "Actual"
+      "Building": "Tech Center",
+      "Level": 12,
+      "Source": "Actual",
+      "Iron": 2799440.0,
+      "Food": 2799440.0,
+      "Gold": 889822.0,
+      "Upgrade Time": "8h 11m 32s",
+      "Power": 14497.1,
+      "Research Speedup": "6%"
+    },
+    {
+      "Building": "Tank Center",
+      "Level": 12,
+      "Source": "Actual",
+      "Iron": 2399520.0,
+      "Food": 789842.0,
+      "Gold": 509898.0,
+      "Upgrade Time": "7h 1m 20s",
+      "Tank Hero March Size": 42.99,
+      "Tank Hero HP": 6998.6,
+      "Tank Hero Attack": 285.64,
+      "Tank Hero Defense": 57.09
     }
   ],
   "14": [
     {
-      "Building": "Drill Ground",
-      "Level": 13,
-      "Food": 4799040.0,
-      "Iron": 4799040.0,
-      "Gold": 1499700.0,
-      "Source": "Actual",
-      "Notes": ""
+      "Building": "HQ Upgrade",
+      "Level": 14,
+      "Food": 4899020.0,
+      "Iron": 4899020.0,
+      "Gold": 1599680.0,
+      "Source": "Screenshot",
+      "HeroStats": {
+        "LevelCap": 70,
+        "HP": 7000,
+        "Attack": 333.3,
+        "Defense": 66.7
+      }
     },
     {
-      "Building": "Wall",
-      "Level": 14,
-      "Iron": 4.8,
-      "Food": 1.5,
-      "Gold": 0.98,
-      "UpgradeTime": "16hrs",
-      "Source": "Actual"
+      "Building": "Tech Center",
+      "Level": 13,
+      "Source": "Actual",
+      "Iron": 3099380.0,
+      "Food": 3099380.0,
+      "Gold": 979804.0,
+      "Upgrade Time": "10h 23m 47s",
+      "Power": 17296.54,
+      "Research Speedup": "6.5%"
+    },
+    {
+      "Building": "Drill Ground",
+      "Level": 13,
+      "Source": "Actual",
+      "Iron": 579884.0,
+      "Food": 1699660.0,
+      "Gold": 469906.0,
+      "Upgrade Time": "5h 56m 27s",
+      "Power": 12097.58,
+      "Unit Count": 4599.08
     }
   ],
   "15": [
     {
-      "Building": "Wall",
-      "Level": 14,
-      "Food": 6598680.0,
-      "Iron": 6598680.0,
-      "Gold": 2099580.0,
-      "Source": "Actual",
-      "Notes": ""
+      "Building": "HQ Upgrade",
+      "Level": 15,
+      "Food": 6798640.0,
+      "Iron": 6798640.0,
+      "Gold": 2199560.0,
+      "Source": "Screenshot",
+      "HeroStats": {
+        "LevelCap": 75,
+        "HP": 7500,
+        "Attack": 357.6,
+        "Defense": 71.3
+      }
     },
     {
       "Building": "Tech Center",
-      "Level": 15,
-      "Iron": 1.0,
-      "Food": 3.0,
-      "Gold": 1.0,
-      "UpgradeTime": "11hrs",
-      "Source": "Interpolated"
+      "Level": 14,
+      "Source": "Actual",
+      "Iron": 4299140.0,
+      "Food": 4299140.0,
+      "Gold": 1399720.0,
+      "Upgrade Time": "1d 13h 50m 41s",
+      "Power": 20695.86,
+      "Research Speedup": "7%"
+    },
+    {
+      "Building": "Wall",
+      "Level": 14,
+      "Source": "Actual",
+      "Iron": 4899020.0,
+      "Food": 1599680.0,
+      "Gold": 999800.0,
+      "Upgrade Time": "1d 15h 49m 22s",
+      "Power": 16896.62,
+      "Slower Durability Loss When Burning": "14%",
+      "Faster Durability Restoration": "14%"
     }
   ],
   "16": [
     {
-      "Building": "Tech Center",
-      "Level": 15,
-      "Food": 11697660.0,
-      "Iron": 11697660.0,
-      "Gold": 3799240.0,
-      "Source": "Interpolated",
-      "Notes": ""
+      "Building": "HQ Upgrade",
+      "Level": 16,
+      "Food": 11997600.0,
+      "Iron": 11997600.0,
+      "Gold": 3899220.0,
+      "Source": "Screenshot",
+      "HeroStats": {
+        "LevelCap": 80,
+        "HP": 8000,
+        "Attack": 381.5,
+        "Defense": 76.1
+      }
     },
     {
-      "Building": "Any (Tank, Missile, Aircraft Center)",
-      "Level": 16,
-      "Iron": 8.9,
-      "Food": 2.9,
-      "Gold": 1.8,
-      "UpgradeTime": "14hrs",
-      "Source": "Actual"
+      "Building": "Tech Center",
+      "Level": 15,
+      "Source": "Actual",
+      "Iron": 5998800.0,
+      "Food": 5998800.0,
+      "Gold": 1899620.0,
+      "Upgrade Time": "1d 19h 22m 58s",
+      "Power": 24595.08,
+      "Research Speedup": "7.5%"
+    },
+    {
+      "Building": "Alliance Center",
+      "Level": 15,
+      "Source": "Actual",
+      "Iron": 1099780.0,
+      "Food": 3399320.0,
+      "Gold": 1099780.0,
+      "Upgrade Time": "7h 42m 54s",
+      "Power": 17096.58,
+      "Help Received": 12.0
     }
   ],
   "17": [
     {
-      "Building": "Any (Tank, Missile, Aircraft Center)",
-      "Level": 16,
-      "Food": 15596880.0,
-      "Iron": 15596880.0,
-      "Gold": 4299140.0,
-      "Source": "Actual",
-      "Notes": ""
+      "Building": "HQ Upgrade",
+      "Level": 17,
+      "Food": 15996800.0,
+      "Iron": 15996800.0,
+      "Gold": 5098980.0,
+      "Source": "Screenshot",
+      "HeroStats": {
+        "LevelCap": 85,
+        "HP": 8500,
+        "Attack": 405.3,
+        "Defense": 80.8
+      }
     },
     {
-      "Building": "Hospital",
-      "Level": 17,
-      "Iron": 3.7,
-      "Food": 11.3,
-      "Gold": 2.9,
-      "UpgradeTime": "24hrs",
-      "Source": "Actual"
+      "Building": "Tech Center",
+      "Level": 16,
+      "Source": "Actual",
+      "Iron": 10997800.0,
+      "Food": 10997800.0,
+      "Gold": 3399320.0,
+      "Upgrade Time": "2d 2h 29m 3s",
+      "Power": 29894.02,
+      "Research Speedup": "8%"
+    },
+    {
+      "Building": "Tank Center",
+      "Level": 16,
+      "Source": "Actual",
+      "Iron": 9098180.0,
+      "Food": 2999400.0,
+      "Gold": 1899620.0,
+      "Upgrade Time": "1d 22h 42m 20s",
+      "Tank Hero March Size": 54.99,
+      "Tank Hero HP": 11997.6,
+      "Tank Hero Attack": 380.92,
+      "Tank Hero Defense": 76.18
     }
   ],
   "18": [
     {
+      "Building": "HQ Upgrade",
+      "Level": 18,
+      "Food": 27994400.0,
+      "Iron": 27994400.0,
+      "Gold": 8898220.0,
+      "Source": "Screenshot",
+      "HeroStats": {
+        "LevelCap": 90,
+        "HP": 9000,
+        "Attack": 429.2,
+        "Defense": 85.6
+      }
+    },
+    {
+      "Building": "Tech Center",
+      "Level": 17,
+      "Source": "Actual",
+      "Iron": 13997200.0,
+      "Food": 13997200.0,
+      "Gold": 4399120.0,
+      "Upgrade Time": "2d 13h 5m 8s",
+      "Power": 35892.82,
+      "Research Speedup": "8.5%"
+    },
+    {
       "Building": "Hospital",
       "Level": 17,
-      "Food": 24495100.0,
-      "Iron": 24495100.0,
-      "Gold": 6998600.0,
       "Source": "Actual",
-      "Notes": ""
+      "Iron": 3999200.0,
+      "Food": 11997600.0,
+      "Gold": 3199360.0,
+      "Upgrade Time": "1d 21h 36m 12s",
+      "Unit Limit": 1449.71,
+      "Power": 27994.4
     }
   ],
   "19": [
     {
-      "Building": "Wall",
-      "Level": 18,
+      "Building": "HQ Upgrade",
+      "Level": 19,
       "Food": 32993400.0,
       "Iron": 32993400.0,
-      "Gold": 8998200.0,
-      "Source": "Actual",
-      "Notes": ""
+      "Gold": 10997800.0,
+      "Source": "Screenshot",
+      "HeroStats": {
+        "LevelCap": 95,
+        "HP": 9500,
+        "Attack": 453.0,
+        "Defense": 90.3
+      }
     },
     {
-      "Building": "Barracks",
-      "Level": 19,
-      "Iron": 15.8,
-      "Food": 15.8,
-      "Gold": 6.1,
-      "UpgradeTime": "1.4days",
-      "Source": "Actual"
+      "Building": "Tech Center",
+      "Level": 18,
+      "Source": "Actual",
+      "Iron": 23995200.0,
+      "Food": 23995200.0,
+      "Gold": 7798440.0,
+      "Upgrade Time": "3d 2h 42m 44s",
+      "Power": 43791.24,
+      "Research Speedup": "9%"
+    },
+    {
+      "Building": "Wall",
+      "Level": 18,
+      "Source": "Actual",
+      "Iron": 27994400.0,
+      "Food": 9198160.0,
+      "Gold": 5898820.0,
+      "Upgrade Time": "3d 5h 57m 25s",
+      "Power": 37092.58,
+      "Slower Durability Loss When Burning": "18%",
+      "Faster Durability Restoration": "18%"
     }
   ],
   "20": [
     {
-      "Building": "Barracks",
-      "Level": 19,
+      "Building": "HQ Upgrade",
+      "Level": 20,
       "Food": 59988000.0,
       "Iron": 59988000.0,
-      "Gold": 15996800.0,
-      "Source": "Actual",
-      "Notes": ""
+      "Gold": 18996200.0,
+      "Source": "Screenshot",
+      "HeroStats": {
+        "LevelCap": 100,
+        "HP": 10000,
+        "Attack": 476.9,
+        "Defense": 95.1
+      }
     },
     {
-      "Building": "Any (Tank, Missile, Aircraft Center)",
-      "Level": 20,
-      "Iron": 42.29,
-      "Food": 14.1,
-      "Gold": 9.0,
-      "UpgradeTime": "3days",
-      "Source": "Actual"
+      "Building": "Tech Center",
+      "Level": 19,
+      "Source": "Actual",
+      "Iron": 28994200.0,
+      "Food": 28994200.0,
+      "Gold": 9298140.0,
+      "Upgrade Time": "3d 22h 59m 49s",
+      "Power": 52389.52,
+      "Research Speedup": "9.5%"
+    },
+    {
+      "Building": "Barracks",
+      "Level": 19,
+      "Source": "Actual",
+      "Iron": 16996600.0,
+      "Food": 16996600.0,
+      "Gold": 6598680.0,
+      "Upgrade Time": "2d 17h 25m 7s",
+      "Unit Training Cap": 459.91,
+      "Power": 40791.84
     }
   ],
   "21": [
     {
-      "Building": "Any (Tank, Missile, Aircraft Center)",
-      "Level": 20,
-      "Food": 79284140.0,
-      "Iron": 79284140.0,
-      "Gold": 25594880.0,
-      "Source": "Actual",
-      "Notes": ""
+      "Building": "HQ Upgrade",
+      "Level": 21,
+      "Food": 83983200.0,
+      "Iron": 83983200.0,
+      "Gold": 26994600.0,
+      "Source": "Screenshot",
+      "HeroStats": {
+        "LevelCap": 105,
+        "HP": 10500,
+        "Attack": 500.7,
+        "Defense": 99.8
+      }
     },
     {
-      "Building": "Drill Ground",
-      "Level": 21,
-      "Iron": 38.99,
-      "Food": 38.99,
-      "Gold": 15.8,
-      "UpgradeTime": "2.5days",
-      "Source": "Actual"
+      "Building": "Tech Center",
+      "Level": 20,
+      "Source": "Actual",
+      "Iron": 51989600.0,
+      "Food": 51989600.0,
+      "Gold": 16996600.0,
+      "Upgrade Time": "4d 1h 8m 13s",
+      "Power": 63987.2,
+      "Research Speedup": "10%"
+    },
+    {
+      "Building": "Tank Center",
+      "Level": 20,
+      "Source": "Actual",
+      "Iron": 44991000.0,
+      "Food": 14997000.0,
+      "Gold": 9598080.0,
+      "Upgrade Time": "3d 11h 15m 37s",
+      "Tank Hero March Size": 66.99,
+      "Tank Hero HP": 19996.0,
+      "Tank Hero Attack": 476.1,
+      "Tank Hero Defense": 95.18
     }
   ],
   "22": [
     {
+      "Building": "HQ Upgrade",
+      "Level": 22,
+      "Food": 109978000.0,
+      "Iron": 109978000.0,
+      "Gold": 34993000.0,
+      "Source": "Screenshot",
+      "HeroStats": {
+        "LevelCap": 110,
+        "HP": 11000,
+        "Attack": 523.8,
+        "Defense": 104.8
+      }
+    },
+    {
+      "Building": "Tech Center",
+      "Level": 21,
+      "Source": "Actual",
+      "Iron": 72985400.0,
+      "Food": 72985400.0,
+      "Gold": 22995400.0,
+      "Upgrade Time": "5d 6h 16m 40s",
+      "Power": 77584.48,
+      "Research Speedup": "10.5%"
+    },
+    {
       "Building": "Drill Ground",
       "Level": 21,
-      "Food": 105578880.0,
-      "Iron": 105578880.0,
-      "Gold": 33593280.0,
       "Source": "Actual",
-      "Notes": ""
+      "Iron": 13997200.0,
+      "Food": 41991600.0,
+      "Gold": 10997800.0,
+      "Upgrade Time": "2d 20h 58m 18s",
+      "Power": 50389.92,
+      "Unit Count": 6198.76
     }
   ],
   "23": [
     {
-      "Building": "Wall",
-      "Level": 22,
-      "Food": 131573680.0,
-      "Iron": 131573680.0,
-      "Gold": 41291740.0,
-      "Source": "Actual",
-      "Notes": ""
+      "Building": "HQ Upgrade",
+      "Level": 23,
+      "Food": 139972000.0,
+      "Iron": 139972000.0,
+      "Gold": 43991200.0,
+      "Source": "Screenshot",
+      "HeroStats": {
+        "LevelCap": 115,
+        "HP": 11500,
+        "Attack": 547.6,
+        "Defense": 109.5
+      }
     },
     {
       "Building": "Tech Center",
-      "Level": 23,
-      "Iron": 22.0,
-      "Food": 63.99,
-      "Gold": 21.0,
-      "UpgradeTime": "3.13days",
-      "Source": "Interpolated"
+      "Level": 22,
+      "Source": "Actual",
+      "Iron": 94981000.0,
+      "Food": 94981000.0,
+      "Gold": 29994000.0,
+      "Upgrade Time": "7d 16h 30m 48s",
+      "Power": 93081.38,
+      "Research Speedup": "11%"
+    },
+    {
+      "Building": "Wall",
+      "Level": 22,
+      "Source": "Actual",
+      "Iron": 109978000.0,
+      "Food": 35992800.0,
+      "Gold": 22995400.0,
+      "Upgrade Time": "8d 15h 26m 37s",
+      "Power": 80283.94,
+      "Slower Durability Loss When Burning": "22%",
+      "Faster Durability Restoration": "22%"
     }
   ],
   "24": [
     {
-      "Building": "Tech Center",
-      "Level": 23,
-      "Food": 158868220.0,
-      "Iron": 158868220.0,
-      "Gold": 50389920.0,
-      "Source": "Interpolated",
-      "Notes": ""
+      "Building": "HQ Upgrade",
+      "Level": 24,
+      "Food": 169966000.0,
+      "Iron": 169966000.0,
+      "Gold": 53989200.0,
+      "Source": "Screenshot",
+      "HeroStats": {
+        "LevelCap": 120,
+        "HP": 12000,
+        "Attack": 571.4,
+        "Defense": 114.3
+      }
     },
     {
-      "Building": "Any (Tank, Missile, Aircraft Center)",
-      "Level": 24,
-      "Iron": 140.17,
-      "Food": 140.17,
-      "Gold": 44.79,
-      "UpgradeTime": "8days",
-      "Source": "Actual"
+      "Building": "Tech Center",
+      "Level": 23,
+      "Source": "Actual",
+      "Iron": 119976000.0,
+      "Food": 119976000.0,
+      "Gold": 37992400.0,
+      "Upgrade Time": "8d 7h 56m 31s",
+      "Power": 110577.88,
+      "Research Speedup": "11.5%"
+    },
+    {
+      "Building": "Alliance Center",
+      "Level": 23,
+      "Source": "Actual",
+      "Iron": 22995400.0,
+      "Food": 67986400.0,
+      "Gold": 21995600.0,
+      "Upgrade Time": "4d 5h 5m 38s",
+      "Power": 72885.42,
+      "Help Received": 16.0
     }
   ],
   "25": [
     {
-      "Building": "Any (Tank, Missile, Aircraft Center)",
-      "Level": 24,
-      "Food": 269946000.0,
-      "Iron": 269946000.0,
-      "Gold": 86482700.0,
-      "Source": "Actual",
-      "Notes": ""
+      "Building": "HQ Upgrade",
+      "Level": 25,
+      "Food": 289942000.0,
+      "Iron": 289942000.0,
+      "Gold": 92981400.0,
+      "Source": "Screenshot",
+      "HeroStats": {
+        "LevelCap": 125,
+        "HP": 12500,
+        "Attack": 595.2,
+        "Defense": 119.0
+      }
     },
     {
-      "Building": "Hospital",
-      "Level": 25,
-      "Iron": 67.29,
-      "Food": 205.66,
-      "Gold": 54.19,
-      "UpgradeTime": "7days",
-      "Source": "Actual"
+      "Building": "Tech Center",
+      "Level": 24,
+      "Source": "Actual",
+      "Iron": 149970000.0,
+      "Food": 149970000.0,
+      "Gold": 47990400.0,
+      "Upgrade Time": "9d 19h 21m 3s",
+      "Power": 130073.98,
+      "Research Speedup": "12%"
+    },
+    {
+      "Building": "Tank Center",
+      "Level": 24,
+      "Source": "Actual",
+      "Iron": 129974000.0,
+      "Food": 42991400.0,
+      "Gold": 26994600.0,
+      "Upgrade Time": "8d 13h 9m 28s",
+      "Tank Hero March Size": 78.98,
+      "Tank Hero HP": 29994.0,
+      "Tank Hero Attack": 571.29,
+      "Tank Hero Defense": 114.28
     }
   ],
   "26": [
     {
-      "Building": "Hospital",
-      "Level": 25,
-      "Food": 373925200.0,
-      "Iron": 373925200.0,
-      "Gold": 121475700.0,
-      "Source": "Actual",
-      "Notes": ""
+      "Building": "HQ Upgrade",
+      "Level": 26,
+      "Food": 399920000.0,
+      "Iron": 399920000.0,
+      "Gold": 129974000.0,
+      "Source": "Screenshot",
+      "HeroStats": {
+        "LevelCap": 130,
+        "HP": 13000,
+        "Attack": 619.0,
+        "Defense": 123.8
+      }
     },
     {
-      "Building": "Wall",
-      "Level": 26,
-      "Iron": 371.93,
-      "Food": 120.98,
-      "Gold": 79.98,
-      "UpgradeTime": "15days",
-      "Source": "Actual"
+      "Building": "Tech Center",
+      "Level": 25,
+      "Source": "Actual",
+      "Iron": 249950000.0,
+      "Food": 249950000.0,
+      "Gold": 80983800.0,
+      "Upgrade Time": "12d 20h 1m 8s",
+      "Power": 155268.94,
+      "Research Speedup": "12.5%"
+    },
+    {
+      "Building": "Hospital",
+      "Level": 25,
+      "Source": "Actual",
+      "Iron": 71985600.0,
+      "Food": 219956000.0,
+      "Gold": 57988400.0,
+      "Upgrade Time": "10d 3h 26m 41s",
+      "Unit Limit": 1799.64,
+      "Power": 120875.82
     }
   ],
   "27": [
     {
-      "Building": "Wall",
-      "Level": 26,
-      "Food": 487502480.0,
-      "Iron": 487502480.0,
-      "Gold": 155968800.0,
-      "Source": "Actual",
-      "Notes": ""
+      "Building": "HQ Upgrade",
+      "Level": 27,
+      "Food": 529894000.0,
+      "Iron": 529894000.0,
+      "Gold": 169966000.0,
+      "Source": "Screenshot",
+      "HeroStats": {
+        "LevelCap": 135,
+        "HP": 13500,
+        "Attack": 642.9,
+        "Defense": 128.6
+      }
     },
     {
-      "Building": "Barracks",
-      "Level": 27,
-      "Iron": 240.95,
-      "Food": 240.95,
-      "Gold": 102.28,
-      "UpgradeTime": "18days",
-      "Source": "Actual"
+      "Building": "Tech Center",
+      "Level": 26,
+      "Source": "Actual",
+      "Iron": 349930000.0,
+      "Food": 349930000.0,
+      "Gold": 109978000.0,
+      "Upgrade Time": "16d 14h 30m 31s",
+      "Power": 185062.98,
+      "Research Speedup": "13%"
+    },
+    {
+      "Building": "Wall",
+      "Level": 26,
+      "Source": "Actual",
+      "Iron": 399920000.0,
+      "Food": 129974000.0,
+      "Gold": 85982800.0,
+      "Upgrade Time": "18d 15h 5m 24s",
+      "Power": 160767.84,
+      "Slower Durability Loss When Burning": "26%",
+      "Faster Durability Restoration": "26%"
     }
   ],
   "28": [
     {
-      "Building": "Barracks",
-      "Level": 27,
-      "Food": 684363100.0,
-      "Iron": 684363100.0,
-      "Gold": 221955600.0,
-      "Source": "Actual",
-      "Notes": ""
+      "Building": "HQ Upgrade",
+      "Level": 28,
+      "Food": 739852000.0,
+      "Iron": 739852000.0,
+      "Gold": 239952000.0,
+      "Source": "Screenshot",
+      "HeroStats": {
+        "LevelCap": 140,
+        "HP": 14000,
+        "Attack": 666.7,
+        "Defense": 133.3
+      }
     },
     {
-      "Building": "Any (Tank, Missile, Aircraft Center)",
-      "Level": 28,
-      "Iron": 514.1,
-      "Food": 168.27,
-      "Gold": 112.18,
-      "UpgradeTime": "24days",
-      "Source": "Actual"
+      "Building": "Tech Center",
+      "Level": 27,
+      "Source": "Actual",
+      "Iron": 459908000.0,
+      "Food": 459908000.0,
+      "Gold": 149970000.0,
+      "Upgrade Time": "22d 14h 17m 7s",
+      "Power": 219356.12,
+      "Research Speedup": "13.5%"
+    },
+    {
+      "Building": "Barracks",
+      "Level": 27,
+      "Source": "Actual",
+      "Iron": 259948000.0,
+      "Food": 259948000.0,
+      "Gold": 109978000.0,
+      "Upgrade Time": "19d 17h 24m 37s",
+      "Unit Training Cap": 539.89,
+      "Unit Training Level": 9.0,
+      "Power": 170365.92
     }
   ],
   "29": [
     {
-      "Building": "Any (Tank, Missile, Aircraft Center)",
-      "Level": 28,
-      "Food": 924815000.0,
-      "Iron": 924815000.0,
-      "Gold": 305138960.0,
-      "Source": "Actual",
-      "Notes": ""
+      "Building": "HQ Upgrade",
+      "Level": 29,
+      "Food": 999800000.0,
+      "Iron": 999800000.0,
+      "Gold": 329934000.0,
+      "Source": "Screenshot",
+      "HeroStats": {
+        "LevelCap": 145,
+        "HP": 14500,
+        "Attack": 690.5,
+        "Defense": 138.1
+      }
     },
     {
-      "Building": "Drill Ground",
-      "Level": 29,
-      "Iron": 158.87,
-      "Food": 486.1,
-      "Gold": 130.87,
-      "UpgradeTime": "19.5days",
-      "Source": "Actual"
+      "Building": "Tech Center",
+      "Level": 28,
+      "Source": "Actual",
+      "Iron": 639872000.0,
+      "Food": 639872000.0,
+      "Gold": 209958000.0,
+      "Upgrade Time": "30d 15h 17m 30s",
+      "Power": 259748.04,
+      "Research Speedup": "14%"
+    },
+    {
+      "Building": "Tank Center",
+      "Level": 28,
+      "Source": "Actual",
+      "Iron": 549890000.0,
+      "Food": 179964000.0,
+      "Gold": 119976000.0,
+      "Upgrade Time": "25d 9h 40m 43s",
+      "Tank Hero March Size": 91.98,
+      "Tank Hero HP": 39992.0,
+      "Tank Hero Attack": 666.57,
+      "Tank Hero Defense": 133.27
     }
   ],
   "30": [
     {
+      "Building": "HQ Upgrade",
+      "Level": 30,
+      "Food": 1399720000.0,
+      "Iron": 1399720000.0,
+      "Gold": 459908000.0,
+      "Source": "Screenshot",
+      "HeroStats": {
+        "LevelCap": 150,
+        "HP": 15000,
+        "Attack": 714.3,
+        "Defense": 142.9
+      }
+    },
+    {
+      "Building": "Tech Center",
+      "Level": 29,
+      "Source": "Actual",
+      "Iron": 899820000.0,
+      "Food": 899820000.0,
+      "Gold": 289942000.0,
+      "Upgrade Time": "39d 12h 40m 44s",
+      "Power": 307538.48,
+      "Research Speedup": "14.5%"
+    },
+    {
       "Building": "Drill Ground",
       "Level": 29,
-      "Food": 1279744000.0,
-      "Iron": 1279744000.0,
-      "Gold": 424915000.0,
       "Source": "Actual",
-      "Notes": ""
+      "Iron": 169966000.0,
+      "Food": 519896000.0,
+      "Gold": 139972000.0,
+      "Upgrade Time": "21d 4h 20m 27s",
+      "Power": 196160.76,
+      "Unit Count": 7798.44
     }
   ],
   "31": [
     {
-      "Building": "Any (Tank, Missile, Aircraft Center)",
-      "Level": 30,
-      "Food": 426678182.29,
-      "Iron": 217168093.69,
-      "Gold": 103155365.8,
-      "Source": "Linear Estimate",
-      "Notes": ""
-    },
-    {
-      "Building": "Barracks",
-      "Level": 30,
-      "Food": 426678182.29,
-      "Iron": 217168093.69,
-      "Gold": 103155365.8,
-      "Source": "Linear Estimate",
-      "Notes": ""
-    },
-    {
       "Building": "HQ Upgrade",
       "Level": 31,
-      "Food": 239952000.0,
-      "Iron": 78984200.0,
-      "Gold": 50989800.0,
-      "Source": "Actual",
-      "Notes": "",
-      "Oil": 1439712000.0,
+      "Food": 1599680000.0,
+      "Iron": 1599680000.0,
+      "Gold": 509898000.0,
+      "Source": "Screenshot",
       "HeroStats": {
         "LevelCap": 155,
         "HP": 16000,
@@ -573,50 +1185,48 @@
     {
       "Building": "Tech Center",
       "Level": 30,
-      "Food": 426678182.29,
-      "Iron": 217168093.69,
-      "Gold": 103155365.8,
-      "Source": "Interpolated",
-      "Notes": ""
+      "Source": "Actual",
+      "Iron": 1299740000.0,
+      "Food": 1299740000.0,
+      "Gold": 399920000.0,
+      "Upgrade Time": "47d 9h 58m 18s",
+      "Power": 364727.04,
+      "Research Speedup": "15%"
+    },
+    {
+      "Building": "Tank Center",
+      "Level": 30,
+      "Source": "Actual",
+      "Iron": 1099780000.0,
+      "Food": 359928000.0,
+      "Gold": 229954000.0,
+      "Upgrade Time": "41d 7h 15m 52s",
+      "Tank Hero March Size": 99.98,
+      "Tank Hero HP": 44991.0,
+      "Tank Hero Attack": 714.16,
+      "Tank Hero Defense": 142.87
+    },
+    {
+      "Building": "Barracks",
+      "Level": 30,
+      "Source": "Actual",
+      "Iron": 719856000.0,
+      "Food": 719856000.0,
+      "Gold": 289942000.0,
+      "Upgrade Time": "41d 7h 15m 52s",
+      "Unit Training Cap": 569.89,
+      "Unit Training Level": 9.0,
+      "Power": 283043.38
     }
   ],
   "32": [
     {
-      "Building": "Any (Tank, Missile, Aircraft Center)",
-      "Level": 31,
-      "Food": 438537275.0,
-      "Iron": 225478526.27,
-      "Gold": 106335044.74,
-      "Source": "Linear Estimate",
-      "Notes": ""
-    },
-    {
-      "Building": "Barracks",
-      "Level": 31,
-      "Food": 438537275.0,
-      "Iron": 225478526.27,
-      "Gold": 106335044.74,
-      "Source": "Linear Estimate",
-      "Notes": ""
-    },
-    {
-      "Building": "Wall",
-      "Level": 31,
-      "Food": 438537275.0,
-      "Iron": 225478526.27,
-      "Gold": 106335044.74,
-      "Source": "Linear Estimate",
-      "Notes": ""
-    },
-    {
       "Building": "HQ Upgrade",
       "Level": 32,
-      "Food": 309938000.0,
-      "Iron": 99980000.0,
-      "Gold": 64987000.0,
-      "Source": "Actual",
-      "Notes": "",
-      "Oil": 2303539200.0,
+      "Food": 1699660000.0,
+      "Iron": 1699660000.0,
+      "Gold": 559888000.0,
+      "Source": "Screenshot",
       "HeroStats": {
         "LevelCap": 160,
         "HP": 17000,
@@ -627,59 +1237,60 @@
     {
       "Building": "Tech Center",
       "Level": 31,
-      "Food": 438537275.0,
-      "Iron": 225478526.27,
-      "Gold": 106335044.74,
-      "Source": "Interpolated",
-      "Notes": ""
+      "Source": "Actual",
+      "Iron": 1399720000.0,
+      "Food": 1399720000.0,
+      "Gold": 439912000.0,
+      "Upgrade Time": 809838.0,
+      "Power": 424215.14,
+      "Research Speedup": "15.5%"
+    },
+    {
+      "Building": "Tank Center",
+      "Level": 31,
+      "Source": "Actual",
+      "Iron": 1199760000.0,
+      "Food": 399920000.0,
+      "Gold": 249950000.0,
+      "Upgrade Time": 562387.5,
+      "Tank Hero March Size": 102.98,
+      "Tank Hero HP": 47990.4,
+      "Tank Hero Attack": 761.75,
+      "Tank Hero Defense": 152.37
+    },
+    {
+      "Building": "Barracks",
+      "Level": 31,
+      "Source": "Actual",
+      "Iron": 789842000.0,
+      "Food": 789842000.0,
+      "Gold": 319936000.0,
+      "Upgrade Time": 359928.0,
+      "Unit Training Cap": 574.88,
+      "Unit Training Level": 329034.18,
+      "Power": NaN
+    },
+    {
+      "Building": "Wall",
+      "Level": 31,
+      "Source": "Actual",
+      "Iron": 1599680000.0,
+      "Food": 529894000.0,
+      "Gold": 339932000.0,
+      "Upgrade Time": 674865.0,
+      "Power": 368526.28,
+      "Slower Durability Loss When Burning": "31%",
+      "Faster Durability Restoration": "31%"
     }
   ],
   "33": [
     {
-      "Building": "Any (Tank, Missile, Aircraft Center)",
-      "Level": 32,
-      "Food": 532218272.05,
-      "Iron": 287575591.38,
-      "Gold": 131690511.63,
-      "Source": "Linear Estimate",
-      "Notes": ""
-    },
-    {
-      "Building": "Barracks",
-      "Level": 32,
-      "Food": 532218272.05,
-      "Iron": 287575591.38,
-      "Gold": 131690511.63,
-      "Source": "Linear Estimate",
-      "Notes": ""
-    },
-    {
-      "Building": "Hospital",
-      "Level": 32,
-      "Food": 532218272.05,
-      "Iron": 287575591.38,
-      "Gold": 131690511.63,
-      "Source": "Linear Estimate",
-      "Notes": ""
-    },
-    {
-      "Building": "Drill Ground",
-      "Level": 32,
-      "Food": 532218272.05,
-      "Iron": 287575591.38,
-      "Gold": 131690511.63,
-      "Source": "Linear Estimate",
-      "Notes": ""
-    },
-    {
       "Building": "HQ Upgrade",
       "Level": 33,
-      "Food": 379924000.0,
-      "Iron": 129974000.0,
-      "Gold": 81983600.0,
-      "Source": "Actual",
-      "Notes": "",
-      "Oil": 3916016640.0,
+      "Food": 1899620000.0,
+      "Iron": 1899620000.0,
+      "Gold": 619876000.0,
+      "Source": "Screenshot",
       "HeroStats": {
         "LevelCap": 165,
         "HP": 18000,
@@ -690,122 +1301,145 @@
     {
       "Building": "Tech Center",
       "Level": 32,
-      "Food": 532218272.05,
-      "Iron": 287575591.38,
-      "Gold": 131690511.63,
-      "Source": "Interpolated",
-      "Notes": ""
+      "Source": "Actual",
+      "Iron": 1499700000.0,
+      "Food": 1499700000.0,
+      "Gold": 489902000.0,
+      "Upgrade Time": 1295740.8,
+      "Power": 486002.78,
+      "Research Speedup": "16%"
+    },
+    {
+      "Building": "Tank Center",
+      "Level": 32,
+      "Source": "Actual",
+      "Iron": 1299740000.0,
+      "Food": 439912000.0,
+      "Gold": 279944000.0,
+      "Upgrade Time": 899820.0,
+      "Tank Hero March Size": 105.98,
+      "Tank Hero HP": 50989.8,
+      "Tank Hero Attack": 809.34,
+      "Tank Hero Defense": 161.87
+    },
+    {
+      "Building": "Barracks",
+      "Level": 32,
+      "Source": "Actual",
+      "Iron": 869826000.0,
+      "Food": 869826000.0,
+      "Gold": 349930000.0,
+      "Upgrade Time": 575884.8,
+      "Unit Training Cap": 579.88,
+      "Unit Training Level": 377324.52,
+      "Power": NaN
+    },
+    {
+      "Building": "Hospital",
+      "Level": 32,
+      "Source": "Actual",
+      "Iron": 439912000.0,
+      "Food": 1299740000.0,
+      "Gold": 349930000.0,
+      "Upgrade Time": 431913.6,
+      "Unit Limit": 2039.59,
+      "Power": 377824.42
+    },
+    {
+      "Building": "Drill Ground",
+      "Level": 32,
+      "Source": "Actual",
+      "Iron": 289942000.0,
+      "Food": 869826000.0,
+      "Gold": 229954000.0,
+      "Upgrade Time": 431913.6,
+      "Power": 308738.24,
+      "Unit Count": 8198.36
     }
   ],
   "34": [
     {
-      "Building": "Any (Tank, Missile, Aircraft Center)",
-      "Level": 33,
-      "Food": 477149147.08,
-      "Iron": 227073815.15,
-      "Gold": 112963132.85,
-      "Source": "Linear Estimate",
-      "Notes": ""
-    },
-    {
-      "Building": "Barracks",
-      "Level": 33,
-      "Food": 477149147.08,
-      "Iron": 227073815.15,
-      "Gold": 112963132.85,
-      "Source": "Linear Estimate",
-      "Notes": ""
-    },
-    {
-      "Building": "Wall",
-      "Level": 33,
-      "Food": 477149147.08,
-      "Iron": 227073815.15,
-      "Gold": 112963132.85,
-      "Source": "Linear Estimate",
-      "Notes": ""
-    },
-    {
-      "Building": "Tech Center",
-      "Level": 33,
-      "Food": 477149147.08,
-      "Iron": 227073815.15,
-      "Gold": 112963132.85,
-      "Source": "Interpolated",
-      "Notes": ""
-    },
-    {
       "Building": "HQ Upgrade",
       "Level": 34,
-      "Food": 449910000.0,
-      "Iron": 149970000.0,
-      "Gold": 96980600.0,
-      "Source": "Actual",
-      "Notes": "",
-      "Oil": 7048829952.0,
+      "Food": 1999600000.0,
+      "Iron": 1999600000.0,
+      "Gold": 649870000.0,
+      "Source": "Screenshot",
       "HeroStats": {
         "LevelCap": 170,
         "HP": 19000,
         "Attack": 904.8,
-        "Defense": 181
+        "Defense": 181.0
       }
     },
     {
       "Building": "Tech Center",
       "Level": 33,
-      "Food": 477149147.08,
-      "Iron": 227073815.15,
-      "Gold": 112963132.85,
-      "Source": "Interpolated",
-      "Notes": ""
+      "Source": "Actual",
+      "Iron": 1699660000.0,
+      "Food": 1699660000.0,
+      "Gold": 539892000.0,
+      "Upgrade Time": 2202759.36,
+      "Power": 551589.66,
+      "Research Speedup": "16.5%"
+    },
+    {
+      "Building": "Tank Center",
+      "Level": 33,
+      "Source": "Actual",
+      "Iron": 1399720000.0,
+      "Food": 479904000.0,
+      "Gold": 309938000.0,
+      "Upgrade Time": 1529694.0,
+      "Tank Hero March Size": 108.98,
+      "Tank Hero HP": 53989.2,
+      "Tank Hero Attack": 856.93,
+      "Tank Hero Defense": 171.37
+    },
+    {
+      "Building": "Barracks",
+      "Level": 33,
+      "Source": "Actual",
+      "Iron": 959808000.0,
+      "Food": 959808000.0,
+      "Gold": 379924000.0,
+      "Upgrade Time": 979004.16,
+      "Unit Training Cap": 584.88,
+      "Unit Training Level": 427914.4,
+      "Power": NaN
+    },
+    {
+      "Building": "Wall",
+      "Level": 33,
+      "Source": "Actual",
+      "Iron": 1899620000.0,
+      "Food": 639872000.0,
+      "Gold": 409918000.0,
+      "Upgrade Time": 1835632.8,
+      "Power": 479204.14,
+      "Slower Durability Loss When Burning": "33%",
+      "Faster Durability Restoration": "33%"
+    },
+    {
+      "Building": "Alliance Center",
+      "Level": 33,
+      "Source": "Actual",
+      "Iron": 319936000.0,
+      "Food": 959808000.0,
+      "Gold": 309938000.0,
+      "Upgrade Time": 550689.84,
+      "Power": 358528.28,
+      "Help Received": 22.0
     }
   ],
   "35": [
     {
-      "Building": "Any (Tank, Missile, Aircraft Center)",
-      "Level": 34,
-      "Food": 584492626.09,
-      "Iron": 307203594.99,
-      "Gold": 143190822.11,
-      "Source": "Linear Estimate",
-      "Notes": ""
-    },
-    {
-      "Building": "Barracks",
-      "Level": 34,
-      "Food": 584492626.09,
-      "Iron": 307203594.99,
-      "Gold": 143190822.11,
-      "Source": "Linear Estimate",
-      "Notes": ""
-    },
-    {
-      "Building": "Hospital",
-      "Level": 34,
-      "Food": 584492626.09,
-      "Iron": 307203594.99,
-      "Gold": 143190822.11,
-      "Source": "Linear Estimate",
-      "Notes": ""
-    },
-    {
-      "Building": "Drill Ground",
-      "Level": 34,
-      "Food": 584492626.09,
-      "Iron": 307203594.99,
-      "Gold": 143190822.11,
-      "Source": "Linear Estimate",
-      "Notes": ""
-    },
-    {
       "Building": "HQ Upgrade",
       "Level": 35,
-      "Food": 529894000.0,
-      "Iron": 179964000.0,
-      "Gold": 109978000.0,
-      "Source": "Actual",
-      "Notes": "",
-      "Oil": 14097659904.0,
+      "Food": 2099580000.0,
+      "Iron": 2099580000.0,
+      "Gold": 679864000.0,
+      "Source": "Screenshot",
       "HeroStats": {
         "LevelCap": 175,
         "HP": 20000,
@@ -816,11 +1450,60 @@
     {
       "Building": "Tech Center",
       "Level": 34,
-      "Food": 584492626.09,
-      "Iron": 307203594.99,
-      "Gold": 143190822.11,
-      "Source": "Interpolated",
-      "Notes": ""
+      "Source": "Actual",
+      "Iron": 1799640000.0,
+      "Food": 1799640000.0,
+      "Gold": 569886000.0,
+      "Upgrade Time": 3964966.85,
+      "Power": 619076.16,
+      "Research Speedup": "17%"
+    },
+    {
+      "Building": "Tank Center",
+      "Level": 34,
+      "Source": "Actual",
+      "Iron": 1499700000.0,
+      "Food": 499900000.0,
+      "Gold": 319936000.0,
+      "Upgrade Time": 2753449.2,
+      "Tank Hero March Size": 111.98,
+      "Tank Hero HP": 56988.6,
+      "Tank Hero Attack": 904.62,
+      "Tank Hero Defense": 180.96
+    },
+    {
+      "Building": "Barracks",
+      "Level": 34,
+      "Source": "Actual",
+      "Iron": 999800000.0,
+      "Food": 999800000.0,
+      "Gold": 399920000.0,
+      "Upgrade Time": 1762207.49,
+      "Unit Training Cap": 589.88,
+      "Unit Training Level": 479604.06,
+      "Power": NaN
+    },
+    {
+      "Building": "Hospital",
+      "Level": 34,
+      "Source": "Actual",
+      "Iron": 499900000.0,
+      "Food": 1499700000.0,
+      "Gold": 399920000.0,
+      "Upgrade Time": 1321655.62,
+      "Unit Limit": 2079.58,
+      "Power": 479704.04
+    },
+    {
+      "Building": "Drill Ground",
+      "Level": 34,
+      "Source": "Actual",
+      "Iron": 339932000.0,
+      "Food": 999800000.0,
+      "Gold": 269946000.0,
+      "Upgrade Time": 1321655.62,
+      "Power": 392521.48,
+      "Unit Count": 8398.32
     }
   ]
 }
