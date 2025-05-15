@@ -1,12 +1,12 @@
 {
   "name": "BAD TRIPP Tools",
-  "short_name": “RSS Tool,
-  "start_url": "resource-production-calculator-mobile.html",
+  "short_name": "Tools",
+  "start_url": "https://badtripp.com/",
   "display": "standalone",
   "background_color": "#000000",
   "theme_color": "#FFD700",
   "orientation": "portrait",
-  "description": "RSS Calculator Tool for BAD TRIPP”,
+  "description": "Track HQ upgrade requirements, calculate buff, RSS production rates, building costs, and hero stats for Last War.",
   "icons": [
     {
       "src": "bad_tripp_logo.png",
