@@ -4,9 +4,9 @@
     {
       "Building": "HQ Upgrade",
       "Level": 2,
-      "Food": 68,
-      "Iron": 68,
-      "Gold": 0,
+      "Food": 67.99,
+      "Iron": 67.99,
+      "Gold": 0.0,
       "Source": "Screenshot",
       "Notes": "Drill Ground lvl 1, Squad lvl 1",
       "HeroStats": {
@@ -21,9 +21,9 @@
     {
       "Building": "HQ Upgrade",
       "Level": 3,
-      "Food": 1000,
-      "Iron": 1000,
-      "Gold": 0,
+      "Food": 999.8,
+      "Iron": 999.8,
+      "Gold": 0.0,
       "Source": "Screenshot",
       "Notes": "Wall lvl 2",
       "HeroStats": {
@@ -38,9 +38,9 @@
     {
       "Building": "HQ Upgrade",
       "Level": 4,
-      "Food": 2500,
-      "Iron": 2500,
-      "Gold": 0,
+      "Food": 2499.5,
+      "Iron": 2499.5,
+      "Gold": 0.0,
       "Source": "Screenshot",
       "Notes": "Barracks lvl 3, Drill Ground lvl 3",
       "HeroStats": {
@@ -55,9 +55,9 @@
     {
       "Building": "HQ Upgrade",
       "Level": 5,
-      "Food": 20000,
-      "Iron": 20000,
-      "Gold": 0,
+      "Food": 19996.0,
+      "Iron": 19996.0,
+      "Gold": 0.0,
       "Source": "Screenshot",
       "Notes": "Barrack lvl 4, Wall lvl 4",
       "HeroStats": {
@@ -72,9 +72,9 @@
     {
       "Building": "HQ Upgrade",
       "Level": 6,
-      "Food": 91000,
-      "Iron": 91000,
-      "Gold": 0,
+      "Food": 90981.8,
+      "Iron": 90981.8,
+      "Gold": 0.0,
       "Source": "Screenshot",
       "Notes": "Wall lvl 5, Drill Ground lvl 5",
       "HeroStats": {
@@ -89,9 +89,9 @@
     {
       "Building": "HQ Upgrade",
       "Level": 7,
-      "Food": 240000,
-      "Iron": 240000,
-      "Gold": 0,
+      "Food": 239952.0,
+      "Iron": 239952.0,
+      "Gold": 0.0,
       "Source": "Screenshot",
       "Notes": "Wall lvl 6, Tank Center lvl 6",
       "HeroStats": {
@@ -106,9 +106,9 @@
     {
       "Building": "HQ Upgrade",
       "Level": 8,
-      "Food": 390000,
-      "Iron": 390000,
-      "Gold": 0,
+      "Food": 389922.0,
+      "Iron": 389922.0,
+      "Gold": 0.0,
       "Source": "Screenshot",
       "Notes": "Tech Center lvl 7, Alliance Center lvl 7",
       "HeroStats": {
@@ -123,9 +123,9 @@
     {
       "Building": "HQ Upgrade",
       "Level": 9,
-      "Food": 620000,
-      "Iron": 620000,
-      "Gold": 200000,
+      "Food": 619876.0,
+      "Iron": 619876.0,
+      "Gold": 199960.0,
       "Source": "Screenshot",
       "Notes": "Tech Center lvl 8, Tank Center lvl 8",
       "HeroStats": {
@@ -140,9 +140,9 @@
     {
       "Building": "HQ Upgrade",
       "Level": 10,
-      "Food": 750000,
-      "Iron": 750000,
-      "Gold": 240000,
+      "Food": 749850.0,
+      "Iron": 749850.0,
+      "Gold": 239952.0,
       "Source": "Screenshot",
       "Notes": "Tech Center lvl 9, Hospital lvl 9",
       "HeroStats": {
@@ -166,9 +166,9 @@
     {
       "Building": "Wall",
       "Level": 10,
-      "Food": 1900000,
-      "Iron": 1900000,
-      "Gold": 600000,
+      "Food": 1899620.0,
+      "Iron": 1899620.0,
+      "Gold": 599880.0,
       "Source": "Actual",
       "Notes": ""
     },
@@ -186,9 +186,9 @@
     {
       "Building": "Barracks",
       "Level": 11,
-      "Food": 3200000,
-      "Iron": 3200000,
-      "Gold": 1000000,
+      "Food": 3199360.0,
+      "Iron": 3199360.0,
+      "Gold": 999800.0,
       "Source": "Actual",
       "Notes": ""
     },
@@ -206,9 +206,9 @@
     {
       "Building": "Any (Tank, Missile, Aircraft Center)",
       "Level": 12,
-      "Food": 3500000,
-      "Iron": 3500000,
-      "Gold": 1100000,
+      "Food": 3499300.0,
+      "Iron": 3499300.0,
+      "Gold": 1099780.0,
       "Source": "Actual",
       "Notes": ""
     },
@@ -226,9 +226,9 @@
     {
       "Building": "Drill Ground",
       "Level": 13,
-      "Food": 4800000,
-      "Iron": 4800000,
-      "Gold": 1500000,
+      "Food": 4799040.0,
+      "Iron": 4799040.0,
+      "Gold": 1499700.0,
       "Source": "Actual",
       "Notes": ""
     },
@@ -246,18 +246,18 @@
     {
       "Building": "Wall",
       "Level": 14,
-      "Food": 6600000,
-      "Iron": 6600000,
-      "Gold": 2100000,
+      "Food": 6598680.0,
+      "Iron": 6598680.0,
+      "Gold": 2099580.0,
       "Source": "Actual",
       "Notes": ""
     },
     {
       "Building": "Tech Center",
       "Level": 15,
-      "Iron": 1,
-      "Food": 3,
-      "Gold": 1,
+      "Iron": 1.0,
+      "Food": 3.0,
+      "Gold": 1.0,
       "UpgradeTime": "11hrs",
       "Source": "Interpolated"
     }
@@ -266,9 +266,9 @@
     {
       "Building": "Tech Center",
       "Level": 15,
-      "Food": 11700000,
-      "Iron": 11700000,
-      "Gold": 3800000,
+      "Food": 11697660.0,
+      "Iron": 11697660.0,
+      "Gold": 3799240.0,
       "Source": "Interpolated",
       "Notes": ""
     },
@@ -286,9 +286,9 @@
     {
       "Building": "Any (Tank, Missile, Aircraft Center)",
       "Level": 16,
-      "Food": 15600000,
-      "Iron": 15600000,
-      "Gold": 4300000,
+      "Food": 15596880.0,
+      "Iron": 15596880.0,
+      "Gold": 4299140.0,
       "Source": "Actual",
       "Notes": ""
     },
@@ -306,9 +306,9 @@
     {
       "Building": "Hospital",
       "Level": 17,
-      "Food": 24500000,
-      "Iron": 24500000,
-      "Gold": 7000000,
+      "Food": 24495100.0,
+      "Iron": 24495100.0,
+      "Gold": 6998600.0,
       "Source": "Actual",
       "Notes": ""
     }
@@ -317,9 +317,9 @@
     {
       "Building": "Wall",
       "Level": 18,
-      "Food": 33000000,
-      "Iron": 33000000,
-      "Gold": 9000000,
+      "Food": 32993400.0,
+      "Iron": 32993400.0,
+      "Gold": 8998200.0,
       "Source": "Actual",
       "Notes": ""
     },
@@ -337,18 +337,18 @@
     {
       "Building": "Barracks",
       "Level": 19,
-      "Food": 60000000,
-      "Iron": 60000000,
-      "Gold": 16000000,
+      "Food": 59988000.0,
+      "Iron": 59988000.0,
+      "Gold": 15996800.0,
       "Source": "Actual",
       "Notes": ""
     },
     {
       "Building": "Any (Tank, Missile, Aircraft Center)",
       "Level": 20,
-      "Iron": 42.3,
+      "Iron": 42.29,
       "Food": 14.1,
-      "Gold": 9,
+      "Gold": 9.0,
       "UpgradeTime": "3days",
       "Source": "Actual"
     }
@@ -357,17 +357,17 @@
     {
       "Building": "Any (Tank, Missile, Aircraft Center)",
       "Level": 20,
-      "Food": 79300000,
-      "Iron": 79300000,
-      "Gold": 25600000,
+      "Food": 79284140.0,
+      "Iron": 79284140.0,
+      "Gold": 25594880.0,
       "Source": "Actual",
       "Notes": ""
     },
     {
       "Building": "Drill Ground",
       "Level": 21,
-      "Iron": 39,
-      "Food": 39,
+      "Iron": 38.99,
+      "Food": 38.99,
       "Gold": 15.8,
       "UpgradeTime": "2.5days",
       "Source": "Actual"
@@ -377,9 +377,9 @@
     {
       "Building": "Drill Ground",
       "Level": 21,
-      "Food": 105600000,
-      "Iron": 105600000,
-      "Gold": 33600000,
+      "Food": 105578880.0,
+      "Iron": 105578880.0,
+      "Gold": 33593280.0,
       "Source": "Actual",
       "Notes": ""
     }
@@ -388,18 +388,18 @@
     {
       "Building": "Wall",
       "Level": 22,
-      "Food": 131600000,
-      "Iron": 131600000,
-      "Gold": 41300000,
+      "Food": 131573680.0,
+      "Iron": 131573680.0,
+      "Gold": 41291740.0,
       "Source": "Actual",
       "Notes": ""
     },
     {
       "Building": "Tech Center",
       "Level": 23,
-      "Iron": 22,
-      "Food": 64,
-      "Gold": 21,
+      "Iron": 22.0,
+      "Food": 63.99,
+      "Gold": 21.0,
       "UpgradeTime": "3.13days",
       "Source": "Interpolated"
     }
@@ -408,18 +408,18 @@
     {
       "Building": "Tech Center",
       "Level": 23,
-      "Food": 158900000,
-      "Iron": 158900000,
-      "Gold": 50400000,
+      "Food": 158868220.0,
+      "Iron": 158868220.0,
+      "Gold": 50389920.0,
       "Source": "Interpolated",
       "Notes": ""
     },
     {
       "Building": "Any (Tank, Missile, Aircraft Center)",
       "Level": 24,
-      "Iron": 140.2,
-      "Food": 140.2,
-      "Gold": 44.8,
+      "Iron": 140.17,
+      "Food": 140.17,
+      "Gold": 44.79,
       "UpgradeTime": "8days",
       "Source": "Actual"
     }
@@ -428,18 +428,18 @@
     {
       "Building": "Any (Tank, Missile, Aircraft Center)",
       "Level": 24,
-      "Food": 270000000,
-      "Iron": 270000000,
-      "Gold": 86500000,
+      "Food": 269946000.0,
+      "Iron": 269946000.0,
+      "Gold": 86482700.0,
       "Source": "Actual",
       "Notes": ""
     },
     {
       "Building": "Hospital",
       "Level": 25,
-      "Iron": 67.3,
-      "Food": 205.7,
-      "Gold": 54.2,
+      "Iron": 67.29,
+      "Food": 205.66,
+      "Gold": 54.19,
       "UpgradeTime": "7days",
       "Source": "Actual"
     }
@@ -448,18 +448,18 @@
     {
       "Building": "Hospital",
       "Level": 25,
-      "Food": 374000000,
-      "Iron": 374000000,
-      "Gold": 121500000,
+      "Food": 373925200.0,
+      "Iron": 373925200.0,
+      "Gold": 121475700.0,
       "Source": "Actual",
       "Notes": ""
     },
     {
       "Building": "Wall",
       "Level": 26,
-      "Iron": 372,
-      "Food": 121,
-      "Gold": 80,
+      "Iron": 371.93,
+      "Food": 120.98,
+      "Gold": 79.98,
       "UpgradeTime": "15days",
       "Source": "Actual"
     }
@@ -468,18 +468,18 @@
     {
       "Building": "Wall",
       "Level": 26,
-      "Food": 487600000,
-      "Iron": 487600000,
-      "Gold": 156000000,
+      "Food": 487502480.0,
+      "Iron": 487502480.0,
+      "Gold": 155968800.0,
       "Source": "Actual",
       "Notes": ""
     },
     {
       "Building": "Barracks",
       "Level": 27,
-      "Iron": 241,
-      "Food": 241,
-      "Gold": 102.3,
+      "Iron": 240.95,
+      "Food": 240.95,
+      "Gold": 102.28,
       "UpgradeTime": "18days",
       "Source": "Actual"
     }
@@ -488,18 +488,18 @@
     {
       "Building": "Barracks",
       "Level": 27,
-      "Food": 684500000,
-      "Iron": 684500000,
-      "Gold": 222000000,
+      "Food": 684363100.0,
+      "Iron": 684363100.0,
+      "Gold": 221955600.0,
       "Source": "Actual",
       "Notes": ""
     },
     {
       "Building": "Any (Tank, Missile, Aircraft Center)",
       "Level": 28,
-      "Iron": 514.2,
-      "Food": 168.3,
-      "Gold": 112.2,
+      "Iron": 514.1,
+      "Food": 168.27,
+      "Gold": 112.18,
       "UpgradeTime": "24days",
       "Source": "Actual"
     }
@@ -508,18 +508,18 @@
     {
       "Building": "Any (Tank, Missile, Aircraft Center)",
       "Level": 28,
-      "Food": 925000000,
-      "Iron": 925000000,
-      "Gold": 305200000,
+      "Food": 924815000.0,
+      "Iron": 924815000.0,
+      "Gold": 305138960.0,
       "Source": "Actual",
       "Notes": ""
     },
     {
       "Building": "Drill Ground",
       "Level": 29,
-      "Iron": 158.9,
-      "Food": 486.2,
-      "Gold": 130.9,
+      "Iron": 158.87,
+      "Food": 486.1,
+      "Gold": 130.87,
       "UpgradeTime": "19.5days",
       "Source": "Actual"
     }
@@ -528,9 +528,9 @@
     {
       "Building": "Drill Ground",
       "Level": 29,
-      "Food": 1280000000,
-      "Iron": 1280000000,
-      "Gold": 425000000,
+      "Food": 1279744000.0,
+      "Iron": 1279744000.0,
+      "Gold": 424915000.0,
       "Source": "Actual",
       "Notes": ""
     }
@@ -539,30 +539,30 @@
     {
       "Building": "Any (Tank, Missile, Aircraft Center)",
       "Level": 30,
-      "Food": 426763535,
-      "Iron": 217211536,
-      "Gold": 103176001,
+      "Food": 426678182.29,
+      "Iron": 217168093.69,
+      "Gold": 103155365.8,
       "Source": "Linear Estimate",
       "Notes": ""
     },
     {
       "Building": "Barracks",
       "Level": 30,
-      "Food": 426763535,
-      "Iron": 217211536,
-      "Gold": 103176001,
+      "Food": 426678182.29,
+      "Iron": 217168093.69,
+      "Gold": 103155365.8,
       "Source": "Linear Estimate",
       "Notes": ""
     },
     {
       "Building": "HQ Upgrade",
       "Level": 31,
-      "Food": 240000000,
-      "Iron": 79000000,
-      "Gold": 51000000,
+      "Food": 239952000.0,
+      "Iron": 78984200.0,
+      "Gold": 50989800.0,
       "Source": "Actual",
       "Notes": "",
-      "Oil": 1440000000,
+      "Oil": 1439712000.0,
       "HeroStats": {
         "LevelCap": 155,
         "HP": 16000,
@@ -573,9 +573,9 @@
     {
       "Building": "Tech Center",
       "Level": 30,
-      "Food": 426763535,
-      "Iron": 217211536,
-      "Gold": 103176001,
+      "Food": 426678182.29,
+      "Iron": 217168093.69,
+      "Gold": 103155365.8,
       "Source": "Interpolated",
       "Notes": ""
     }
@@ -584,39 +584,39 @@
     {
       "Building": "Any (Tank, Missile, Aircraft Center)",
       "Level": 31,
-      "Food": 438625000,
-      "Iron": 225523631,
-      "Gold": 106356316,
+      "Food": 438537275.0,
+      "Iron": 225478526.27,
+      "Gold": 106335044.74,
       "Source": "Linear Estimate",
       "Notes": ""
     },
     {
       "Building": "Barracks",
       "Level": 31,
-      "Food": 438625000,
-      "Iron": 225523631,
-      "Gold": 106356316,
+      "Food": 438537275.0,
+      "Iron": 225478526.27,
+      "Gold": 106335044.74,
       "Source": "Linear Estimate",
       "Notes": ""
     },
     {
       "Building": "Wall",
       "Level": 31,
-      "Food": 438625000,
-      "Iron": 225523631,
-      "Gold": 106356316,
+      "Food": 438537275.0,
+      "Iron": 225478526.27,
+      "Gold": 106335044.74,
       "Source": "Linear Estimate",
       "Notes": ""
     },
     {
       "Building": "HQ Upgrade",
       "Level": 32,
-      "Food": 310000000,
-      "Iron": 100000000,
-      "Gold": 65000000,
+      "Food": 309938000.0,
+      "Iron": 99980000.0,
+      "Gold": 64987000.0,
       "Source": "Actual",
       "Notes": "",
-      "Oil": 2304000000,
+      "Oil": 2303539200.0,
       "HeroStats": {
         "LevelCap": 160,
         "HP": 17000,
@@ -627,9 +627,9 @@
     {
       "Building": "Tech Center",
       "Level": 31,
-      "Food": 438625000,
-      "Iron": 225523631,
-      "Gold": 106356316,
+      "Food": 438537275.0,
+      "Iron": 225478526.27,
+      "Gold": 106335044.74,
       "Source": "Interpolated",
       "Notes": ""
     }
@@ -638,48 +638,48 @@
     {
       "Building": "Any (Tank, Missile, Aircraft Center)",
       "Level": 32,
-      "Food": 532324737,
-      "Iron": 287633118,
-      "Gold": 131716855,
+      "Food": 532218272.05,
+      "Iron": 287575591.38,
+      "Gold": 131690511.63,
       "Source": "Linear Estimate",
       "Notes": ""
     },
     {
       "Building": "Barracks",
       "Level": 32,
-      "Food": 532324737,
-      "Iron": 287633118,
-      "Gold": 131716855,
+      "Food": 532218272.05,
+      "Iron": 287575591.38,
+      "Gold": 131690511.63,
       "Source": "Linear Estimate",
       "Notes": ""
     },
     {
       "Building": "Hospital",
       "Level": 32,
-      "Food": 532324737,
-      "Iron": 287633118,
-      "Gold": 131716855,
+      "Food": 532218272.05,
+      "Iron": 287575591.38,
+      "Gold": 131690511.63,
       "Source": "Linear Estimate",
       "Notes": ""
     },
     {
       "Building": "Drill Ground",
       "Level": 32,
-      "Food": 532324737,
-      "Iron": 287633118,
-      "Gold": 131716855,
+      "Food": 532218272.05,
+      "Iron": 287575591.38,
+      "Gold": 131690511.63,
       "Source": "Linear Estimate",
       "Notes": ""
     },
     {
       "Building": "HQ Upgrade",
       "Level": 33,
-      "Food": 380000000,
-      "Iron": 130000000,
-      "Gold": 82000000,
+      "Food": 379924000.0,
+      "Iron": 129974000.0,
+      "Gold": 81983600.0,
       "Source": "Actual",
       "Notes": "",
-      "Oil": 3916800000,
+      "Oil": 3916016640.0,
       "HeroStats": {
         "LevelCap": 165,
         "HP": 18000,
@@ -690,9 +690,9 @@
     {
       "Building": "Tech Center",
       "Level": 32,
-      "Food": 532324737,
-      "Iron": 287633118,
-      "Gold": 131716855,
+      "Food": 532218272.05,
+      "Iron": 287575591.38,
+      "Gold": 131690511.63,
       "Source": "Interpolated",
       "Notes": ""
     }
@@ -701,48 +701,48 @@
     {
       "Building": "Any (Tank, Missile, Aircraft Center)",
       "Level": 33,
-      "Food": 477244596,
-      "Iron": 227119239,
-      "Gold": 112985730,
+      "Food": 477149147.08,
+      "Iron": 227073815.15,
+      "Gold": 112963132.85,
       "Source": "Linear Estimate",
       "Notes": ""
     },
     {
       "Building": "Barracks",
       "Level": 33,
-      "Food": 477244596,
-      "Iron": 227119239,
-      "Gold": 112985730,
+      "Food": 477149147.08,
+      "Iron": 227073815.15,
+      "Gold": 112963132.85,
       "Source": "Linear Estimate",
       "Notes": ""
     },
     {
       "Building": "Wall",
       "Level": 33,
-      "Food": 477244596,
-      "Iron": 227119239,
-      "Gold": 112985730,
+      "Food": 477149147.08,
+      "Iron": 227073815.15,
+      "Gold": 112963132.85,
       "Source": "Linear Estimate",
       "Notes": ""
     },
     {
       "Building": "Tech Center",
       "Level": 33,
-      "Food": 477244596,
-      "Iron": 227119239,
-      "Gold": 112985730,
+      "Food": 477149147.08,
+      "Iron": 227073815.15,
+      "Gold": 112963132.85,
       "Source": "Interpolated",
       "Notes": ""
     },
     {
       "Building": "HQ Upgrade",
       "Level": 34,
-      "Food": 450000000,
-      "Iron": 150000000,
-      "Gold": 97000000,
+      "Food": 449910000.0,
+      "Iron": 149970000.0,
+      "Gold": 96980600.0,
       "Source": "Actual",
       "Notes": "",
-      "Oil": 7050240000,
+      "Oil": 7048829952.0,
       "HeroStats": {
         "LevelCap": 170,
         "HP": 19000,
@@ -753,9 +753,9 @@
     {
       "Building": "Tech Center",
       "Level": 33,
-      "Food": 477244596,
-      "Iron": 227119239,
-      "Gold": 112985730,
+      "Food": 477149147.08,
+      "Iron": 227073815.15,
+      "Gold": 112963132.85,
       "Source": "Interpolated",
       "Notes": ""
     }
@@ -764,48 +764,48 @@
     {
       "Building": "Any (Tank, Missile, Aircraft Center)",
       "Level": 34,
-      "Food": 584609548,
-      "Iron": 307265048,
-      "Gold": 143219466,
+      "Food": 584492626.09,
+      "Iron": 307203594.99,
+      "Gold": 143190822.11,
       "Source": "Linear Estimate",
       "Notes": ""
     },
     {
       "Building": "Barracks",
       "Level": 34,
-      "Food": 584609548,
-      "Iron": 307265048,
-      "Gold": 143219466,
+      "Food": 584492626.09,
+      "Iron": 307203594.99,
+      "Gold": 143190822.11,
       "Source": "Linear Estimate",
       "Notes": ""
     },
     {
       "Building": "Hospital",
       "Level": 34,
-      "Food": 584609548,
-      "Iron": 307265048,
-      "Gold": 143219466,
+      "Food": 584492626.09,
+      "Iron": 307203594.99,
+      "Gold": 143190822.11,
       "Source": "Linear Estimate",
       "Notes": ""
     },
     {
       "Building": "Drill Ground",
       "Level": 34,
-      "Food": 584609548,
-      "Iron": 307265048,
-      "Gold": 143219466,
+      "Food": 584492626.09,
+      "Iron": 307203594.99,
+      "Gold": 143190822.11,
       "Source": "Linear Estimate",
       "Notes": ""
     },
     {
       "Building": "HQ Upgrade",
       "Level": 35,
-      "Food": 530000000,
-      "Iron": 180000000,
-      "Gold": 110000000,
+      "Food": 529894000.0,
+      "Iron": 179964000.0,
+      "Gold": 109978000.0,
       "Source": "Actual",
       "Notes": "",
-      "Oil": 14100480000,
+      "Oil": 14097659904.0,
       "HeroStats": {
         "LevelCap": 175,
         "HP": 20000,
@@ -816,9 +816,9 @@
     {
       "Building": "Tech Center",
       "Level": 34,
-      "Food": 584609548,
-      "Iron": 307265048,
-      "Gold": 143219466,
+      "Food": 584492626.09,
+      "Iron": 307203594.99,
+      "Gold": 143190822.11,
       "Source": "Interpolated",
       "Notes": ""
     }
