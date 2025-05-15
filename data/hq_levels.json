@@ -1268,7 +1268,7 @@
       "Upgrade Time": 359928.0,
       "Unit Training Cap": 574.88,
       "Unit Training Level": 329034.18,
-      "Power": None
+      "Power": 0
     },
     {
       "Building": "Wall",
@@ -1332,7 +1332,7 @@
       "Upgrade Time": 575884.8,
       "Unit Training Cap": 579.88,
       "Unit Training Level": 377324.52,
-      "Power": None
+      "Power": 0
     },
     {
       "Building": "Hospital",
@@ -1406,7 +1406,7 @@
       "Upgrade Time": 979004.16,
       "Unit Training Cap": 584.88,
       "Unit Training Level": 427914.4,
-      "Power": None
+      "Power": 0
     },
     {
       "Building": "Wall",
@@ -1481,7 +1481,7 @@
       "Upgrade Time": 1762207.49,
       "Unit Training Cap": 589.88,
       "Unit Training Level": 479604.06,
-      "Power": None
+      "Power": 0
     },
     {
       "Building": "Hospital",
