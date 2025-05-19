@@ -183,8 +183,16 @@
 <br><br>
 <button onclick="calculateFinal()">Calculate Final Time</button>
 <div class="result" id="finalResultBox"></div>
-<button onclick="resetForm()">Reset</button>
-
+<button onclick="resetForm()">Reset</button><br>
+    
+  <div style="margin-top: 15px; border-top: 1px solid #444; padding-top: 10px;">
+  <h3 style="color: gold;">🗂 Save / Load Progress</h3>
+  <button onclick="saveProgress()">💾 Save</button>
+  <button onclick="loadProgress()">📥 Load</button>
+  <button onclick="exportProgress()">📤 Export</button>
+  <input type="file" id="importFile" accept=".json" onchange="importProgress()" style="display:none;" />
+  <button onclick="document.getElementById('importFile').click()">📂 Import</button>
+</div><br>
 <p style="margin-top: 15px;">Need help? <a href="quick_guide.html" style="color: gold;">Quick Guide</a></p>
 
 <footer>🏹 Created for Server #1009 Only!<br>Courtesy of **BAD TRIPP**</footer>
