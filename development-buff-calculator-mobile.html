@@ -71,6 +71,10 @@
       transition: all 0.3s ease;
       width: 100%;
     }
+    .big-btn {
+      font-size: 1.2em;
+      padding: 12px 20px;
+    }
     button:hover {
       background-color: transparent;
       color: gold;
@@ -181,7 +185,7 @@
 <label>Help Time per Alliance Member Help (Minutes)</label><br><br>
 <input type="number" id="helpTime" placeholder="Default: 7.5"><br>
 <br><br>
-<button onclick="calculateFinal()">Calculate Final Time</button>
+<button class="big-btn" onclick="calculateFinal()">Calculate Final Time</button>
 <div class="result" id="finalResultBox"></div>
 <button onclick="resetForm()">Reset</button><br>
     
