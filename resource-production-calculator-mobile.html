@@ -170,14 +170,18 @@
   <script>
     let outputByLevel = {};
 
-    fetch('data/rssdata.json')
-      .then(res => res.json())
-      .then(data => {
-        outputByLevel = data;
-      })
-      .catch(err => {
-        console.error('Failed to load level data:', err);
-      });
+    let dataLoaded = false;
+    
+fetch('data/rssdata.json')
+  .then(res => res.json())
+  .then(data => {
+    outputByLevel = data;
+    dataLoaded = true;
+    console.log("Loaded outputByLevel data:", outputByLevel); // Optional debug
+  })
+  .catch(err => {
+    console.error('Failed to load level data:', err);
+  });
 
     function formatNumber(n) {
       return n.toLocaleString(undefined, { maximumFractionDigits: 0 });
@@ -195,11 +199,15 @@
       container.appendChild(div);
     }
 
-    function calculateAll() {
-      calculateResource("food");
-      calculateResource("iron");
-      calculateResource("coin");
-    }
+function calculateAll() {
+  if (!dataLoaded) {
+    alert("Resource data is still loading. Please wait a moment.");
+    return;
+  }
+  calculateResource("food");
+  calculateResource("iron");
+  calculateResource("coin");
+}
 
     function calculateResource(type) {
       const container = document.getElementById(type + "Inputs");
