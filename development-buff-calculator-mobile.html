@@ -283,6 +283,83 @@ function resetForm() {
   document.getElementById('resultBox').innerHTML = "";
   document.getElementById('finalResultBox').innerHTML = "";
 }
+  function getCurrentState() {
+  return {
+    secretaryUses: document.getElementById("secretaryUses").value,
+    foodBuff: document.getElementById("foodBuff").value,
+    ironBuff: document.getElementById("ironBuff").value,
+    coinBuff: document.getElementById("coinBuff").value,
+    food: getInputState("food"),
+    iron: getInputState("iron"),
+    coin: getInputState("coin")
+  };
+}
+
+function getInputState(type) {
+  const container = document.getElementById(type + "Inputs");
+  const rows = container.querySelectorAll(".input-row");
+  return Array.from(rows).map(row => ({
+    qty: row.querySelector(".qty").value,
+    level: row.querySelector(".level").value
+  }));
+}
+
+function applyState(state) {
+  document.getElementById("secretaryUses").value = state.secretaryUses || "";
+  document.getElementById("foodBuff").value = state.foodBuff || "";
+  document.getElementById("ironBuff").value = state.ironBuff || "";
+  document.getElementById("coinBuff").value = state.coinBuff || "";
+
+  ["food", "iron", "coin"].forEach(type => {
+    const container = document.getElementById(type + "Inputs");
+    container.innerHTML = "";
+    (state[type] || []).forEach(entry => {
+      const div = document.createElement("div");
+      div.className = "input-row";
+      div.innerHTML = `
+        <input type="number" placeholder="Qty" class="qty" value="${entry.qty || ''}">
+        <input type="number" placeholder="Level (1–35)" class="level" value="${entry.level || ''}">
+        <button class="remove-btn" onclick="this.parentNode.remove()">Remove</button>
+      `;
+      container.appendChild(div);
+    });
+  });
+}
+
+function saveProgress() {
+  const state = getCurrentState();
+  localStorage.setItem("resourceCalcSave", JSON.stringify(state));
+  alert("Progress saved locally!");
+}
+
+function loadProgress() {
+  const state = JSON.parse(localStorage.getItem("resourceCalcSave") || "{}");
+  applyState(state);
+  alert("Progress loaded.");
+}
+
+function exportProgress() {
+  const state = getCurrentState();
+  const blob = new Blob([JSON.stringify(state, null, 2)], { type: "application/json" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "resource_calc_save.json";
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+function importProgress() {
+  const file = document.getElementById("importFile").files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = function (e) {
+    const state = JSON.parse(e.target.result);
+    applyState(state);
+    alert("Progress imported.");
+  };
+  reader.readAsText(file);
+}
 </script>
 </body>
 </html>
