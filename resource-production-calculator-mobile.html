@@ -1,129 +1,36 @@
+<!-- Save this as index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Resource Production Calculator</title>
-  <link rel="manifest" href="manifest.json">
-  <meta name="theme-color" content="#FFD700">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-title" content="BAD TRIPP Tools">
-  <link rel="apple-touch-icon" href="bad_tripp_logo.png">
-  <script>
-    if (!localStorage.getItem("badtripp_access_granted")) {
-      var password = prompt("Enter pass to access BAD TRIPP's Tools:");
-      if (password === "1009") {
-        localStorage.setItem("badtripp_access_granted", "true"); 
-      } else {
-        alert("Access denied.");
-        window.location.href = "https://www.lastwartutorial.com/";
-      }
-    }
-  </script>
-
-  <script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', function () {
-        navigator.serviceWorker.register('/service-worker.js').then(function (registration) {
-          console.log('ServiceWorker registered: ', registration.scope);
-        }, function (err) {
-          console.log('ServiceWorker registration failed: ', err);
-        });
-      });
-    }
-  </script>
+  <link rel="manifest" href="manifest.json"/>
+  <meta name="theme-color" content="#FFD700"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-title" content="BAD TRIPP Tools"/>
+  <link rel="apple-touch-icon" href="bad_tripp_logo.png"/>
 
   <style>
-    body {
-      background-color: #000;
-      color: #f0f0f0;
-      font-family: Arial, sans-serif;
-      text-align: center;
-      padding: 10px;
-    }
-    .container {
-      max-width: 600px;
-      margin: 0 auto;
-      padding: 0 10px;
-      box-sizing: border-box;
-      width: 100%;
-    }
-    h1, h3 {
-      color: gold;
-    }
-    label {
-      font-weight: bold;
-    }
-    input {
-      padding: 8px;
-      margin: 4px 4px;
-      border-radius: 4px;
-      border: 1px solid #444;
-      background-color: #1a1a1a;
-      color: white;
-      width: 100%;
-      max-width: 120px;
-      box-sizing: border-box;
-    }
-    .input-row {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 5px;
-      flex-wrap: wrap;
-      margin: 5px 0;
-    }
-    .resource-section {
-      border: 1px solid #444;
-      border-radius: 5px;
-      padding: 10px;
-      margin-bottom: 15px;
-    }
-    .result-box {
-      background-color: #222;
-      border-radius: 5px;
-      padding: 10px;
-      margin-top: 10px;
-      color: gold;
-      font-weight: bold;
-    }
-    button {
-      padding: 8px 12px;
-      margin-top: 10px;
-      background-color: gold;
-      color: black;
-      font-weight: bold;
-      border: 2px solid gold;
-      border-radius: 5px;
-      transition: 0.3s;
-    }
-    button:hover {
-      background-color: transparent;
-      color: gold;
-    }
-    .back-button {
-      display: inline-block;
-      margin-bottom: 10px;
-      padding: 10px 15px;
-      background-color: gold;
-      color: black;
-      font-weight: bold;
-      text-decoration: none;
-      border: 2px solid gold;
-      border-radius: 5px;
-    }
-    .back-button:hover {
-      background-color: transparent;
-      color: gold;
-    }
-    .remove-btn {
-      background-color: #333;
-      color: red;
-      border: 1px solid red;
-      font-size: 0.9em;
-      padding: 5px;
-      border-radius: 3px;
-    }
+    body { background-color: #000; color: #f0f0f0; font-family: Arial, sans-serif; text-align: center; padding: 10px; }
+    .container { max-width: 600px; margin: 0 auto; padding: 0 10px; box-sizing: border-box; width: 100%; }
+    h1, h3 { color: gold; }
+    label { font-weight: bold; }
+    input { padding: 8px; margin: 4px 4px; border-radius: 4px; border: 1px solid #444;
+            background-color: #1a1a1a; color: white; width: 100%; max-width: 120px; box-sizing: border-box; }
+    .input-row { display: flex; justify-content: center; align-items: center; gap: 5px;
+                 flex-wrap: wrap; margin: 5px 0; }
+    .resource-section { border: 1px solid #444; border-radius: 5px; padding: 10px; margin-bottom: 15px; }
+    .result-box { background-color: #222; border-radius: 5px; padding: 10px; margin-top: 10px;
+                  color: gold; font-weight: bold; }
+    button { padding: 8px 12px; margin-top: 10px; background-color: gold; color: black;
+             font-weight: bold; border: 2px solid gold; border-radius: 5px; transition: 0.3s; }
+    button:hover { background-color: transparent; color: gold; }
+    .back-button { display: inline-block; margin-bottom: 10px; padding: 10px 15px; background-color: gold;
+                   color: black; font-weight: bold; text-decoration: none; border: 2px solid gold; border-radius: 5px; }
+    .back-button:hover { background-color: transparent; color: gold; }
+    .remove-btn { background-color: #333; color: red; border: 1px solid red; font-size: 0.9em;
+                  padding: 5px; border-radius: 3px; }
   </style>
 </head>
 <body>
@@ -152,9 +59,9 @@
     </div>
 
     <div class="resource-section" id="coinSection">
-      <h3>💰 Gold Coins</h3>
+      <h3>💰 Gold Mints</h3>
       <div id="coinInputs"></div>
-      <button onclick="addResourceRow('coin')">+ Add Gold Coin</button>
+      <button onclick="addResourceRow('coin')">+ Add Mint</button>
       <input type="number" id="coinBuff" placeholder="Total Gold Buff %">
       <div class="result-box" id="coinResult"></div>
     </div>
@@ -166,22 +73,22 @@
     <footer>🏹 Created for Server #1009 Only!<br>Courtesy of <strong>BAD TRIPP</strong></footer>
   </div>
 
-  <!-- Load outputByLevel data dynamically -->
   <script>
-    let outputByLevel = {};
-
+    let outputByLevel = { food: {}, iron: {}, coin: {} };
     let dataLoaded = false;
-    
-fetch('data/rssdata.json')
-  .then(res => res.json())
-  .then(data => {
-    outputByLevel = data;
-    dataLoaded = true;
-    console.log("Loaded outputByLevel data:", outputByLevel); // Optional debug
-  })
-  .catch(err => {
-    console.error('Failed to load level data:', err);
-  });
+
+    fetch('data/outputByLevel_structured_1_35.json')
+      .then(res => res.json())
+      .then(data => {
+        outputByLevel.food = data.food;
+        outputByLevel.iron = data.iron;
+        outputByLevel.coin = data.gold; // gold mapped as "coin"
+        dataLoaded = true;
+        console.log("Loaded structured output:", outputByLevel);
+      })
+      .catch(err => {
+        console.error('Failed to load level data:', err);
+      });
 
     function formatNumber(n) {
       return n.toLocaleString(undefined, { maximumFractionDigits: 0 });
@@ -199,15 +106,15 @@ fetch('data/rssdata.json')
       container.appendChild(div);
     }
 
-function calculateAll() {
-  if (!dataLoaded) {
-    alert("Resource data is still loading. Please wait a moment.");
-    return;
-  }
-  calculateResource("food");
-  calculateResource("iron");
-  calculateResource("coin");
-}
+    function calculateAll() {
+      if (!dataLoaded) {
+        alert("Resource data is still loading. Please wait a moment.");
+        return;
+      }
+      calculateResource("food");
+      calculateResource("iron");
+      calculateResource("coin");
+    }
 
     function calculateResource(type) {
       const container = document.getElementById(type + "Inputs");
@@ -218,7 +125,7 @@ function calculateAll() {
       container.querySelectorAll(".input-row").forEach(row => {
         const qty = parseInt(row.querySelector(".qty").value) || 0;
         const level = parseInt(row.querySelector(".level").value) || 0;
-        const baseOutput = outputByLevel[level] || 0;
+        const baseOutput = outputByLevel[type][level] || 0;
         totalHourly += qty * baseOutput;
       });
 
