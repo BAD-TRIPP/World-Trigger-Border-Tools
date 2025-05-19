@@ -88,7 +88,12 @@
       <button onclick="addResourceRow('coin')">+ Add Gold Coin</button>
       <input type="number" id="coinBuff" placeholder="Total Gold Buff %">
       <div class="result-box" id="coinResult"></div>
-    </div>
+    </div>   
+    
+    <button onclick="calculateAll()">Calculate All</button>
+    <button onclick="resetForm()">Reset</button>
+    <br><br>
+    
     <div style="margin-top: 15px; border-top: 1px solid #444; padding-top: 10px;">
   <h3 style="color: gold;">🗂 Save / Load Progress</h3>
   <button onclick="saveProgress()">💾 Save</button>
@@ -97,9 +102,6 @@
   <input type="file" id="importFile" accept=".json" onchange="importProgress()" style="display:none;" />
   <button onclick="document.getElementById('importFile').click()">📂 Import</button>
 </div><br>
-    <button onclick="calculateAll()">Calculate All</button>
-    <button onclick="resetForm()">Reset</button>
-    <br><br>
     <p style="margin-top: 15px;">Need help? <a href="quick_guide.html" style="color: gold;">Quick Guide</a></p>
     <footer>🏹 Created for Server #1009 Only!<br>Courtesy of <strong>BAD TRIPP</strong></footer>
   </div>
