@@ -77,7 +77,7 @@
     let outputByLevel = { food: {}, iron: {}, coin: {} };
     let dataLoaded = false;
 
-    fetch('data/outputByLevel_structured_1_35.json')
+    fetch('data/rssdata.json')
       .then(res => res.json())
       .then(data => {
         outputByLevel.food = data.food;
