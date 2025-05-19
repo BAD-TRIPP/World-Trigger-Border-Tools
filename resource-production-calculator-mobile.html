@@ -11,6 +11,30 @@
   <meta name="apple-mobile-web-app-title" content="BAD TRIPP Tools"/>
   <link rel="apple-touch-icon" href="bad_tripp_logo.png"/>
 
+ <script>
+    if (!localStorage.getItem("badtripp_access_granted")) {
+      var password = prompt("Enter pass to access BAD TRIPP's Tools:");
+      if (password === "1009") {
+        localStorage.setItem("badtripp_access_granted", "true"); 
+      } else {
+        alert("Access denied.");
+        window.location.href = "https://www.lastwartutorial.com/";
+      }
+    }
+  </script>
+
+    <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function () {
+        navigator.serviceWorker.register('/service-worker.js').then(function (registration) {
+          console.log('ServiceWorker registered: ', registration.scope);
+        }, function (err) {
+          console.log('ServiceWorker registration failed: ', err);
+        });
+      });
+    }
+  </script>
+  
   <style>
     body { background-color: #000; color: #f0f0f0; font-family: Arial, sans-serif; text-align: center; padding: 10px; }
     .container { max-width: 600px; margin: 0 auto; padding: 0 10px; box-sizing: border-box; width: 100%; }
