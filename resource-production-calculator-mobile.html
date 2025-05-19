@@ -9,7 +9,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-title" content="BAD TRIPP Tools">
   <link rel="apple-touch-icon" href="bad_tripp_logo.png">
-    <script>
+  <script>
     if (!localStorage.getItem("badtripp_access_granted")) {
       var password = prompt("Enter pass to access BAD TRIPP's Tools:");
       if (password === "1009") {
@@ -21,7 +21,7 @@
     }
   </script>
 
-    <script>
+  <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', function () {
         navigator.serviceWorker.register('/service-worker.js').then(function (registration) {
@@ -32,6 +32,7 @@
       });
     }
   </script>
+
   <style>
     body {
       background-color: #000;
@@ -40,13 +41,13 @@
       text-align: center;
       padding: 10px;
     }
-.container {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 0 10px;
-  box-sizing: border-box;
-  width: 100%;
-}
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 0 10px;
+      box-sizing: border-box;
+      width: 100%;
+    }
     h1, h3 {
       color: gold;
     }
@@ -100,7 +101,7 @@
       background-color: transparent;
       color: gold;
     }
-        .back-button {
+    .back-button {
       display: inline-block;
       margin-bottom: 10px;
       padding: 10px 15px;
@@ -128,7 +129,7 @@
 <body>
   <div class="container">
     <img src="bad_tripp_logo.png" alt="BAD TRIPP Logo" style="max-width: 200px;"><br>
-      <a href="index.html" class="back-button">← Back to Main Menu</a><br>
+    <a href="index.html" class="back-button">← Back to Main Menu</a><br>
     <h1>Resource Production Calculator</h1>
 
     <label>Secretary Sessions per Day:</label>
@@ -160,75 +161,81 @@
 
     <button onclick="calculateAll()">Calculate All</button>
     <button onclick="resetForm()">Reset</button>
-<br><br>
-        <p style="margin-top: 15px;">Need help? <a href="quick_guide.html" style="color: gold;">Quick Guide</a></p>
+    <br><br>
+    <p style="margin-top: 15px;">Need help? <a href="quick_guide.html" style="color: gold;">Quick Guide</a></p>
     <footer>🏹 Created for Server #1009 Only!<br>Courtesy of <strong>BAD TRIPP</strong></footer>
   </div>
 
-<script>
-const outputByLevel = {
-  1: 720, 2: 1440, 3: 2160, 4: 2880, 5: 3600, 6: 4320, 7: 5040, 8: 5760, 9: 6480, 10: 7200,
-  11: 7920, 12: 8640, 13: 9360, 14: 10080, 15: 10800, 16: 11520, 17: 12240, 18: 12960, 19: 13680, 20: 14400,
-  21: 15120, 22: 15840, 23: 16560, 24: 17280, 25: 18000, 26: 18720, 27: 19440, 28: 20160, 29: 20880, 30: 21600
-};
+  <!-- Load outputByLevel data dynamically -->
+  <script>
+    let outputByLevel = {};
 
-function formatNumber(n) {
-  return n.toLocaleString(undefined, { maximumFractionDigits: 0 });
-}
+    fetch('data/rssdata.json')
+      .then(res => res.json())
+      .then(data => {
+        outputByLevel = data;
+      })
+      .catch(err => {
+        console.error('Failed to load level data:', err);
+      });
 
-function addResourceRow(type) {
-  const container = document.getElementById(type + "Inputs");
-  const div = document.createElement("div");
-  div.className = "input-row";
-  div.innerHTML = `
-    <input type="number" placeholder="Qty" class="qty">
-    <input type="number" placeholder="Level (1–30)" class="level">
-    <button class="remove-btn" onclick="this.parentNode.remove()">Remove</button>
-  `;
-  container.appendChild(div);
-}
+    function formatNumber(n) {
+      return n.toLocaleString(undefined, { maximumFractionDigits: 0 });
+    }
 
-function calculateAll() {
-  calculateResource("food");
-  calculateResource("iron");
-  calculateResource("coin");
-}
+    function addResourceRow(type) {
+      const container = document.getElementById(type + "Inputs");
+      const div = document.createElement("div");
+      div.className = "input-row";
+      div.innerHTML = `
+        <input type="number" placeholder="Qty" class="qty">
+        <input type="number" placeholder="Level (1–35)" class="level">
+        <button class="remove-btn" onclick="this.parentNode.remove()">Remove</button>
+      `;
+      container.appendChild(div);
+    }
 
-function calculateResource(type) {
-  const container = document.getElementById(type + "Inputs");
-  const buff = parseFloat(document.getElementById(type + "Buff").value) || 0;
-  const secretaryUses = parseFloat(document.getElementById("secretaryUses").value) || 0;
-  let totalHourly = 0;
+    function calculateAll() {
+      calculateResource("food");
+      calculateResource("iron");
+      calculateResource("coin");
+    }
 
-  container.querySelectorAll(".input-row").forEach(row => {
-    const qty = parseInt(row.querySelector(".qty").value) || 0;
-    const level = parseInt(row.querySelector(".level").value) || 0;
-    const baseOutput = outputByLevel[level] || 0;
-    totalHourly += qty * baseOutput;
-  });
+    function calculateResource(type) {
+      const container = document.getElementById(type + "Inputs");
+      const buff = parseFloat(document.getElementById(type + "Buff").value) || 0;
+      const secretaryUses = parseFloat(document.getElementById("secretaryUses").value) || 0;
+      let totalHourly = 0;
 
-  const buffedHourly = totalHourly * (1 + buff / 100);
-  const secBonus = buffedHourly * (5 / 60) * secretaryUses;
-  const daily = buffedHourly * 24 + secBonus;
-  const weekly = daily * 7;
-  const monthly = daily * 30;
+      container.querySelectorAll(".input-row").forEach(row => {
+        const qty = parseInt(row.querySelector(".qty").value) || 0;
+        const level = parseInt(row.querySelector(".level").value) || 0;
+        const baseOutput = outputByLevel[level] || 0;
+        totalHourly += qty * baseOutput;
+      });
 
-  document.getElementById(type + "Result").innerHTML = `
-    Hourly: ${formatNumber(buffedHourly)}<br>
-    Daily: ${formatNumber(daily)}<br>
-    Weekly: ${formatNumber(weekly)}<br>
-    Monthly: ${formatNumber(monthly)}<br>
-    Secretary Bonus Daily: +${formatNumber(secBonus)}`;
-}
+      const buffedHourly = totalHourly * (1 + buff / 100);
+      const secBonus = buffedHourly * (5 / 60) * secretaryUses;
+      const daily = buffedHourly * 24 + secBonus;
+      const weekly = daily * 7;
+      const monthly = daily * 30;
 
-function resetForm() {
-  ["food", "iron", "coin"].forEach(type => {
-    document.getElementById(type + "Inputs").innerHTML = "";
-    document.getElementById(type + "Result").innerHTML = "";
-    document.getElementById(type + "Buff").value = "";
-  });
-  document.getElementById("secretaryUses").value = "";
-}
-</script>
+      document.getElementById(type + "Result").innerHTML = `
+        Hourly: ${formatNumber(buffedHourly)}<br>
+        Daily: ${formatNumber(daily)}<br>
+        Weekly: ${formatNumber(weekly)}<br>
+        Monthly: ${formatNumber(monthly)}<br>
+        Secretary Bonus Daily: +${formatNumber(secBonus)}`;
+    }
+
+    function resetForm() {
+      ["food", "iron", "coin"].forEach(type => {
+        document.getElementById(type + "Inputs").innerHTML = "";
+        document.getElementById(type + "Result").innerHTML = "";
+        document.getElementById(type + "Buff").value = "";
+      });
+      document.getElementById("secretaryUses").value = "";
+    }
+  </script>
 </body>
 </html>
