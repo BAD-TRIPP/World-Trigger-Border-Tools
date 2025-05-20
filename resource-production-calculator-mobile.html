@@ -166,9 +166,6 @@
       <h3 style="color: gold;">🗂 Save / Load Progress</h3>
       <button onclick="saveProgress()">💾 Save</button>
       <button onclick="loadProgress()">📥 Load</button>
-      <button onclick="exportProgress()">📤 Export</button>
-      <input type="file" id="importFile" accept=".json" onchange="importProgress()" style="display:none;" />
-      <button onclick="document.getElementById('importFile').click()">📂 Import</button>
     </div><br>
 
     <p style="margin-top: 15px;">Need help? <a href="quick_guide.html" style="color: gold;">Quick Guide</a></p>
@@ -303,29 +300,6 @@
       const state = JSON.parse(localStorage.getItem("resourceCalcSave") || "{}");
       applyState(state);
       alert("Progress loaded.");
-    }
-
-    function exportProgress() {
-      const state = getCurrentState();
-      const blob = new Blob([JSON.stringify(state, null, 2)], { type: "application/json" });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = "resource_calc_save.json";
-      a.click();
-      URL.revokeObjectURL(url);
-    }
-
-    function importProgress() {
-      const file = document.getElementById("importFile").files[0];
-      if (!file) return;
-      const reader = new FileReader();
-      reader.onload = function (e) {
-        const state = JSON.parse(e.target.result);
-        applyState(state);
-        alert("Progress imported.");
-      };
-      reader.readAsText(file);
     }
   </script>
 </body>
