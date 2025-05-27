@@ -14,9 +14,7 @@
       text-align: center;
       padding: 30px;
     }
-    h1 {
-      color: gold;
-    }
+    h1 { color: gold; }
     .button {
       display: inline-block;
       padding: 15px 25px;
@@ -48,25 +46,27 @@
   </style>
 </head>
 <body>
-  <select id="lang"><option value="en">🇺🇸 English</option>
-<option value="es">🇪🇸 Spanish</option>
-<option value="pt">🇧🇷 Portuguese</option>
-<option value="fr">🇫🇷 French</option>
-<option value="de">🇩🇪 German</option>
-<option value="it">🇮🇹 Italian</option>
-<option value="nl">🇳🇱 Dutch</option>
-<option value="pl">🇵🇱 Polish</option>
-<option value="tr">🇹🇷 Turkish</option>
-<option value="ru">🇷🇺 Russian</option>
-<option value="ja">🇯🇵 Japanese</option>
-<option value="zh">🇨🇳 Chinese</option>
-<option value="zh-TW">🇹🇼 Chinese (Traditional)</option>
-<option value="ko">🇰🇷 Korean</option>
-<option value="ar">🇸🇦 Arabic</option>
-<option value="hi">🇮🇳 Hindi</option>
-<option value="id">🇮🇩 Indonesian</option>
-<option value="th">🇹🇭 Thai</option>
-<option value="vi">🇻🇳 Vietnamese</option></select>
+  <select id="lang">
+    <option value="en">🇺🇸 English</option>
+    <option value="es">🇪🇸 Spanish</option>
+    <option value="pt">🇧🇷 Portuguese</option>
+    <option value="fr">🇫🇷 French</option>
+    <option value="de">🇩🇪 German</option>
+    <option value="it">🇮🇹 Italian</option>
+    <option value="nl">🇳🇱 Dutch</option>
+    <option value="pl">🇵🇱 Polish</option>
+    <option value="tr">🇹🇷 Turkish</option>
+    <option value="ru">🇷🇺 Russian</option>
+    <option value="ja">🇯🇵 Japanese</option>
+    <option value="zh">🇨🇳 Chinese</option>
+    <option value="zh-TW">🇹🇼 Chinese (Traditional)</option>
+    <option value="ko">🇰🇷 Korean</option>
+    <option value="ar">🇸🇦 Arabic</option>
+    <option value="hi">🇮🇳 Hindi</option>
+    <option value="id">🇮🇩 Indonesian</option>
+    <option value="th">🇹🇭 Thai</option>
+    <option value="vi">🇻🇳 Vietnamese</option>
+  </select>
   <div id="app">
     <h1 id="title">BAD TRIPP Tools</h1>
     <p id="prompt">Select your tool below:</p>
@@ -79,20 +79,20 @@
     const query = new URLSearchParams(window.location.search);
     const licenseKey = query.get("license");
 
-async function validateLicense(key) {
-  const res = await fetch('https://api.gumroad.com/v2/licenses/verify', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      product_id: 'Aupflh7P60J7ngCo8UUSwA==', // ✅ product ID
-      license_key: key                      // ✅ User license key 
-    })
-  });
+    async function validateLicense(key) {
+      const res = await fetch('https://api.gumroad.com/v2/licenses/verify', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          product_id: 'Aupflh7P60J7ngCo8UUSwA==',
+          license_key: key
+        })
+      });
+      const data = await res.json();
+      console.log("License validation result:", data);
+      return data.success;
+    }
 
-  const data = await res.json();
-  alert('🔍 Gumroad API Response:\n' + JSON.stringify(data, null, 2));
-  return data.success;
-}
     async function enforceAccess() {
       let key = licenseKey || localStorage.getItem("gumroad_license");
       if (!key) {
@@ -130,7 +130,6 @@ async function validateLicense(key) {
       enforceAccess();
     });
 
-    // PWA install prompt
     let deferredPrompt;
     window.addEventListener('beforeinstallprompt', (e) => {
       e.preventDefault();
