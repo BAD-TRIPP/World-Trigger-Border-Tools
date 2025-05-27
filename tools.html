@@ -88,9 +88,9 @@
           license_key: key
         })
       });
-const data = await res.json();
-alert("🔍 Gumroad API Response:\\n" + JSON.stringify(data, null, 2)); // show popup
-return data.success;
+      const data = await res.json();
+      alert('🔍 Gumroad API Response:\n' + JSON.stringify(data, null, 2));
+      return data.success;
     }
 
     async function enforceAccess() {
@@ -99,7 +99,7 @@ return data.success;
         key = prompt("Enter your Gumroad license key:");
       }
       if (!key) {
-        window.location.href = "https://www.badtripp.com/";
+        window.location.href = "https://www.lastwartutorial.com/";
         return;
       }
       const valid = await validateLicense(key);
@@ -109,7 +109,7 @@ return data.success;
       } else {
         alert("Invalid license.");
         localStorage.removeItem("gumroad_license");
-        window.location.href = "https://www.badtripp.com/";
+        window.location.href = "https://www.lastwartutorial.com/";
       }
     }
 
