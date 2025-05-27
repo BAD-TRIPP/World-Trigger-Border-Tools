@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HQ Upgrade Tracker Mobile</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#FFD700">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="BAD TRIPP Tools">
+  <link rel="apple-touch-icon" href="bad_tripp_logo.png">
+
+  <script>
+    if (!localStorage.getItem("badtripp_access_granted")) {
+      var password = prompt("Enter pass to access BAD TRIPP's Tools:");
+      if (password === "1009") {
+        localStorage.setItem("badtripp_access_granted", "true"); 
+      } else {
+        alert("Access denied.");
+        window.location.href = "https://www.lastwartutorial.com/";
+      }
+    }
+  </script>
+  
+  <style>
+    body {
+      background-color: #000;
+      color: #f0f0f0;
+      font-family: 'Inter', sans-serif;
+      text-align: center;
+      padding: 10px;
+    }
+    .container {
+      max-width: 600px;
+      margin: auto;
+      padding: 10px;
+    }
+    h1 {
+      color: gold;
+    }
+    input, button {
+      padding: 10px;
+      border-radius: 4px;
+      border: 1px solid #444;
+      background-color: #1a1a1a;
+      color: white;
+      font-size: 1em;
+      margin: 5px 0;
+    }
+    button {
+      background-color: gold;
+      color: black;
+      font-weight: bold;
+      width: 100%;
+      border: 2px solid gold;
+    }
+    button:hover {
+      background-color: transparent;
+      color: gold;
+    }
+    .back-button {
+      display: inline-block;
+      margin-bottom: 10px;
+      padding: 10px 15px;
+      background-color: gold;
+      color: black;
+      font-weight: bold;
+      text-decoration: none;
+      border: 2px solid gold;
+      border-radius: 5px;
+    }
+    .back-button:hover {
+      background-color: transparent;
+      color: gold;
+    }
+    .result {
+      margin-top: 10px;
+      background: #222;
+      padding: 15px;
+      border-radius: 5px;
+      font-size: 1em;
+      text-align: center;
+    }
+    .result h3,
+    .result h4 {
+      color: gold;
+    }
+    .building-line {
+      margin: 8px 0;
+    }
+  </style>
+</head>
+<body>
+<div id="app" style="display:none;">
+  <div class="container">
+    <img src="bad_tripp_logo.png" alt="BAD TRIPP Logo" style="max-width: 200px;"><br>
+    <a href="index.html" class="back-button">← Back to Main Menu</a><br>
+
+    <h1>HQ Upgrade Tracker</h1>
+
+    <label for="hqInput">Enter HQ Level (1–35):</label><br>
+    <input type="number" id="hqInput" placeholder="e.g. 1" min="1" max="35"><br>
+    <button onclick="showUpgradeData()">Show Requirements</button>
+
+    <div id="upgradeResult" class="result"></div>
+
+    <hr style="border: 1px solid gold; margin: 20px 0;">
+
+    <button onclick="document.getElementById('progressionModal').style.display='block'" class="button">
+      📊 View Full Progression Chart
+    </button>
+
+    <!-- Progression Modal -->
+    <div id="progressionModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); z-index:9999; overflow:auto;">
+      <div style="margin: 50px auto; padding: 20px; background:#111; color:gold; max-width: 90%; border: 2px solid gold; border-radius: 10px;">
+        <h2 style="text-align:center; font-size:1.5em;">🏗 HQ Building Progression (Levels 1–35)</h2>
+        <div id="progressionTable" style="overflow-x: auto; max-height: 75vh; margin-top: 1em;"></div><br>
+        <button onclick="document.getElementById('progressionModal').style.display='none'" style="background:gold; color:black; padding:10px 20px; font-weight:bold; border:none; border-radius:5px;">
+          Close
+        </button>
+      </div>
+    </div>
+
+    <p style="margin-top: 15px;">Need help? <a href="quick_guide.html" style="color: gold;">Quick Guide</a></p>
+    <footer>
+      🏹 Created for Server #1009 Only!<br>
+      Courtesy of <strong>BAD TRIPP</strong>
+    </footer>
+  </div>
+  <script>
+    // Display requirements for specific HQ level
+    let upgradeData = {};
+
+    fetch('data/hq_levels.json')
+      .then(response => response.json())
+      .then(data => upgradeData = data)
+      .catch(err => {
+        document.getElementById('upgradeResult').innerHTML = 'Error loading upgrade data.';
+        console.error('Failed to load JSON:', err);
+      });
+
+    function formatNumber(num) {
+      if (typeof num !== 'number') return num;
+      if (num >= 1_000_000_000) return (num / 1_000_000_000).toFixed(1).replace(/\.0$/, '') + 'G';
+      if (num >= 1_000_000) return (num / 1_000_000).toFixed(0) + 'M';
+      return num.toLocaleString();
+    }
+
+    function showUpgradeData() {
+      const level = document.getElementById("hqInput").value;
+      const entries = upgradeData[level];
+      const container = document.getElementById("upgradeResult");
+
+      if (!entries) {
+        container.innerHTML = `<strong>No data available for HQ level ${level}.</strong>`;
+        return;
+      }
+
+      let html = `<h3>Requirements for HQ Level ${level}</h3>`;
+      let hqUpgrade = null;
+
+      entries.forEach(entry => {
+        if (entry.Building === "HQ Upgrade") {
+          hqUpgrade = entry;
+        } else {
+          html += `<div class="building-line">🏗️ ${entry.Building} ${entry.Level}: Food: ${formatNumber(entry.Food)}, Iron: ${formatNumber(entry.Iron)}, Gold: ${formatNumber(entry.Gold)}</div>`;
+        }
+      });
+
+      if (hqUpgrade) {
+        html += `<h4>🏛️ HQ Upgrade Resource Cost</h4>`;
+        html += `<div class="building-line">HQ Upgrade ${hqUpgrade.Level}: Food: ${formatNumber(hqUpgrade.Food)}, Iron: ${formatNumber(hqUpgrade.Iron)}, Gold: ${formatNumber(hqUpgrade.Gold)}${hqUpgrade.Oil ? `, Oil: ${formatNumber(hqUpgrade.Oil)}` : ''}</div>`;
+
+        if (hqUpgrade.HeroStats) {
+          const hero = hqUpgrade.HeroStats;
+          html += `<div class="building-line">🎖️ Hero Stats — Cap: ${hero.LevelCap}, HP: ${formatNumber(hero.HP)}, ATK: ${hero.Attack}, DEF: ${hero.Defense}</div>`;
+        }
+      }
+
+      container.innerHTML = html;
+    }
+
+    // Load hq_levels_chart.json and populate modal chart
+    fetch('data/hq_levels_chart.json')
+      .then(res => res.json())
+      .then(data => {
+        const levels = Object.keys(data).sort((a, b) => parseInt(a) - parseInt(b));
+        const tableRows = ['<tr><th style="color:white;">HQ Level</th><th style="color:white;">Tech Center</th><th style="color:white;">Other Buildings</th></tr>'];
+
+        levels.forEach(level => {
+          const row = data[level];
+          if (row) {
+          const tech = row.techCenter || '-';
+          const others = (row.otherBuildings || []).join('<br>') || '-';
+            tableRows.push(`<tr><td style="color:white;"> ${level}</td><td style="color:white;">${tech}</td><td style="color:white;">${others}</td></tr>`);
+          }
+        });
+
+        const table = `<table border="1" style="width:100%; text-align:center; color:white; border-collapse:collapse;">${tableRows.join('')}</table>`;
+        document.getElementById('progressionTable').innerHTML = table;
+      })
+      .catch(err => {
+        console.error('Error loading HQ chart data:', err);
+        document.getElementById('progressionTable').innerHTML = '<p style="color:red;">Failed to load progression chart.</p>';
+      });
+  </script>
+
+</html>
+</div>
+
+<script>
+async function validateLicense(key) {
+  const res = await fetch('https://api.gumroad.com/v2/licenses/verify', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      product_permalink: 'bad-tripp-tools',
+      license_key: key
+    })
+  });
+  const data = await res.json();
+  return data.success;
+}
+
+async function enforceGumroadAccess() {
+  let key = localStorage.getItem("gumroad_license");
+  if (!key) {
+    key = prompt("Enter your Gumroad license key:");
+  }
+  if (!key) {
+    window.location.href = "https://www.lastwartutorial.com/";
+    return;
+  }
+  const valid = await validateLicense(key);
+  if (valid) {
+    localStorage.setItem("gumroad_license", key);
+    document.getElementById("app").style.display = "block";
+  } else {
+    alert("Invalid license.");
+    localStorage.removeItem("gumroad_license");
+    window.location.href = "https://www.lastwartutorial.com/";
+  }
+}
+window.onload = enforceGumroadAccess;
+</script>
+
+</body>

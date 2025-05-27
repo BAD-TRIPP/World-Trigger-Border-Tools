@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BAD TRIPP Tools</title>
+  <meta name="theme-color" content="#FFD700"/>
+  <style>
+    body {
+      background-color: #000;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 30px;
+    }
+    h1 {
+      color: gold;
+    }
+    .button {
+      display: inline-block;
+      padding: 15px 25px;
+      margin: 15px;
+      background-color: gold;
+      color: black;
+      font-weight: bold;
+      font-size: 1.1em;
+      text-decoration: none;
+      border-radius: 5px;
+      border: 2px solid gold;
+      transition: 0.3s;
+    }
+    .button:hover {
+      background-color: transparent;
+      color: gold;
+    }
+    #app { display: none; }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <h1>⚔️ BAD TRIPP Tools</h1>
+    <p>Select your tool below:</p>
+    <a href="development-buff-calculator-mobile.html" class="button">🧪 Buff Calculator</a><br>
+    <a href="resource-production-calculator-mobile.html" class="button">💰 Resource Calculator</a><br>
+    <a href="hq-upgrade-tracker-mobile.html" class="button">📈 HQ Upgrade Tracker</a><br>
+    <footer style="margin-top: 30px; color: #888;">© BAD TRIPP • All Rights Reserved</footer>
+  </div>
+  
+<script>
+async function validateLicense(key) {
+  const res = await fetch('https://api.gumroad.com/v2/licenses/verify', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      product_permalink: 'bad-tripp-tools',
+      license_key: key
+    })
+  });
+  const data = await res.json();
+  return data.success;
+}
+
+async function enforceGumroadAccess() {
+  let key = localStorage.getItem("gumroad_license");
+  if (!key) {
+    key = prompt("Enter your Gumroad license key:");
+  }
+  if (!key) {
+    window.location.href = "https://www.lastwartutorial.com/";
+    return;
+  }
+  const valid = await validateLicense(key);
+  if (valid) {
+    localStorage.setItem("gumroad_license", key);
+    document.getElementById("app").style.display = "block";
+  } else {
+    alert("Invalid license.");
+    localStorage.removeItem("gumroad_license");
+    window.location.href = "https://www.lastwartutorial.com/";
+  }
+}
+window.onload = enforceGumroadAccess;
+</script>
+
+</body>
+</html>
