@@ -21,17 +21,14 @@
       text-align: center;
       padding: 10px;
     }
-
     .container {
       max-width: 600px;
       margin: auto;
       padding: 10px;
     }
-
     h1 {
       color: gold;
     }
-
     .button {
       display: inline-block;
       margin: 10px 0;
@@ -46,18 +43,15 @@
       width: 90%;
       transition: all 0.3s ease;
     }
-
     .button:hover {
       background-color: transparent;
       color: gold;
     }
-
     .button span.icon {
       font-size: 1.4em;
       vertical-align: middle;
       margin-right: 1px;
     }
-
     footer {
       margin-top: 20px;
       color: #888;
@@ -65,9 +59,9 @@
     }
   </style>
 </head>
-
 <body>
-  <div id="app" class="container" style="display: none;">
+  <div class="container" id="app" style="display:none;">
+
     <img src="bad_tripp_logo.png" alt="BAD TRIPP Logo" style="max-width: 200px; margin-bottom: 15px;">
     <h1>Alliance Tools</h1>
 
@@ -107,14 +101,13 @@
         })
       });
       const data = await res.json();
+      console.log("License Check Result:", data);
       return data.success;
     }
 
     async function enforceAccess() {
       let key = licenseKey || localStorage.getItem("gumroad_license");
-      if (!key) {
-        key = prompt("Enter your Gumroad license key:");
-      }
+      if (!key) key = prompt("Enter your Gumroad license key:");
       if (!key) {
         window.location.href = "https://www.lastwartutorial.com/";
         return;
