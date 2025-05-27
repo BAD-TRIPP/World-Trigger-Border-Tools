@@ -98,7 +98,7 @@
         key = prompt("Enter your Gumroad license key:");
       }
       if (!key) {
-        window.location.href = "https://www.lastwartutorial.com/";
+        window.location.href = "https://www.badtripp.com/";
         return;
       }
       const valid = await validateLicense(key);
@@ -108,7 +108,7 @@
       } else {
         alert("Invalid license.");
         localStorage.removeItem("gumroad_license");
-        window.location.href = "https://www.lastwartutorial.com/";
+        window.location.href = "https://www.badtripp.com/";
       }
     }
 
