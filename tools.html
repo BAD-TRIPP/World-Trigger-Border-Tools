@@ -79,20 +79,19 @@
     const query = new URLSearchParams(window.location.search);
     const licenseKey = query.get("license");
 
-    async function validateLicense(key) {
-      const res = await fetch('https://api.gumroad.com/v2/licenses/verify', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          product_id: 'Aupflh7P6OJ7ngCo8UUSwA==',
-          license_key: key
-        })
-      });
-      const data = await res.json();
-      alert('🔍 Gumroad API Response:\n' + JSON.stringify(data, null, 2));
-      return data.success;
-    }
-
+  async function validateLicense(key) {
+  const res = await fetch('https://api.gumroad.com/v2/licenses/verify', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      product_permalink: 'bad-tripp-tools',
+      license_key: key
+    })
+  });
+  const data = await res.json();
+  alert('🔍 Gumroad API Response:\n' + JSON.stringify(data, null, 2));
+  return data.success;
+}
     async function enforceAccess() {
       let key = licenseKey || localStorage.getItem("gumroad_license");
       if (!key) {
