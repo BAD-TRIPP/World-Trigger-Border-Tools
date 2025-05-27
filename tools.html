@@ -84,8 +84,8 @@ async function validateLicense(key) {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-    product_id: 'https://badtripp.gumroad.com/l/bad-tripp-tools',
-      license_key: key
+      product_id: 'Aupflh7P60J7ngCo8UUSwA==', // ✅ product ID
+      license_key: key                      // ✅ User license key 
     })
   });
 
@@ -93,7 +93,6 @@ async function validateLicense(key) {
   alert('🔍 Gumroad API Response:\n' + JSON.stringify(data, null, 2));
   return data.success;
 }
-
     async function enforceAccess() {
       let key = licenseKey || localStorage.getItem("gumroad_license");
       if (!key) {
