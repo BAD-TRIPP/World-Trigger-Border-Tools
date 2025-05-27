@@ -1,80 +1,98 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BAD TRIPP Tools</title>
-  <link rel="manifest" href="manifest.json" />
-  <meta name="theme-color" content="#FFD700"/>
+
+  <!-- PWA tags -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#FFD700">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="BAD TRIPP Tools">
+  <link rel="apple-touch-icon" href="bad_tripp_logo.png">
+
   <style>
     body {
       background-color: #000;
-      color: #fff;
+      color: #f0f0f0;
       font-family: Arial, sans-serif;
       text-align: center;
-      padding: 30px;
+      padding: 10px;
     }
-    h1 { color: gold; }
+
+    .container {
+      max-width: 600px;
+      margin: auto;
+      padding: 10px;
+    }
+
+    h1 {
+      color: gold;
+    }
+
     .button {
       display: inline-block;
-      padding: 15px 25px;
-      margin: 15px;
+      margin: 10px 0;
+      padding: 12px 20px;
+      font-size: 1.1em;
       background-color: gold;
       color: black;
       font-weight: bold;
-      font-size: 1.1em;
       text-decoration: none;
       border-radius: 5px;
       border: 2px solid gold;
-      transition: 0.3s;
+      width: 90%;
+      transition: all 0.3s ease;
     }
+
     .button:hover {
       background-color: transparent;
       color: gold;
     }
-    #app { display: none; }
-    #lang {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      background: #111;
-      color: gold;
-      padding: 6px 10px;
-      border: 1px solid gold;
-      font-weight: bold;
+
+    .button span.icon {
+      font-size: 1.4em;
+      vertical-align: middle;
+      margin-right: 1px;
+    }
+
+    footer {
+      margin-top: 20px;
+      color: #888;
+      font-size: 0.9em;
     }
   </style>
 </head>
+
 <body>
-  <select id="lang">
-    <option value="en">🇺🇸 English</option>
-    <option value="es">🇪🇸 Spanish</option>
-    <option value="pt">🇧🇷 Portuguese</option>
-    <option value="fr">🇫🇷 French</option>
-    <option value="de">🇩🇪 German</option>
-    <option value="it">🇮🇹 Italian</option>
-    <option value="nl">🇳🇱 Dutch</option>
-    <option value="pl">🇵🇱 Polish</option>
-    <option value="tr">🇹🇷 Turkish</option>
-    <option value="ru">🇷🇺 Russian</option>
-    <option value="ja">🇯🇵 Japanese</option>
-    <option value="zh">🇨🇳 Chinese</option>
-    <option value="zh-TW">🇹🇼 Chinese (Traditional)</option>
-    <option value="ko">🇰🇷 Korean</option>
-    <option value="ar">🇸🇦 Arabic</option>
-    <option value="hi">🇮🇳 Hindi</option>
-    <option value="id">🇮🇩 Indonesian</option>
-    <option value="th">🇹🇭 Thai</option>
-    <option value="vi">🇻🇳 Vietnamese</option>
-  </select>
-  <div id="app">
-    <h1 id="title">BAD TRIPP Tools</h1>
-    <p id="prompt">Select your tool below:</p>
-    <a href="development-buff-calculator-mobile.html" class="button">🧪 Buff Calculator</a><br>
-    <a href="resource-production-calculator-mobile.html" class="button">💰 Resource Calculator</a><br>
-    <a href="hq-upgrade-tracker-mobile.html" class="button">📈 HQ Upgrade Tracker</a><br>
-    <footer style="margin-top: 30px; color: #888;">© BAD TRIPP • All Rights Reserved</footer>
+  <div id="app" class="container" style="display: none;">
+    <img src="bad_tripp_logo.png" alt="BAD TRIPP Logo" style="max-width: 200px; margin-bottom: 15px;">
+    <h1>Alliance Tools</h1>
+
+    <a href="development-buff-calculator-mobile.html" class="button">
+      <span class="icon">🏗 🔬 🎯</span> Buff Calculator
+    </a><br>
+
+    <a href="resource-production-calculator-mobile.html" class="button">
+      <span class="icon">🍞 🪓 💰</span> RSS Calculator
+    </a><br>
+
+    <a href="hq-upgrade-tracker-mobile.html" class="button">
+      <span class="icon">🚀 🛠️ 📈</span> HQ Upgrade Tracker
+    </a><br>
+
+    <p style="margin-top: 15px;">
+      Need help? <a href="quick_guide.html" style="color: gold;">Quick Guide</a>
+    </p>
+
+    <footer>
+      🏹 Created for Server #1009 Only!<br>
+      Courtesy of **BAD TRIPP**
+    </footer>
   </div>
+
   <script>
     const query = new URLSearchParams(window.location.search);
     const licenseKey = query.get("license");
@@ -84,12 +102,11 @@
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          product_id: 'Aupflh7P60J7ngCo8UUSwA==',
+          product_id: 'Aupflh7P6OJ7ngCo8UUSwA==',
           license_key: key
         })
       });
       const data = await res.json();
-      console.log("License validation result:", data);
       return data.success;
     }
 
@@ -113,33 +130,7 @@
       }
     }
 
-    async function loadLanguage(code) {
-      const res = await fetch("lang.json");
-      const lang = await res.json();
-      const data = lang[code] || lang["en"];
-      document.getElementById("title").textContent = data.title;
-      document.getElementById("prompt").textContent = data.select_tool;
-    }
-
-    document.getElementById("lang").addEventListener("change", e => loadLanguage(e.target.value));
-
-    window.addEventListener("load", () => {
-      const userLang = navigator.language.slice(0, 2);
-      document.getElementById("lang").value = userLang;
-      loadLanguage(userLang);
-      enforceAccess();
-    });
-
-    let deferredPrompt;
-    window.addEventListener('beforeinstallprompt', (e) => {
-      e.preventDefault();
-      deferredPrompt = e;
-      setTimeout(() => {
-        if (confirm("Install BAD TRIPP Tools as an app?")) {
-          deferredPrompt.prompt();
-        }
-      }, 2000);
-    });
+    window.addEventListener("load", enforceAccess);
   </script>
 </body>
 </html>
