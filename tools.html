@@ -87,42 +87,44 @@
   </div>
 
   <script>
-    const query = new URLSearchParams(window.location.search);
-    const licenseKey = query.get("license");
+     const query = new URLSearchParams(window.location.search);
+  const licenseKey = query.get("license");
 
-    async function validateLicense(key) {
-      const res = await fetch('https://api.gumroad.com/v2/licenses/verify', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          product_id: 'Aupflh7P6OJ7ngCo8UUSwA==',
-          license_key: key
-        })
-      });
-      const data = await res.json();
-      console.log("License Check Result:", data);
-      return data.success;
+  async function validateLicense(key) {
+    const res = await fetch('https://api.gumroad.com/v2/licenses/verify', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        product_permalink: 'bad-tripp-tools', // This avoids needing product_id
+        license_key: key
+      })
+    });
+    const data = await res.json();
+    alert('🔍 Gumroad API Response:\n' + JSON.stringify(data, null, 2));
+    return data.success;
+  }
+
+  async function enforceAccess() {
+    let key = licenseKey || localStorage.getItem("gumroad_license");
+    if (!key) {
+      key = prompt("Enter your Gumroad license key:");
     }
-
-    async function enforceAccess() {
-      let key = licenseKey || localStorage.getItem("gumroad_license");
-      if (!key) key = prompt("Enter your Gumroad license key:");
-      if (!key) {
-        window.location.href = "https://www.lastwartutorial.com/";
-        return;
-      }
-      const valid = await validateLicense(key);
-      if (valid) {
-        localStorage.setItem("gumroad_license", key);
-        document.getElementById("app").style.display = "block";
-      } else {
-        alert("Invalid license.");
-        localStorage.removeItem("gumroad_license");
-        window.location.href = "https://www.lastwartutorial.com/";
-      }
+    if (!key) {
+      window.location.href = "https://www.lastwartutorial.com/";
+      return;
     }
+    const valid = await validateLicense(key);
+    if (valid) {
+      localStorage.setItem("gumroad_license", key);
+      document.getElementById("app").style.display = "block";
+    } else {
+      alert("Invalid license.");
+      localStorage.removeItem("gumroad_license");
+      window.location.href = "https://www.lastwartutorial.com/";
+    }
+  }
 
-    window.addEventListener("load", enforceAccess);
+  window.addEventListener("load", enforceAccess);
   </script>
 </body>
 </html>
