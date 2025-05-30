@@ -1,180 +1,144 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Quick Guide</title>
 
   <!-- PWA tags -->
-  <link rel="manifest" href="manifest.json">
-  <meta name="theme-color" content="#FFD700">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-title" content="BAD TRIPP Tools">
-  <link rel="apple-touch-icon" href="bad_tripp_logo.png">
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#FFD700" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-title" content="BAD TRIPP Tools" />
+  <link rel="apple-touch-icon" href="bad_tripp_logo.png" />
 
-  <!-- Password protection -->
-  <script>
-    if (!localStorage.getItem("brdr_access_granted")) {
-      var password = prompt("Enter pass to access BAD TRIPP's Tools:");
-      if (password === "1009") {
-        localStorage.setItem("brdr_access_granted", "true");
-      } else {
-        alert("Access denied.");
-        window.location.href = "https://google.com";
-      }
+  <style>
+    body {
+      background-color: #000;
+      color: #f0f0f0;
+      font-family: Arial, sans-serif;
+      padding: 20px;
     }
-  </script>
-
-<style>
-  body {
-    background-color: #000;
-    color: #f0f0f0;
-    font-family: Arial, sans-serif;
-    padding: 20px;
-  }
-
-  .content {
-    max-width: 600px;
-    margin: auto;
-    text-align: left;
-  }
-
-  h1, h2 {
-    color: gold;
-    text-align: center;
-  }
-
-  ul, ol {
-    padding-left: 20px;
-  }
-
-  li {
-    margin: 10px 0;
-  }
-
-  a {
-    color: gold;
-    text-decoration: none;
-  }
-
-  a:hover {
-    text-decoration: underline;
-  }
-
-  .back-button {
-    display: inline-block;
-    margin-bottom: 10px;
-    padding: 10px 15px;
-    background-color: gold;
-    color: black;
-    font-weight: bold;
-    text-decoration: none;
-    border: 2px solid gold;
-    border-radius: 5px;
-  }
-
-  .back-button:hover {
-    background-color: transparent;
-    color: gold;
-  }
-
-  img.logo {
-    display: block;
-    margin: 0 auto 15px auto;
-    max-width: 200px;
-  }
-
-  button {
-    padding: 10px 15px;
-    margin-top: 10px;
-    background-color: gold;
-    color: black;
-    font-weight: bold;
-    border: 2px solid gold;
-    border-radius: 5px;
-    width: 100%;
-  }
-
-  button:hover {
-    background-color: transparent;
-    color: gold;
-  }
-
-  .image-row {
-    text-align: center;
-  }
-
-  .image-row img {
-    width: 45%;
-    max-width: 200px;
-    margin: 5px;
-    cursor: pointer;
-    border: 2px solid gold;
-  }
-
-  /* Lightbox styles */
-  #lightbox {
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    padding-top: 60px;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0,0,0,0.9);
-  }
-
-  #lightbox img {
-    margin: auto;
-    display: block;
-    max-width: 90%;
-    max-height: 80%;
-  }
-
-  #lightbox span {
-    position: absolute;
-    top: 20px;
-    right: 45px;
-    color: #fff;
-    font-size: 40px;
-    font-weight: bold;
-    cursor: pointer;
-  }
-
-  footer {
-    margin-top: 25px;
-    color: #888;
-    font-size: 0.9em;
-    text-align: center;
-  }
-
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    color: #f0f0f0;
-    margin-top: 20px;
-    font-size: 0.8em;
-  }
-
-  th, td {
-    padding: 10px;
-    border: 1px solid gold;
-  }
-
-  th {
-    background-color: gold;
-    color: black;
-  }
-</style>
-
+    .content {
+      max-width: 600px;
+      margin: auto;
+      text-align: left;
+    }
+    h1, h2 {
+      color: gold;
+      text-align: center;
+    }
+    ul, ol {
+      padding-left: 20px;
+    }
+    li {
+      margin: 10px 0;
+    }
+    a {
+      color: gold;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .back-button {
+      display: inline-block;
+      margin-bottom: 10px;
+      padding: 10px 15px;
+      background-color: gold;
+      color: black;
+      font-weight: bold;
+      text-decoration: none;
+      border: 2px solid gold;
+      border-radius: 5px;
+    }
+    .back-button:hover {
+      background-color: transparent;
+      color: gold;
+    }
+    img.logo {
+      display: block;
+      margin: 0 auto 15px auto;
+      max-width: 200px;
+    }
+    button {
+      padding: 10px 15px;
+      margin-top: 10px;
+      background-color: gold;
+      color: black;
+      font-weight: bold;
+      border: 2px solid gold;
+      border-radius: 5px;
+      width: 100%;
+    }
+    button:hover {
+      background-color: transparent;
+      color: gold;
+    }
+    .image-row {
+      text-align: center;
+    }
+    .image-row img {
+      width: 45%;
+      max-width: 200px;
+      margin: 5px;
+      cursor: pointer;
+      border: 2px solid gold;
+    }
+    #lightbox {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      padding-top: 60px;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.9);
+    }
+    #lightbox img {
+      margin: auto;
+      display: block;
+      max-width: 90%;
+      max-height: 80%;
+    }
+    #lightbox span {
+      position: absolute;
+      top: 20px;
+      right: 45px;
+      color: #fff;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    footer {
+      margin-top: 25px;
+      color: #888;
+      font-size: 0.9em;
+      text-align: center;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      color: #f0f0f0;
+      margin-top: 20px;
+      font-size: 0.8em;
+    }
+    th, td {
+      padding: 10px;
+      border: 1px solid gold;
+    }
+    th {
+      background-color: gold;
+      color: black;
+    }
+  </style>
 </head>
 <body>
 
 <div class="content">
-
-  <img src="bad_tripp_logo.png" alt="BAD TRIPP Logo" class="logo">
+  <img src="bad_tripp_logo.png" alt="BAD TRIPP Logo" class="logo" />
 
   <div style="text-align: center;">
     <a href="index.html" class="back-button">← Back to Main Menu</a>
@@ -192,10 +156,10 @@
 
   <h3 style="text-align: center;">Buff Calculator Example Images</h3>
   <div class="image-row">
-    <img src="buffs-no-sec-dev.jpeg" alt="No Sec Dev Buff" onclick="openLightbox(this.src)">
-    <img src="buffs-sec-dev.jpeg" alt="Sec Dev Buff" onclick="openLightbox(this.src)">
-    <img src="development-buffs.jpeg" alt="Development Buffs" onclick="openLightbox(this.src)">
-    <img src="research-buffs.jpeg" alt="Research Buffs" onclick="openLightbox(this.src)">
+    <img src="buffs-no-sec-dev.jpeg" alt="No Sec Dev Buff" onclick="openLightbox(this.src)" />
+    <img src="buffs-sec-dev.jpeg" alt="Sec Dev Buff" onclick="openLightbox(this.src)" />
+    <img src="development-buffs.jpeg" alt="Development Buffs" onclick="openLightbox(this.src)" />
+    <img src="research-buffs.jpeg" alt="Research Buffs" onclick="openLightbox(this.src)" />
   </div>
 
   <h2>Buff Formulas</h2>
@@ -211,7 +175,7 @@
     <p style="font-size: 0.9em; color: #ccc;">*Tip: Convert hours/minutes into seconds before calculating.*</p>
   </div>
 
-  <hr style="border: 1px solid gold; margin: 20px 0;">
+  <hr style="border: 1px solid gold; margin: 20px 0;" />
 
   <h2>RSS Production Calculator Steps:</h2>
   <ol>
@@ -223,8 +187,8 @@
 
   <h3 style="text-align: center;">RSS Calculator Example Images</h3>
   <div class="image-row">
-    <img src="rss-guide-1.jpeg" alt="RSS Guide 1" onclick="openLightbox(this.src)">
-    <img src="rss-guide-2.jpeg" alt="RSS Guide 2" onclick="openLightbox(this.src)">
+    <img src="rss-guide-1.jpeg" alt="RSS Guide 1" onclick="openLightbox(this.src)" />
+    <img src="rss-guide-2.jpeg" alt="RSS Guide 2" onclick="openLightbox(this.src)" />
   </div>
 
   <h2>Production Formulas</h2>
@@ -240,42 +204,35 @@
     </table>
   </div>
 
-  <hr style="border: 1px solid gold; margin: 20px 0;">
+  <hr style="border: 1px solid gold; margin: 20px 0;" />
 
   <footer>
-    Created for Server #1009 ONLY!<br>
+    Created for Server #1009 ONLY!<br />
     Courtesy of **BAD TRIPP**
   </footer>
-
 </div>
 
 <!-- Lightbox -->
 <div id="lightbox" onclick="closeLightbox()">
   <span>&times;</span>
-  <img id="lightbox-img" src="">
+  <img id="lightbox-img" src="" />
 </div>
 
-<script>
-  const table = document.getElementById("formulaTable");
-  window.onload = () => {
-    const isOpen = localStorage.getItem("brdr_formulas_open");
-    if (isOpen === "true") table.style.display = "block";
-  };
-  function toggleTable() {
-    table.style.display = (table.style.display === "none") ? "block" : "none";
-    localStorage.setItem("brdr_formulas_open", table.style.display === "block" ? "true" : "false");
-  }
-  function toggleRSSFormulas() {
-    const rssTable = document.getElementById("rssFormulaTable");
-    rssTable.style.display = (rssTable.style.display === "none") ? "block" : "none";
-  }
-  function openLightbox(src) {
-    document.getElementById("lightbox-img").src = src;
-    document.getElementById("lightbox").style.display = "block";
-  }
-  function closeLightbox() {
-    document.getElementById("lightbox").style.display = "none";
-  }
+<script type="module">
+  import { enforceAccess } from '/scripts/license-check.js';
+  import { initQuickGuide } from '/scripts/quick-guide.js';
+
+  window.addEventListener("load", async () => {
+    const valid = await enforceAccess(false);
+    if (!valid) {
+      const key = prompt("Enter your Gumroad license key:");
+      if (!key) return window.location.href = "https://www.lastwartutorial.com/";
+      localStorage.setItem("gumroad_license", key);
+      location.reload();
+    } else {
+      initQuickGuide();
+    }
+  });
 </script>
 
 </body>
