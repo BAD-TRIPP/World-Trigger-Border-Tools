@@ -173,16 +173,15 @@
     loadProgress
   } from '/scripts/rss-calculator.js';
 
-  // Attach functions to global scope for HTML buttons to access
+  // Attach functions for buttons to use
   window.addResourceRow = addResourceRow;
   window.calculateAll = calculateAll;
   window.resetForm = resetForm;
   window.saveProgress = saveProgress;
   window.loadProgress = loadProgress;
 
-  // License check and show app
   window.addEventListener("load", async () => {
-    const valid = await enforceAccess(true); // true = redirect if invalid
+    const valid = await enforceAccess(true);
     if (valid) {
       document.getElementById("app").style.display = "block";
     }
