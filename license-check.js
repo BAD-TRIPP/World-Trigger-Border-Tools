@@ -5,10 +5,11 @@ async function validateLicense(key) {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      product_id: 'Aupflh7P60J7ngCo8UUSwA==', // Replace with your actual product_id
+      product_id: 'Aupflh7P60J7ngCo8UUSwA==', // Use your actual product_id
       license_key: key
     })
   });
+
   const data = await res.json();
   return data.success;
 }
