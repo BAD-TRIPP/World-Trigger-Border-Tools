@@ -60,7 +60,6 @@
 </head>
 <body>
   <div class="container" id="app" style="display:none;">
-
     <img src="bad_tripp_logo.png" alt="BAD TRIPP Logo" style="max-width: 200px; margin-bottom: 15px;">
     <h1>Alliance Tools</h1>
 
@@ -82,37 +81,25 @@
 
     <footer>
       🏹 Created for Server #1009 Only!<br>
-      Courtesy of **BAD TRIPP**
+      Courtesy of <strong>BAD TRIPP</strong>
     </footer>
   </div>
-<script src="/scripts/license-check.js"></script>
-<script>
-  async function start() {
-    const query = new URLSearchParams(window.location.search);
-    let key = query.get("license") || localStorage.getItem("gumroad_license");
 
-    if (!key) {
-      key = prompt("Enter your Gumroad license key:");
-    }
+  <script type="module">
+    import { enforceAccess } from '/scripts/license-check.js';
 
-    if (!key) {
-      window.location.href = "https://www.lastwartutorial.com/";
-      return;
-    }
+    window.addEventListener("load", async () => {
+      const valid = await enforceAccess(false); // allow staying on /tools.html
+      if (valid) {
+        document.getElementById("app").style.display = "block";
+      } else {
+        const key = prompt("Enter your Gumroad license key:");
+        if (!key) return window.location.href = "https://www.lastwartutorial.com/";
 
-    const valid = await validateLicense(key);
-    if (valid) {
-      localStorage.setItem("gumroad_license", key);
-      document.getElementById("app").style.display = "block";
-    } else {
-      alert("Invalid license.");
-      localStorage.removeItem("gumroad_license");
-      window.location.href = "https://www.lastwartutorial.com/";
-    }
-  }
-
-  window.addEventListener("load", start);
-</script>
-
+        localStorage.setItem("gumroad_license", key);
+        location.reload(); // trigger re-check with saved key
+      }
+    });
+  </script>
 </body>
 </html>
