@@ -164,6 +164,7 @@
   </div>
   
 <script type="module">
+  import { enforceAccess } from '/scripts/license-check.js';
   import {
     addResourceRow,
     calculateAll,
@@ -172,16 +173,16 @@
     loadProgress
   } from '/scripts/rss-calculator.js';
 
+  // Attach functions to global scope for HTML buttons to access
   window.addResourceRow = addResourceRow;
   window.calculateAll = calculateAll;
   window.resetForm = resetForm;
   window.saveProgress = saveProgress;
   window.loadProgress = loadProgress;
-</script>
-<script src="/scripts/license-check.js"></script>
-<script>
+
+  // License check and show app
   window.addEventListener("load", async () => {
-    const valid = await enforceAccess();
+    const valid = await enforceAccess(true); // true = redirect if invalid
     if (valid) {
       document.getElementById("app").style.display = "block";
     }
