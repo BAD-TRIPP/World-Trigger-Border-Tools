@@ -118,11 +118,12 @@
     </footer>
   </div>
 
-  <script src="/scripts/license-check.js"></script>
-<script src="/scripts/hq-upgrade-tracker.js"></script>
-<script>
+<script type="module">
+  import { enforceAccess } from '/scripts/license-check.js';
+  import '/scripts/hq-upgrade-tracker.js';
+
   window.addEventListener("load", async () => {
-    const valid = await enforceAccess();
+    const valid = await enforceAccess(true); // true means redirect on fail
     if (valid) {
       document.getElementById("app").style.display = "block";
     }
