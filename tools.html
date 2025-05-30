@@ -89,7 +89,7 @@
   import { enforceAccess } from '/scripts/license-check.js';
 
   window.addEventListener("load", async () => {
-    const valid = await enforceAccess(false); // allow staying on /tools.html
+    const valid = await enforceAccess(false);
     if (valid) {
       document.getElementById("app").style.display = "block";
     } else {
@@ -97,7 +97,7 @@
       if (!key) return window.location.href = "https://www.lastwartutorial.com/";
 
       localStorage.setItem("gumroad_license", key);
-      location.reload(); // trigger re-check with saved key
+      location.reload(); // re-check with saved key
     }
   });
 </script>
