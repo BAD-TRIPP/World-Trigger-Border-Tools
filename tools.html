@@ -85,21 +85,22 @@
     </footer>
   </div>
 
-  <script type="module">
-    import { enforceAccess } from '/scripts/license-check.js';
+<script type="module">
+  import { enforceAccess } from '/scripts/license-check.js';
 
-    window.addEventListener("load", async () => {
-      const valid = await enforceAccess(false); // allow staying on /tools.html
-      if (valid) {
-        document.getElementById("app").style.display = "block";
-      } else {
-        const key = prompt("Enter your Gumroad license key:");
-        if (!key) return window.location.href = "https://www.lastwartutorial.com/";
+  window.addEventListener("load", async () => {
+    const valid = await enforceAccess(false); // allow staying on /tools.html
+    if (valid) {
+      document.getElementById("app").style.display = "block";
+    } else {
+      const key = prompt("Enter your Gumroad license key:");
+      if (!key) return window.location.href = "https://www.lastwartutorial.com/";
 
-        localStorage.setItem("gumroad_license", key);
-        location.reload(); // trigger re-check with saved key
-      }
-    });
-  </script>
+      localStorage.setItem("gumroad_license", key);
+      location.reload(); // trigger re-check with saved key
+    }
+  });
+</script>
+
 </body>
 </html>
