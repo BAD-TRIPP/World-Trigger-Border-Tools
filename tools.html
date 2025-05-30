@@ -85,34 +85,21 @@
       Courtesy of **BAD TRIPP**
     </footer>
   </div>
+<script src="/license-check.js"></script>
+<script>
+  async function start() {
+    const query = new URLSearchParams(window.location.search);
+    let key = query.get("license") || localStorage.getItem("gumroad_license");
 
-  <script>
-     const query = new URLSearchParams(window.location.search);
-  const licenseKey = query.get("license");
-
-  async function validateLicense(key) {
-    const res = await fetch('https://api.gumroad.com/v2/licenses/verify', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        product_id: 'Aupflh7P60J7ngCo8UUSwA==',
-        license_key: key
-      })
-    });
-    const data = await res.json();
-  
-    return data.success;
-  }
-
-  async function enforceAccess() {
-    let key = licenseKey || localStorage.getItem("gumroad_license");
     if (!key) {
       key = prompt("Enter your Gumroad license key:");
     }
+
     if (!key) {
       window.location.href = "https://www.lastwartutorial.com/";
       return;
     }
+
     const valid = await validateLicense(key);
     if (valid) {
       localStorage.setItem("gumroad_license", key);
@@ -124,7 +111,8 @@
     }
   }
 
-  window.addEventListener("load", enforceAccess);
-  </script>
+  window.addEventListener("load", start);
+</script>
+
 </body>
 </html>
