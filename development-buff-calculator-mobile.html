@@ -190,11 +190,12 @@
 
   </div>
 
-<script src="/scripts/license-check.js"></script>
-<script src="/scripts/buff-calculator.js"></script>
-<script>
+<script type="module">
+  import { enforceAccess } from '/scripts/license-check.js';
+  import '/scripts/buff-calculator.js'; // keep as normal import (no need to call anything)
+
   window.addEventListener("load", async () => {
-    const valid = await enforceAccess();
+    const valid = await enforceAccess(true); // true = redirect to tools.html if invalid
     if (valid) {
       document.getElementById("app").style.display = "block";
     }
