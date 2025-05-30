@@ -98,6 +98,29 @@
       location.reload(); // re-check with saved key
     }
   });
+
+  let deferredPrompt;
+
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault(); // Prevent automatic prompt
+    deferredPrompt = e;
+
+    // Optional: Show your own custom button
+    const btn = document.createElement('button');
+    btn.innerText = "📲 Install BAD TRIPP Tools";
+    btn.style = "margin-top:20px;padding:10px 20px;background:gold;color:black;font-weight:bold;border:2px solid gold;border-radius:5px;";
+    btn.onclick = async () => {
+      btn.remove(); // remove after click
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      if (outcome === 'accepted') {
+        console.log('User accepted the A2HS prompt');
+      }
+      deferredPrompt = null;
+    };
+    document.body.appendChild(btn);
+  });
+
 </script>
 
 </body>
