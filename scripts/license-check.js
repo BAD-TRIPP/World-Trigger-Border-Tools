@@ -5,7 +5,7 @@ export async function validateLicense(key) {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      product_id: 'Aupflh7P60J7ngCo8UUSwA==', 
+      product_id: 'Aupflh7P60J7ngCo8UUSwA==', // Your Gumroad product ID
       license_key: key
     })
   });
