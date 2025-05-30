@@ -226,7 +226,7 @@
     const valid = await enforceAccess(false);
     if (!valid) {
       const key = prompt("Enter your Gumroad license key:");
-      if (!key) return window.location.href = "https://www.lastwartutorial.com/";
+      if (!key) return window.location.href = "https://www.badtripp.com/";
       localStorage.setItem("gumroad_license", key);
       location.reload();
     } else {
