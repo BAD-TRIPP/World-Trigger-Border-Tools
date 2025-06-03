@@ -1,4 +1,4 @@
-const CACHE_NAME = "hq-tracker-v1";
+const CACHE_NAME = "badtripp-hq-v1";
 const ASSETS_TO_CACHE = [
   "/hq-upgrade-tracker-mobile.html",
   "/bad_tripp_logo.png",
@@ -10,14 +10,15 @@ const ASSETS_TO_CACHE = [
   "https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
 ];
 
-// Install event
+// Install: cache core files
 self.addEventListener("install", event => {
   event.waitUntil(
     caches.open(CACHE_NAME).then(cache => cache.addAll(ASSETS_TO_CACHE))
   );
+  self.skipWaiting();
 });
 
-// Fetch event
+// Fetch: serve from cache first
 self.addEventListener("fetch", event => {
   event.respondWith(
     caches.match(event.request).then(response =>
@@ -26,11 +27,14 @@ self.addEventListener("fetch", event => {
   );
 });
 
-// Activate event - optional cleanup
+// Activate: cleanup old caches
 self.addEventListener("activate", event => {
   event.waitUntil(
     caches.keys().then(keys =>
-      Promise.all(keys.filter(key => key !== CACHE_NAME).map(key => caches.delete(key)))
+      Promise.all(
+        keys.filter(k => k !== CACHE_NAME).map(k => caches.delete(k))
+      )
     )
   );
+  self.clients.claim();
 });
