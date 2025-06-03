@@ -132,6 +132,211 @@
     }
   });
 </script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Resource Production Calculator</title>
+  
+<link rel="preload" href="/data/rssdata.json" as="fetch" crossorigin="anonymous">
+
+  <link rel="manifest" href="manifest.json"/>
+  <meta name="theme-color" content="#FFD700"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-title" content="BAD TRIPP Tools"/>
+  <link rel="apple-touch-icon" href="bad_tripp_logo.png"/>
+  
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function () {
+        navigator.serviceWorker.register('/service-worker.js').then(function (registration) {
+          console.log('ServiceWorker registered: ', registration.scope);
+        }, function (err) {
+          console.log('ServiceWorker registration failed: ', err);
+        });
+      });
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #000;
+      color: #f0f0f0;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 10px;
+    }
+    .container {
+      max-width: 600px;
+      margin: auto;
+      padding: 0 10px;
+    }
+    h1, h3 {
+      color: gold;
+    }
+    input {
+      width: 90%;
+      padding: 8px;
+      margin: 4px 0;
+      border-radius: 4px;
+      border: 1px solid #444;
+      background-color: #1a1a1a;
+      color: white;
+      box-sizing: border-box;
+    }
+    .input-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      justify-content: center;
+      margin: 5px 0;
+    }
+    .input-row input {
+      max-width: 100px;
+    }
+    .resource-section {
+      border: 1px solid #444;
+      border-radius: 5px;
+      padding: 10px;
+      margin-bottom: 15px;
+    }
+    .result-box {
+      background-color: #222;
+      border-radius: 5px;
+      padding: 10px;
+      margin-top: 10px;
+      color: gold;
+      font-weight: bold;
+    }
+    button {
+      width: 100%;
+      padding: 12px 20px;
+      margin-top: 10px;
+      background-color: gold;
+      color: black;
+      font-weight: bold;
+      font-size: 1.1em;
+      border: 2px solid gold;
+      border-radius: 5px;
+      transition: 0.3s;
+    }
+    button:hover {
+      background-color: transparent;
+      color: gold;
+    }
+    .back-button {
+      display: inline-block;
+      margin-bottom: 10px;
+      padding: 10px 15px;
+      background-color: gold;
+      color: black;
+      font-weight: bold;
+      text-decoration: none;
+      border: 2px solid gold;
+      border-radius: 5px;
+    }
+    .back-button:hover {
+      background-color: transparent;
+      color: gold;
+    }
+    .remove-btn {
+      background-color: #333;
+      color: red;
+      border: 1px solid red;
+      font-size: 0.9em;
+      padding: 5px;
+      border-radius: 3px;
+    }
+  </style>
+</head>
+<body>
+<div id="app" style="display:none;">
+  <div class="container">
+    <img src="bad_tripp_logo.png" alt="BAD TRIPP Logo" style="max-width: 200px;"><br>
+    <a href="index.html" class="back-button">← Back to Main Menu</a><br>
+    <h1>Resource Production Calculator</h1>
+
+    <label>Secretary Sessions per Day:</label><br>
+    <input type="number" id="secretaryUses" placeholder="e.g. 5"><br><br>
+
+    <div class="resource-section" id="foodSection">
+      <h3>🍞 Food Farms</h3>
+      <div id="foodInputs"></div>
+      <button onclick="addResourceRow('food')">+ Add Farm</button>
+      <input type="number" id="foodBuff" placeholder="Total Food Buff %">
+      <div class="result-box" id="foodResult"></div>
+    </div>
+
+    <div class="resource-section" id="ironSection">
+      <h3>🪓 Iron Mines</h3>
+      <div id="ironInputs"></div>
+      <button onclick="addResourceRow('iron')">+ Add Iron Mine</button>
+      <input type="number" id="ironBuff" placeholder="Total Iron Buff %">
+      <div class="result-box" id="ironResult"></div>
+    </div>
+
+    <div class="resource-section" id="coinSection">
+      <h3>💰 Gold Coins</h3>
+      <div id="coinInputs"></div>
+      <button onclick="addResourceRow('coin')">+ Add Coin</button>
+      <input type="number" id="coinBuff" placeholder="Total Gold Buff %">
+      <div class="result-box" id="coinResult"></div>
+    </div>
+
+    <button onclick="calculateAll()">Calculate All</button><br><br>
+    <a href="#" onclick="resetForm(); return false;" style="display: inline-block; margin-top: 10px; color: gold; text-decoration: underline; font-size: 0.9em;">Reset Form</a>
+
+    <div style="margin-top: 15px; border-top: 1px solid #444; padding-top: 10px;">
+      <h3 style="color: gold;">🗂 Save / Load Progress</h3>
+      <button onclick="saveProgress()">💾 Save</button>
+      <button onclick="loadProgress()">📥 Load</button>
+    </div><br>
+
+<p style="margin-top: 15px;">
+  Need help? <a href="quick_guide.html" style="color: gold;">Quick Guide</a>
+</p>
+
+<footer style="margin-top: 20px; color: #888; font-size: 0.9em;">
+  🔥 Courtesy of <strong>**BAD TRIPP**</strong> Server #1009
+</footer>
+    
+  </div>
+  
+<script type="module">
+  import { enforceAccess } from '/scripts/license-check.js';
+  import {
+    addResourceRow,
+    calculateAll,
+    resetForm,
+    saveProgress,
+    loadProgress
+  } from '/scripts/rss-calculator.js';
+
+  // Attach functions for buttons to use
+  window.addResourceRow = addResourceRow;
+  window.calculateAll = calculateAll;
+  window.resetForm = resetForm;
+  window.saveProgress = saveProgress;
+  window.loadProgress = loadProgress;
+
+  window.addEventListener("load", async () => {
+    const valid = await enforceAccess(true);
+    if (valid) {
+      document.getElementById("app").style.display = "block";
+    }
+  });
+</script>
+<script>
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("/service-worker.js")
+      .then(reg => console.log("✅ Service Worker registered:", reg.scope))
+      .catch(err => console.error("❌ Service Worker registration failed:", err));
+  }
+</script>
+  
+</body>
+</html>
 
 </body>
 </html>
