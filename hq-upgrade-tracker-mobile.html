@@ -126,7 +126,7 @@
   import '/scripts/hq-upgrade-tracker.js';
 
   window.addEventListener("load", async () => {
-    const valid = await enforceAccess(true); // true means redirect on fail
+    const valid = await enforceAccess(true);
     if (valid) {
       document.getElementById("app").style.display = "block";
     }
