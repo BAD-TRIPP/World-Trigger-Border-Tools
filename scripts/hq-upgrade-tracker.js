@@ -72,3 +72,4 @@ fetch('data/hq_levels_chart.json')
     console.error('Error loading HQ chart data:', err);
     document.getElementById('progressionTable').innerHTML = '<p style="color:red;">Failed to load progression chart.</p>';
   });
+window.showUpgradeData = showUpgradeData;
