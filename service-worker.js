@@ -1,10 +1,17 @@
 const CACHE_NAME = "badtripp-hq-v1";
 const ASSETS_TO_CACHE = [
+  "/tools.html",
+  "/development-buff-calculator-mobile.html",
+  "/resource-production-calculator-mobile.html",
   "/hq-upgrade-tracker-mobile.html",
-  "/bad_tripp_logo.png",
-  "/manifest.json",
+  "/quick_guide.html",
+  "/scripts/buff-calculator.js",
+  "/scripts/rss-calculator.js",
   "/scripts/hq-upgrade-tracker.js",
   "/scripts/license-check.js",
+  "/data/rssdata.json",
+  "/bad_tripp_logo.png",
+  "/manifest.json",
   "/data/hq_levels.json",
   "/data/hq_levels_chart.json",
   "https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
